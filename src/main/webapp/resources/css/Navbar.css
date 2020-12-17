@@ -7,7 +7,7 @@
     width: 100%;
     height: 80px;
     background-color: white;
-    border-bottom: 2px solid rgb(203, 192, 212);
+    /* border-bottom: 2px solid rgb(203, 192, 212);*/
     display:flex;
     justify-content: space-between;
     position: fixed;
@@ -19,7 +19,7 @@
     width: 100%;
     height: 80px;
     background-color: white;
-    border-bottom: 2px solid rgb(203, 192, 212);
+    /* border-bottom: 2px solid rgb(203, 192, 212); */
 }
 .nav a{
     text-decoration: none;
@@ -76,6 +76,7 @@
     align-items: center;
     position: relative;
 }
+
 
 body > div.nav > div.nav2 > div.searchBox2 > form
 {
@@ -151,7 +152,7 @@ body > div.nav > div.nav2 > div.searchBox2 > form
 }
 .dropdown:hover .dropdown-content{
     display: block;
-
+​
 }
 .dropdown-content {
     display: none;
@@ -171,3 +172,5 @@ body > div.nav > div.nav2 > div.searchBox2 > form
 .dropdown-content a:hover{
     background-color: rgba(214, 255, 255, 0.527);
 }
+
+
