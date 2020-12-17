@@ -22,6 +22,7 @@
 			</div>
 				<div class="createForm">
 					<form role="form" action="/creator/apply" method="post" >
+
 						
 					<div class="RegisterForm">
 						
@@ -32,6 +33,7 @@
 							<input class="form-control" name='nick' id='nick' placeholder="nick" readonly="readonly">
 							<label class="label">UserSN</label>
 							<input class="form-control" name='userSN' id='userSN' value="${user.userSN}" placeholder="userSN">
+
 						
 						<div class="CateList">
 							<label class="label catList">(운영 채널 주)카테고리 목록</label>

@@ -25,11 +25,13 @@
 	<div></div>
 
 	<h3 class="list">게시글 목록</h3>
+
 	<div class="post">
 	
 	</div>
 	
 	<div class="chBoardBtn">
+
 		<button id="createBtn" type="button">게시글 작성</button>
 		<button id="listBtn" type="button">채널 게시판으로 이동</button>
 	</div>
@@ -81,7 +83,10 @@ $(document).ready(function(){
 					str = "<table class='boardTable' style='table-layout: fixed;'>"
 					str += "<thead><tr><th>글 번호</th><th>글 제목</th><th>작성자</th><th>작성 일</th></tr></thead>"
 
+
+
 				for ( var i = 0, len = list.length || 0; i < len; i ++){
+
 
 						str += "<thead><tr>"
 						str += "<td>"+list[i].postSN + "</td>";

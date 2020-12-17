@@ -25,6 +25,8 @@
 					<input class="form-control"name='channelTitle'>
 					<label class="label">등록할 채널 설명</label>
 					<input class="form-control"name='channelComment'>
+
+
 			
 					<div class="applyBtnBox">
 							<button class="submitBtn" data-oper='create' id='create' type='submit'>채널 만들기</button> 
@@ -36,7 +38,7 @@
 			</div>
 		</div>
 		
-				
+
 		
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>	
