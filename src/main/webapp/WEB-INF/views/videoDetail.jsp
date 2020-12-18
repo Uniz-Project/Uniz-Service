@@ -5,12 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../resources/css/Navbar.css">
-    <link rel="stylesheet" href="../resources/css/videoDetail.css">
+    <%@ include file="/WEB-INF/views/includes/header.jsp"%>
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
 </head>
@@ -20,9 +15,17 @@
 
    <div class="mainPage">
       <div class="watchMainBox">
+      	<c:if test="${videoData.lastPosition eq null}">
 			<div class="videoWatch">
 				<iframe src="//www.youtube.com/embed/${videoData.urlPath}" frameborder="0" allowfullscreen></iframe>
 			</div>
+      	</c:if>
+      	
+      	<c:if test="${videoData.lastPosition ne null}">
+			<div class="videoWatch">
+				<iframe src="//www.youtube.com/embed/${videoData.urlPath}?start=${videoData.lastPosition}" frameborder="0" allowfullscreen></iframe>
+			</div>
+      	</c:if>
 			
 			<div class="class101">
           		<div class="slideshow-container">
@@ -36,7 +39,6 @@
 				<p><i class="far fa-clock"></i>업로드일:${videoData.createDateTime}</p>
 				
 				
-					
 					
 		 	<form id="form" >
 	                <input type="hidden" id="duration" name ="" value="${videoData.duration}">
@@ -98,7 +100,6 @@
 		//전체 영상 길이의 20%
 		let min_duration = duration * 0.20;
 		
-			
 		console.log("start : " + startTime);
 		
 		//1. 머문시간이 전체 영상시간의 20프로가 넘으면 유니즈 포인트 증가
@@ -134,6 +135,11 @@
 			
 			let videoSN = $("#videoSN").val();
 			let userSN = $("#userSN").val();
+			
+			//cross domain 정책때문에 iframe 오소에 접근 불가능 
+			/* let innerTime = $('.ytp-time-current').innerHTML; //유튜브 시청시간
+			let secendTimeSet = innerTime.split(":");
+			let currentTime = Number(secendTimeSet[0]) * 60 + Number(secendTimeSet[1])); */ 
 			
 			// 페이지를 떠나기전 지금까지 본 영상을 저장
 			let ds = new Date();

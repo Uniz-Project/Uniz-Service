@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.uniz.domain.MyUnizPoint;
 import com.uniz.domain.UserDTO;
+import com.uniz.domain.VideoDataVO;
 import com.uniz.mapper.UnizPointMapper;
 import com.uniz.mapper.UserMapper;
 
@@ -225,6 +226,15 @@ public class UserServiceImpl implements UserService{
 	public boolean isValid(String realPassword, String modifyPassword, String com_password) {
 		
 		return realPassword != null && modifyPassword != null && com_password != null ? true : false;
+	}
+
+	@Override
+	public List<VideoDataVO> getShowHistory(Long userSN) {
+		
+		//시청로그 가져오기
+		
+		
+		return mapper.getShowHistory(userSN);
 	}
 
 

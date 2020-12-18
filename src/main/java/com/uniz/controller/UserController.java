@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -20,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.uniz.domain.MyUnizPoint;
 import com.uniz.domain.UnizVO;
 import com.uniz.domain.UserDTO;
+import com.uniz.domain.VideoDataVO;
 import com.uniz.service.UnizService;
 import com.uniz.service.UserService;
 
@@ -185,7 +184,6 @@ public class UserController {
 	}
 
 	// 영상 시청기록 저장
-
 	@PostMapping("/addHistory")
 	public @ResponseBody Map<String, Object> addMyPlayLog(Long userSN, Long videoSN, int currentTime) {
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -212,5 +210,27 @@ public class UserController {
 		
 		log.info("myUnizPointHs " +map);
 		return map; 
+	}
+	
+	//시청이력 가져오기
+	@GetMapping("/showHistory")
+	public String showHistory(HttpSession session,Model model) {
+		
+		if(session ==null) {
+			
+			//세션이 만료되었습니다.
+			return "home";
+		}
+		
+		//시청했던 시간값이 정확하지 않다. o 
+		
+		UserDTO dto = (UserDTO)session.getAttribute("user");
+		//사용자의 시청이력을 가져온다.
+		List<VideoDataVO> showList = userService.getShowHistory(dto.getUserSN());
+		
+		log.info("showList : " + showList);
+		model.addAttribute("VideoData", showList);
+		
+		return "/user/showHistory";
 	}
 }

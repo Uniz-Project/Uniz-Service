@@ -36,6 +36,7 @@ public class VideoDataVO {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
 	private Date yUploadDateTime; //게시글작성일
 	private String keywords;
+	private int lastPosition;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
 	private Date createDateTime; //생성일

@@ -144,4 +144,12 @@
 		  (#{userSN}, #{videoSN}, #{position}) 
 		  
 	</insert> 
+	
+	<select id="getShowHistory" resultType="com.uniz.domain.VideoDataVO">
+		SELECT V.*, MP.lastposition
+		FROM myplaylog MP, VIDEODATA V
+		WHERE MP.USERSN = #{userSN}
+		AND
+		V.VIDEOSN = MP.VIDEOSN
+	</select>
 </mapper>
