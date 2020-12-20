@@ -76,6 +76,29 @@ public class ChannelServiceImpl implements ChannelService {
 		
 	}
 	
+	public String duplicateTitle(String channelTitle) {
+		
+		final String NO_DUPLICATION = "SUCCESS";
+		final String YES_DUPLICATION = "DUPLICATION";
+		
+		if(channelTitle != null) {
+			
+			try {
+				
+				if(mapper.duplicateTitle(channelTitle) <= 0) {
+					return NO_DUPLICATION;
+				}
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return YES_DUPLICATION;
+		
+	}
+	
 	public List<UserData> checkUserType(Long userSN) {
 		
 		return mapper.checkUserType(userSN);

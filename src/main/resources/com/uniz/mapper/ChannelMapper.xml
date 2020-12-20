@@ -24,6 +24,18 @@
 			select count(*) from channel where channelsn = #{channelSN}
 		</select>
 		
+		<!-- 채널 중복 개설 확인 -->
+		<select id="confirmChannel" resultType="INTEGER">
+			select count(*) from channel where userSN = #{userSN}
+		</select>
+		
+		<!-- 채널 이름 중복 확인 -->
+		<select id='duplicateTitle' resultType="Integer" >
+			select count(channelTitle)
+			from channel
+			where channelTitle = #{channelTitle}
+		</select>
+		
 		<!--  게시글 유무 판단 -->
 		<select id="checkPost" resultType="INTEGER">
 			select count(*) from channelpost where postSN = #{postSN}
@@ -108,20 +120,23 @@
 		
 		<!-- 게시글 보여 주기 -->
 		<select id ="getPost" resultType="com.uniz.domain.ChannelBoardVO">
-			select  p.postsn, u.nick, p.title , c.postContent , p.createdatetime , p.channelSN, p.userSN
-			from channelpost p , channelpostcontent c , userdata u
+			select  p.postsn, u.nick, p.title , c.postContent , 
+					p.createdatetime , p.channelSN, p.userSN, h.channeltitle
+					
+			from channelpost p , channelpostcontent c , userdata u , channel h
 			where p.postsn = #{postSN} 
 			and c.postSN = p.postSN 
 			and u.usersn = p.usersn
+			and h.channelsn = p.channelsn
 			
 		</select>
 		
 	
 		<insert id="createChannel">
 			insert into channel 
-			(channelsn, channeltitle, channelcomment, createdatetime, updatedatetime)
+			(channelsn, channeltitle, channelcomment, createdatetime, updatedatetime , usersn)
 			values
-			(channel_seq.nextval, #{channelTitle} , #{channelComment} , sysdate , sysdate)
+			(channel_seq.nextval, #{channelTitle} , #{channelComment} , sysdate , sysdate , #{userSN})
 		</insert>
 		
 		<insert id="insertPost">

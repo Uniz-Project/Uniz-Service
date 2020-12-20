@@ -12,20 +12,22 @@
 
 
 	<%@ include file="/WEB-INF/views/includes/nav.jsp"%>
-
+	
+	
 	<div class="applyMain">
 		<div class="creatorRegisterHeader">
-			<h1>채널 등록 페이지</h1>
+			<h1>채널 게시판 개설 페이지</h1>
 
 		</div>
 		<div class="createForm">
-			<form action="/channel/chcreate" method="post">
+			<form action="/channel/chcreate" method="post" onsubmit="return checkValid();">
 				<div class="RegisterForm">
-					<label class="label">등록할 채널 이름</label>
-					<input class="form-control"name='channelTitle'>
-					<label class="label">등록할 채널 설명</label>
-					<input class="form-control"name='channelComment'>
-
+					<label class="label">채널 이름 <button class="submitBtn" id="titleModify">채널 이름 수정하러 가기</button></label>
+					<input class="form-control" id='channelTitle' value="<c:out value="${apply.channelTitle}"/>" name='channelTitle'>
+					<label class="label"> 채널 설명</label>
+					<input class="form-control" id='channelComment' name='channelComment'>
+					<input type="hidden" class="form-control"name='userSN' value="${user.userSN}">
+					
 
 			
 					<div class="applyBtnBox">
@@ -73,6 +75,31 @@ $(document).ready(function(){
 		}
 		
 	});
+	
+	$("#titleModify").on("click", function(){
+		
+		self.location="../creator/modify?userSN="+${user.userSN};
+		
+	});
+	
+	function checkValid(){
+		
+		var channelTitle = document.getElementById("channelTitle");
+		var channelContent = document.getElementById("channelComment");
+		
+		var blank_pattern = /^\s+|\s+$/g;
+		
+		if(channelTitle.value == '' || channelTitle.value == null || channelTitle.value.replace(blank_pattern, '').length == 0){
+			alert("채널 이름을 입력해 주세요.");
+			return false;
+		}
+		
+		if(channelContent.value == '' || channelContent.value == null || channelContent.value.replace(blank_pattern, '').length == 0){
+			alert("채널 개설 목적을 적어주세요.");
+			return false;
+		}
+		
+	}
 	
 });
 

@@ -27,6 +27,8 @@ public interface ChannelService {
 	
 	public int checkChannel(Long channelSN);
 	
+	public String duplicateTitle(String channelTitle);
+	
 	public List<UserData> checkUserType(Long userSN);
 	
 	public void createChannel(ChannelVO vo);

@@ -11,10 +11,34 @@
 <head>
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
 </head>
+<style>
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    height: 600px;
+  }
+</style>
 <body>
 	<%@ include file="/WEB-INF/views/includes/nav.jsp"%>
 	<div class="mainPage">
-
 		<div class="emptyBox">
 			<h1>내 프로필</h1>
 		</div>
@@ -44,6 +68,56 @@
 						<button class="myModify" id="myBtn"
 							onclick="location.href='/user/modify'">수정하기</button>
 						<button class="myDelete" id="removeBtn">탈퇴하기</button>
+						<c:if test="${apply ne null }">
+						<button id="showModal" >크리에이터 신청 현황 </button>
+						</c:if>
+					</div>
+				</div>
+			</div>
+			
+			<div id="myModal" class="modal">
+				<div class="modal-content">
+					<h3>[ 크리에이터 신청 상태 ]</h3>
+					<div class="applyInfo">
+						
+						<table style="width: 100%; all:none;" >
+							<thead class="thead-light">
+								<tr>
+									<th> [채널 이름] </th>
+									<th> [이메일 주소] </th>
+									<th> [신청 현황] </th>
+									<th> [신청 날짜] </th>
+									</tr>
+							</thead>
+							
+								<tr>
+									<td></a><c:out value="${apply.channelTitle}" /></td>
+									<td><c:out value="${apply.email}" /></td>
+									
+									<c:choose>
+									
+										<c:when test = "${apply.state == 10}" >
+											<td>심사중</td>
+										</c:when>
+										
+										<c:when test = "${apply.state == 11 }" >
+											<td>승인</td>
+										</c:when>
+										
+										<c:when test = "${apply.state == 12 }" >
+											<td>거절</td>
+										</c:when>
+										
+									</c:choose>
+									
+									<td><fmt:formatDate pattern="yyyy-MM-dd" 
+								 value="${apply.createDateTime}"/></td>
+								</tr>
+								
+						</table>		
+							
+							<button class="moveApplyInfo">신청 내역 보러가기</button>
+							
 					</div>
 				</div>
 			</div>
@@ -98,6 +172,29 @@
 	
 	<%@ include file="/WEB-INF/views/includes/script.jsp"%>
 	<script>
+		
+	
+		var modal = document.getElementById("myModal");
+		
+		var showModal = document.getElementById("showModal");
+		
+		
+		showModal.onclick = function(){
+			modal.style.display = "block";
+		}
+		
+		window.onclick = function(event) {
+			if (event.target == modal) {
+		        modal.style.display = "none";
+		    }
+		}
+		
+		$(".moveApplyInfo").on("click", function(){
+			
+			self.location = "../creator/get?userSN="+ ${user.userSN};
+			
+		});
+	
 		$(document).ready(function() {
 			$("#removeBtn").click(function() {
 				if (confirm("정말로 탈퇴하시겠습니까??") == true) {
@@ -140,7 +237,10 @@
 				]
 			
 		});
+			
+			
 	});
+		
 	</script>
 </body>
 </html>

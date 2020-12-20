@@ -21,7 +21,7 @@
 	
 	<div class="applyMain" style="height: 1300px;">
     <div class="creatorRegisterHeader">
-        <h1>신청 수정 페이지</h1>
+        <h1>크리에이터 정보 수정 페이지</h1>
     </div>
 	<div class="createForm">
 	<form role="form" action="/creator/modify" method="post">
@@ -32,15 +32,14 @@
         <div class="form-group">
         
         <label class="label">(운영하는)채널 이름</label>
+		<button type="button" class="duplicateBtn" id="duplicateTitle">중복 확인</button>
 		<input class="form-control" name='channelTitle' id='channelTitle' 
 		value="<c:out value="${apply.channelTitle}" />" >
 		
 	</div>
 	<div class="form-group">
 		
-		<label class="label">userSN</label>
-		
-		<input class="form-control" name='userSN' id='userSN'
+		<input type="hidden" class="form-control" name='userSN' id='userSN'
 		value="<c:out value="${apply.userSN}" />" readonly="readonly">
 
 		<input type='hidden' class="form-control" name='applySN' id='applySN'

@@ -1,13 +1,12 @@
 package com.uniz.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpStatus;
@@ -18,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,8 +28,8 @@ import com.uniz.domain.ChannelBoardVO;
 import com.uniz.domain.ChannelPageDTO;
 import com.uniz.domain.ChannelVO;
 import com.uniz.domain.Criteria;
-import com.uniz.domain.UserDTO;
 import com.uniz.mapper.ChannelMapper;
+import com.uniz.service.ApplyCreatorService;
 import com.uniz.service.ChannelService;
 import com.uniz.service.UserService;
 
@@ -45,6 +45,7 @@ public class ChannelController {
 	private UserService userService;
 	private ChannelService service;
 	private ChannelMapper mapper;
+	private ApplyCreatorService applyService;
 	
 	// main 페이지로 이동
 	@GetMapping("/ch")
@@ -56,14 +57,17 @@ public class ChannelController {
 	//채널 생성 페이지로 이동
 	@GetMapping("/chcreate")
 	
-	public String getChCreate( UserDTO user , Model model ,  HttpSession session) throws Exception {
+	public String getChCreate(Model model, HttpSession session) throws Exception {
 		
-		 
-		 
+		final Integer USERTYPE = (Integer)session.getAttribute("userType");
 		
-		Integer userType = (Integer)session.getAttribute("userType");
+		final Long USERSN = (Long)session.getAttribute("userSN");
 		
-		if( session.getAttribute("user") != null && userType >= 2) {
+		log.info(" userType : " + USERTYPE);
+		
+		if( session.getAttribute("user") != null && USERTYPE >= 2) {
+			
+			model.addAttribute("apply", applyService.getApply(USERSN));
 			
 			return "/channel/chcreate";
 			
@@ -77,7 +81,47 @@ public class ChannelController {
 			
 		}
 		
+	}
+	
+	@PostMapping("/checkChannelCreate")
+	public @ResponseBody Map<String, Object> checkLogin(@RequestBody Long userSN, HttpSession session){
 		
+		log.info("userSN=======  " + userSN);
+		
+		final int CONFIRM = mapper.confirmChannel(userSN);
+		
+		final int USERTYPE = (int)session.getAttribute("userType");
+		
+		log.info("CONFIRM : " + CONFIRM);
+		
+		log.info("USERTYPE : " + USERTYPE);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("CONFIRM" , CONFIRM);
+		
+		map.put("USERTYPE" , USERTYPE);
+		
+		log.info("map~~~~~ " + map);
+		
+		return map;
+		
+	}
+	
+	@PostMapping("/checkTitle")
+	public @ResponseBody Map<String, Object> checkTitle(@RequestBody String channelTitle){
+		
+		log.info("channelTitle : " + channelTitle);
+		
+		String result = service.duplicateTitle(channelTitle);
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("result", result);
+		
+		log.info("duplicate map : " + map);
+		
+		return map;
 	}
 	
 	
@@ -194,16 +238,6 @@ public class ChannelController {
 		Criteria cri = new Criteria(page, 10);
 		
 		return new ResponseEntity<>(service.getListPage(cri), HttpStatus.OK);
-	}
-	
-	// 게시글  보여줌
-	@GetMapping(value = "/{postSN}", 
-			produces = { MediaType.APPLICATION_XML_VALUE,
-					 MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<ChannelBoardVO> getPost(@PathVariable("postSN") Long postSN ){
-		
-		return new ResponseEntity<>(service.getPost(postSN) , HttpStatus.OK);
-		
 	}
 	
 	

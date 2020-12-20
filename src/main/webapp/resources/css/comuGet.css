@@ -1,0 +1,346 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans KR", sans-serif, 나눔고딕, 돋움, Dotum, 굴림, Gulim, "Apple SD Gothic Neo";
+}
+/* apply .html  */
+.applyMain{
+    /* background-color: rgb(45, 61, 105); */
+    width: 90%;
+    height: 2400px;
+    margin: 30px auto;
+    
+}
+.creatorRegisterHeader{
+    /* background-color: rgb(198, 238, 236); */
+    background-color: white;
+}
+.creatorRegisterHeader h1{
+    padding: 38px;
+    color: rgb(42, 42, 112);
+    text-align: center;
+}
+.formBox{
+    background-color: rgb(171, 202, 60);
+    width: 100%;
+    height: 700px;
+}
+.createForm{
+    /* background-color: rgb(227, 240, 243); */
+    width: 85%;
+    height: 700px;
+    margin: 13px auto;
+}
+body > div.applyMain > div.createForm > form{
+    /* background-color: brown; */
+    width: 100%;
+    height: 100%;
+}
+body > div.applyMain > div.createForm > div > div.Cmtcontainer > form{
+	margin: 0;
+	 /* background-color: brown; */
+    width: 100%;
+    height: 100%;
+}
+.RegisterForm{
+    background-color: rgb(192, 136, 15);
+    width: 75%;
+    height: 500px;
+    font-size: 18px;
+    padding: 5px;
+    /* margin : 30px 80px; */
+    margin: 20px auto;
+}
+.form-control{
+    background-color: rgb(246, 252, 255);
+    font-size: 20px;
+    padding: 10px 15px;
+    width: 90%;
+    height: 50px;
+    border: 1px solid rgb(161, 161, 161);
+    border-radius: 3px;
+    margin: 14px 3px;
+    outline: none;
+    display: block;
+    margin: 10px auto;
+    margin-bottom: 25px;
+    
+}
+body > div.applyMain > div.createForm > div > div.reply > div > div > div > div > input:nth-child(1){
+	
+    background-color: rgb(246, 252, 255);
+    font-size: 20px;
+    padding: 10px 15px;
+    width: 88%;
+    height: 50px;
+    border: 1px solid rgb(161, 161, 161);
+    border-radius: 3px;
+    outline: none;
+    display: inline-block;
+ 
+     margin-top: 15px;
+	
+}
+
+
+.confirm{
+	width: 10%;
+	height: 45px;
+	background-color: white;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	outline: none;
+	margin-left: 4px;
+	margin-bottom: 6px;
+}
+.form-control:focus{
+    border: 2px solid rgb(36, 66, 122);
+}
+#category{
+    margin-top: 10px;
+    padding:  5px 12px;
+    border-radius: 3px;
+    border : 2px solid rgb(99, 116, 139);
+    outline: none;
+    color: rgb(70, 69, 69);
+}
+#category:hover{
+    background-color: rgb(222, 225, 241);
+    transition: 0.4s;
+    color: black;
+}
+.label{
+    margin:  50px 30px;
+    color: rgb(0, 134, 187);
+    font-weight: bold;
+    padding: 30px 20px;
+}
+.label5{
+    /* 본인 유튜브 스튜디오 메인 페이지~~~ 문구 */
+    line-height: 80px;
+}
+body > div.applyMain > div.createForm > form > div > div.CateList > label{
+   line-height: 30px;
+}
+
+.thumbNail{
+    background-color: rgb(202, 235, 238);
+    width: 90%;
+    height: 260px;
+    margin: 0 auto;
+    overflow: auto;
+}
+.thumbNail{
+	overflow: auto;
+}
+.timesBtn{
+    width: 20px;
+    height: 20px;
+    position: relative;
+    background-color: white;
+    border: 2px solid grey;
+    border-radius: 3px;
+}
+.timesBtn svg{
+    position:absolute;
+    top: 5%;
+    right: 20%;
+    color: rgb(0, 0, 175);
+}
+.uploadFileBox{
+    /* background-color: gold; */
+    width:90%;
+    height: 60px;
+    margin: 0 auto;
+}
+.ChseBtn{
+    padding:  0 10px;
+}
+.ChseBtn input[type="file"]{
+    font-size: 20px;
+    color: rgb(14, 79, 184);
+    display: none;
+}
+.uploadFileBox label{
+    padding: 6px 25px;
+    background-color: paleturquoise;
+    border-radius: 4px;
+}
+.uploadFileBox label:hover{
+    background-color: rgb(27, 154, 228);
+    color: rgb(245, 245, 245);
+    transition: 0.3s;
+}
+.applyBtnBox{
+    /* background-color: darkred; */
+    width: 90%;
+    height: 90px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.submitBtn, .delBtn{
+    margin: 4px;
+    padding:  10px 16px;
+    font-size: 14px;
+    background-color: white;
+    color: rgb(38, 124, 161);
+    border: 1px solid rgb(119, 154, 168);
+    outline: none;
+    
+}
+.submitBtn:hover , .delBtn:hover{
+    background-color: mintcream;
+    color: rgb(0, 111, 126);
+}
+/* get get.html */
+.uploadResult ul li, .thumbNail ul li{
+    list-style-type: none;
+}
+
+/* pagination */
+.postFooter{
+    margin-top: 50px;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+  }
+  .postFooter ul li{
+    list-style-type: none;
+    display: inline;
+    border-spacing: 0;
+  }
+  .postFooter ul li a{
+    text-decoration: none;
+    border-collapse: none;
+    padding: 10px 12px;
+    font-size: 16px;
+    color: dodgerblue;
+    border : 1px solid rgb(199, 199, 199);
+  }
+  .postFooter ul li a:hover, .active{
+    color: rgb(0, 100, 182);
+    background-color: rgb(223, 246, 255);
+    transition: 0.3s ease-in-out;
+  }
+.borderR2{
+    border-radius: 0 5px 5px 0;
+  }
+.borderR{
+    border-radius: 5px 0 0 5px;
+}
+
+/* get.css  get*/
+.line{
+    background-color: rgb(199, 199, 199);
+    height:1px;
+    width: 90%;
+    margin: 0 auto;
+}
+.emptyBox{
+    width: 100%;
+    height: 40px;
+}
+
+.Cmtcontainer{
+    background-color: white;
+    height: 120px;
+    width: 90%;
+    margin: 0 auto;
+}
+.comment{
+    font-weight: bold;
+    line-height: 50px;
+}
+.Cform{
+
+    border: 2px solid rgb(209, 209, 209);
+    border-radius: 4px;
+    height: 100px;
+    position: relative;
+}
+.registerReply{
+    width: 100%;
+    border: none;
+    outline: none;
+    padding-left: 18px;
+    height: 45px;
+}
+.registerBtn{
+    padding: 18px;
+    padding-top: 0;
+    font-size: 15px;
+    color: grey;
+    background-color: white;
+    border: none;
+    outline: none;
+    position: absolute;
+    bottom: 0; 
+    right: 0;
+}
+.input-group{
+	width: 100%;
+	height: 100%;
+}
+.reply{
+    /* 댓글 열개 정도 보여줄 영역이 필요하다.  */
+    /* background-color: rgb(243, 202, 231); */
+ 
+    width: 90%;
+    height: 1100px;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+.reply:first-child{
+    margin-top: 60px;
+}
+.commentArea{
+    padding: 10px;
+    height: 110px;
+    position: relative;
+    /* border: 1px solid black; */
+    border-bottom: 1px solid rgb(204, 204, 204);
+}
+.commentArea:hover{
+    background-color: #f1f1f1;
+    transition: 0.5s ease;
+}
+.userName{
+    font-weight: bold;
+    padding: 10px ;
+    color:rgb(47, 47, 47);
+}
+.Rnum{
+    color: grey;
+}
+.replyCont{
+    /* background-color: gold; */
+    overflow:auto;
+    padding-left: 10px;
+    margin-top: 10px;
+    height: 60px;
+
+}
+.a{
+    /* 수정 삭제 공통부분 */
+   color: rgb(41, 62, 131);
+   position: absolute;
+   padding: 10px;
+   cursor:pointer;
+}
+.a:hover{
+    /* background-color: rgb(241, 241, 241); */
+    color: darkslateblue;
+    transition: 0.4s ease-in-out;
+}
+.mod{
+    right: 40px;
+    top: 0;
+}
+.del{
+    right :0;
+    top: 0;
+}

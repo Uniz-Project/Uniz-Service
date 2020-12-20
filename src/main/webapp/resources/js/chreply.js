@@ -85,13 +85,20 @@ var chReplyService = (function(){
 		var updateContent = $('[name=content_'+replySN+']').val();
 	   	var updateReplySN = $('[name=replySN_'+replySN+']').val();
 		var modify = {'replyContent' : updateContent, 'replySN' : updateReplySN};
-	    
+		var str = /^\s+|\s+$/g;
+		
 	    $.ajax({
 	        url : '/chreplies/update/'+updateReplySN,
 	        type : 'put',
 	        data : JSON.stringify(modify),
 			contentType : "application/json; charset=utf-8",
 	        success : function(data){
+	        	
+//	        	if( modify.replyConent == '' || modify.replyContent.replace(str, '').length == 0 ){
+//	        		alert(" 댓글 내용을 입력 해주세요");
+//	        		return false;
+//	        	}
+	        	
 	        	showList(1);
 	            	 //댓글 수정후 목록 출력 
 	        }

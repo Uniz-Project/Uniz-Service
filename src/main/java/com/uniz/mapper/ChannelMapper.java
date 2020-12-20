@@ -25,7 +25,11 @@ public interface ChannelMapper {
 	
 	public ChannelBoardVO getPost(Long postSN);
 	
-	public int checkChannel(Long channelSN);
+	public int checkChannel(Long channelSN); // 채널 있는지 없는지 확인
+	
+	public int confirmChannel(Long userSN); // 채널 개설 중복 확인
+	
+	public int duplicateTitle(String channelTitle);
 	
 	public List<UserData> checkUserType(Long userSN);
 	

@@ -128,6 +128,8 @@ public class BoardController {
 			
 		}
 		//유효성 검사 서버에서 체크 할 수 있게
+		log.info(" vo ========= : " + vo);
+		
 		service.register(vo);
 		rttr.addFlashAttribute("result", vo.getPostSN());
 		
