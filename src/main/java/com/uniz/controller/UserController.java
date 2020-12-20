@@ -4,8 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.lang.Nullable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,9 +36,15 @@ public class UserController {
 
 	private UserService userService;
 	private UnizService unizService;
-	
+	private BCryptPasswordEncoder passwordEncoder;
 	@GetMapping("/loginForm")
-	public String goLoginForm() {
+	public String goLoginForm(HttpServletRequest request) {
+		
+		String referer = request.getHeader("Referer");
+		request.getSession().setAttribute("redirectURI", referer);
+		
+		log.info("referer : " + referer);
+		
 		return "/user/loginForm";
 	}
 
@@ -85,10 +94,14 @@ public class UserController {
 
 	// 회원가입 폼에서 회원가입 버튼 클릭
 	@PostMapping("/register")
-	public String register(UserDTO user, @RequestParam("unizSN") List<Long> unizSN) {
+	public String register(UserDTO user, @RequestParam("unizSN") @Nullable List<Long> unizSN) {
 		log.info("user : " + user);
 		log.info("unizSN : " + unizSN);
 
+		String encPassword = passwordEncoder.encode(user.getPassword());
+		user.setPassword(encPassword);
+		log.info("암호화 된 비밀번호 : " + encPassword);
+		
 		int result = userService.userRegister(user, unizSN);
 
 		log.info("result : " + result);
@@ -173,14 +186,17 @@ public class UserController {
 		final int SUCCESS = 1;
 		// 데이터 제대로 들어오는것 확인
 		log.info("user :" + user);
-
+		
 		int loginResult = userService.userLogin(user, session);
 
 		log.info("session Check : " + session.getAttribute("user"));
-
+		
+		String backUrl = (String)session.getAttribute("redirectURI");
+		log.info("UrlBack : " + backUrl);
 		model.addAttribute("result", loginResult);
-		return loginResult == SUCCESS ? "home" : "/user/loginForm";
-
+		
+		return loginResult == SUCCESS ? "redirect:"+backUrl : "/user/loginForm";
+		
 	}
 
 	// 영상 시청기록 저장

@@ -47,4 +47,6 @@ public interface UserMapper {
 
 	public List<VideoDataVO> getShowHistory(@Param("userSN")Long userSN);
 
+	public String getUserPassword(UserDTO user);
+
 }

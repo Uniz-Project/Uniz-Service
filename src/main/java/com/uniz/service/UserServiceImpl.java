@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -28,6 +29,7 @@ public class UserServiceImpl implements UserService{
 
 	private UserMapper mapper;
 	private UnizPointMapper unizPointMapper;
+	private BCryptPasswordEncoder PasswordEncode;
 	
 	@Transactional
 	@Override
@@ -121,10 +123,14 @@ public class UserServiceImpl implements UserService{
 		//아이디, 비밀번호 유효성 체크
 		if(isVaildUser(user) == true) {
 			//아이디랑 비밀번호가 DB의 값과 일치하는지 확인한다.
+			String password= user.getPassword();
+			String dbPassword = mapper.getUserPassword(user);
+			Boolean pwdMatch = PasswordEncode.matches(password, dbPassword);
+			log.info("pwdMatch : "+ pwdMatch);
 			int loginResult = mapper.userLogin(user);
 			
 			//로그인 성공
-			if(loginResult == SUCCESS) {
+			if(pwdMatch) {
 				
 				//세션 생성
 				user = mapper.getUser(user);
@@ -162,18 +168,23 @@ public class UserServiceImpl implements UserService{
 		final String DB_ERROR = "DB ERROR";
 		//비밀번호 변경이라고 가정
 		
+		log.info("현재 아이디 : " +userDto);
+		log.info("변경할 아이디 :" + modifyUserDto);
+		log.info("현재비밀번호  : " +com_password);
+		
 		String realPassword = userDto.getPassword(); //바꾸기 전 비밀번호 , 비교 = com_password
 		String modifyPassword = modifyUserDto.getPassword();
 		//1. NULL CHECK
 		if(isValid(realPassword, modifyPassword, com_password) == true) {
 			
 			//DB비밀번호와 입력한 비밀번호가 같으면
-			if(realPassword.equals(com_password)) {
+			if(PasswordEncode.matches(com_password, userDto.getPassword())) {
 				//UPDATE
 				try {
 					
 					//비밀번호말고 다른 정보도 바꾼다면 변경해야함
-					userDto.setPassword(modifyPassword);
+					String EncPassword = PasswordEncode.encode(modifyPassword);
+					userDto.setPassword(EncPassword);
 					
 					int result = mapper.userDataUpdate(userDto);
 					
