@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -49,6 +50,25 @@ public class UnizChartController {
 		
 
 		return gson.toJson(list);
+
+	}
+	
+
+	
+	@RequestMapping(value = "/chartList/{userSN}", method = RequestMethod.GET, produces="text/plain;charset=UTF-8")
+
+	public @ResponseBody String incomeList2(@PathVariable long userSN, Locale locale, Model model) {
+		
+		log.info("====================="+userSN);
+
+		Gson gson = new Gson();
+
+		List<UnizChartVO> list2 = service.chartData2(userSN);
+		
+	
+		
+
+		return gson.toJson(list2);
 
 	}
 	

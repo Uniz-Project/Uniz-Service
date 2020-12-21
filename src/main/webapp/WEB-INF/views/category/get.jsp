@@ -5,144 +5,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="/resources/css/Navbar.css">
+    <link rel="stylesheet" href="/resources/css/comuGet.css">
 </head>
-<style>
-
-.uploadResult{
-
-	whidth : 100%;
-	background-color : gray;
-
-}
-
-.uploadResult ul{
-
-	display : flex;
-	flex-flow : row;
-	justify-content : center;
-	align-items: center;
-
-}
-
-.uploadResult ul li {
-
-	list-style : none;
-	padding : 10px;
-
-}
-
-.uploadResult ul li img{
-
-	width : 50%;
-	
-}
-
-.bigPictureWrapper {
-
-	position : absolute;
-	display : none;
-	justify-content : center;
-	align-items : center;
-	top : 0%;
-	width : 100%;
-	height : 100%;
-	background-color : gray;
-	z-index : 100;
-	background : rgba(255,255,255,0.5);
-
-}
-
-.bigPicture {
-
-	position : relative;
-	display : flex;
-	justify-content : center;
-	align-items : center;
-
-}
-
-.bigPicture img {
-
-	width : 600px;
-
-}
-
-</style>
 <body>
 
-	<h1> <c:out value="${board.boardComment}"/></h1>
-		
-				<div class="form-group">
-					<label>글 번호</label> <input class="form-control" name='postSN'
-						value='<c:out value="${board.postSN}" />' readonly="readonly">
-				</div>
-
-				<div class="form-group">
-					<label>제목</label> <input class="form-control" name='title'
-						value='<c:out value="${board.title}" />' readonly="readonly">
-				</div>
-
-
-				<div class="form-group">
-					<label>작성자</label> <input class="form-control" name='writer'
-						value='<c:out value="${board.nick}" />' readonly="readonly">
-				</div>
-		
-				<div class="form-group">
-					<label>내용</label>
-					<p><c:out value="${board.postContent}" /></p>
-				</div>
-		
-		<div id="imgs">
-		</div>
-		<br>
-			<div class="uploadResult">
-				<ul>
-				</ul>
-			</div>
+<%@ include file="/WEB-INF/views/includes/nav.jsp"%>
 	
-		<br>
-	<c:if test = "${user.userSN eq board.userSN}" >
-		<button id='modify'>글 수정</button>
-	</c:if>
-	<button id='list'>목록으로</button>
 	
-	<div>
+<div class="applyMain">
+	<div class="creatorRegisterHeader">
+		<h1> <c:out value="${board.boardComment}"/></h1>
 	</div>
-	
-	<br>
+		<div class="createForm">
+				<div class="registerForm">
+					<label class="label">글 번호</label>
+					 <input class="form-control" name='postSN'
+						value='<c:out value="${board.postSN}" />' readonly="readonly">
+
+					<label class="label">제목</label> 
+					<input class="form-control" name='title'
+						value='<c:out value="${board.title}" />' readonly="readonly">
+
+					<label class="label">작성자</label> 
+					<input class="form-control" name='writer'
+						value='<c:out value="${board.nick}" />' readonly="readonly">
 		
-	<div class="container">
-        <label for="content">comment</label>
-        <form name="commentInsertForm" >
+					<label class="label">내용</label>
+		
+			
+					<div class="thumbNail">
+					<p><c:out value="${board.postContent}" /></p>
+						<ul>
+						</ul>
+					</div>
+	
+	
+	<div class="applyBtnBox">
+	
+		<c:if test = "${user.userSN eq board.userSN}" >
+		
+			<button class="submitBtn" id='modify'>글 수정</button>
+			
+		</c:if>
+		
+			<button class="submitBtn" id='list'>목록으로</button>
+		
+	</div>
+	<div></div>
+	<div class="line"></div>
+	
+	<div class="Cmtcontainer">
+        <label class="comment" for="content">댓글</label>
+        <form class="Cform" name="commentInsertForm" >
             <div class="input-group">
                <input class='postSN' type="hidden" name="postSN" value="${postSN}"/>
                <input class='userSN' type="hidden" id="userSN" name="userSN" value="${user.userSN}"/>
-               <input class='registerReply' type="text" class="form-control" 
-               id="replyContent" name="replyContent" placeholder="내용을 입력하세요." onclick="return checkSession();" >
+               <input class="registerReply" type="text" id="replyContent" name="replyContent" placeholder="내용을 입력하세요." onclick="return checkSession();" >
                <span class="input-group-btn">
-                    <button id='registerBtn' type="submit" >등록</button>
+                    <button class='registerBtn' id='registerBtn' type="submit" >등록</button>
                </span>
-              </div>
+             </div>
         </form>
     </div>
-	
-	<br>
-	
-	<div>
 			
-			
-			<div class="reply">
-			
+				<div class="reply">	
 			</div>
 			
-			<div class="panel-footer">
+			<div class="postFooter">
 			</div>	
-		
-		</div>
-	
+		</div> <!-- registerForm end -->
+	</div> <!-- createForm end -->
+</div> <!-- applyMain end  -->	
+
+<div class="footer"></div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/category.js"></script>	
 <script type="text/javascript" src="/resources/js/reply.js"></script>
@@ -150,60 +89,73 @@
 
 $(document).ready(function(){
 	
-	
-	
 	var postSN = '<c:out value="${postSN}"/>';
 	var boardSN = '<c:out value="${board.boardSN}"/>';
 	
 	showList(1);
 	
-	function showList(page){
-		
-		var postSN = '<c:out value="${postSN}"/>';
-		var boardSN = '<c:out value="${board.boardSN}"/>';
-		
-		var chSession = '<c:out value="${user.userSN}"/>';
-		
-		sessionStorage.setItem('user', chSession);
-		
-		var session = parseInt(sessionStorage.getItem('user'));
-		
-		replyService.commentList({postSN : postSN, page : page || 1} ,function(replyCnt, list){
-			
-			if(page == -1 ){
-				pageNum = Math.ceil(replyCny / 10.0);
-				showList(pageNum);
-				return;
-			}
-			
-			var a = "";
-			
-			if(list == null || list.length == 0){
-				return;
-			}
-			
-			for (var i = 0, len = list.length || 0; i < len; i++){
-				console.log("userSN : " + list[i].userSN);
-				  a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
-	                a += '<div class="commentInfo'+list[i].replySN+'">'+'댓글번호 : '+list[i].replySN+' / 작성자 : '+list[i].nick;
-	                
-	                if(session == list[i].userSN){
-	                	
-		                a += '<a onclick="commentUpdate('+list[i].replySN+',\''+list[i].replyContent+'\');"> 수정 </a>';
-		                a += '<a role="button" class="deleteBtn" onclick="remove('+list[i].replySN+');"> 삭제 </a> </div>';
-	                	
-	                }
-	                
-	                a += '<div class="commentContent'+list[i].replySN+'"> <p> 내용 : '+list[i].replyContent +'</p></div>';
-	                a += '</div></div>';
-			}
+}); // ready end
 
-			 $(".reply").html(a);
-			 showReplyPage(replyCnt);
-		});
-
-	}
+	var postSN = '<c:out value="${postSN}"/>';
+	var boardSN = '<c:out value="${board.boardSN}"/>';
 	
+	var str = "";
+	var newReply = $(".Cmtcontainer");
+
+	var inputReply = newReply.find("input[name='replyContent']");
+	var inputUserSN = newReply.find("input[name='userSN']");
+	var inputReplySN = newReply.find("input[name='replySN']");
+	var registerBtn = $("#registerBtn");
+
+	
+	
+function showList(page){
+	
+	
+	var chSession = '<c:out value="${user.userSN}"/>';
+	
+	sessionStorage.setItem('user', chSession);
+	
+	var session = parseInt(sessionStorage.getItem('user'));
+	
+	replyService.commentList({postSN : postSN, page : page || 1} ,function(replyCnt, list){
+		
+		if(page == -1 ){
+			pageNum = Math.ceil(replyCny / 10.0);
+			showList(pageNum);
+			return;
+		}
+		
+		var a = "";
+		
+		if(list == null || list.length == 0){
+			return;
+		}
+		
+		for (var i = 0, len = list.length || 0; i < len; i++){
+			console.log("userSN : " + list[i].userSN);
+			  a += '<div class="commentArea">';
+                a += '<div class="commentInfo'+list[i].replySN+'">';
+                a += '<span class="userName">' + list[i].nick + '</span>';
+                a += '<div class="commentContent'+list[i].replySN+'">';
+                a += '<p class="replyCont">'+ list[i].replyContent + '</p></div>';
+                
+                if(session == list[i].userSN){
+                	
+	                a += '<a class="a mod" onclick="commentUpdate('+list[i].replySN+',\''+list[i].replyContent+'\');"> 수정 </a>';
+	                a += '<a class="a del" role="button" class="deleteBtn" onclick="remove('+list[i].replySN+');"> 삭제 </a> </div>';
+                	
+                }
+                
+                a += '</div></div>';
+		}
+
+		 $(".reply").html(a);
+		 showReplyPage(replyCnt);
+	});
+
+}
+
 	$("#modify").on("click", function(){
 		self.location = "/category/modify/" + postSN + "/"+ boardSN;
 	});
@@ -212,15 +164,8 @@ $(document).ready(function(){
 		self.location = "/category/board/"+boardSN;
 	});
 	
-	var str = "";
-	var newReply = $(".container");
-
-	var inputReply = newReply.find("input[name='replyContent']");
-	var inputUserSN = newReply.find("input[name='userSN']");
-	var inputReplySN = newReply.find("input[name='replySN']");
-	var registerBtn = $("#registerBtn");
 	
-   
+	
 	registerBtn.on("click" , function(e){
 		var str = /^\s+|\s+$/g;
 		var reply ={
@@ -236,16 +181,16 @@ $(document).ready(function(){
 		}
 	
 		replyService.add(reply, function(result){
-			replyService.showList(1);
+			showList(1);
 		});
 	
 	});
 	
-
-
+	
+	
 	
 	var pageNum = 1;
-	var replyPageFooter = $(".panel-footer");
+	var replyPageFooter = $(".postFooter");
 	
 	function showReplyPage(replyCnt){
 		var endNum = Math.ceil(pageNum / 10.0) * 10;
@@ -260,18 +205,18 @@ $(document).ready(function(){
 		if(endNum * 10 < replyCnt){
 			next = true;
 		}
-		var str = "<ul class='pagaination pull-right'>";
+		var str = "<ul>";
 		if(prev){
-			str += "<li class='page-item'><a class='page-link' href='"+(startNum -1) +"'>Previous</a></li>";
+			str += "<li class='page-item'><a class='borderR' href='"+(startNum -1) +"'>Previous</a></li>";
 		}
 		for ( var i = startNum; i <= endNum; i++){
 			var active = pageNum == i ? "active":"";
 			str += "<li class='page-item "+active +" '><a class='page-link' href='"+i+"'>"+i+"</a></li>";
 		}
 		if(next){
-			str += "<li class='page-item'><a class='page-link' href='"+ (endNum + 1) + "'>Next</a></li>";
+			str += "<li><a class='borderR2' href='"+ (endNum + 1) + "'>Next</a></li>";
 		}
-		str += "</ul></div>";
+		str += "</ul>";
 		
 		replyPageFooter.html(str);
 	}
@@ -282,40 +227,48 @@ $(document).ready(function(){
 		var targetPageNum = $(this).attr("href");
 		
 		pageNum = targetPageNum;
-		replyService.showList(pageNum);
+		showList(pageNum);
 	});
-
-});
-
-function remove(replySN){
 	
-	if(confirm("삭제하시겠습니까?")){
-		replyService.remove(replySN , function(result){
-			location.reload(true);			
-		});
+	function remove(replySN){
+		
+		if(confirm("삭제하시겠습니까?")){
+			replyService.remove(replySN , function(result){
+				showList(1);			
+			});
+		}
+	
 	}
+	
+	function commentUpdate(replySN, replyContent){
+		
+	    var a ='';
+	    
+	    a += '<div class="input-group">';
+	    a += '<input type="text" class="form-control" name="content_'+replySN+'" value="'+replyContent+'"/>';
+	    a += '<input type="hidden" class="form-control" name="replySN_'+replySN+'" value="'+replySN+'"/>';
+	    a += '<button class="confirm" type="button" onclick="return replyUpdate('+replySN+');">확인</button>';
+	    a += '</div>';
+	    
+	    $('.commentContent'+replySN).html(a);
+	    
+	}
+	
+	function replyUpdate(replySN){
 
-}
-
-function commentUpdate(replySN, replyContent){
-    var a ='';
-    
-    a += '<div class="input-group">';
-    a += '<input type="text" class="form-control" name="content_'+replySN+'" value="'+replyContent+'"/>';
-    a += '<input type="hidden" class="form-control" name="replySN_'+replySN+'" value="'+replySN+'"/>';
-    a += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="replyUpdate('+replySN+');">수정</button> </span>';
-    a += '</div>';
-    
-    $('.commentContent'+replySN).html(a);
-    
-}
-
-function replyUpdate(replySN){
-	replyService.commentUpdateProc(replySN);
-	location.reload(true);
-}
-
-
+		var str = /^\s+|\s+$/g;
+		var check =  $('[name=content_'+replySN+']').val();
+		
+		if(check = '' || check.replace(str, '').length == 0){
+			alert("수정 할 내용을 입력해 주세요");
+			return false;
+		}
+		replyService.commentUpdateProc(replySN);
+		showList(1);
+		
+	}
+	
+	
 	
 
 	function checkTitle(){
@@ -375,7 +328,7 @@ $(document).ready(function(){
 				
 			});
 			
-			$(".uploadResult ul").html(str);
+			$(".thumbNail ul").html(str);
 	
 		});
 	

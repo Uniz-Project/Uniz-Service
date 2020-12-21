@@ -12,6 +12,7 @@ import lombok.Data;
 @Builder
 public class UserData {
 
+	
 	private Long userSN;
 	
 	private String provider;

@@ -37,8 +37,6 @@ public class UserServiceImpl implements UserService{
 		final int SUCCESS = 1;
 		final int NO_DUPLICATION = 0;
 		final int DB_ERROR = -1;
-		final int ADD_POINT = 50;//포인트 증가값
-		final int TYPE = 2; //관심 유니즈 등록 =2 
 		log.info("dto : "+ dto);
 		
 		if(dto.getImgUrl()==null) {
@@ -52,7 +50,7 @@ public class UserServiceImpl implements UserService{
 					mapper.userDataInsert(dto);	
 					mapper.userSelectUnizInsert(unizSN);
 					mapper.registerUserStateLog(dto.getState());
-					unizPointMapper.addHistorys(dto.getUserSN(), unizSN, ADD_POINT, TYPE);
+					
 					return SUCCESS;
 				}catch(Exception e){
 					e.printStackTrace();
@@ -134,6 +132,7 @@ public class UserServiceImpl implements UserService{
 				user = mapper.getUser(user);
 				session.setAttribute("user", user);
 				session.setAttribute("userType", user.getUserType());
+				session.setAttribute("userSN", user.getUserSN());
 				
 				//로그인 이력 변경
 				mapper.updateUserLogin(user.getUserSN());

@@ -4,15 +4,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<%@ include file="/WEB-INF/views/includes/header.jsp"%>		
+	<link rel="stylesheet" href="/resources/css/Navbar.css">
 </head>
  
   <body>
-  	<div class="wrap">
+
+  
 		<%@ include file="/WEB-INF/views/includes/nav.jsp"%>		
 	  <!-- Nav bar -->
        
-     </div>
      
+
+     
+
   </body>
 </html>
