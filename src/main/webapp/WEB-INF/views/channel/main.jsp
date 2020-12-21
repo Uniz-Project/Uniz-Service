@@ -70,6 +70,10 @@ $(document).ready(function(){
 		
 		console.log("sessionSN : " + sessionSN);
 		
+		$(".boardPost").click(function(){
+			self.location="../category/main";
+		})
+		
 		$(".registerCreator").click(function(){
 			
 			if( sessionSN == '' || sessionSN == null ){
@@ -94,8 +98,11 @@ $(document).ready(function(){
 				}
 				else if(CHECKAPPLY == data.CHECKAPPLY){
 					alert("이미 크리에이터 등록을 하셨습니다.");
-					window.location.href="/channel/ch";
+					window.location.href="../creator/get?userSN=" +sessionSN;
+				} else if(data.CHECKAPPLY == 0){
+					window.location.href="../creator/apply";
 				}
+				
 			}
 		}); 
 		

@@ -11,13 +11,15 @@ import com.uniz.domain.UserData;
 
 public interface ChannelMapper {
 
-	public List<ChannelBoardVO> getChannelList(); // 채널 리스트 출력
+	public List<ChannelBoardVO> getChannelList(@Param("cri") Criteria cri); // 채널 리스트 출력
 	
 	public List<ChannelBoardVO> getPostList(@Param("cri") Criteria cri , @Param("channelSN")Long channelSN); // 해당 채널의 게시글 목록을 보여줌
 	
 	public List<ChannelBoardVO> getAllPost(@Param("cri") Criteria cri);
 	
 	public List<ChannelBoardVO> getList(Long channelSN);
+	
+	public int getChannelCount(); // 채널 수  댓글달때
 	
 	public int getCountByPost(); // 게시글 전체 수
 	

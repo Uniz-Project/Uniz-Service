@@ -30,9 +30,9 @@ public class ChannelServiceImpl implements ChannelService {
 	@Setter(onMethod_ = @Autowired)
 	private ChannelAttachMapper attachMapper;
 	
-	public List<ChannelBoardVO> getChannelList(){
+	public List<ChannelBoardVO> getChannelList(Criteria cri){
 		log.info("채널  목록 출력");
-		return mapper.getChannelList();
+		return mapper.getChannelList(cri);
 	}
 	
 	@Override
@@ -47,6 +47,11 @@ public class ChannelServiceImpl implements ChannelService {
 	public List<ChannelBoardVO> getPostList(Criteria cri ,Long channelSN){
 		log.info("해당 채널 게시글 목록 출력");
 		return mapper.getPostList( cri , channelSN);
+	}
+	
+	public ChannelPageDTO getAllChannelList(Criteria cri) { // 채널 전체 목록 페이징 처리
+		
+		return new ChannelPageDTO (mapper.getChannelCount(), mapper.getChannelList(cri));
 	}
 	
 	public ChannelPageDTO getPostListPaging(Criteria cri , Long channelSN) {

@@ -19,7 +19,7 @@
 	<div class="leftSidebar">	
 		<div class="fixed">
 			<div class="SideHd">커뮤니티</div>
-			<button id="channelPost">채널 게시판으로 이동</button>
+			<button id="channelPost">채널 게시판</button>
 			<button id="channelPost">카테고리별 게시판</button>
 		</div>
 	</div>

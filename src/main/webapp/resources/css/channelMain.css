@@ -1,7 +1,7 @@
 .mainPage{
     /* background-color: gold; */
     width: 100%;
-    height: 1380px;
+    height: auto;
     display: flex;
     justify-content: flex-start;
 }
@@ -46,27 +46,33 @@
     /* background-color: rgb(235, 248, 255); */
     border-color:  rgb(184, 184, 184);
     width: 68%;
-    height: 100%;
+    height: auto;
     position: relative;
     border: 1px solid rgb(223, 223, 223);
     border-left-width: 1px;
 }
-.channelPart{
-    /* background-color: rgb(43, 214, 214); */
-    position: absolute;
-    left: 8%;
-    top: 5%;
-    width: 80%;
-    height: 510px;
-    display: flex;
-    flex-direction: column;
+.FForm{
+	background-color: white;
+	width: 80%;
+	height: auto; 
+	margin: 0 auto;
+	
 }
 .channelPartp{
-
-    width: 98%;
-    margin: 40px 90px;
+/* 	background-color: tomato;
+ */
+    width: 100%;
     font-size: 14px;
+    height: 30px;
+    margin-top: 60px;
     color: rgb(116, 114, 114);
+}
+.channelPart{
+    background-color: rgb(43, 214, 214); 
+    width: 100%;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
 }
 .catHeader{
     /* 카테고리별 게시판 배경색깔 */
@@ -74,7 +80,7 @@
     background-color: #ecf6fc;
     width: 100%;
     margin: 0 auto;
-    height: 70px;
+    height: 90px;
     display: flex;
     align-items: center;
     border: 2px solid #dfe4ee;
@@ -93,9 +99,6 @@
     margin: 0 auto;
     padding: 6px 22px;
 }
-.boardList{
-	overflow: auto;
-}
 .boardList ul li{
     list-style-type: none;
     background-color: #ffffff;
@@ -104,27 +107,25 @@
     border: 1px solid #ccc;
     border-collapse: collapse;
 }
+
 .boardList ul li a{
     text-decoration: none;
     color:rgb(126, 114, 180);
     font-weight: bold;
 }
 .AAList{
-    /* background-color: gold; */
+	/* 전체 게시글 목록.  */
+     background-color: gold; 
     width: 100%;
-    height: 300px;
-    position: relative;
-    left: 8%;
-    top: 39%;
-    width: 80%;
-    height: 532px;
+    height: auto;
     display: flex;
     flex-direction: column;
+    margin-top: 30px;
 }
 .AList{
     /* background-color: rgb(226, 109, 31); */
     width: 100%;
-    position: absolute;
+    height: auto;
 }
 .AList h3{
     background-color: #86a3e0;
@@ -201,13 +202,13 @@ table thead tr:nth-child(odd){
 
 /* pagination */
 .postFooter{
-    position: absolute;
-    top: 620px;
-    /* margin-top: 450px; */
+	background-color: white;
+	margin-top: 30px;
     width: 100%;
-    height: 100px;
+    height: 130px;
     display: flex;
     justify-content: center;
+    position: relative;
 }
 .postFooter ul li{
     list-style-type: none;
@@ -221,6 +222,8 @@ table thead tr:nth-child(odd){
     font-size: 16px;
     color: dodgerblue;
     border : 1px solid rgb(199, 199, 199);
+    position: absolute;
+    top: 30px;
 }
 .postFooter ul li a:hover, .active{
     color: rgb(0, 100, 182);
@@ -232,4 +235,10 @@ table thead tr:nth-child(odd){
   }
 .borderR{
     border-radius: 5px 0 0 5px;
+}
+
+.footer{
+	background-color: red;
+	width: 100%;
+	height: 200px;
 }

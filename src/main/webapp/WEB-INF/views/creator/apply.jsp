@@ -21,7 +21,7 @@
 				<h1>크리에이터 등록 페이지</h1>
 			</div>
 				<div class="createForm">
-					<form role="form" action="/creator/apply" method="post" onsubmit="return checkValid();" >
+					<form role="form" action="/creator/applyCreator" method="post" onsubmit="return checkValid();" >
 
 						
 					<div class="RegisterForm">
@@ -70,11 +70,10 @@
 						</div>
 						
 						<label class="label label5">[본인 유튜브 스튜디오 메인 페이지 캡쳐 이미지 업로드 해주세요]</label>						
+		   				
 		   				<div class="uploadFileBox"> 
 							<label for="uploadFile">파일 선택하기</label> 
 								<div class="ChseBtn">
-								
-
 								<input type='file' id='file' name='uploadFile'id="uploadFile" multiple >
 							</div>
 						</div>

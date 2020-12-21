@@ -153,7 +153,7 @@
 	}
 	
 	$("#modify").on("click", function(){
-		self.location = "/channel/modify/" + postSN + "/"+ boardSN;
+		self.location = "/channel/modify/" + postSN + "/"+ channelSN;
 	});
 
 	$("#list").on("click", function(){

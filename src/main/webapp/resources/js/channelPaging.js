@@ -2,8 +2,7 @@ $(document).ready(function(){
 		
 	var allPostList = $(".AList");
 	
-	
-	channelService.getChannelList();
+	var channelList = $(".boardList");
 	
 	showList(1);
 	
@@ -11,6 +10,34 @@ $(document).ready(function(){
 	function showList(page){
 		
 	console.log("show List " + page);
+	
+
+	channelService.getChannelList( {page: page || 1} , function(postCnt, list){
+		console.log("channelCnt= " + postCnt);
+		
+		if(page == -1 ){
+			pageNum = Math.ceil(postCnt / 10.0);
+			showList(pageNum);
+			return;
+		}
+		
+		var str = "";
+		
+		if(list == null || list.length == 0){
+			str = "<h3>개설 된 채널 게시판이 없습니다.</h3>";
+		}
+		
+		str += "<ul>";
+		for(var i = 0, len = list.length || 0; i < len; i++){
+			str += "<li data-channelsn='"+list[i].channelSN+"'>";
+			str += "<a href='/channel/board/"+list[i].channelSN+"'><i class='fab fa-youtube'></i><strong>"
+			+list[i].channelTitle+"</strong></a></div></li>";
+			
+		}
+			str += "</ul>";
+		channelList.html(str);
+		
+	});
 	
 	channelService.getAllPost( {page: page || 1 }, function(postCnt, list){
 	
@@ -96,7 +123,7 @@ $(document).ready(function(){
 	$("#boardPost").on("click",function(){
 		self.location = "/category/main";
 	});
-	$("#createChannel").on("click" , function(){
+	$(".createChannel").on("click" , function(){
 		self.location = "/channel/chcreate";
 	});
 	

@@ -106,7 +106,11 @@
 			where rn >= (#{cri.pageNum} -1 ) * #{cri.amount}
 			]]>
 		</select>
-	
+		
+		<!--  채널 수 -->
+		<select id="getChannelCount" resultType="int">
+			select count(*) from channel
+		</select>
 	
 		<!--  채널 게시물 총 갯수 -->
 		<select id="getCountByPost" resultType="int">

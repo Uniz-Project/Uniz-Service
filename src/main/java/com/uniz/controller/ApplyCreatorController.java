@@ -41,24 +41,38 @@ public class ApplyCreatorController {
 	private UserMapper userMapper;
 	
 
-	
-	//추후 로그인 하면 세션 값 담아서 등록 페이지로 이동하게 수정 해야함
 	@GetMapping("/apply")
 	public String getRegi(HttpSession session) {
 		
-		final Long USERSN = (Long)session.getAttribute("userSN");
+		final Long USERSN = (Long)session.getAttribute("userSN"); 
 		
-		final int CHECKAPPLY = service.checkApply(USERSN);
-		
-		if(CHECKAPPLY == 1) {
+		if(USERSN == null) {
 			
-			return "redirect:/channel/ch";
+			return "/user/loginForm";
 			
 		}
-			return "creator/apply";
+		
+		log.info("USERSN :: " + USERSN);
+		
+		final int CHECKAPPLY = service.checkApply(USERSN); // 크리에이터 신청한게 있는지 체크 
+		
+		if( session.getAttribute("user") != null && CHECKAPPLY == 1) {
+			
+			return "/creater/get?userSN=" + USERSN;
+			
+		} else if(session.getAttribute("user") != null && CHECKAPPLY == 0) {
+			
+			return "/creator/apply";
+			
+		} else {
+			
+			return "/user/loginForm";
+			
+		}
+		
 	}
 	
-	@PostMapping("/apply")
+	@PostMapping("/applyCreator")
 	public String apply(ApplyVO vo, RedirectAttributes rttr , HttpSession session) {
 		
 		if(vo.getAttachList() != null) {
@@ -69,7 +83,7 @@ public class ApplyCreatorController {
 		
 		final int CHECKAPPLY = service.checkApply(vo.getUserSN());
 		
-		if( CHECKAPPLY != 1 ) {
+		if( CHECKAPPLY == 1 ) {
 			
 			service.apply(vo);
 			

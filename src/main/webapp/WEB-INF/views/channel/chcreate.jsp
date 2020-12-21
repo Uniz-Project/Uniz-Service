@@ -23,8 +23,8 @@
 			<form action="/channel/chcreate" method="post" onsubmit="return checkValid();">
 				<div class="RegisterForm">
 					<label class="label">채널 이름 <button class="submitBtn" id="titleModify">채널 이름 수정하러 가기</button></label>
-					<input class="form-control" id='channelTitle' value="<c:out value="${apply.channelTitle}"/>" name='channelTitle'>
-					<label class="label"> 채널 설명</label>
+					<input class="form-control" id='channelTitle' value="<c:out value="${apply.channelTitle}"/>" name='channelTitle'  readonly="readonly">
+					<label class="label"> 게시판 사용 목적</label>
 					<input class="form-control" id='channelComment' name='channelComment'>
 					<input type="hidden" class="form-control"name='userSN' value="${user.userSN}">
 					

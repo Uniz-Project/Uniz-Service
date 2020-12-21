@@ -65,6 +65,8 @@ public class ChannelController {
 		
 		log.info(" userType : " + USERTYPE);
 		
+		log.info(" USERSN ==== " + USERSN);
+		
 		if( session.getAttribute("user") != null && USERTYPE >= 2) {
 			
 			model.addAttribute("apply", applyService.getApply(USERSN));
@@ -88,9 +90,9 @@ public class ChannelController {
 		
 		log.info("userSN=======  " + userSN);
 		
-		final int CONFIRM = mapper.confirmChannel(userSN);
+		final int CONFIRM = mapper.confirmChannel(userSN); // 개설한 채널이 있는지 체크
 		
-		final int USERTYPE = (int)session.getAttribute("userType");
+		final int USERTYPE = (int)session.getAttribute("userType"); // usertype 2면 크리에이터, 1이면 일반유저
 		
 		log.info("CONFIRM : " + CONFIRM);
 		
@@ -209,12 +211,15 @@ public class ChannelController {
 	}
 	
 	// 채널  목록 보여줌
-	@GetMapping(value= "/list" ,
+	@GetMapping(value= "/list/{page}" ,
 	produces = { MediaType.APPLICATION_XML_VALUE,
 				 MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<List<ChannelBoardVO>> getChannelList(){
+	public ResponseEntity<ChannelPageDTO> getChannelList(@PathVariable("page") int page){
 		log.info("get Channel List........");
-		return new ResponseEntity<>(service.getChannelList() , HttpStatus.OK);
+		
+		Criteria cri = new Criteria(page, 5);
+		
+		return new ResponseEntity<>(service.getAllChannelList(cri) , HttpStatus.OK);
 	}
 	
 	// 채널 별 게시글 목록 보여줌

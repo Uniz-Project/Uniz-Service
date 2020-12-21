@@ -27,14 +27,14 @@ var channelService = (function(){
 	}
 	
 	// 채널 목록 보여줌
-	function getChannelList(){
+	/*function getChannelList(){
 		
 		var str ="";
 		var channelList = $(".boardList");
 		
 		$.ajax({
 			type : 'get',
-			url : "/channel/list",
+			url : "/channel/list/"+ 1,
 			dataType : 'json',
 			contentType : "application/json; charset=utf-8",
 			success : function(list){
@@ -51,8 +51,22 @@ var channelService = (function(){
 			}
 		});
 		
+	}*/
+	function getChannelList(param, callback, error){
+		var page = param.page || 1;
+		console.log("page : " + page);
+		
+		$.getJSON("/channel/list/" + page + ".json",
+				function(data){
+			if(callback){
+				callback(data.postCnt, data.list);
+			}
+		}).fail(function(xhr, status, err){
+			if(error){
+				error();
+			}
+		});
 	}
-	
 	
 	// 게시글 전체 목록 보여줌
 	function getAllPost(param, callback , error){
