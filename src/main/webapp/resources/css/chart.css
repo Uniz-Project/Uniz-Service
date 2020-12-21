@@ -1,0 +1,72 @@
+.mainPage{
+    background-color: rgb(255, 254, 249);
+    width: 100%;
+    height: 1200px;
+}
+.title, .title2{
+    /* background-color: yellowgreen; */
+    width:85%;
+    margin: 0 auto;
+    height: 8%;
+    display : flex;
+    align-items: center;
+    justify-content: flex-start;
+    
+}
+.title p, .title2 p{
+    font-size: 22px;
+}
+.title p:last-child{
+    padding-left: 3px;
+}
+#userName{
+    font-size: 22px;
+    font-weight: bold;
+}
+.visBox{
+    /* background-color: rgb(243, 234, 183); */
+    height: 35%;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    align-items: flex-start;
+}
+
+.box1{
+    /* background-color: tomato; */
+    width: 39%;
+    height: 90%;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 12px;
+    /* 순규오빠가 보내준 그림자 */
+    box-shadow: 0 9px 12px rgba(0, 0, 0, 0.05), 0 3px 16px rgba(0, 0, 0, 0.12), 0 5px 6px rgba(0, 0, 0, 0.1);
+    /* 밀리의 서재 그림자 카피 */
+}
+.linechart{
+    width: 100%;
+    height:100%;
+}
+.piechart{
+    width:100%;
+    height:200px;
+}
+.title2{
+    height:6%;
+}
+.likeBox{
+    /* background-color: chocolate; */
+    width:85%;
+    margin: 0 auto;
+    height: 45%;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+    align-content: flex-start;
+    row-gap: 25px;
+}
+.likeBox1{
+    background-color: gold;
+    border-radius: 8px;
+    border: 1px solid black;
+    width: 23.4%;
+    height: 40%;
+}

@@ -30,4 +30,12 @@ public class UnizChartServiceImpl implements UnizChartService {
 		return mapper.chartData();
 	}
 
+	@Override
+	public List<UnizChartVO> chartData2(long userSN) {
+		
+		log.info("get pieChartData...........");
+		
+		return mapper.chartData2(userSN);
+	}
+
 }
