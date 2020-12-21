@@ -8,11 +8,11 @@
 </head>
  
   <body>
-  	<div class="wrap">
+  
 		<%@ include file="/WEB-INF/views/includes/nav.jsp"%>		
 	  <!-- Nav bar -->
        
-     </div>
+     
      
   </body>
 </html>

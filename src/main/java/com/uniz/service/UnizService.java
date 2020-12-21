@@ -2,7 +2,6 @@ package com.uniz.service;
 
 import java.util.List;
 
-import com.uniz.domain.MyUnizPoint;
 import com.uniz.domain.UnizVO;
 
 public interface UnizService {
@@ -22,7 +21,5 @@ public interface UnizService {
 	public boolean remove(Long unizSN);
 
 	public List<UnizVO> getPresetList(int menuSN);
-
-	public List<MyUnizPoint> getMyPointHistory(Long userSN);
 
 }
