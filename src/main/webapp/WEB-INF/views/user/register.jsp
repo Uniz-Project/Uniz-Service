@@ -6,9 +6,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Uniz-회원가입페이지</title>
-	<link rel="stylesheet" href="/resources/css/RegisterLogin.css">
-    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 </head>
 <body>
 
@@ -208,11 +208,11 @@
 				const SUCCESS = "SUCCESS";
 				const DUPLICATION = "DUPLICATION";
 				
-				if(data.result == SUCCESS){
+				if(data.data == SUCCESS){
 					alert("사용할 수 있는 아이디 입니다.")
 					$("#userId").attr("readonly", "true");
 					$("#userIdCheckBtn").attr("disabled", "true");
-				}else if(data.result == DUPLICATION){
+				}else if(data.data == DUPLICATION){
 					alert("이미 존재하는 아이디 입니다.")	
 				}else{
 					alert("데이터 입력 중 오류가 발생하였습니다.\n입력한 정보를 다시 확인해 주세요.");

@@ -17,7 +17,18 @@
 	</select>
 
 
-
+<select id="chartData2" resultType = "com.uniz.domain.UnizChartVO">
+	
+	<![CDATA[
+	select h.unizSN,u.unizkeyword, count(*) count
+	from unizpointhistory h, uniz u
+	where u.unizSN = h.unizSN
+	and h.userSN = #{userSN}
+	GROUP by h.unizSN,u.unizkeyword
+	order by h.unizSN
+	]]>
+	
+	</select>
 
 
 

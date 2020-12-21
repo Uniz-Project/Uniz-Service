@@ -6,10 +6,14 @@
 <html lang="en">
 <head>
     <%@ include file="/WEB-INF/views/includes/header.jsp"%>
+
+    <title>Uniz-비디오상세</title>
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+
 
 </head>
 <body>
+
 
    <%@ include file="/WEB-INF/views/includes/nav.jsp"%>
 
@@ -27,16 +31,18 @@
 			</div>
       	</c:if>
 			
-			<div class="class101">
-          		<div class="slideshow-container">
-            		
-				<h3>${videoData.title}</h3>
+			<div class="parent">
+          		<div class="title">
+               		<div class="h3"><h3>${videoData.title}</h3></div>				
 
 
-				<p>게시자닉네임${videoData.authorNick}</p>
-				<p><i class="far fa-eye"></i>조회수 :${videoData.viewCnt}회</p>
+			<div class="info3">
+				<p class="writer">게시자닉네임 ${videoData.authorNick}</p>
+				<p><i class="far fa-eye"></i>조회수 : ${videoData.viewCnt}회</p>
+
 				<p><i class="far fa-thumbs-up"></i>좋아요 : ${videoData.likeCnt}개</p>
-				<p><i class="far fa-clock"></i>업로드일:${videoData.createDateTime}</p>
+				<p><i class="far fa-clock"></i>업로드일: ${videoData.createDateTime}</p>
+			</div>
 				
 				
 					
@@ -46,39 +52,29 @@
 	                <input type="hidden" id="unizSN" name ="unizSN" value="${videoData.utbCateSN}">
 	                <input type="hidden" id="userSN" name ="userSN" value="${userSN}">
 
-                </form>  
-                
-				<div class="commentPage">
+            </form>  
+               
 
 					<ul class="chat">
+ 
 					
-						<!-- <li class="left clearfix" data-replySN='12'> -->
-						<li class="left clearfix" data-replySN='12'><i class="far fa-comment"></i>
-						<div>
-							<p></p>
-						</div>
-						</li>
 					</ul>		
-				 </div>
-				 
-			<!-- <div class="container"> -->
-			<div class="addCmtBox">
-            	<div class="input-group">
-        			<form name="commentInsertForm">
+              
+	</div>
+				<!-- end title -->		
+				
+				<div class="line10"></div>
+				
+        			<form class="addCmtBox noBorder"  name="commentInsertForm">
 		               <input type="hidden" name="videoSN" value="${videoData.videoSN}"/>
 		               <!-- <input type="text" class="form-control" id="content" name="content" placeholder="내용을 입력하세요."> -->
-		               <input type="text" class="form-control" id="content" name="content" onclick="return checkSession();" placeholder="add a comment..........">
+		               <input type="text" class="form-control" id="content" name="content" onclick="return checkSession();" placeholder="댓글을 입력해 보세요.">
 		               <input type="hidden" class='userSN' value="${user.userSN}" name="userSN">
 		               <span class="input-group-btn">
-					<!-- <button class="btn btn-default" type="button" name="commentInsertBtn">등록</button> -->    
 		               <button  type="button" name="commentInsertBtn"  ><i class="far fa-paper-plane"></i></button>
 		               </span>
         			</form>
-              	</div>
-    		</div>
-    		
-			
-			</div> <!-- end slideshow-container -->
+	
 		</div>
 	</div>
 </div>
@@ -169,6 +165,7 @@
 	var videoValue = '${videoData.videoSN}';
 	var replyUL = $(".chat");
 
+
 	var container = $('.addCmtBox');
 	var contextInputReply = container.find("input[name='content']");
 	var contextInputReplyer = container.find("input[name='userSN']");
@@ -178,6 +175,7 @@
 	var session = sessionStorage.getItem('user');
 
 	
+
 		//페이지 로딩시 댓글 목록 출력
     	//showList(목록)
 	function showList(page){
@@ -190,13 +188,14 @@
 					return;
 				}
 				for(var i = 0, len =list.length || 0; i<len; i++){
-					str +="	<li class='left clearfix' data-replySN='"+list[i].replySN+"'>";
+					
 					/* str +=" <small class='pull-right test-muted'>"+replyService.displayTime(list[i].createDateTime)+"</small></div>"; */
 					str +='	<div class="commentContent'+list[i].replySN+'"> <li> '+list[i].nick+' : '+list[i].replyContent ;
 					if(list[i].userSN == session){
-					str +='	<button class="commentUpdate" onclick="commentUpdate('+list[i].replySN+',\''+list[i].replyContent+'\');"> 수정 </button>';
-	                str +='	<button class="remove" onclick="replyService.remove('+list[i].replySN+');"> 삭제 </button></li> </div></li>';
+					str +='	<button class="commentUpdate cmtMod" onclick="commentUpdate('+list[i].replySN+',\''+list[i].replyContent+'\');"> 수정 </button>';
+	                str +='	<button class="remove cmtRem" onclick="replyService.remove('+list[i].replySN+');"> 삭제 </button></li>';
 					}
+					str +='</div></li>';
 				}
 				
 				replyUL.html(str);
@@ -206,8 +205,9 @@
     	//Insert
 			$('[name=commentInsertBtn]').click(function(){ //댓글 등록 버튼 클릭시
 			    var insertData = $('[name=commentInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴
-			    
+
 			    var str = /^\s+|\s+$/g;
+
 
 			    var reply ={
 						replyContent : contextInputReply.val(),
@@ -217,7 +217,7 @@
 			    if(reply.replyContent == '' || reply.replyContent.replace(str, '').length == 0){
 					alert("댓글 내용을 입력하세요");
 					return false;
-				}
+				} 
 			    replyService.add(reply, function(result){
 					
 					showList(1);
@@ -230,11 +230,9 @@
 			console.log("==================");
 		    var a ='';
 		    console.log("test = " + replySN);
-		    a += '<div class="input-group">';
 		    a += '<input type="text" class="form-control" name="content_'+replySN+'" value="'+replyContent+'"/>';
-		    a += '<input type="text" class="form-control" name="replySN_'+replySN+'" value="'+replySN+'"/>';
-		    a += '<span class="input-group-btn"><button  type="button" onclick="commentUpdateProc('+replySN+');">수정</button> </span>';
-		    a += '</div>';
+		    a += '<input type="hidden" class="form-control" name="replySN_'+replySN+'" value="'+replySN+'"/>';
+		    a += '<button class="cmtMod2"  type="button" onclick="commentUpdateProc('+replySN+');">수정</button> </span>';
 		   
 		    $('.commentContent'+replySN).html(a);
 			}
@@ -254,6 +252,7 @@
 		        }
 				});
 			}//end Update
+
   
 			function checkSession(){
 			
@@ -262,6 +261,7 @@
 				return false;
 				}
 			}
+
 </script>
 </body>
 </html>

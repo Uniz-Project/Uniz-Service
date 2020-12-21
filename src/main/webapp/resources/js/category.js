@@ -4,7 +4,7 @@ var categoryService = (function(){
 	
 	function getBoardList(){
 		var str = "";
-		var boardList = $("#boardList");
+		var boardList = $(".boardList");
 		
 		$.ajax({
 			
@@ -14,14 +14,15 @@ var categoryService = (function(){
 			contentType : "application/json; charset=utf-8",
 			success : function(list){
 				
-				for(var i = 0, len = list.length || 0; i < len; i ++){
+					str += "<ul>";
 					
+				for(var i = 0, len = list.length || 0; i < len; i ++){
 					str += "<li data-boardsn='" + list[i].boardSN + "'>";
-					console.log("boardSN : " + list[i].boardSN);
 					str += "<a href='/category/board/" + list[i].boardSN + "'><strong>" 
 					+ list[i].boardComment + "<strong></a></div></li>";
 					
 				}
+					str += "</ul>";
 				boardList.html(str);
 			}
 			

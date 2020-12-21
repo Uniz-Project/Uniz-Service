@@ -16,29 +16,58 @@
 	
 	
 	<div class="mainPage">
+		<div class="leftSidebar">
+            <div class="fixed">
+                <div class="SideHd">커뮤니티</div>
+                <button id="channelPost" class="moveChannel">채널 게시판</button>
+                <button id="channelPost" class="moveCategory">카테고리 별 게시판</button>
+            </div>
+        </div>
 	
-	<c:forEach items="${board}" var="board">
-	<h1 class="boardHeader"><c:out value="${board.boardTitle}"/></h1>
-	</c:forEach>
-	<div id ="board"></div>
+		<div class="comPage">
+			
+			<c:forEach items="${board}" var="board">
+			<p class="channelPartp">커뮤니티 > <c:out value="${board.boardTitle}"/> </p>
+			</c:forEach>
+			
+				<div class="channelPart">
+				
+					<div class="catHeader">
+					
+						<c:forEach items="${board}" var="board">
+						
+							<h1 class="boardHeader"><c:out value="${board.boardTitle}"/></h1>
+							
+						</c:forEach>
+					
+					</div> <!-- catHeader End -->
+					
+					<div class="BList">
+						<h3>게시글 목록</h3>
+					</div>
+					
+						<div id ="post">
+						
+						</div> <!-- 글 목록 끝 -->
+						
+				</div><!-- channelPart End -->
+				
+				<div class="btnBox2">
+					<c:if test="${user.userSN ne null }" >
+						<button class="createBtn" id="createBtn" type="button">게시글 작성</button>
+					</c:if>
+						<button class="createBtn" id="listBtn" type="button">메인으로 이동</button>
+				</div> <!-- btnBox2 End -->
+				
+				<div class="postFooter" id="postFooter">
+				
+				</div>
+		
+		</div> <!-- comPage end -->
 	
-	<div class="board"></div>
-	<div></div>
+	</div> <!--  main end -->
 	
-	<div class="post">
-	
-	</div>
-	
-	
-	<div class="chBoardBtn">
-		<button id="createBtn" type="button">게시글 작성</button>
-		<button id="listBtn" type="button">채널 게시판으로 이동</button>
-	</div>
-	
-	<div class="postFooter" id="postFooter">
-	</div>
-	
-	</div>
+<div class="footer"></div>	
 	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/category.js"></script>	
@@ -49,7 +78,7 @@ $(document).ready(function(){
 		
 		var boardSN = ${boardSN}; 
 		
-		var post = $(".post");
+		var post = $("#post");
 		
 		showList(1);
 		
@@ -144,7 +173,9 @@ $(document).ready(function(){
 		});
 		
 		
-		
+		$(".moveChannel").on("click", function(){
+			self.location = "/channel/ch";
+		});
 		
 		
 		$("#listBtn").on("click", function(){

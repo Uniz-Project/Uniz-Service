@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/resources/css/Navbar.css">
-    <link rel="stylesheet" href="/resources/css/board.css">
+    <link rel="stylesheet" href="/resources/css/channelBoard.css">
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/includes/nav.jsp"%>
@@ -31,10 +31,10 @@
 	</div>
 	
 	<div class="chBoardBtn">
-
-
+		<c:if test="${user.userSN ne null }" >
 		<button id="createBtn" type="button">게시글 작성</button>
 		<button id="listBtn" type="button">채널 게시판으로 이동</button>
+		</c:if>
 	</div>
 	
 	<div class="postFooter" id="postFooter">
@@ -85,11 +85,12 @@ $(document).ready(function(){
 					str += "<thead><tr><th>글 번호</th><th>글 제목</th><th>작성자</th><th>작성 일</th></tr></thead>"
 
 
+
 				for ( var i = 0, len = list.length || 0; i < len; i ++){
 
 
 						str += "<thead><tr>"
-						str += "<td>"+list[i].postSN + "</td>";
+						str += "<td>"+list[i].rn + "</td>";
 						str += "<td><a class='move' href='/channel/get/"+list[i].postSN+"'>"+list[i].title+"["+list[i].replyCnt+"]"+"</a></td>";
 						str += "<td>"+list[i].nick + "</td>";
 						str += "<td>"+channelService.displayTime(list[i].createDateTime) +"</td>";	

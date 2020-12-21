@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.uniz.domain.MenuType;
-import com.uniz.domain.MyUnizPoint;
 import com.uniz.domain.UnizVO;
 import com.uniz.mapper.UnizMapper;
 
@@ -85,11 +84,5 @@ public class UnizServiceImpl implements UnizService {
 		log.info("getPresetList......." + menuSN);
 
 		return mapper.getPresetList(menuSN);
-	}
-
-	@Override
-	public List<MyUnizPoint> getMyPointHistory(Long userSN) {
-		
-		return mapper.getMyPointHistory(userSN);
 	}
 }

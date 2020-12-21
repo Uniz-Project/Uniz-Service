@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="/resources/css/RegisterLogin.css">
-    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-<title>Uniz로그인페이지</title>
+
+<title>Insert title here</title>
 </head>
 <body>	
 
@@ -58,7 +58,7 @@
     </div> 
 </div>
 	
-	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<%@ include file="/WEB-INF/views/includes/script.jsp"%>
 	<script type="text/javascript">
 	//테스트용 아이디 비밀번호 고정
 	/* 	$("#userId").val("test0003");
@@ -121,5 +121,4 @@
 		}
 		
 	</script>
-	</body>
 </html>

@@ -25,9 +25,7 @@
 		<input class="form-control" name='channelTitle' id='channelTitle' 
 		value="<c:out value="${apply.channelTitle}" />" readonly="readonly">
 		
-		<label class="label">UserSN</label>
-		
-		<input class="form-control" name='userSN' id='userSN'
+		<input type='hidden' class="form-control" name='userSN' id='userSN'
 		value="<c:out value="${apply.userSN}" />" readonly="readonly">
 		
 		<label class="label">채널 운영 주 카테고리 목록</label>
