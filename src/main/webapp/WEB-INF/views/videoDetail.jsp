@@ -6,6 +6,7 @@
 <html lang="en">
 <head>
 
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -13,8 +14,10 @@
     <link rel="stylesheet" href="../resources/css/videoDetail.css">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
+
 </head>
 <body>
+
 
    <%@ include file="/WEB-INF/views/includes/nav.jsp"%>
 
@@ -28,9 +31,11 @@
           		<div class="title">
                		<div class="h3"><h3>${videoData.title}</h3></div>				
 
+
 			<div class="info3">
 				<p class="writer">게시자닉네임 ${videoData.authorNick}</p>
 				<p><i class="far fa-eye"></i>조회수 : ${videoData.viewCnt}회</p>
+
 				<p><i class="far fa-thumbs-up"></i>좋아요 : ${videoData.likeCnt}개</p>
 				<p><i class="far fa-clock"></i>업로드일: ${videoData.createDateTime}</p>
 			</div>
@@ -40,8 +45,10 @@
 	                <input type="hidden" id="videoSN" name ="videoSN" value="${videoData.videoSN}">
 	                <input type="hidden" id="unizSN" name ="unizSN" value="${videoData.utbCateSN}">
 	                <input type="hidden" id="userSN" name ="userSN" value="${userSN}">
+
             </form>  
                
+
 					<ul class="chat">
  
 					
@@ -148,6 +155,7 @@
 	var videoValue = '${videoData.videoSN}';
 	var replyUL = $(".chat");
 
+
 	var container = $('.addCmtBox');
 	var contextInputReply = container.find("input[name='content']");
 	var contextInputReplyer = container.find("input[name='userSN']");
@@ -157,6 +165,7 @@
 	var session = sessionStorage.getItem('user');
 
 	
+
 		//페이지 로딩시 댓글 목록 출력
     	//showList(목록)
 	function showList(page){
@@ -186,8 +195,9 @@
     	//Insert
 			$('[name=commentInsertBtn]').click(function(){ //댓글 등록 버튼 클릭시
 			    var insertData = $('[name=commentInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴
-			    
+
 			    var str = /^\s+|\s+$/g;
+
 
 			    var reply ={
 						replyContent : contextInputReply.val(),
@@ -232,6 +242,7 @@
 		        }
 				});
 			}//end Update
+
   
 			function checkSession(){
 			
@@ -240,6 +251,7 @@
 				return false;
 				}
 			}
+
 </script>
 </body>
 </html>

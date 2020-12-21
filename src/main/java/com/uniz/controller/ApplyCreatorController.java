@@ -3,7 +3,11 @@ package com.uniz.controller;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -11,7 +15,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,7 +25,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.uniz.domain.ApplyAttachVO;
 import com.uniz.domain.ApplyVO;
-import com.uniz.domain.BoardAttachVO;
+import com.uniz.mapper.UserMapper;
 import com.uniz.service.ApplyCreatorService;
 
 import lombok.AllArgsConstructor;
@@ -32,15 +38,42 @@ import lombok.extern.log4j.Log4j;
 public class ApplyCreatorController {
 	
 	private ApplyCreatorService service;
+	private UserMapper userMapper;
 	
-	//추후 로그인 하면 세션 값 담아서 등록 페이지로 이동하게 수정 해야함
+
 	@GetMapping("/apply")
-	public void getRegi() {
+	public String getRegi(HttpSession session) {
+		
+		final Long USERSN = (Long)session.getAttribute("userSN"); 
+		
+		if(USERSN == null) {
+			
+			return "/user/loginForm";
+			
+		}
+		
+		log.info("USERSN :: " + USERSN);
+		
+		final int CHECKAPPLY = service.checkApply(USERSN); // 크리에이터 신청한게 있는지 체크 
+		
+		if( session.getAttribute("user") != null && CHECKAPPLY == 1) {
+			
+			return "/creater/get?userSN=" + USERSN;
+			
+		} else if(session.getAttribute("user") != null && CHECKAPPLY == 0) {
+			
+			return "/creator/apply";
+			
+		} else {
+			
+			return "/user/loginForm";
+			
+		}
 		
 	}
 	
-	@PostMapping("/apply")
-	public String apply(ApplyVO vo, RedirectAttributes rttr) {
+	@PostMapping("/applyCreator")
+	public String apply(ApplyVO vo, RedirectAttributes rttr , HttpSession session) {
 		
 		if(vo.getAttachList() != null) {
 			
@@ -50,17 +83,33 @@ public class ApplyCreatorController {
 		
 		final int CHECKAPPLY = service.checkApply(vo.getUserSN());
 		
-		if(CHECKAPPLY != 1) {
-			
+		if( CHECKAPPLY == 1 ) {
 			
 			service.apply(vo);
 			
 			return "redirect:/creator/get?userSN=" + vo.getUserSN();
 			
-		}
+		} else 
 			//신청한게 있으면 신청상세 페이지로 이동
 			return "redirect:/channel/ch";
+	}
+	
+	@PostMapping("/checkApply")
+	public @ResponseBody Map<String, Object> applyCheck (@RequestBody Long userSN , HttpSession session){
 		
+		log.info("userSN : " + userSN);
+		
+		final int CHECKAPPLY = service.checkApply(userSN);
+		final int USERTYPE = (int)session.getAttribute("userType");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("CHECKAPPLY" , CHECKAPPLY); // 1이면 신청한거 있음 0이면 신청한거 없음
+		map.put("USERTYPE" , USERTYPE); // 1이면 1반유저 2는 크리에이터
+		
+		log.info( "map==== " + map);
+		
+		return map;
 	}
 	
 	@GetMapping({"/get" , "/modify"})
@@ -69,6 +118,7 @@ public class ApplyCreatorController {
 		model.addAttribute("apply", service.getApply(userSN));
 		
 	}
+	
 	
 	@PostMapping("/modify")
 	public String modifyApply(ApplyVO vo , RedirectAttributes rttr) {

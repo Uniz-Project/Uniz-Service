@@ -4,124 +4,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+ 	<link rel="stylesheet" href="/resources/css/Navbar.css">
+    <link rel="stylesheet" href="/resources/css/register.css">
 </head>
 <style>
 
-.uploadResult{
-
-	whidth : 100%;
-	background-color : gray;
-
-}
-
-.uploadResult ul{
-
-	display : flex;
-	flex-flow : row;
-	justify-content : center;
-	align-items: center;
-
-}
-
-.uploadResult ul li {
-
-	list-style : none;
-	padding : 10px;
-
-}
-
-.uploadResult ul li img{
-
-	width : 100%;
-	
-}
-
-.bigPictureWrapper {
-
-	position : absolute;
-	display : none;
-	justify-content : center;
-	align-items : center;
-	top : 0%;
-	width : 100%;
-	height : 100%;
-	background-color : gray;
-	z-index : 100;
-	background : rgba(255,255,255,0.5);
-
-}
-
-.bigPicture {
-
-	position : relative;
-	display : flex;
-	justify-content : center;
-	align-items : center;
-
-}
-
-.bigPicture img {
-
-	width : 600px;
-
-}
 
 </style>
 <body>
-
-
     
-	<div class="row">
-		<div class="col-lg-12">
-			<div class="panel panel-default">
-				<div class="panel-heading"><h1>글 쓰기</h1></div>
-				<!-- /.panel-heading -->
-				<div class="panel-body">
-					
-					<form role="form" action="/category/register" method="post" onsubmit="return checkTitle()">
-						<div class="form-group">
-							<label>제목</label>
-							<input class="form-control" name='title' id='title'>
-						</div>
-						
-						<div class="form-group">
-							<label>내용</label>
-							<textarea  class="form-control" name='postContent'></textarea>
-						</div>
-						
-						<div class="form-group">
-							
-							<input type='hidden' class="form-control" name='userSN' value='${user.userSN}'  >
-						</div>
-						
-						<div class="form-group">
-							
-							<input type="hidden" class="form-control" name='boardSN' value="${boardSN}">
-						</div>
-						
-						<div class="uploadResult">
-							<ul>
-							</ul>
-						</div>
-						
-					<div class="panel-body">	
-						<div class="form-group uploadDiv">
-							<input type='file' name='uploadFile' multiple>
-						</div>
-						
-					</div>
-					<br>
-						<button type="submit" class="btn btn-default">작성완료</button>
-						<button type="reset" class="btn btn-default">전체 지우기</button>
-						
-					</form>
-				</div>
-			</div>
+    <%@ include file="/WEB-INF/views/includes/nav.jsp"%>
+    
+	<!-- end navbar -->
+	<div class="emptyNav"></div>
+
+    <div class="applyMain">
+		<div class="creatorRegisterHeader">
+				<h1>글 쓰기</h1>
 		</div>
-	</div>    
-				
+			<div class="createForm">
+				<form  class="form" role="form" action="/category/register" method="post" onsubmit="return checkTitle()">
+					<div class="RegisterForm">
+						<label class="label">제목</label>
+						<input class="form-control" name='title' id='title'>
+						<label class="label textarea">내용</label>
+						<textarea class="form-control" rows="3" name='postContent'></textarea>
+							<input type='hidden'class="form-control" name='userSN' value='${user.userSN}'>
+							<input type="hidden" class="form-control" name='boardSN' value="${boardSN}">
+					
+						<label class="label"></label>
+					<!-- 파일 업로드 한거 썸네일로 보여주는 곳. x 버튼 누르면 사진 삭제 됌-->
+					<div class="thumbNail">
+						<ul>
+						
+						</ul>
+				   </div>
+
+				   <label for=""class="label"></label>
+				   
+				   <div class="uploadFileBox"> 
+					   <!-- 파일 업로드 하는 곳-->
+					<label for="uploadFile">파일 선택하기</label> 
+						<div class="ChseBtn">
+						<input type='file' name='uploadFile' id="uploadFile" multiple >
+						</div>
+					</div>
+
+					<div class="applyBtnBox">
+						<button type="submit" class="submitBtn">작성완료</button>
+						<button type="reset" class="submitBtn">전체 지우기</button>
+					</div>
+					</div>
+				</div>
+			</div> 
+	</div>
+</form>
+</div>
+</div>
+<div class="footer">
+
+</div>
 					
   
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -140,7 +84,7 @@
 			
 			var str = "";
 		
-		$(".uploadResult ul li").each(function(i, obj){
+		$(".thumbNail ul li").each(function(i, obj){
 			
 			var jobj = $(obj);
 			console.dir(jobj);
@@ -149,8 +93,6 @@
 			str += "<input type='hidden' name='attachList["+i+"].uuid' value='"+jobj.data("uuid")+"'>";
 			str += "<input type='hidden' name='attachList["+i+"].uploadPath' value='"+jobj.data("path")+"'>";
 			str += "<input type='hidden' name='attachList["+i+"].fileType' value='"+jobj.data("type")+"'>";
-			
-			alert(str);
 			
 		});
 		
@@ -178,7 +120,7 @@
 			
 			if(!uploadResultArr || uploadResultArr.length == 0){return;}
 			
-			var uploadUL = $(".uploadResult ul");
+			var uploadUL = $(".thumbNail ul");
 			
 			var str = "";
 			
@@ -249,7 +191,7 @@
 	 });  
 });
 	
-	$(".uploadResult").on("click", "button" , function(e){
+	$(".thumbNail").on("click", "button" , function(e){
 		
 		console.log("delete file");
 		

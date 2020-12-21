@@ -43,8 +43,7 @@ var replyService = (function(){
 		var updateContent = $('[name=content_'+replySN+']').val();
 	   	var updateReplySN = $('[name=replySN_'+replySN+']').val();
 		var modify = {'replyContent' : updateContent, 'replySN' : updateReplySN};
-		console.log("js : " + updateReplySN);
-		console.log("js cotent : " + updateContent);
+		var str = /^\s+|\s+$/g;
 	    
 		$.ajax({
 			url : '/replies/update/'+updateReplySN,
@@ -52,10 +51,13 @@ var replyService = (function(){
 			data : JSON.stringify(modify),
 			contentType : "application/json; charset=utf-8",
 	        success : function(data){
-	            if(data == 1)
-	            location.reload(true);
-	            	 //댓글 수정후 목록 출력 
-	            
+	        	
+	        	if( modify.replyConent == '' || modify.replyContent.replace(str, '').length == 0 ){
+	        		alert(" 댓글 내용을 입력 해주세요");
+	        		return false;
+	        	}
+	        	
+	        	showList(1);
 	        }
 	    });
 	}

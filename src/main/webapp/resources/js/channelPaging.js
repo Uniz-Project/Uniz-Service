@@ -1,9 +1,8 @@
 $(document).ready(function(){
+		
+	var allPostList = $(".AList");
 	
-	var allPostList = $(".allPostList");
-	
-	
-	channelService.getChannelList();
+	var channelList = $(".boardList");
 	
 	showList(1);
 	
@@ -11,6 +10,34 @@ $(document).ready(function(){
 	function showList(page){
 		
 	console.log("show List " + page);
+	
+
+	channelService.getChannelList( {page: page || 1} , function(postCnt, list){
+		console.log("channelCnt= " + postCnt);
+		
+		if(page == -1 ){
+			pageNum = Math.ceil(postCnt / 10.0);
+			showList(pageNum);
+			return;
+		}
+		
+		var str = "";
+		
+		if(list == null || list.length == 0){
+			str = "<h3>개설 된 채널 게시판이 없습니다.</h3>";
+		}
+		
+		str += "<ul>";
+		for(var i = 0, len = list.length || 0; i < len; i++){
+			str += "<li data-channelsn='"+list[i].channelSN+"'>";
+			str += "<a href='/channel/board/"+list[i].channelSN+"'><i class='fab fa-youtube'></i><strong>"
+			+list[i].channelTitle+"</strong></a></div></li>";
+			
+		}
+			str += "</ul>";
+		channelList.html(str);
+		
+	});
 	
 	channelService.getAllPost( {page: page || 1 }, function(postCnt, list){
 	
@@ -25,18 +52,21 @@ $(document).ready(function(){
 		var str = "";
 		
 		if(list == null || list.length == 0){
-			return;
+			str = "<table class='boardTable' style='table-layout: fixed;'>"
+			str += "<thead><tr><th>글 번호</th><th>글 제목</th><th>작성자</th><th>작성 일</th></tr></thead>";
 		}
 		
-		str += "<thead><tr><th>채널명</th><th>글 제목</th><th>작성자</th><th>작성 일</th></tr></thead>"
+		str += "<table><thead><tr><th>게시판 이름</th><th>글 제목</th><th>작성자</th><th>작성 일</th></tr></thead>";
 		for (var i = 0, len = list.length || 0; i < len; i++){
 			
-			str += "<thead><tr><td>"+list[i].channelTitle + "</td>";
+			str += "<thead><tr>";
+			str += "<td>"+list[i].channelTitle + "</td>";
 			str += "<td><a  href='/channel/get/"+list[i].postSN+"'>"+list[i].title+"["+list[i].replyCnt+"]"+"</a></td>";
 			str += "<td>"+list[i].nick + "</td>";
-			str += "<td>"+channelService.displayTime(list[i].createDateTime) +"</td></tr></thead>";
-			
+			str += "<td>"+channelService.displayTime(list[i].createDateTime) +"</td>";
+			str += "</tr></thead>";
 		}
+			str += "</table>";
 		
 		allPostList.html(str);
 		showPostPage(postCnt);
@@ -63,17 +93,17 @@ $(document).ready(function(){
 			next = true;
 		}
 		
-		var str = "<ul class='pagaination pull-right'>";
+		var str =	"<ul class=''>";
 		
 		if(prev){
-			str += "<li class='page-item'><a class='page-link' href='"+(startNum -1) +"'>Previous</a>";
+			str += "<li class='page-item'><a class='borderR' href='"+(startNum -1) +"'>Previous</a></li>";
 		}
 		for ( var i = startNum; i <= endNum; i++){
 			var active = pageNum == i ? "active":"";
 			str += "<li class='page-item "+active +" '><a class='page-link' href='"+i+"'>"+i+"</a></li>";
 		}
 		if(next){
-			str += "<a class='page-link' href='"+ (endNum + 1) + "'>Next</a></li>";
+			str += "<li><a class='borderR2' href='"+ (endNum + 1) + "'>Next</a></li>";
 		}
 		str += "</ul>";
 		
@@ -93,7 +123,7 @@ $(document).ready(function(){
 	$("#boardPost").on("click",function(){
 		self.location = "/category/main";
 	});
-	$("#createChannel").on("click" , function(){
+	$(".createChannel").on("click" , function(){
 		self.location = "/channel/chcreate";
 	});
 	

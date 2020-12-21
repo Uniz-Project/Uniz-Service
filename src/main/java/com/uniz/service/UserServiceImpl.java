@@ -125,6 +125,7 @@ public class UserServiceImpl implements UserService{
 				user = mapper.getUser(user);
 				session.setAttribute("user", user);
 				session.setAttribute("userType", user.getUserType());
+				session.setAttribute("userSN", user.getUserSN());
 				
 				//로그인 이력 변경
 				mapper.updateUserLogin(user.getUserSN());
