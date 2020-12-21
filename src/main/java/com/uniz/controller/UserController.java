@@ -34,7 +34,9 @@ public class UserController {
 
 	private UserService userService;
 	private UnizService unizService;
+
 	private ApplyCreatorService applyService;
+
 
 	@GetMapping("/loginForm")
 	public String goLoginForm() {

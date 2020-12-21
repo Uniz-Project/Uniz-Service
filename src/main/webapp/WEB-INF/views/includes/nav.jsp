@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     
  <div class="nav">
@@ -43,7 +42,6 @@
              </ul>
          </div>
     </div>
-   
     <div class="nav2">
         
         <div class="searchBox2">
@@ -53,22 +51,13 @@
             </form>
         </div>
         <!-- end searchBox -->
-        <c:if test="${user == null}">   
-	                <div class="btnBox">
-	                   <button class="login" onclick="location.href='/user/loginForm'">로그인</button>
-	                    <button class="register" onclick="location.href='/user/register'">가입하기</button>
-	                </div>
-                </c:if>
-                
-                <c:if test="${user != null}">
-                	<div class="btnBox">
-	                   <button class="login" onclick="location.href='/user/logout'">로그아웃</button>
-	                    <button class="register" onclick="location.href='/user/info'">마이페이지</button>
-	                </div>
-                       
-           </c:if>
+        <div class="btnBox">
+            <a href="/user/loginForm"><button class="login">로그인</button></a>
+            <a href="/user/register"><button class="register">회원가입 </button></a>
+        </div>
     </div>
 </div>
 <div class="emptyNav"></div>
+
 <!-- end navbar -->
 

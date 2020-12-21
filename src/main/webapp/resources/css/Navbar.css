@@ -12,7 +12,9 @@
     display:flex;
     justify-content: space-between;
     position: fixed;
+
     z-index: 1000;
+
 }
 .emptyNav{
     width: 100%;
@@ -50,7 +52,9 @@
 }
 .nav1-2 ul li a:hover{
     color: rgb(27, 27, 27);
+
     border-bottom: 7px solid #73dfe9;
+
     /* transition: cubic-bezier(0.075, 0.82, 0.165, 1); */
     transition: 0.4s ease;
 }
@@ -73,7 +77,11 @@
     align-items: center;
     position: relative;
 }
-form{
+
+
+body > div.nav > div.nav2 > div.searchBox2 > form
+{
+
     /* background-color: gray; */
     position: relative;
     width: 400px;

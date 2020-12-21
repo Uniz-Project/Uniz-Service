@@ -9,11 +9,12 @@
  
   <body>
 
-  	
-
+  
 		<%@ include file="/WEB-INF/views/includes/nav.jsp"%>		
 	  <!-- Nav bar -->
        
+     
+
      
 
   </body>
