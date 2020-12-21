@@ -28,6 +28,7 @@ import lombok.extern.log4j.Log4j;
 public class UserServiceImpl implements UserService{
 
 	private UserMapper mapper;
+	private UnizPointMapper unizPointMapper;
 	private BCryptPasswordEncoder PasswordEncode;
 	
 	@Transactional
