@@ -21,18 +21,11 @@ function getList(param ){
 			
 			
 		//data.length를 5개씩 나눠서 보여주기;
-			for (var i = 0, len = data.length ; i < len ; i++) {
+			for (var i = 0 ; i < 32 ; i++) {
 				
-						
-			
-				if(i == 0 || i % 5 == 0){
-				
-				str += "<h3>"+"주제별 영상"+(i+1)+"~"+(i+5)+"</h3>";
-		
-				}
-				
+				str += "<div class='item'>";
 				str += "<a href= '"+data[i].videoSN+"'><img src='"+data[i].thumbUrl+"'></a>";
-				
+				str += "</div>";
 			}
 			
 				
@@ -66,16 +59,12 @@ function getListAll(){
 			
 			
 		//data.length를 5개씩 나눠서 보여주기;
-			for (var i = 0, len = data.length ; i < len ; i++) {
-			
-			
-				if(i == 0 || i % 5 == 0){
-				
-				str += "<h3>"+"주제별 영상"+(i+1)+"~"+(i+5)+"</h3>";
-		
-				}
-				
+			for (var i = 0  ; i < 32 ; i++) {
+				str += "<div class='item'>";
 				str += "<a href= '"+data[i].videoSN+"'><img src='"+data[i].thumbUrl+"'></a>";
+				str += "</div>";
+				
+				
 				
 			}
 			
