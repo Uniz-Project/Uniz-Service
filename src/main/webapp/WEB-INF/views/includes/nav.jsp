@@ -59,18 +59,24 @@
 	                    <button class="register" onclick="location.href='/user/register'">가입하기</button>
 	                </div>
                 </c:if>
-                
+				
+				                
                 <c:if test="${user != null}">
                 
                  <div class="btnBox">
-                <button class="login" onclick="location.href='/user/logout'">로그아웃</button>
-
+                 <c:if test="${user.userType ne 99}">  
+                <button class="login">${user.nick}</button>
+				</c:if>
+                 <c:if test="${user.userType eq 99}">  
+                <button class="login" onclick="location.href='http://localhost:8080/'">관리자페이지</button>
+				</c:if>
                 <div class="dropdown">
 
                     <a href=""><button class="register" style="padding:2px; margin-left: 25px; border-radius: 50%;"><i class="fas fa-user-circle"></i></button></a>
                     <div class="dropdown-content">
                         <a href="/user/info">마이페이지</a>
                         <a href="/user/showHistory">내 시청이력</a>
+                        <a href="/user/logout">로그아웃</a>
                     </div>
                 </div>
                 <!-- end dropdown -->

@@ -126,12 +126,10 @@ public class UserServiceImpl implements UserService{
 			String password= user.getPassword();
 			String dbPassword = mapper.getUserPassword(user);
 			Boolean pwdMatch = PasswordEncode.matches(password, dbPassword);
-			log.info("pwdMatch : "+ pwdMatch);
-			int loginResult = mapper.userLogin(user);
-			
 			//로그인 성공
 			if(pwdMatch) {
-				
+				user.setPassword(dbPassword);
+				mapper.userLogin(user);
 				//세션 생성
 				user = mapper.getUser(user);
 				session.setAttribute("user", user);
