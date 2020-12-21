@@ -132,7 +132,7 @@ public class UnizPointServiceImpl implements UnizPointService {
 		final String SUCCESS = "SUCCESS";
 		final String FAIL = "FAIL";
 		final int ADD_POINT = 5;
-		
+		final int type = 3; //비디오 시청
 		if(myUnizPoint.getUserSN() != null && myUnizPoint.getUnizSN() != null) {
 			
 			int result;
@@ -141,8 +141,9 @@ public class UnizPointServiceImpl implements UnizPointService {
 			//해당 유튜브 카테고리로 매핑된 uniz를 가져온다.
 			//1-1 . MyUnizPoint에 해당 uniz가 등록되어있을경우 update point +
 			//1-2 . MyUnizPoint에 해당 uniz가 등록되지 않았을 경우 insert// 
-			result = mapper.addMyUnizPoint(myUnizPoint.getUserSN(),myUnizPoint.getUnizSN(),ADD_POINT);				
-
+			result = mapper.addMyUnizPoint(myUnizPoint.getUserSN(),myUnizPoint.getUnizSN(),ADD_POINT);
+			mapper.addHistory(myUnizPoint.getUserSN(),myUnizPoint.getUnizSN(),ADD_POINT,type);
+			
 			
 			//-> 현재까지 본 영상을 어떻게 저장?
 			return result ==1 ? SUCCESS : FAIL;

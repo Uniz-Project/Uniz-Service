@@ -205,10 +205,10 @@
 			});
 			
 			$('#logTable').DataTable({
-				"dom": '<"bottom"lp>lt<"bottom"if>',
+				
 				processing: true,
 				serverSide: false,
-				paging: false,
+				paging: true,
 				pagingType: "simple_numbers",
 				order: false,
 				ordering: false,

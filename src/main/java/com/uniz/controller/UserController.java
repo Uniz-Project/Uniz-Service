@@ -4,8 +4,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+<<<<<<< .mine
+
+=======
+import javax.servlet.http.HttpServletRequest;
+>>>>>>> .theirs
 import javax.servlet.http.HttpSession;
 
+import org.springframework.lang.Nullable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +26,11 @@ import com.uniz.domain.ApplyVO;
 import com.uniz.domain.MyUnizPoint;
 import com.uniz.domain.UnizVO;
 import com.uniz.domain.UserDTO;
+<<<<<<< .mine
 import com.uniz.service.ApplyCreatorService;
+=======
+import com.uniz.domain.VideoDataVO;
+>>>>>>> .theirs
 import com.uniz.service.UnizService;
 import com.uniz.service.UserService;
 
@@ -34,12 +45,16 @@ public class UserController {
 
 	private UserService userService;
 	private UnizService unizService;
-
+	private BCryptPasswordEncoder passwordEncoder;
 	private ApplyCreatorService applyService;
-
-
 	@GetMapping("/loginForm")
-	public String goLoginForm() {
+	public String goLoginForm(HttpServletRequest request) {
+
+		String referer = request.getHeader("Referer");
+		request.getSession().setAttribute("redirectURI", referer);
+
+		log.info("referer : " + referer);
+
 		return "/user/loginForm";
 	}
 
@@ -63,7 +78,7 @@ public class UserController {
 	public String logout(HttpSession session) {
 		session.invalidate();
 
-		return "home";
+		return "redirect:/";
 	}
 
 	@GetMapping("/info")
@@ -94,9 +109,13 @@ public class UserController {
 
 	// 회원가입 폼에서 회원가입 버튼 클릭
 	@PostMapping("/register")
-	public String register(UserDTO user, @RequestParam("unizSN") List<Long> unizSN) {
+	public String register(UserDTO user, @RequestParam("unizSN") @Nullable List<Long> unizSN) {
 		log.info("user : " + user);
 		log.info("unizSN : " + unizSN);
+
+		String encPassword = passwordEncoder.encode(user.getPassword());
+		user.setPassword(encPassword);
+		log.info("암호화 된 비밀번호 : " + encPassword);
 
 		int result = userService.userRegister(user, unizSN);
 
@@ -189,23 +208,62 @@ public class UserController {
 
 		log.info("session Check : " + session.getAttribute("user"));
 
-		model.addAttribute("result", loginResult);
-		return loginResult == SUCCESS ? "home" : "/user/loginForm";
+		String backUrl = (String) session.getAttribute("redirectURI");
+		log.info("UrlBack : " + backUrl);
+
+		return loginResult == SUCCESS ? "redirect:" + backUrl : "/user/loginForm";
 
 	}
 
 	// 영상 시청기록 저장
-
 	@PostMapping("/addHistory")
 	public @ResponseBody Map<String, Object> addMyPlayLog(Long userSN, Long videoSN, int currentTime) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		String resultStr = "FAIL";
-		if(userSN != null) {
+		if (userSN != null) {
 			resultStr = userService.addMyPlayLog(userSN, videoSN, currentTime);
 		}
-		
+
 
 		map.put("result", resultStr);
 		return map;
+	}
+
+	// 유저의 POINT획득 로그 가져오기
+	@GetMapping("/getMyPointHistory")
+	public @ResponseBody Map<String, Object> getMyPointHistory(HttpSession session) {
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		if (session.getAttribute("user") != null) {
+			UserDTO userDto = (UserDTO) session.getAttribute("user");
+			List<MyUnizPoint> myUnizPointHs = unizService.getMyPointHistory(userDto.getUserSN());
+
+			map.put("data", myUnizPointHs);
+		}
+
+		log.info("myUnizPointHs " + map);
+		return map;
+	}
+
+	// 시청이력 가져오기
+	@GetMapping("/showHistory")
+	public String showHistory(HttpSession session, Model model) {
+
+		if (session == null) {
+
+			// 세션이 만료되었습니다.
+			return "home";
+		}
+
+		// 시청했던 시간값이 정확하지 않다. o
+
+		UserDTO dto = (UserDTO) session.getAttribute("user");
+		// 사용자의 시청이력을 가져온다.
+		List<VideoDataVO> showList = userService.getShowHistory(dto.getUserSN());
+
+		log.info("showList : " + showList);
+		model.addAttribute("VideoData", showList);
+
+		return "/user/showHistory";
 	}
 }

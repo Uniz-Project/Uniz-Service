@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.uniz.domain.MyUnizPoint;
 import com.uniz.domain.UserDTO;
+import com.uniz.domain.VideoDataVO;
 
 public interface UserService {
 
@@ -32,6 +33,8 @@ public interface UserService {
 	public void changeUserState(Long userSN, int STATECODE);
 
 	public String addMyPlayLog(Long userSN, Long videoSN, int currentTime);
+
+	public List<VideoDataVO> getShowHistory(Long userSN);
 	
 	
 
