@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.uniz.mapper.UserMapper">
-
 <insert id="userDataInsert">
 	<selectKey keyProperty="userSN" order="BEFORE" resultType="long">
 		SELECT USERDATA_SEQ.NEXTVAL FROM DUAL
@@ -12,6 +11,12 @@
 	(#{userSN},#{userId}, #{password}, #{nick}, #{imgUrl})
 
 </insert>
+
+<select id="getUserPassword" resultType="String">
+	select password
+	from userdata
+	where userid = #{userId}
+</select>
 
 <insert id="userSelectUnizInsert">
 	<selectKey keyProperty="userSN" order="BEFORE" resultType="long">
@@ -144,4 +149,12 @@
 		  (#{userSN}, #{videoSN}, #{position}) 
 		  
 	</insert> 
+	
+	<select id="getShowHistory" resultType="com.uniz.domain.VideoDataVO">
+		SELECT V.*, MP.lastposition
+		FROM myplaylog MP, VIDEODATA V
+		WHERE MP.USERSN = #{userSN}
+		AND
+		V.VIDEOSN = MP.VIDEOSN
+	</select>
 </mapper>

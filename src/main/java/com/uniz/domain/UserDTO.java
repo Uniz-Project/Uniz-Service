@@ -33,7 +33,9 @@ public class UserDTO {
 	@DateTimeFormat(pattern ="yyyy-MM-dd")
 	private Date lastStateDateTime; //회원최종상태
 	
-	List<MyUnizPoint> myUnizPoint;
+	private List<MyUnizPoint> myUnizPoint;
+	private List<AuthVO> authList;
+	
 	
 	
 	

@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.uniz.domain.MyUnizPoint;
 import com.uniz.domain.UserDTO;
+import com.uniz.domain.VideoDataVO;
 
 public interface UserMapper {
 	
@@ -43,5 +44,9 @@ public interface UserMapper {
 	public void updateUserLogin(@Param("userSN") Long userSN);
 
 	public int addMyPlaylog(@Param("userSN")Long userSN, @Param("videoSN")long videoSN, @Param("position")int position);
+
+	public List<VideoDataVO> getShowHistory(@Param("userSN")Long userSN);
+
+	public String getUserPassword(UserDTO user);
 
 }
