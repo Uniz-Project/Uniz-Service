@@ -48,8 +48,10 @@
 					
 		 	<form id="form" >
 	                <input type="hidden" id="duration" name ="" value="${videoData.duration}">
+	                
 	                <input type="hidden" id="videoSN" name ="videoSN" value="${videoData.videoSN}">
-	                <input type="hidden" id="unizSN" name ="unizSN" value="${videoData.utbCateSN}">
+	                
+	                <input type="hidden" id="unizSN" name ="parentSN" value="${videoData.parentUniz}">
 	                <input type="hidden" id="userSN" name ="userSN" value="${userSN}">
 
             </form>  

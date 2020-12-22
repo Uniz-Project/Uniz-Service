@@ -26,5 +26,7 @@ public interface UnizPointMapper {
 	
 	public List<MyUnizPoint> getMyUnizPointList(Long userSN);
 
-	public int addMyUnizPoint(@Param("userSN")Long userSN, @Param("unizSN")Long parentUniz, @Param("addPoint")int point);
+	public int addMyUnizPoint(@Param("userSN")Long userSN, @Param("unizSN")Long list, @Param("addPoint")int point);
+
+	public int addMyUnizPoints(@Param("userSN")Long userSN, @Param("unizSNList") List<Long> parentSN,@Param("addPoint")int aDD_POINT);
 }

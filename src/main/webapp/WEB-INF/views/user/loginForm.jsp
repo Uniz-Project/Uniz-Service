@@ -3,9 +3,10 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-
-<title>Insert title here</title>
+<head><%-- 
+<%@ include file="/WEB-INF/views/includes/header.jsp"%> --%>
+<link rel="stylesheet" href="/resources/css/RegisterLogin.css">
+<title>Uniz로그인페이지</title>
 </head>
 <body>	
 

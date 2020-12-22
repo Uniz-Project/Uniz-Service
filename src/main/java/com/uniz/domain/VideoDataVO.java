@@ -1,6 +1,7 @@
 package com.uniz.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -37,6 +38,7 @@ public class VideoDataVO {
 	private Date yUploadDateTime; //게시글작성일
 	private String keywords;
 	private int lastPosition;
+	private List<Long> parentUniz;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
 	private Date createDateTime; //생성일

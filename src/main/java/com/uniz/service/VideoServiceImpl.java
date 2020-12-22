@@ -1,6 +1,8 @@
 package com.uniz.service;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,11 +37,12 @@ public class VideoServiceImpl implements VideoService{
 		videoVO.setUrlPath(changeURL.substring(idx+1));
 		
 		System.out.println(videoVO.getUrlPath());
-		Long utbCateSN = videoVO.getUtbCateSN();
+		Long utbCateSN = videoVO.getUtbCateSN();		
 		
-		Long parentUniz = unizMapper.findParentUniz(utbCateSN);
+		//2개
+		List<Long> parentUniz = unizMapper.findParentUniz(utbCateSN);
 		
-		videoVO.setUtbCateSN(parentUniz);
+		videoVO.setParentUniz(parentUniz);
 		
 		return videoVO;
 	}

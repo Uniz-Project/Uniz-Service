@@ -233,6 +233,9 @@ public class UnizController {
 	//대
 	@PostMapping("/addMypoint")
 	public @ResponseBody Map<String, Object> showVideoAddMyPoint(MyUnizPoint myUnizPoint){
+		
+		log.info("myunizpoint : " + myUnizPoint);
+		
 		String resultStr = "FAIL";
 		Map<String, Object> map = new HashMap<String, Object>(); 	 
 		if(myUnizPoint.getUserSN() != null) {

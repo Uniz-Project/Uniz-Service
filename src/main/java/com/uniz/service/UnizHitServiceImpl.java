@@ -60,9 +60,9 @@ public class UnizHitServiceImpl implements UnizHitService {
 		System.out.println(videoVO.getUrlPath());
 		Long utbCateSN = videoVO.getUtbCateSN();
 		
-		Long parentUniz = unizMapper.findParentUniz(utbCateSN);
+		List<Long> parentUniz = unizMapper.findParentUniz(utbCateSN);
 		
-		videoVO.setUtbCateSN(parentUniz);
+		videoVO.setParentUniz(parentUniz);
 		
 		return videoVO;
 	}
