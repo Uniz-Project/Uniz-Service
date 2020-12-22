@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -11,10 +12,11 @@
 <head>
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
 </head>
+
 <body>
 	<%@ include file="/WEB-INF/views/includes/nav.jsp"%>
 	<div class="mainPage">
-
+	
 		<div class="emptyBox">
 			<h1>내 프로필</h1>
 		</div>
@@ -44,6 +46,56 @@
 						<button class="myModify" id="myBtn"
 							onclick="location.href='/user/modify'">수정하기</button>
 						<button class="myDelete" id="removeBtn">탈퇴하기</button>
+						<c:if test="${apply ne null }">
+						<button id="showModal" >크리에이터 신청 현황 </button>
+						</c:if>
+					</div>
+				</div>
+			</div>
+			
+			<div id="myModal" class="modal">
+				<div class="modal-content">
+					<h3>[ 크리에이터 신청 상태 ]</h3>
+					<div class="applyInfo">
+						
+						<table style="width: 100%; all:none;" >
+							<thead class="thead-light">
+								<tr>
+									<th> [채널 이름] </th>
+									<th> [이메일 주소] </th>
+									<th> [신청 현황] </th>
+									<th> [신청 날짜] </th>
+									</tr>
+							</thead>
+							
+								<tr>
+									<td></a><c:out value="${apply.channelTitle}" /></td>
+									<td><c:out value="${apply.email}" /></td>
+									
+									<c:choose>
+									
+										<c:when test = "${apply.state == 10}" >
+											<td>심사중</td>
+										</c:when>
+										
+										<c:when test = "${apply.state == 11 }" >
+											<td>승인</td>
+										</c:when>
+										
+										<c:when test = "${apply.state == 12 }" >
+											<td>거절</td>
+										</c:when>
+										
+									</c:choose>
+									
+									<td><fmt:formatDate pattern="yyyy-MM-dd" 
+								 value="${apply.createDateTime}"/></td>
+								</tr>
+								
+						</table>		
+							
+							<button class="moveApplyInfo">신청 내역 보러가기</button>
+							
 					</div>
 				</div>
 			</div>
@@ -70,7 +122,8 @@
 								</div>
 							</div>
 
-						</c:forEach>
+					</c:forEach>
+
 
 						<!-- 계속 추가하면 된다.  -->
 					</div>
@@ -98,6 +151,29 @@
 	
 	<%@ include file="/WEB-INF/views/includes/script.jsp"%>
 	<script>
+		
+	
+		var modal = document.getElementById("myModal");
+		
+		var showModal = document.getElementById("showModal");
+		
+		
+		showModal.onclick = function(){
+			modal.style.display = "block";
+		}
+		
+		window.onclick = function(event) {
+			if (event.target == modal) {
+		        modal.style.display = "none";
+		    }
+		}
+		
+		$(".moveApplyInfo").on("click", function(){
+			
+			self.location = "../creator/get?userSN="+ ${user.userSN};
+			
+		});
+	
 		$(document).ready(function() {
 			$("#removeBtn").click(function() {
 				if (confirm("정말로 탈퇴하시겠습니까??") == true) {
@@ -139,8 +215,14 @@
 					{data: "createDateTime"}
 				]
 			
+
 		});
+			
+			
 	});
+
+		
 	</script>
+
 </body>
 </html>

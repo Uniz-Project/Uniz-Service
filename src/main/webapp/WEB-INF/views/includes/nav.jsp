@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     
  <div class="nav">
@@ -43,7 +42,6 @@
              </ul>
          </div>
     </div>
-   
     <div class="nav2">
         
         <div class="searchBox2">
@@ -85,4 +83,6 @@
     </div>
 </div>
 <div class="emptyNav"></div>
+
 <!-- end navbar -->
+

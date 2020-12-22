@@ -5,7 +5,7 @@
 	<select id="getHitList" resultType = "com.uniz.domain.VideoDataVO">
 	<![CDATA[
 	
-	SELECT videoSN,thumbUrl,yuploaddatetime
+	SELECT videoSN,thumbUrl,title
 	
 	FROM videoData
 	

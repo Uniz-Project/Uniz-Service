@@ -86,6 +86,7 @@ public class UnizServiceImpl implements UnizService {
 
 		return mapper.getPresetList(menuSN);
 	}
+	
 
 	@Override
 	public List<MyUnizPoint> getMyPointHistory(Long userSN) {

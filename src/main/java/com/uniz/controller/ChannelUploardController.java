@@ -85,7 +85,7 @@ public class ChannelUploardController {
 						new FileOutputStream(new File(uploadPath, "s_" + uploadFileName ));
 					
 					Thumbnailator.createThumbnail(multipartFile.getInputStream(), 
-							thumbnail, 400, 400);
+							thumbnail, 200, 200);
 					
 					log.info("thumbnail : " + thumbnail);
 					thumbnail.close();

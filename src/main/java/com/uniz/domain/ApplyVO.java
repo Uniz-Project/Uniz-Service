@@ -11,6 +11,7 @@ public class ApplyVO {
 	private Long applySN;
 	private Long userSN;
 	private int userType;
+	private int state;
 	private String channelTitle;
 	private String category;
 	private String email;

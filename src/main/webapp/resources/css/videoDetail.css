@@ -1,35 +1,232 @@
-*{ box-sizing: border-box;
-   margin: 0;
-   padding: 0;
-   font-family: "Noto Sans KR", sans-serif, 나눔고딕, 돋움, Dotum, 굴림, Gulim, "Apple SD Gothic Neo";
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: "Noto Sans KR", sans-serif, 나눔고딕, 돋움, Dotum, 굴림, Gulim,
+		"Apple SD Gothic Neo";
 }
-
+.mainPage {
+	/* background-color: rgb(107, 77, 77);  */
+	width: 100%;
+	height: 800px;
+}
 /* 시청페이지  */
-.watchMainBox{
-    background-color: sandybrown;
-    display: flex;
-    width:88%;
-    height: 590px;
-    margin: 0 auto;
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform : translate(-50%, -60%);
-
+.watchMainBox {
+/* 	background-color: sandybrown; */
+	background-color: rgb(237, 245, 242);
+	border: 1px solid #ddd;
+	display: flex;
+	width: 93%;
+	height: 85%;
+	position: absolute;
+	top: 72%;
+	left: 53%;
+	transform: translate(-53%, -70%);
+	/* 시청페이지 전체 박스 위치를 조정하고 싶으면 여기의 top과 left값을 조정할것 transform도 같이  */
+	box-shadow: 2px 6px 6px 6px #ddd;
 }
-.videoWatch{
-    width:67%;
-    height: 100%;
-    background-color: blue;
+.videoWatch {
+	width: 78%;
+	height: 100%;
+	border-right: 1px solid #ddd;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+ .videoWatch iframe {
+	width: 93%;
+	height: 80%;
+} 
+.parent {
+	/* 정보 박스 최상위 부모  */
+	width: 33%;
+	height: 100%;
+	background-color: white;
+	position: relative;
+}
+.title{
+	/* 제목+ 정보  감싸는 박스.  */
+	width: 100%;
+	/* height: 88.1%; */
+	height: 86%;
+    overflow: auto;
+    background-color: white;
+    position:relative;
+    z-index: 100;
+}
+.commentPage {
+	width: 100%;
+	height: 60%;
+ 
+	overflow: auto;
+	overflow-x: hidden;
+    background-color: tomato;
+    position: relative;
+}
+.h3{
+	margin-top: 10px;
+	color: black;
+	font-size: 20px;
+	padding: 18px;
+	text-align: center;
+	/* 시청페이지 제목, 타이틀 폰트 크기 조정은 여기서.  */
+}
+
+.slideshow-container p {
+	text-align: left;
+	line-height: 25px;
+}
+ #form{
+	border: none;
+	hidden된 form에 대한 border delete
+	width:0;
+	height: 0;
+}
+.info3{
+	width:100%;
+	height: 100px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	overflow: auto;
+}
+.info3 p{
+	padding-left: 30px;
+	color: rgb(114, 114, 114);
+}
+.info3 .writer{
+color: black;
+line-height: 33px;
+	
+}
+.info3 p svg{
+	margin-right: 5px;
+	color: dodgerblue;
+}
+.noBorder {
+/*form 태그 말하는 것임.  */
+	 background-color: sienna; 
+	background-color: white;
+	width: inherit;
+	height:80px;
+	border:none;
+ display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 5px;
+}
+.noBorder{
+	margin: 0;
+	width: inherit;
+}
+#content
+ {
+ /* 댓글을 입력해보세요 칸 . */
+    width: 84%;
+	height: 50px;
+	padding-left: 8px;
+	font-size: 16px;
+	overflow: auto;
+	outline: none;
+	position: relative;
+	border: none;
+}
+.input-group-btn{  
+   width: 16%;
+}
+.noBorder > span > button{
+	width: 95%;
+	height: 50px;
+	background-color: rgb(227, 249, 255);
+	color: rgb(12, 140, 175);
+	font-size: 22px;
+	padding-right: 2px;
+	border: none;
+	outline: none;
+	position: relative;
+	left: 5px;
+	top:9px;
+	border-radius: 60%;
+}
+.noBorder > span > button:hover{
+	background-color: rgb(16, 207, 224);
+	color: white;
+	transition: 0.4s ease-out;
+	
+}
+.noBorder{
+	width: 90%;
+	margin: 0 auto;
+	
+}
+.line10{
+	background-color: #ddd;
+	width: 90%;
+	margin: 0 auto;
+	height: 2px;
+}
+.chat{
+	width: 90%;
+	margin: 0 auto;
+}
+.chat li{
+	list-style-type: none;
+	padding: 20px;
+	border-bottom: 1px solid #ddd;
+}
+.chat li:hover{
+	background-color:rgb(243, 248, 251);
+	transition: .4s ease-out;
+	
+}
+.cmtRem, .cmtMod{
+	background-color: white;
+	border: 1px solid #ddd;
+	outline: none;
+	padding: 6px 9px;
+	margin-left: 5px;
+	position: absolute;
+	right: 10%;
+	border-radius: 0 2px 2px 0;
+}
+.cmtMod:hover {
+	color: blue;
+	border-color: blue;
+}
+.cmtRem:hover{
+	color: red;
+	border-color: tomato;
+} 
+.cmtMod{
+	position: absolute;
+	right: 20.2%;
+	border-radius: 2px 0 0 2px;
+}
+.form-control{
+	
+    background-color: rgb(246, 252, 255);
+    font-size: 16px;
+ 
+    width: 85%;
+    height: 30px;
+    border: 1px solid rgb(161, 161, 161);
+    border-radius: 3px;
+    outline: none;
     display: inline-block;
+     margin-top: 15px;
 }
-.videoWatch iframe{
-    width: 100%;
-    height: 100%;
+.cmtMod2{
+	background-color: white;
+	border: 1px solid #ddd;
+	outline: none;
+	padding: 6.5px 9px;
+	
+	position: relative;
+	right: 0;
+	bottom: 1px;
+	border-radius: 2px;
 }
-.class101{
-    width: 33%;
-    height: 100%;
-    background-color: rgba(255, 242, 166, 0.7);
+.cmtMod2:hover {
+	color: blue;
+	border-color: blue;
 }
-

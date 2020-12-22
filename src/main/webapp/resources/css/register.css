@@ -1,11 +1,14 @@
-
+.mainPage{
+    background-color: rgb(230, 226, 222);
+    width: 100%;
+    height: 1900px;
+}
 /* apply .html  */
 .applyMain{
     /* background-color: rgb(45, 61, 105); */
     width: 90%;
     height: 1200px;
     margin: 30px auto;
-    
 }
 .creatorRegisterHeader{
     /* background-color: rgb(198, 238, 236); */
@@ -97,11 +100,19 @@ body > div.applyMain > div.createForm > form > div > div.CateList > label{
 .catList{
     margin-right: 0;
 }
-.uploadResult{
+.thumbNail{
     background-color: rgb(202, 235, 238);
     width: 90%;
     height: 260px;
     margin: 0 auto;
+    overflow: auto;
+}
+
+.thumbNail{
+	overflow: auto;
+}
+	
+	
 }
 .timesBtn{
     width: 20px;
@@ -129,10 +140,7 @@ body > div.applyMain > div.createForm > form > div > div.CateList > label{
 .ChseBtn input[type="file"]{
     font-size: 20px;
     color: rgb(14, 79, 184);
-
-    display: none; 
-
-
+    display: none;
 }
 .uploadFileBox label{
     padding: 6px 25px;
@@ -164,36 +172,10 @@ body > div.applyMain > div.createForm > form > div > div.CateList > label{
     color: rgb(0, 111, 126);
 }
 
-.footer{
-    background-color: rgb(85, 163, 241);
-    width: 100%;
-    height: 200px;
-    display: flex;
+.form{
+    border: none;
+    /* 네브바 때문에 생긴 테두리 지움.  */
 }
-.footer1{
-    /* background-color:yellow; */
-    width: 30%;
-    height: 100%;
-    padding: 40px 10px;
-    margin: 0 auto;
-}
-.footer2{
-    /* background-color: yellowgreen; */
-    width: 20%;
-    height: 100%;
-    padding: 40px;
-}
-.footer3{
-    /* background-color: aquamarine; */
-    width: 50%;
-    height: 100%;
-    padding: 40px 16px;
-    
-}
-.footer1, .footer2, .footer3{
-    color: white;
-}
-
 
 /* get get.html */
 .uploadResult ul li, .thumbNail ul li{

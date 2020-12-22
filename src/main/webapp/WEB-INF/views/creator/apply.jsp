@@ -12,14 +12,16 @@
 </head>
 <body>
 
+
 <%@ include file="/WEB-INF/views/includes/nav.jsp"%>
+
 
 	<div class="applyMain">
 			<div class="creatorRegisterHeader">
 				<h1>크리에이터 등록 페이지</h1>
 			</div>
 				<div class="createForm">
-					<form role="form" action="/creator/apply" method="post" >
+					<form role="form" action="/creator/applyCreator" method="post" onsubmit="return checkValid();" >
 
 						
 					<div class="RegisterForm">
@@ -27,10 +29,9 @@
 							<label class="label">(운영하는)채널 이름</label>
 							<input class="form-control" name='channelTitle' id='channelTitle' placeholder="channelName">
 				
-							<label class="label">닉네임</label>
-							<input class="form-control" name='nick' id='nick' placeholder="nick" readonly="readonly">
-							<label class="label">UserSN</label>
-							<input class="form-control" name='userSN' id='userSN' value="${user.userSN}" placeholder="userSN">
+							<label class="label">닉네임  <a href="#" onclick="location.href='/user/modify'">[닉네임 변경하러 가기]</a></label>
+							<input class="form-control" name='nick' id='nick' value="${user.nick}" placeholder="nick" readonly="readonly">
+							<input class="form-control" type="hidden" name='userSN' id='userSN' value="${user.userSN}" placeholder="userSN">
 
 						
 						<div class="CateList">
@@ -58,7 +59,7 @@
 							<label class="label" for="">[연락 받을 이메일 주소를 입력하세요] </label>
 							
 							<!-- <input  class="form-control" name='email' value=''> -->
-							<input  class="form-control" name='email' value='' placeholder="EmailAddress">
+							<input class="form-control" id="email" name='email' value='' placeholder="ex) aaaa@aaaa.com">
 						</div>
 						
 						
@@ -69,12 +70,11 @@
 						</div>
 						
 						<label class="label label5">[본인 유튜브 스튜디오 메인 페이지 캡쳐 이미지 업로드 해주세요]</label>						
+		   				
 		   				<div class="uploadFileBox"> 
 							<label for="uploadFile">파일 선택하기</label> 
 								<div class="ChseBtn">
-								
-
-								<input type='file' name='uploadFile'id="uploadFile" multiple >
+								<input type='file' id='file' name='uploadFile'id="uploadFile" multiple >
 							</div>
 						</div>
 						
@@ -241,16 +241,22 @@ $(".uploadResult").on("click", "button" , function(e){
 
 
 
-function checkTitle(){
+function checkValid(){
 
 
-var str = document.getElementById('title');
-var blank_pattern = /^\s+|\s+$/g;
+	var eamilCheck = document.getElementById('email');
+	var fileCheck = document.getElementById('file');
+	var blank_pattern = /^\s+|\s+$/g;
 
-if(str.value == '' || str.value == null || str.value.replace(blank_pattern, '').length == 0){
-	alert("제목을 입력하세요");
-	return false;
-}
+		if(eamilCheck.value == '' || eamilCheck.value == null || eamilCheck.value.replace(blank_pattern, '').length == 0){
+			alert("이메일을 입력하세요");
+			return false;
+		}
+		
+		if(fileCheck.value == '' || fileCheck.value == null){
+			alert("이미지 파일을 첨부 해주세요");
+			return false;
+		}
 
 }
 
