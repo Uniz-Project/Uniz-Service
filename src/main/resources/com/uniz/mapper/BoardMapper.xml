@@ -179,6 +179,12 @@
 		where postSN = #{postSN}
 	</update>
 	
+	<update id="updateViewCnt">
+		update boardpost
+		set viewcnt = viewcnt + #{amount}
+		where postSN = #{postSN}
+	</update>
+	
 	<select id="findByPostSN" parameterType="long" resultType="hashmap">
 		select filesn , orgname , changename , round(filesize/1024 , 1) 
 		from board_imgfile

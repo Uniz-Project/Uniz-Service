@@ -46,4 +46,6 @@ public interface BoardMapper {
 	
 	public void updateReplyCnt(@Param("postSN") Long postSN, @Param("amount") int amount);
 	
+	public void updateViewCnt(@Param("postSN") Long postSN, @Param("amount") Long amount);
+	
 }

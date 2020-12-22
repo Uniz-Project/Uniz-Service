@@ -200,6 +200,33 @@ table thead tr:nth-child(odd){
 
 
 /* pagination */
+.channelFooter{
+    position: absolute;
+    top: 320px;
+    /* margin-top: 450px; */
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+}
+.channelFooter ul li{
+    list-style-type: none;
+    display: inline;    
+    border-spacing: 0;
+}
+.channelFooter ul li a{
+    text-decoration: none;
+    border-collapse: none;
+    padding: 10px 12px;
+    font-size: 16px;
+    color: dodgerblue;
+    border : 1px solid rgb(199, 199, 199);
+}
+.channelFooter ul li a:hover, .active{
+    color: rgb(0, 100, 182);
+    background-color: rgb(223, 246, 255);
+    transition: 0.3s ease-in-out;
+}
 .postFooter{
     position: absolute;
     top: 620px;
@@ -231,5 +258,11 @@ table thead tr:nth-child(odd){
     border-radius: 0 5px 5px 0;
   }
 .borderR{
+    border-radius: 5px 0 0 5px;
+}
+.borderC2{
+    border-radius: 0 5px 5px 0;
+  }
+.borderC{
     border-radius: 5px 0 0 5px;
 }

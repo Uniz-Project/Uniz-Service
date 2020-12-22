@@ -36,6 +36,7 @@ $(document).ready(function(){
 		}
 			str += "</ul>";
 		channelList.html(str);
+		showPostPage(postCnt);
 		
 	});
 	
@@ -78,6 +79,8 @@ $(document).ready(function(){
 	
 	var postFooter = $(".postFooter");
 	
+	var channelFooter = $(".channelFooter");
+	
 	function showPostPage(postCnt){
 		
 		var endNum = Math.ceil(pageNum / 10.0) * 10;
@@ -108,9 +111,51 @@ $(document).ready(function(){
 		str += "</ul>";
 		
 		postFooter.html(str);
+		channelFooter.html(str);
+		
 	}
+/*function showChannelPage(postCnt){
+		
+		var endNum = Math.ceil(pageNum / 10.0) * 10;
+		var startNum = endNum -9;
+		
+		var prev = startNum != 1;
+		var next = false;
+		
+		if(endNum * 10 >= postCnt){
+			endNum = Math.ceil(postCnt/10.0);
+		}
+		if(endNum * 10 < postCnt){
+			next = true;
+		}
+		
+		var str =	"<ul class=''>";
+		
+		if(prev){
+			str += "<li class='page-item'><a class='borderC' href='"+(startNum -1) +"'>Previous</a></li>";
+		}
+		for ( var i = startNum; i <= endNum; i++){
+			var active = pageNum == i ? "active":"";
+			str += "<li class='page-item "+active +" '><a class='page-link' href='"+i+"'>"+i+"</a></li>";
+		}
+		if(next){
+			str += "<li><a class='borderC2' href='"+ (endNum + 1) + "'>Next</a></li>";
+		}
+		str += "</ul>";
+		
+		channelFooter.html(str);
+	}*/
 	
 	postFooter.on("click", "li a", function(e){
+		e.preventDefault();
+		
+		var targetPageNum = $(this).attr("href");
+		
+		pageNum = targetPageNum;
+		showList(pageNum);
+	});
+	
+	channelFooter.on("click", "li a", function(e){
 		e.preventDefault();
 		
 		var targetPageNum = $(this).attr("href");

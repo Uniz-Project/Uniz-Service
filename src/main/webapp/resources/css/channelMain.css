@@ -201,6 +201,36 @@ table thead tr:nth-child(odd){
 
 
 /* pagination */
+.channelFooter{
+	background-color: white;
+	margin-top: 30px;
+    width: 100%;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+.channelFooter ul li{
+    list-style-type: none;
+    display: inline;    
+    border-spacing: 0;
+}
+.channelFooter ul li a{
+    text-decoration: none;
+    border-collapse: none;
+    padding: 10px 12px;
+    font-size: 16px;
+    color: dodgerblue;
+    border : 1px solid rgb(199, 199, 199);
+    position: absolute;
+    top: 30px;
+}
+.channelFooter ul li a:hover, .active{
+    color: rgb(0, 100, 182);
+    background-color: rgb(223, 246, 255);
+    transition: 0.3s ease-in-out;
+}
+
 .postFooter{
 	background-color: white;
 	margin-top: 30px;

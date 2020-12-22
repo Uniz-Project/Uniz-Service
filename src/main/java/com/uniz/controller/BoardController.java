@@ -56,15 +56,6 @@ public class BoardController {
 		return new ResponseEntity<>(service.getBoardList() , HttpStatus.OK);
 	} 
 	
-//	@GetMapping(value = "/fileview/{postSN}",
-//			produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
-//	//@ResponseBody
-//	public ResponseEntity<List<Map<String , Object>>> findByPostSN(@PathVariable("postSN") Long postSN) {
-//		
-//		return new ResponseEntity<>(service.findByPostSN(postSN) , HttpStatus.OK);
-//		
-//	}
-	
 	// 게시판 별 게시글 목록 보여줌
 	@GetMapping(value = "/boardlist/{boardSN}/{page}",
 			produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
@@ -152,11 +143,22 @@ public class BoardController {
 		
 		log.info("postSN : " + postSN);
 		
+		
 		BoardVO vo = service.get(postSN);
 		
 		if(vo != null) {
 
 			model.addAttribute("board", vo);
+			
+//			try {
+//			
+//				if(!vo.getUserSN())
+//				
+//			} catch (Exception e) {
+//				
+//				e.printStackTrace();
+//				
+//			}
 			
 			return "category/get";
 		

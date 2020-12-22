@@ -103,13 +103,9 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public boolean delete(Long postSN) {
 		
-		log.info("이미지 삭제 전======");
 		attachMapper.deleteAll(postSN);
-		log.info("이미지 삭제 후======");
 		 
-		log.info("댓글 삭제 전 ");
 		 mapper.deleteReply(postSN);
-		 log.info("해당 글의 댓글 삭제");
 		 
 		 int chCont = mapper.deleteCont(postSN);
 		 int chPost = mapper.deletePost(postSN);
@@ -145,6 +141,13 @@ public class BoardServiceImpl implements BoardService {
 			
 		}
 		return modifyResult;
+	}
+	
+	@Override
+	public void updateViewCnt(Long postSN , Long amount) {
+		
+		mapper.updateViewCnt(postSN, amount);
+		
 	}
 	
 	@Override
