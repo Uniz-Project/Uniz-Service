@@ -4,11 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-<<<<<<< .mine
 
-=======
 import javax.servlet.http.HttpServletRequest;
->>>>>>> .theirs
 import javax.servlet.http.HttpSession;
 
 import org.springframework.lang.Nullable;
@@ -26,11 +23,9 @@ import com.uniz.domain.ApplyVO;
 import com.uniz.domain.MyUnizPoint;
 import com.uniz.domain.UnizVO;
 import com.uniz.domain.UserDTO;
-<<<<<<< .mine
-import com.uniz.service.ApplyCreatorService;
-=======
 import com.uniz.domain.VideoDataVO;
->>>>>>> .theirs
+import com.uniz.service.ApplyCreatorService;
+import com.uniz.domain.VideoDataVO;
 import com.uniz.service.UnizService;
 import com.uniz.service.UserService;
 
