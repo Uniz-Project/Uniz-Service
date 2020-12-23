@@ -1,0 +1,206 @@
+*{ box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans KR", sans-serif, 나눔고딕, 돋움, Dotum, 굴림, Gulim, "Apple SD Gothic Neo";
+    letter-spacing: -0.3px;
+ }
+.modal {
+  display: none; 
+  /* 다 작업하고 여기 none으로 바꾸기.  */
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 40px;
+  /* 이 padding 값 조정해서 흰색 박스 위치 지정 */
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%;
+  height: 100%;
+  position: relative;
+  border-radius: 40px;
+}
+.title{
+  width: 100%;
+  /* background-color: gold; */
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.title p{
+  font-weight: bold;
+  font-size: 20px;
+}
+.gridContainer{
+  width: 90%;
+  margin: 0 auto;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 15px;
+}
+.item{
+  /* label 이름  */
+    background-color: rgb(240, 137, 119);
+    /* border: 1px solid black; */
+    width: 94%;
+    height: 160px;
+    margin: 0 auto;
+    border-radius: 20px;
+    position: relative;
+    transition: .1s;
+    cursor: pointer;
+    overflow: auto;
+}
+.item .p9{
+  top: 90%;
+  width: 90%;
+  left: 89%;
+  transform: translate(-90%, -89%);
+  font-size: 20px;
+}
+.item img{
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+.item p{
+  position: absolute;
+  top: 80%;
+  left: 25%;
+  transform: translate(-80%, -25%);
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  width: auto;
+  /* background-color: tomato; */
+  
+
+}
+
+input[type=checkbox]{
+  display: none;
+}
+
+.uniz1{
+  background: url("https://images.wallpaperscraft.com/image/cat_green_eyed_beautiful_look_118025_1920x1080.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+}
+.uniz2{
+  background: url("https://images.wallpaperscraft.com/image/guitar_strings_musical_instrument_122890_1280x720.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+}
+.uniz3{
+  background: url("https://www.wallpapertip.com/wmimgs/14-143446_crysis-3-laser-sight-archer-new-game-hd.jpg"  );
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+}
+.uniz4{
+  background: url("https://image.imnews.imbc.com/page/include/images/meta_image.png"  );
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+}
+.uniz5{
+  background:url("https://i.ytimg.com/vi/GiJA6aMjQOk/hq720.jpg?sqp=-oaymwEZCNAFEJQDSFXyq4qpAwsIARUAAIhCGAFwAQ==&amp;rs=AOn4CLAnezo0a1InatVESMP1LZgx6ip6lw");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+}
+.uniz6{
+  background: url("https://travelblog.expedia.co.kr/wp-content/uploads/2016/12/08.jpg"
+);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+}
+.uniz7{
+  background:url("/resources/img/basketball.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+}
+.uniz11{
+  background:url("https://i.ytimg.com/vi/xiE2wL9hS2w/hqdefault.jpg?sqp=-oaymwEjCOADEI4CSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&amp;rs=AOn4CLCCuE2GvKMT7NcvWHSLuJDGgjajBw");
+  background-size: 240px 230px;
+  background-position: left;
+  opacity: 0.8;
+}
+.uniz8{
+  background:url("https://i.ytimg.com/vi/_pPrgUtRp7I/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&amp;rs=AOn4CLAYvriLffrCeMUIcKEL_sUTSAxxbQ"
+);
+background-position: right;
+background-size: cover;
+background-size: 230px 370px;
+  opacity: 0.8;
+}
+.uniz12{
+  background: url("https://i.ytimg.com/vi_webp/8uZ8exjFhx8/mqdefault.webp");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+}
+.uniz9{
+  background: url("https://i.pinimg.com/originals/02/bd/01/02bd01453b99ff9fa0e473b0954f9c05.png" );
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+}
+
+
+.uniz10{
+  background: url("https://i.ytimg.com/vi/zwScyfevCBM/maxresdefault.jpg"
+  );
+ 
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+}
+
+
+input[type="checkbox"]:checked+label{
+  color: red;
+  background-color: green;
+  border: 4px solid rgb(136, 192, 224);
+  /* 체크박스가 체크되면 초록색으로 변한다.  */
+  
+}
+
+.submitBtn{
+  background-color: #20D3D7;
+  color: white;
+  font-size: 19px;
+  font-weight: bold;
+  grid-column: 2/4;
+  height: 50px;
+  max-height: 50px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+.submitBtn:hover{
+  background-color: #00b0b3;
+  color: #f1f1f1;
+  transition: .3s ease;
+
+}
+.p5, .p7, .p8, .p12{
+	margin-left: 15px;
+}
