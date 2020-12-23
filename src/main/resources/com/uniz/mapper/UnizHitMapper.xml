@@ -34,6 +34,9 @@
 		<foreach item="unizSN" index="index" collection="unizSNlist" open="(" separator="," close=")">
 			#{unizSN.unizSN}
 		</foreach>
+		and v.yuploaddatetime >= (select SYSDATE - 60
+                          from dual
+                         )
 	</select>
 	
 	<select id="keywordUniz" resultType="com.uniz.domain.UnizLayerListVO">
