@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -42,6 +41,7 @@ public class UserController {
 	private UnizService unizService;
 	private BCryptPasswordEncoder passwordEncoder;
 	private ApplyCreatorService applyService;
+
 	@GetMapping("/loginForm")
 	public String goLoginForm(HttpServletRequest request) {
 
@@ -88,11 +88,10 @@ public class UserController {
 		// 2. 회원유니즈 가져오기
 		// 세션에 저장된 값으로 가져온다.
 		UserDTO user = (UserDTO) session.getAttribute("user");
-		Long userSN = (Long)session.getAttribute("userSN");
+		Long userSN = (Long) session.getAttribute("userSN");
 		List<MyUnizPoint> userUnizPoint = userService.getUserUniz(user.getUserSN());
-		
+
 		ApplyVO apply = applyService.getApply(userSN);
-		
 
 		log.info("userUnizPoint" + userUnizPoint);
 
@@ -198,7 +197,7 @@ public class UserController {
 		log.info("user :" + user);
 
 		int loginResult = userService.userLogin(user, session);
-		
+
 		log.info("loginResult == " + loginResult);
 
 		log.info("session Check : " + session.getAttribute("user"));
@@ -218,7 +217,6 @@ public class UserController {
 		if (userSN != null) {
 			resultStr = userService.addMyPlayLog(userSN, videoSN, currentTime);
 		}
-
 
 		map.put("result", resultStr);
 		return map;

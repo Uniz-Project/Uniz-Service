@@ -84,6 +84,7 @@
 		SELECT PARENTUNIZSN
 		FROM UNIZLAYERLIST
 		WHERE UNIZSN = #{utbCateSN}
+		AND  PARENTUNIZSN > 1000
 	</select>
 		
 	<select id="getMyPointHistory" resultType="com.uniz.domain.MyUnizPoint">

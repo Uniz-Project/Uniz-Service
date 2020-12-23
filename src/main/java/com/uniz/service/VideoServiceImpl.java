@@ -40,9 +40,9 @@ public class VideoServiceImpl implements VideoService{
 		Long utbCateSN = videoVO.getUtbCateSN();		
 		
 		//2개
-		List<Long> parentUniz = unizMapper.findParentUniz(utbCateSN);
+		Long parentUniz = unizMapper.findParentUniz(utbCateSN);
 		
-		videoVO.setParentUniz(parentUniz);
+		videoVO.setUtbCateSN(parentUniz);
 		
 		return videoVO;
 	}

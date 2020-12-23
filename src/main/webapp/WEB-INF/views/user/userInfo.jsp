@@ -46,8 +46,12 @@
 						<button class="myModify" id="myBtn"
 							onclick="location.href='/user/modify'">수정하기</button>
 						<button class="myDelete" id="removeBtn">탈퇴하기</button>
+						<c:if test="${apply eq null }">
+						<button id="showModal" style="display: none;">크리에이터 신청 현황 </button>
+						</c:if>
+						
 						<c:if test="${apply ne null }">
-						<button id="showModal" >크리에이터 신청 현황 </button>
+							<button id="showModal">크리에이터 신청 현황 </button>
 						</c:if>
 					</div>
 				</div>

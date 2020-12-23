@@ -48,12 +48,9 @@
 					
 		 	<form id="form" >
 	                <input type="hidden" id="duration" name ="" value="${videoData.duration}">
-	                
 	                <input type="hidden" id="videoSN" name ="videoSN" value="${videoData.videoSN}">
-	                
-	                <input type="hidden" id="unizSN" name ="parentSN" value="${videoData.parentUniz}">
 	                <input type="hidden" id="userSN" name ="userSN" value="${userSN}">
-
+	                <input type="hidden" id="unizSN" name ="unizSN" value="${videoData.utbCateSN}">
             </form>  
                
 
@@ -101,7 +98,7 @@
 		console.log("start : " + startTime);
 		
 		//1. 머문시간이 전체 영상시간의 20프로가 넘으면 유니즈 포인트 증가
-		setTimeout(getTimeCal, 1000 * min_duration);
+		setTimeout(getTimeCal, 1000 * 5);
 		
 		function getTimeCal(){
 			let ds = new Date();
@@ -110,7 +107,7 @@
 			
 			let calTime = (endTime - startTime)/1000;
 			
-			let Form = $("#form").serialize()
+			let Form = $("#form").serialize();
 			console.log("codeForm: "+Form);
 			
 			$.ajax({

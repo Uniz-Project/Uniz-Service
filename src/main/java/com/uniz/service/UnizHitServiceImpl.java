@@ -58,11 +58,12 @@ public class UnizHitServiceImpl implements UnizHitService {
 		videoVO.setUrlPath(changeURL.substring(idx+1));
 		
 		System.out.println(videoVO.getUrlPath());
+		
 		Long utbCateSN = videoVO.getUtbCateSN();
 		
-		List<Long> parentUniz = unizMapper.findParentUniz(utbCateSN);
+		Long parentUniz = unizMapper.findParentUniz(utbCateSN);
 		
-		videoVO.setParentUniz(parentUniz);
+		videoVO.setUtbCateSN(parentUniz);
 		
 		return videoVO;
 	}

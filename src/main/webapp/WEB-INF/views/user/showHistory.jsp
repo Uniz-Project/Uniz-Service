@@ -32,8 +32,8 @@
         <!-- end infinite Scroll -->
     </div>
     
-    	<%@ include file="/WEB-INF/views/includes/script.jsp"%>
-    <script>
+    <%@ include file="/WEB-INF/views/includes/script.jsp"%>
+  <!--   <script>
         (function(){
     	var num = 0;
     $(window).scroll(function(){
@@ -41,14 +41,15 @@
         // == 스크롤 높이가 뭐빼기 뭐해서 같으면 끝까지 왔다라고 생각하는건데 >= 는 스크롤높이가 뭐빼기 뭐보다 더 커도(더 밑으로 내려가있어도) 끝까지 간거다 
         // 브라우저마다 특성이 다르기 때문에 같다보다는 크거나 같음으로 진행
         if($(window).scrollTop() >= $(document).height() - $(window).height()){ // 스크롤의 마지막 값을 인식한다.
-            var $clone = $('.timeVideo').eq(num).first().clone()
-
-            num++
-            $('.infiniteScroll').append($clone)
+            var $clone = $('.timeVideo').eq(num).first().clone();
+			console.log($clone);
+            //수정해야한다. 계속 같은데이터가 나온다.
+            num++;
+            $('.infiniteScroll').append($clone);
             console.log(num);
         }
     })
 	})();
-    </script>
+    </script> -->
 </body>
 </html>

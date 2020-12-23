@@ -141,8 +141,8 @@ public class UnizPointServiceImpl implements UnizPointService {
 			//해당 유튜브 카테고리로 매핑된 uniz를 가져온다.
 			//1-1 . MyUnizPoint에 해당 uniz가 등록되어있을경우 update point +
 			//1-2 . MyUnizPoint에 해당 uniz가 등록되지 않았을 경우 insert// 
-			result = mapper.addMyUnizPoints(myUnizPoint.getUserSN(),myUnizPoint.getParentSN(),ADD_POINT);
-			mapper.addHistorys(myUnizPoint.getUserSN(),myUnizPoint.getParentSN(),ADD_POINT,type);
+			result = mapper.addMyUnizPoint(myUnizPoint.getUserSN(),myUnizPoint.getUnizSN(),ADD_POINT);
+			mapper.addHistory(myUnizPoint.getUserSN(),myUnizPoint.getUnizSN(),ADD_POINT,type);
 			
 			
 			//-> 현재까지 본 영상을 어떻게 저장?

@@ -26,6 +26,7 @@ function getList(param ){
 				str += "<div class='item'>";
 				str += "<a href= '"+data[i].videoSN+"'><img src='"+data[i].thumbUrl+"'></a>";
 				str += "</div>";
+				
 			}
 			
 				

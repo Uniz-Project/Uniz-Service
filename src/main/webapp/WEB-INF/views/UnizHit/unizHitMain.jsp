@@ -8,7 +8,7 @@
 <title>Document</title>
 <link rel="stylesheet" href="/resources/css/Navbar.css">
 <link rel="stylesheet" href="/resources/css/hitVideo.css">
-<link rel="stylesheet" href="/resources/css/footer.css">
+<link rel="stylesheet" href="/resources/css/Footer.css">
 </head>
 <body>
 
@@ -40,7 +40,9 @@
     </div>
 </div>
 	
-<div class="footer">
+	
+<%@ include file="/WEB-INF/views/includes/footer.jsp"%>	
+<!-- <div class="footer">
         <div class="foot">
             <div class="header">
                 <h3> 고객센터</h3> <span>|</span> <h3>공지사항</h3>
@@ -69,7 +71,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
 	<script src="/resources/js/unizHit.js"></script>
@@ -91,7 +93,7 @@ $(document).ready(function() {
 	
 	let UnizHitMenuNum = 4;
 
-	setUnitagsByPreset(UnizHitMenuNum, 12);
+	setUnitagsByPreset(UnizHitMenuNum, 13);
 	
 	function setUnitagsByPreset(menu, limit) {
 		unizService.getPreset(
