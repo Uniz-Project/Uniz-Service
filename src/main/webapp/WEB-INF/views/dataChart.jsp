@@ -68,6 +68,8 @@ var chartPieLabels = [];
 var chartPieData = [];
 
 var userSN = '<c:out value="${user.userSN}"/>';
+var nick = '<c:out value="${user.nick}"/>';
+
 
 
 $.getJSON("http://localhost:8080/chartList", function(data){
@@ -165,14 +167,21 @@ let barChart = new Chart(myChartOne, {
             label: '시청순위',
             data : chartPieData,
             backgroundColor: [
-                "rgba(255, 99, 132, 0.4)",
-                "rgba(54, 162, 235, 0.4)",
-                "rgba(255, 206, 86, 0.4)",
-                "rgba(75, 192, 192, 0.4)",
+                "rgba(255, 99,  132, 0.4)",
+                "rgba(54,  162, 235, 0.4)",
+                "rgba(255, 206, 86,  0.4)",
+                "rgba(75,  192, 192, 0.4)",
                 "rgba(153, 102, 255, 0.4)",
-                "rgba(255, 159, 64, 0.4)",
+                "rgba(255, 159, 64,  0.4)",
                 "rgba(255, 102, 255, 0.4)",
-                "rgba(204,204,204,0.4)"
+                "green",
+                "rgba(54,  162, 235, 0.4)",
+                "rgba(255, 206, 86,  0.4)",
+                "rgba(75,  192, 192, 0.4)",
+                "rgba(153, 102, 255, 0.4)",
+                "rgba(255, 159, 64,  0.4)",
+                "rgba(255, 102, 255, 0.4)",
+                "rgba(204, 204, 204, 0.4)"
             ],
             borderColor: [
                 "rgba(255, 99, 132, 1)",
@@ -190,7 +199,7 @@ let barChart = new Chart(myChartOne, {
     options: {
         title: {
             display: 'true',
-            text: '내가 많이본 순위',
+            text: nick+'님이 많이본 순위',
             // fontSize: 30,
             fontColor: 'black'
         },
