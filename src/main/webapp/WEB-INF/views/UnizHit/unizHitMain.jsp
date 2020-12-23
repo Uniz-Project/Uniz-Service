@@ -30,7 +30,7 @@
 		<div class="keywordBox" id="unitags"></div>
 		
 	<div class="box">
-		<h3>전체 TOP30</h3>
+
 		
 			<!--리스트 5개 반복되는 구조 -->
 			<div class='container' id="hit"></div>
@@ -40,36 +40,7 @@
     </div>
 </div>
 	
-<div class="footer">
-        <div class="foot">
-            <div class="header">
-                <h3> 고객센터</h3> <span>|</span> <h3>공지사항</h3>
-            </div>
-            <div class="midInfo">
-                <p>콘텐츠 제공 문의</p>
-                <p>페이스북</p>
-                <p>회사 소개 </p>
-                <p>인스타그램</p>
-                <p>인재 채용</p>
-                <p>사업 제휴 문의 </p>
-            </div>
-            
-            <div class="address">
-                <p>서울특별시 종로구 종로2가 9 YMCA 7F</p>
-                <div class="conf">
-    
-                    <p>@uniz Corp</p>
-                    <p>이용 약관</p>
-                    <p>|</p>
-                    <p>개인정보 처리방침</p>
-                    <p>|</p>
-                    <p>청소년 보호 정책</p>
-                    <p>|</p>
-                    <p>사업자 정보 확인</p>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
 
 	<script src="/resources/js/unizHit.js"></script>
@@ -102,6 +73,7 @@ $(document).ready(function() {
 					let unizSN = [];
 
 					//tagsHTML += "<p><button id='tag' name='unitags' value='야구'>야구</button></p>"
+/* 					tagsHTML += "<button class='keyword' id='tag"+ 0 +"' name='unitags' data-unizsn='"+uniz.unizSN+"' value='" + uniz.unizKeyword + "'>"  + uniz.unizKeyword + "</button>" */
 					for(let idx = 0 ; idx<limit ; idx++) {
 						let uniz = result[idx];
 			
