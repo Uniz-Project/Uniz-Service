@@ -8,13 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.gson.JsonObject;
 import com.uniz.domain.MyUnizPoint;
 import com.uniz.domain.UnizTypeEnum;
 import com.uniz.domain.UnizVO;
@@ -37,11 +40,8 @@ public class UnizController {
 	@Setter(onMethod_ = @Autowired)
 	private UnizPointService upsvc;
 
-	@PostMapping(value = "/register",
-			produces = {
-					MediaType.APPLICATION_XML_VALUE,
-					MediaType.APPLICATION_JSON_UTF8_VALUE
-				})
+	@PostMapping(value = "/register", produces = { MediaType.APPLICATION_XML_VALUE,
+			MediaType.APPLICATION_JSON_UTF8_VALUE })
 	public ResponseEntity<UnizVO> create(String keyWord) {
 		log.info("keyWord: " + keyWord);
 
@@ -50,11 +50,11 @@ public class UnizController {
 		keyWord = keyWord.trim();
 
 		// 1. 기존 uniz 중에 있는지 검사
-		//int[] rangeType = new int[] {
-		//		UnizTypeVO.MAINGROUP.getTypeSN(),
-		//		UnizTypeVO.USERMADE.getTypeSN(),
-		//		UnizTypeVO.COMMADE.getTypeSN()
-		//	};
+		// int[] rangeType = new int[] {
+		// UnizTypeVO.MAINGROUP.getTypeSN(),
+		// UnizTypeVO.USERMADE.getTypeSN(),
+		// UnizTypeVO.COMMADE.getTypeSN()
+		// };
 
 		uniz = service.findByKeywordForUserUnizInsert(keyWord);
 
@@ -62,9 +62,7 @@ public class UnizController {
 		if (uniz == null || uniz.isEnable() == false) {
 
 			// 2-1. 사용자 등록 유니즈로 등록
-			UnizVO newUniz = UnizVO.builder()
-					.unizKeyword(keyWord)
-					.unizTypeSN(UnizTypeEnum.USERMADE.getTypeSN())
+			UnizVO newUniz = UnizVO.builder().unizKeyword(keyWord).unizTypeSN(UnizTypeEnum.USERMADE.getTypeSN())
 					.build();
 
 			service.registerSelectKey(newUniz);
@@ -74,14 +72,12 @@ public class UnizController {
 		// 3. 유니즈 정보 반환
 		System.out.println(uniz);
 
-		return uniz != null
-				? new ResponseEntity<>(uniz, HttpStatus.OK)
+		return uniz != null ? new ResponseEntity<>(uniz, HttpStatus.OK)
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
-	@GetMapping(value = "/getPreset",
-			produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<List<UnizVO>> getList(Integer menu ) {
+	@GetMapping(value = "/getPreset", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<List<UnizVO>> getList(Integer menu) {
 
 		log.info("get preset List menu: " + menu);
 
@@ -92,10 +88,8 @@ public class UnizController {
 		return new ResponseEntity<>(list, HttpStatus.OK);
 	}
 
-
-	@GetMapping(value = "/getUnizNames",
-			produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Map<Long, String>> getNameList(@RequestParam("unizSN") Long[] unizSNList ) {
+	@GetMapping(value = "/getUnizNames", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<Map<Long, String>> getNameList(@RequestParam("unizSN") Long[] unizSNList) {
 
 		log.info("get UnizNames List : " + unizSNList);
 
@@ -103,7 +97,7 @@ public class UnizController {
 
 		for (Long unizSN : unizSNList) {
 			UnizVO uniz = service.get(unizSN);
-			if(uniz == null || uniz.isEnable() == false ) {
+			if (uniz == null || uniz.isEnable() == false) {
 				continue;
 			}
 			map.put(unizSN, uniz.getUnizKeyword());
@@ -112,11 +106,11 @@ public class UnizController {
 		System.out.println("map : " + map);
 
 		return new ResponseEntity<>(map, HttpStatus.OK);
-	}	
+	}
 
-	@GetMapping(value = "/getFavoriteList",
-			produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<List<UnizVO>> getFavoriteList(@RequestParam("userSN") Long userSN, @RequestParam("limit") int limit ) {
+	@GetMapping(value = "/getFavoriteList", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<List<UnizVO>> getFavoriteList(@RequestParam("userSN") Long userSN,
+			@RequestParam("limit") int limit) {
 
 		log.info("getFavoriteList : " + userSN + "/" + limit);
 
@@ -127,32 +121,27 @@ public class UnizController {
 		return new ResponseEntity<>(list, HttpStatus.OK);
 	}
 
-	@PostMapping(value = "/mylike",
-			produces = {
-					MediaType.APPLICATION_XML_VALUE,
-					MediaType.APPLICATION_JSON_UTF8_VALUE
-				})
-	public ResponseEntity<List<Long>> myLike(@RequestParam("userSN") Long userSN, @RequestParam("unizSN") List<Long> unizSNList) {
+	@PostMapping(value = "/mylike", produces = { MediaType.APPLICATION_XML_VALUE,
+			MediaType.APPLICATION_JSON_UTF8_VALUE })
+	public ResponseEntity<List<Long>> myLike(@RequestParam("userSN") Long userSN,
+			@RequestParam("unizSN") List<Long> unizSNList) {
 
 		// TODO : 좋아요 유니즈 선택시 지정값 어드민에서 설정 가능하도록 변경
 		int default_like_point = 100;
-		
+
 		List<Long> result = null;
 		if (upsvc.registUnizPoint(userSN, unizSNList, default_like_point)) {
 			result = unizSNList;
 		}
 
-		return result != null
-				? new ResponseEntity<>(result, HttpStatus.OK)
+		return result != null ? new ResponseEntity<>(result, HttpStatus.OK)
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	
-	@PostMapping(value = "/mydislike",
-			produces = {
-					MediaType.APPLICATION_XML_VALUE,
-					MediaType.APPLICATION_JSON_UTF8_VALUE
-				})
-	public ResponseEntity<List<Long>> myDislike(@RequestParam("userSN") Long userSN, @RequestParam("unizSN") List<Long> unizSNList) {
+
+	@PostMapping(value = "/mydislike", produces = { MediaType.APPLICATION_XML_VALUE,
+			MediaType.APPLICATION_JSON_UTF8_VALUE })
+	public ResponseEntity<List<Long>> myDislike(@RequestParam("userSN") Long userSN,
+			@RequestParam("unizSN") List<Long> unizSNList) {
 
 		// TODO : 싫어요 유니즈 선택시 지정값 어드민에서 설정 가능하도록 변경
 		int default_dislike_point = 30;
@@ -162,38 +151,32 @@ public class UnizController {
 			result = unizSNList;
 		}
 
-		return result != null
-				? new ResponseEntity<>(result, HttpStatus.OK)
+		return result != null ? new ResponseEntity<>(result, HttpStatus.OK)
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
-	@PostMapping(value = "/positiveFeed",
-			produces = {
-					MediaType.APPLICATION_XML_VALUE,
-					MediaType.APPLICATION_JSON_UTF8_VALUE
-				})
-	public ResponseEntity<List<Long>> positiveFeed(@RequestParam("userSN") Long userSN, @RequestParam("unizSN") List<Long> unizSNList) {
+	@PostMapping(value = "/positiveFeed", produces = { MediaType.APPLICATION_XML_VALUE,
+			MediaType.APPLICATION_JSON_UTF8_VALUE })
+	public ResponseEntity<List<Long>> positiveFeed(@RequestParam("userSN") Long userSN,
+			@RequestParam("unizSN") List<Long> unizSNList) {
 
 		// TODO 1 : 긍정 피드 증가값 어드민에서 설정 가능하도록 변경
 		// TODO 2 : 긍정 피드 증가값에 대한 계산식 정의 필요
 		int default_like_point = 1;
-		
+
 		List<Long> result = null;
 		if (upsvc.incMyUnizPoint(userSN, unizSNList, default_like_point)) {
 			result = unizSNList;
 		}
 
-		return result != null
-				? new ResponseEntity<>(result, HttpStatus.OK)
+		return result != null ? new ResponseEntity<>(result, HttpStatus.OK)
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
-	@PostMapping(value = "/negativeFeed",
-			produces = {
-					MediaType.APPLICATION_XML_VALUE,
-					MediaType.APPLICATION_JSON_UTF8_VALUE
-				})
-	public ResponseEntity<List<Long>> negativeFeed(@RequestParam("userSN") Long userSN, @RequestParam("unizSN") List<Long> unizSNList) {
+	@PostMapping(value = "/negativeFeed", produces = { MediaType.APPLICATION_XML_VALUE,
+			MediaType.APPLICATION_JSON_UTF8_VALUE })
+	public ResponseEntity<List<Long>> negativeFeed(@RequestParam("userSN") Long userSN,
+			@RequestParam("unizSN") List<Long> unizSNList) {
 
 		// TODO 1 : 부정 피드 증가값 어드민에서 설정 가능하도록 변경
 		// TODO 2 : 부정 피드 증가값에 대한 계산식 정의 필요
@@ -204,17 +187,14 @@ public class UnizController {
 			result = unizSNList;
 		}
 
-		return result != null
-				? new ResponseEntity<>(result, HttpStatus.OK)
+		return result != null ? new ResponseEntity<>(result, HttpStatus.OK)
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
-	@PostMapping(value = "/recoverFeed",
-			produces = {
-					MediaType.APPLICATION_XML_VALUE,
-					MediaType.APPLICATION_JSON_UTF8_VALUE
-				})
-	public ResponseEntity<List<Long>> recoverFeed(@RequestParam("userSN") Long userSN, @RequestParam("unizSN") List<Long> unizSNList) {
+	@PostMapping(value = "/recoverFeed", produces = { MediaType.APPLICATION_XML_VALUE,
+			MediaType.APPLICATION_JSON_UTF8_VALUE })
+	public ResponseEntity<List<Long>> recoverFeed(@RequestParam("userSN") Long userSN,
+			@RequestParam("unizSN") List<Long> unizSNList) {
 
 		// TODO 1 : 부정 피드 복구값 어드민에서 설정 가능하도록 변경
 		// TODO 2 : 부정 피드 복구값에 대한 계산식 정의 필요
@@ -225,23 +205,25 @@ public class UnizController {
 			result = unizSNList;
 		}
 
-		return result != null
-				? new ResponseEntity<>(result, HttpStatus.OK)
+		return result != null ? new ResponseEntity<>(result, HttpStatus.OK)
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	
-	//대
+
+	// 대
+
 	@PostMapping("/addMypoint")
-	public @ResponseBody Map<String, Object> showVideoAddMyPoint(MyUnizPoint myUnizPoint){
+	public @ResponseBody Map<String, Object> showVideoAddMyPoint(MyUnizPoint myUnizPoint) {
+
+		log.info("myunizpoint : " + myUnizPoint);
 		String resultStr = "FAIL";
-		Map<String, Object> map = new HashMap<String, Object>(); 	 
-		if(myUnizPoint.getUserSN() != null) {
-			
+		Map<String, Object> map = new HashMap<String, Object>();
+		if (myUnizPoint.getUserSN() != null) {
+
 			resultStr = upsvc.showVideoAddPoint(myUnizPoint);
-			
+
 		}
-		
-		map.put("result",  resultStr);
+		map.put("result", resultStr);
 		return map;
 	}
+
 }

@@ -21,10 +21,12 @@ public interface UnizPointMapper {
 	public int decMyUnizPoint(@Param("userSN") Long userSN, @Param("unizSNList") List<Long> unizSN, @Param("decPoint") int decPoint);
 
 	public int addHistory(@Param("userSN") Long userSN, @Param("unizSN") Long unizSN, @Param("point") int Point, @Param("type") int type);
-
+	
 	public int addHistorys(@Param("userSN") Long userSN, @Param("unizSN") List<Long> unizSN, @Param("point") int Point, @Param("type") int type);
 	
 	public List<MyUnizPoint> getMyUnizPointList(Long userSN);
 
-	public int addMyUnizPoint(@Param("userSN")Long userSN, @Param("unizSN")Long parentUniz, @Param("addPoint")int point);
+	public int addMyUnizPoint(@Param("userSN")Long userSN, @Param("unizSN")Long list, @Param("addPoint")int point);
+
+	public int addMyUnizPoints(@Param("userSN")Long userSN, @Param("unizSNList") List<Long> parentSN,@Param("addPoint")int aDD_POINT);
 }

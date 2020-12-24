@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -11,31 +12,7 @@
 <head>
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
 </head>
-<style>
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content */
-  .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 60%;
-    height: 600px;
-  }
-</style>
+
 <body>
 	<%@ include file="/WEB-INF/views/includes/nav.jsp"%>
 	<div class="mainPage">
@@ -68,8 +45,12 @@
 						<button class="myModify" id="myBtn"
 							onclick="location.href='/user/modify'">수정하기</button>
 						<button class="myDelete" id="removeBtn">탈퇴하기</button>
+						<c:if test="${apply eq null }">
+						<button id="showModal" style="display: none;">크리에이터 신청 현황 </button>
+						</c:if>
+						
 						<c:if test="${apply ne null }">
-						<button id="showModal" >크리에이터 신청 현황 </button>
+							<button id="showModal">크리에이터 신청 현황 </button>
 						</c:if>
 					</div>
 				</div>
@@ -144,7 +125,8 @@
 								</div>
 							</div>
 
-						</c:forEach>
+					</c:forEach>
+
 
 						<!-- 계속 추가하면 된다.  -->
 					</div>
@@ -203,10 +185,10 @@
 			});
 			
 			$('#logTable').DataTable({
-				"dom": '<"bottom"lp>lt<"bottom"if>',
+				
 				processing: true,
 				serverSide: false,
-				paging: false,
+				paging: true,
 				pagingType: "simple_numbers",
 				order: false,
 				ordering: false,
@@ -236,11 +218,13 @@
 					{data: "createDateTime"}
 				]
 			
+
 		});
 			
 			
 	});
 		
 	</script>
+
 </body>
 </html>

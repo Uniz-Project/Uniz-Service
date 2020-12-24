@@ -5,13 +5,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <%@ include file="/WEB-INF/views/includes/header.jsp"%>
 
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../resources/css/Navbar.css">
-    <link rel="stylesheet" href="../resources/css/videoDetail.css">
+    <title>Uniz-비디오상세</title>
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
 
@@ -23,65 +19,62 @@
 
    <div class="mainPage">
       <div class="watchMainBox">
+      	<c:if test="${videoData.lastPosition eq null}">
 			<div class="videoWatch">
 				<iframe src="//www.youtube.com/embed/${videoData.urlPath}" frameborder="0" allowfullscreen></iframe>
 			</div>
+      	</c:if>
+      	
+      	<c:if test="${videoData.lastPosition ne null}">
+			<div class="videoWatch">
+				<iframe src="//www.youtube.com/embed/${videoData.urlPath}?start=${videoData.lastPosition}" frameborder="0" allowfullscreen></iframe>
+			</div>
+      	</c:if>
 			
-			<div class="class101">
-          		<div class="slideshow-container">
-            		
-				<h3>${videoData.title}</h3>
+			<div class="parent">
+          		<div class="title">
+               		<div class="h3"><h3>${videoData.title}</h3></div>				
 
 
+			<div class="info3">
+				<p class="writer">게시자닉네임 ${videoData.authorNick}</p>
+				<p><i class="far fa-eye"></i>조회수 : ${videoData.viewCnt}회</p>
 
-				<p>게시자닉네임${videoData.authorNick}</p>
-				<p><i class="far fa-eye"></i>조회수 :${videoData.viewCnt}회</p>
 				<p><i class="far fa-thumbs-up"></i>좋아요 : ${videoData.likeCnt}개</p>
-				<p><i class="far fa-clock"></i>업로드일:${videoData.createDateTime}</p>
+				<p><i class="far fa-clock"></i>업로드일: ${videoData.createDateTime}</p>
+			</div>
 				
 				
-					
 					
 		 	<form id="form" >
 	                <input type="hidden" id="duration" name ="" value="${videoData.duration}">
 	                <input type="hidden" id="videoSN" name ="videoSN" value="${videoData.videoSN}">
-	                <input type="hidden" id="unizSN" name ="unizSN" value="${videoData.utbCateSN}">
 	                <input type="hidden" id="userSN" name ="userSN" value="${userSN}">
-
-                </form>  
-                
-				<div class="commentPage">
+	                <input type="hidden" id="unizSN" name ="unizSN" value="${videoData.utbCateSN}">
+            </form>  
+               
 
 
 					<ul class="chat">
+ 
 					
-						<!-- <li class="left clearfix" data-replySN='12'> -->
-						<li class="left clearfix" data-replySN='12'><i class="far fa-comment"></i>
-						<div>
-							<p></p>
-						</div>
-						</li>
 					</ul>		
-				 </div>
-				 
-			<!-- <div class="container"> -->
-			<div class="addCmtBox">
-            	<div class="input-group">
-        			<form name="commentInsertForm">
+              
+	</div>
+				<!-- end title -->		
+				
+				<div class="line10"></div>
+				
+        			<form class="addCmtBox noBorder"  name="commentInsertForm">
 		               <input type="hidden" name="videoSN" value="${videoData.videoSN}"/>
 		               <!-- <input type="text" class="form-control" id="content" name="content" placeholder="내용을 입력하세요."> -->
-		               <input type="text" class="form-control" id="content" name="content" onclick="return checkSession();" placeholder="add a comment..........">
+		               <input type="text" class="form-control" id="content" name="content" onclick="return checkSession();" placeholder="댓글을 입력해 보세요.">
 		               <input type="hidden" class='userSN' value="${user.userSN}" name="userSN">
 		               <span class="input-group-btn">
-					<!-- <button class="btn btn-default" type="button" name="commentInsertBtn">등록</button> -->    
 		               <button  type="button" name="commentInsertBtn"  ><i class="far fa-paper-plane"></i></button>
 		               </span>
         			</form>
-              	</div>
-    		</div>
-    		
-			
-			</div> <!-- end slideshow-container -->
+	
 		</div>
 	</div>
 </div>
@@ -103,11 +96,10 @@
 		//전체 영상 길이의 20%
 		let min_duration = duration * 0.20;
 		
-			
 		console.log("start : " + startTime);
 		
 		//1. 머문시간이 전체 영상시간의 20프로가 넘으면 유니즈 포인트 증가
-		setTimeout(getTimeCal, 1000 * min_duration);
+		setTimeout(getTimeCal, 1000 * 5);
 		
 		function getTimeCal(){
 			let ds = new Date();
@@ -116,7 +108,7 @@
 			
 			let calTime = (endTime - startTime)/1000;
 			
-			let Form = $("#form").serialize()
+			let Form = $("#form").serialize();
 			console.log("codeForm: "+Form);
 			
 			$.ajax({
@@ -139,6 +131,11 @@
 			
 			let videoSN = $("#videoSN").val();
 			let userSN = $("#userSN").val();
+			
+			//cross domain 정책때문에 iframe 오소에 접근 불가능 
+			/* let innerTime = $('.ytp-time-current').innerHTML; //유튜브 시청시간
+			let secendTimeSet = innerTime.split(":");
+			let currentTime = Number(secendTimeSet[0]) * 60 + Number(secendTimeSet[1])); */ 
 			
 			// 페이지를 떠나기전 지금까지 본 영상을 저장
 			let ds = new Date();
@@ -191,13 +188,14 @@
 					return;
 				}
 				for(var i = 0, len =list.length || 0; i<len; i++){
-					str +="	<li class='left clearfix' data-replySN='"+list[i].replySN+"'>";
+					
 					/* str +=" <small class='pull-right test-muted'>"+replyService.displayTime(list[i].createDateTime)+"</small></div>"; */
 					str +='	<div class="commentContent'+list[i].replySN+'"> <li> '+list[i].nick+' : '+list[i].replyContent ;
 					if(list[i].userSN == session){
-					str +='	<button class="commentUpdate" onclick="commentUpdate('+list[i].replySN+',\''+list[i].replyContent+'\');"> 수정 </button>';
-	                str +='	<button class="remove" onclick="replyService.remove('+list[i].replySN+');"> 삭제 </button></li> </div></li>';
+					str +='	<button class="commentUpdate cmtMod" onclick="commentUpdate('+list[i].replySN+',\''+list[i].replyContent+'\');"> 수정 </button>';
+	                str +='	<button class="remove cmtRem" onclick="replyService.remove('+list[i].replySN+');"> 삭제 </button></li>';
 					}
+					str +='</div></li>';
 				}
 				
 				replyUL.html(str);
@@ -219,7 +217,7 @@
 			    if(reply.replyContent == '' || reply.replyContent.replace(str, '').length == 0){
 					alert("댓글 내용을 입력하세요");
 					return false;
-				}
+				} 
 			    replyService.add(reply, function(result){
 					
 					showList(1);
@@ -232,11 +230,9 @@
 			console.log("==================");
 		    var a ='';
 		    console.log("test = " + replySN);
-		    a += '<div class="input-group">';
 		    a += '<input type="text" class="form-control" name="content_'+replySN+'" value="'+replyContent+'"/>';
-		    a += '<input type="text" class="form-control" name="replySN_'+replySN+'" value="'+replySN+'"/>';
-		    a += '<span class="input-group-btn"><button  type="button" onclick="commentUpdateProc('+replySN+');">수정</button> </span>';
-		    a += '</div>';
+		    a += '<input type="hidden" class="form-control" name="replySN_'+replySN+'" value="'+replySN+'"/>';
+		    a += '<button class="cmtMod2"  type="button" onclick="commentUpdateProc('+replySN+');">수정</button> </span>';
 		   
 		    $('.commentContent'+replySN).html(a);
 			}

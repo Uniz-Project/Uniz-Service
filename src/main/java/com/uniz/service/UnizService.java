@@ -22,7 +22,8 @@ public interface UnizService {
 	public boolean remove(Long unizSN);
 
 	public List<UnizVO> getPresetList(int menuSN);
-
+	
 	public List<MyUnizPoint> getMyPointHistory(Long userSN);
+	
 
 }

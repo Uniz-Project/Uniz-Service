@@ -24,6 +24,7 @@ $(document).ready(function(){
 		showChannelPage(channelCnt);
 		
 	});*/
+
 	
 	channelService.getAllPost( {page: page || 1 }, function(postCnt, list){
 	
@@ -43,6 +44,7 @@ $(document).ready(function(){
 		}
 		
 		str += "<table><thead><tr><th>게시판 이름</th><th>글 제목</th><th>작성자</th><th>작성 일</th><th>조회수</th></tr></thead>";
+
 		for (var i = 0, len = list.length || 0; i < len; i++){
 			
 			str += "<thead><tr>";

@@ -9,7 +9,8 @@
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="/resources/css/Navbar.css">
     <link rel="stylesheet" href="/resources/css/categoryGet2.css">
-        <link rel="stylesheet" href="/resources/css/Footer.css">
+    <link rel="stylesheet" href="/resources/css/Footer.css">
+
 </head>
 <body>
 
@@ -33,8 +34,7 @@
 	<div class="creatorRegisterHeader">
 		<h1> <c:out value="${board.boardComment}"/></h1>
 	</div>
- 
-					
+ 		
 					
 		<div class="createForm">
 				<div class="registerForm">
@@ -55,7 +55,7 @@
 	<div class="applyBtnBox">
 	
 		<c:if test = "${user.userSN eq board.userSN}" >
-		
+
 			<button class="submitBtn" id='modify'>글 수정</button>
 			
 		</c:if>
@@ -289,6 +289,7 @@ function showList(page){
 		
 	    var a ='';
 	    
+
 	    a += '<div class="input-group comment">';
 	    a += '<input type="text" class="form-control repForm" name="content_'+replySN+'" value="'+replyContent+'"/>';
 	    a += '<input type="hidden" class="form-control repForm" name="replySN_'+replySN+'" value="'+replySN+'"/>';

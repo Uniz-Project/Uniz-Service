@@ -117,7 +117,6 @@ background-color: white;
     justify-content: space-between;
 }
 .myPointsBox{
-    background-color: rgb(236, 245, 247);
     width: 47%;
     height: 350px;
     display: grid;
@@ -151,7 +150,6 @@ background-color: white;
     width: 100%;
     font-size: 20px;
     padding: 12px 59px;
-    color: rgb(84, 84, 209);
 }
 
 .pointUp{

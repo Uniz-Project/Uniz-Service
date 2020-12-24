@@ -242,8 +242,9 @@ public class ChannelController {
 	public ResponseEntity<ChannelPageDTO> getChannelList(@PathVariable("page") int page){
 		log.info("get Channel List........");
 		
+
 		Criteria cri = new Criteria(page, 10);
-		
+
 		return new ResponseEntity<>(service.getAllChannelList(cri) , HttpStatus.OK);
 	}
 	

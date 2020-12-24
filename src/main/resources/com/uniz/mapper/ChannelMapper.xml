@@ -145,6 +145,7 @@
 		
 		<!-- 게시글 보여 주기 -->
 		<select id ="getPost" resultType="com.uniz.domain.ChannelBoardVO">
+
 			select  p.postsn, u.nick, p.title , c.postContent , p.viewcnt,
 					p.createdatetime , p.channelSN, p.userSN, h.channeltitle
 					

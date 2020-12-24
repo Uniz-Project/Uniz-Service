@@ -26,6 +26,7 @@
         </div>
 	
 		<div class="comPage">
+
 			<div class="FForm">
 			
 			<c:forEach items="${board}" var="board">
@@ -65,10 +66,12 @@
 				
 				</div>
 			</div><!-- end FForm -->
+
 		</div> <!-- comPage end -->
 	
 	</div> <!--  main end -->
 	
+
  <div class="footer">
     <div class="foot">
       <div class="header">
@@ -97,6 +100,7 @@
       </div>
     </div>
   </div> 	
+
 	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/category.js"></script>	

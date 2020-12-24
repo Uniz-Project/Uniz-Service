@@ -186,10 +186,12 @@ $(document).ready(function(){
 				}
 				else if(CHECKAPPLY == data.CHECKAPPLY){
 					alert("이미 크리에이터 등록을 하셨습니다.");
-					window.location.href="/channel/ch";
+					window.location.href="/user/info";
+				}else{
+					
+				self.location="/creator/apply";
 				}
 				
-				self.location="/creator/apply";
 			}
 		}); 
 		

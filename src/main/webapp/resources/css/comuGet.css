@@ -1,0 +1,403 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans KR", sans-serif, 나눔고딕, 돋움, Dotum, 굴림, Gulim, "Apple SD Gothic Neo";
+}
+/* 왼쪽 사이드바 스타일  */
+.leftSidebar{
+     background-color: #6181C5; 
+    width: 18%;
+    height:  200px;
+    position: fixed;
+    z-index;
+}
+.fixed{
+     background-color: rgb(226, 109, 31); 
+    background-color: white;
+    width: 18%;
+    height: 200px;
+    position:fixed;
+}
+.SideHd{
+    text-align: center;
+    padding: 15px 20px 10px 20px;
+    /* color: white; */
+}
+#channelPost{
+    background-color: white;
+    border: none;
+    width: 100%;
+    height: 45px;
+    font-size: 16px;
+    position: relative;
+    top: 2%;
+    outline: none;
+}
+#channelPost:hover{
+    background-color: rgb(241, 241, 241);
+    transition: 0.4s ease-in-out;
+    color:rgb(1, 40, 167);
+}
+.SideHd{
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(1, 40, 167);
+}
+
+/* 여기서부터 categoryGet.html  */
+.totalMain{
+	width: 100%;
+	height: auto;
+	background-color: gold;
+}
+.applyMain{
+    background-color: white; 
+    width: 82%;
+  
+    position: absolute;
+    right: 0;
+}
+.bannerImg{
+	width: 85%;
+	height: 430px;
+	background: url("https://images.wallpaperscraft.com/image/coffee_espresso_grain_beverage_112056_3840x2160.jpg") no-repeat center;
+	position: relative;
+	background-size: cover; 
+}
+.creatorRegisterHeader{
+     background-color: white; 
+     width: 85%;
+     height: 60px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     border: 1px solid #ddd;
+}
+.creatorRegisterHeader h1{
+    padding: 0 40px;
+    color: rgb(42, 42, 112);
+    text-align: center;
+    font-size: 20px;
+}
+
+.createForm{
+     background-color: white; 
+    width: 85%;
+    height: auto;
+    border: 1px solid #ddd;
+}
+
+.RegisterForm{
+	/*진파랑 아래 민트 영역  */
+    background-color: white;
+    width: 75%;
+    height: auto;
+    font-size: 18px;
+    padding: 5px;
+  
+}
+.confirm{
+	width: 10%;
+	height: 45px;
+	background-color: white;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	outline: none;
+	margin-left: 4px;
+	margin-bottom: 6px;
+}
+
+#category{
+    margin-top: 10px;
+    padding:  5px 12px;
+    border-radius: 3px;
+    border : 2px solid rgb(99, 116, 139);
+    outline: none;
+    color: rgb(70, 69, 69);
+}
+#category:hover{
+    background-color: rgb(222, 225, 241);
+    transition: 0.4s;
+    color: black;
+}
+.label{
+    margin:  50px 30px;
+    color: rgb(0, 134, 187);
+    font-weight: bold;
+    padding: 30px 20px;
+}
+.label5{
+    /* 본인 유튜브 스튜디오 메인 페이지~~~ 문구 */
+    line-height: 80px;
+}
+body > div.applyMain > div.createForm > form > div > div.CateList > label{
+   line-height: 30px;
+}
+
+.content{
+    background-color: white;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 50px;
+}
+.timesBtn{
+    width: 20px;
+    height: 20px;
+    position: relative;
+    background-color: white;
+    border: 2px solid grey;
+    border-radius: 3px;
+}
+.timesBtn svg{
+    position:absolute;
+    top: 5%;
+    right: 20%;
+    color: rgb(0, 0, 175);
+}
+.uploadFileBox{
+    /* background-color: gold; */
+    width:90%;
+    height: 60px;
+    margin: 0 auto;
+}
+.ChseBtn{
+    padding:  0 10px;
+}
+.ChseBtn input[type="file"]{
+    font-size: 20px;
+    color: rgb(14, 79, 184);
+    display: none;
+}
+.uploadFileBox label{
+    padding: 6px 25px;
+    background-color: paleturquoise;
+    border-radius: 4px;
+}
+.uploadFileBox label:hover{
+    background-color: rgb(27, 154, 228);
+    color: rgb(245, 245, 245);
+    transition: 0.3s;
+}
+.applyBtnBox{
+    /* background-color: darkred; */
+    width: 90%;
+    height: 90px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.submitBtn, .delBtn{
+    margin: 4px;
+    padding:  10px 16px;
+    font-size: 14px;
+    background-color: white;
+    color: rgb(38, 124, 161);
+    border: 1px solid rgb(119, 154, 168);
+    outline: none;
+    
+}
+.submitBtn:hover , .delBtn:hover{
+    background-color: mintcream;
+    color: rgb(0, 111, 126);
+}
+/* get get.html */
+.uploadResult ul li, .thumbNail ul li{
+    list-style-type: none;
+}
+
+/* pagination */
+.postFooter{
+
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+  .postFooter ul li{
+    list-style-type: none;
+    display: inline;
+    border-spacing: 0;
+  }
+  .postFooter ul li a{
+    text-decoration: none;
+    border-collapse: none;
+     padding: 10px 12px; 
+    font-size: 16px;
+    color: dodgerblue;
+    border : 1px solid rgb(199, 199, 199);
+  }
+  .postFooter ul li a:hover, .active{
+    color: rgb(0, 100, 182);
+    background-color: rgb(223, 246, 255);
+    transition: 0.3s ease-in-out;
+  }
+.borderR2{
+    border-radius: 0 5px 5px 0;
+  }
+.borderR{
+    border-radius: 5px 0 0 5px;
+}
+
+/* get.css  get*/
+.line{
+    background-color: rgb(199, 199, 199);
+    height:1px;
+    width: 90%;
+    margin: 0 auto;
+}
+.emptyBox{
+    width: 100%;
+    height: 40px;
+}
+
+.Cmtcontainer{
+	/* 댓글 다는 부분  */
+    background-color: white;
+    width: 90%;
+    height: 150px;
+    margin: 0 auto;
+}
+.comment{
+    font-weight: bold;
+    line-height: 50px;
+}
+.Cform{
+
+    border: 2px solid rgb(209, 209, 209);
+    border-radius: 4px;
+    height: 50px;
+    position: relative;
+}
+.registerReply{
+    width: 100%;
+    border: none;
+    outline: none;
+    padding-left: 18px;
+    height: 40px;
+}
+.registerBtn{
+    padding: 8px 20px;
+    font-size: 15px;
+    color: grey;
+    background-color: white;
+    border: none;
+    outline: none;
+    position: absolute;
+    bottom: 0; 
+    right: 0;
+}
+.input-group{
+	width: 100%;
+	height: 50%;
+	position: relative;
+}
+.input-group-btn{
+	position: absolute;
+	width: 100px;
+	height: 50px;
+/* 	background-color: gold; */
+	right: 0;
+}
+.reply{
+    /* 댓글 열개 정도 보여줄 영역이 필요하다.  */
+    /* background-color: rgb(243, 202, 231); */
+ 
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 48px;
+}
+.reply:first-child{
+    margin-top: 60px;
+}
+.commentArea{
+    padding: 10px;
+    height: auto;
+    position: relative;
+    border-bottom: 1px solid rgb(204, 204, 204);
+}
+.commentArea:last-child{
+    margin-bottom: 30px;
+	
+}
+.commentArea:hover{
+    background-color: #f1f1f1;
+    transition: 0.5s ease;
+}
+.userName{
+    font-weight: bold;
+    padding: 10px;
+    margin-top: 20px;
+    color:rgb(47, 47, 47);
+}
+.Rnum{
+    color: grey;
+}
+.replyCont{
+    /* background-color: gold; */
+    overflow:auto;
+    padding-left: 10px;
+    margin-top: 10px;
+    height: 60px;
+
+}
+.a{
+    /* 수정 삭제 공통부분 */
+   color: rgb(41, 62, 131);
+   position: absolute;
+   padding: 10px;
+   cursor:pointer;
+}
+.a:hover{
+    /* background-color: rgb(241, 241, 241); */
+    color: darkslateblue;
+    transition: 0.4s ease-in-out;
+}
+.mod{
+    right: 40px;
+    top: 0;
+}
+.del{
+    right :0;
+    top: 0;
+}
+.form-control{
+    background-color: rgb(246, 252, 255);
+    font-size: 20px;
+    padding: 10px 15px;
+    width: 90%;
+    height: 50px;
+    border: 1px solid rgb(161, 161, 161);
+    border-radius: 3px;
+    margin: 14px 3px;
+    outline: none;
+    display: block;
+    margin: 10px auto;
+    margin-bottom: 25px;
+    
+}
+.form-control{
+	margin-top: 0;
+}
+.form-control:first-child{
+	margin-top: 20px;
+}
+.form-control:focus{
+    border: 2px solid rgb(36, 66, 122);
+}
+.Cform{
+	height: 90px;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	
+}
+.page-link{
+	position: absolute;
+	top: 0;
+}
