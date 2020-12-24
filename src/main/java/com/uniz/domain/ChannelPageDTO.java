@@ -13,6 +13,8 @@ import lombok.Getter;
 public class ChannelPageDTO {
 	
 	private int postCnt;
+	
+	
 	private List<ChannelBoardVO> list;
 	
 }

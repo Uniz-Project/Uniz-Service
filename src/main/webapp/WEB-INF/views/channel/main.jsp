@@ -33,7 +33,7 @@
 			<div class="channelPart">
 
 		        <div class="catHeader">
-		        <h1> 채널 게시판 </h1>
+		        <h1 class="test"> 채널 게시판 </h1>
 		    	</div>
 				
 				<div class="BList">
@@ -41,11 +41,64 @@
 				</div>
 				
         		<div class="boardList"> <!-- 채널 목록 보여주는 div -->
-        		
+        			<c:forEach items="${list}" var="channel">
+	        			<ul>
+	        				<li data-channelsn='"${channel.channelSN}"'>
+	        				<a href="/channel/board/<c:out value='${channel.channelSN}'/>">
+	        					<i class="fab fa-youtube"></i>
+	        						<strong><c:out value="${channel.channelTitle}"/></strong>
+	        						<strong><c:out value="${channel.nick}"/></strong>
+	        				</a>
+	        				</li>
+    	    			</ul>
+    	    		</c:forEach> 
         		</div>
         		
         		<div class="channelFooter">
+        			<ul class=''>
+        				<c:if test="${pageMaker.prev}">
+        					<li class='page-item'>
+        						<a class='borderR' href="${pageMaker.startPage -1}"><<</a>
+        					</li>
+        				</c:if>
+        				
+        				<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+        					<li class="page ${pageMaker.cri.pageNum == num ? " active":""}">
+        					<a class='page-link' href="${num}">${num}</a>
+        					</li>
+        				</c:forEach>
+        				
+        				<c:if test="${pageMaker.next}">
+        					<li>
+        					<a class='borderR2' href="${pageMaker.endPage +1 }">>></a>
+        					</li>
+        				</c:if>
+        			</ul>  
         		</div>
+        		
+        		<div class='search'>
+        			<form id="searchForm" action="/channel/ch" method="get">
+        				<select name='type'>
+        					<option value=""
+        					<c:out value="${pageMaker.cri.type == null ? 'selected':'' }"/>>--</option>
+        					<option value="T"
+        					<c:out value="${pageMaker.cri.type eq 'T' ? 'selected':'' }"/>>채널 이름</option>
+        					<option value="N"
+        					<c:out value="${pageMaker.cri.type eq 'N' ? 'selected':'' }"/>>크리에이터</option>
+        				</select>
+        				<input type='text' name="keyword"/>
+        				<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+        				<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+        				<button class="btn">검색</button>
+        			</form>
+        		</div>
+        		
+        		<form id='actionForm' action="/channel/ch" method='get'>
+					<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+					<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+					<input type='hidden' name='type' value='<c:out value="${pageMaker.cri.type}"/>'>
+					<input type='hidden' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'>
+				</form>
         		
         	</div> <!-- channelPart end -->
         
@@ -135,6 +188,8 @@ $(document).ready(function(){
 					alert("이미 크리에이터 등록을 하셨습니다.");
 					window.location.href="/channel/ch";
 				}
+				
+				self.location="/creator/apply";
 			}
 		}); 
 		
@@ -169,7 +224,43 @@ $(document).ready(function(){
 				}
 			});
 		});
+		
+		$(".test").on( "click" , function(){
+			self.location = "/channel/ch";
+		});
+		
+		$(".boardPost").on("click", function(){
+			self.location = "/category/main";
+		});
+		
+	var searchForm = $("#searchForm");
+		
+	$("#searchForm button").on("click", function(e){
+		
+		if(!searchForm.find("option:selected").val()){
+			alert("검색 종류를 선택하세요");
+			return false;
+		}
+		if(!searchForm.find("input[name='keyword']").val()){
+			alert("키워드를 입력하세요");
+			return false;
+		}
+		
+		searchForm.find("input[name='pageNum']").val("1");
+		e.preventDefault();
+		
+		searchForm.submit();
+	});
 	
+	var actionForm = $("#actionForm");
+	
+	$(".page a").on("click", function(e){
+		e.preventDefault();
+		console.log("click");
+		actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+		actionForm.submit();
+	});
+		
 });
 
 </script>

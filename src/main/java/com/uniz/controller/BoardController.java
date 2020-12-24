@@ -6,6 +6,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -130,8 +132,13 @@ public class BoardController {
 	
 	@GetMapping( "/modify/{postSN}/{boardSN}")
 	public String getModify(@PathVariable("postSN") Long postSN , @PathVariable("boardSN")Long boardSN
-			,@ModelAttribute("cri") Criteria cri
-	, Model model) {
+			,@ModelAttribute("cri") Criteria cri , Model model) {
+		
+		BoardVO vo = service.get(postSN);
+		
+		log.info(" modify vo ====  " +vo);
+		
+		model.addAttribute("board", vo);
 		
 		return "category/modify";
 		
@@ -139,10 +146,11 @@ public class BoardController {
 	
 	@GetMapping("/get/{postSN}")
 	public String get(@PathVariable("postSN") Long postSN , @ModelAttribute("cri") Criteria cri
-	, Model model) {
+	, Model model , HttpSession session) {
 		
-		log.info("postSN : " + postSN);
+		Long userSN = (Long)session.getAttribute("userSN");
 		
+		log.info("get Page userSN : " + userSN);
 		
 		BoardVO vo = service.get(postSN);
 		
@@ -150,24 +158,16 @@ public class BoardController {
 
 			model.addAttribute("board", vo);
 			
-//			try {
-//			
-//				if(!vo.getUserSN())
-//				
-//			} catch (Exception e) {
-//				
-//				e.printStackTrace();
-//				
-//			}
+				if(!vo.getUserSN().equals(userSN)) {
+					service.updateViewCnt(postSN, 1L );
+				}
 			
 			return "category/get";
 		
-		}else {
-			
+		}
 			
 			return "category/main";
 
-		}
 	}
 	
 	

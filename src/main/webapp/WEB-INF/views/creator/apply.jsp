@@ -7,8 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 	<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-	<link rel="stylesheet" href="../resources/css/apply.css">
+	<link rel="stylesheet" href="../resources/css/categoryRegister.css">
+	 <link rel="stylesheet" href="../resources/css/creatorApply2.css"> 
 	<link rel="stylesheet" href="/resources/css/Navbar.css"> 
+	<link rel="stylesheet" href="/resources/css/Footer.css"> 
+	
 </head>
 <body>
 
@@ -16,12 +19,21 @@
 <%@ include file="/WEB-INF/views/includes/nav.jsp"%>
 
 
-	<div class="applyMain">
+<div class="mainPage">
+ <div class="leftSidebar">	
+		<div class="fixed">
+			<div class="SideHd">커뮤니티</div>
+			<button id="channelPost">채널 게시판으로 이동</button>
+			<button id="channelPost">카테고리별 게시판</button>
+		</div>
+	</div>
+	
+	<div class="comPage">
 			<div class="creatorRegisterHeader">
 				<h1>크리에이터 등록 페이지</h1>
 			</div>
 				<div class="createForm">
-					<form role="form" action="/creator/applyCreator" method="post" onsubmit="return checkValid();" >
+					<form class="form"role="form" action="/creator/apply" method="post" onsubmit="return checkValid();" >
 
 						
 					<div class="RegisterForm">
@@ -29,7 +41,7 @@
 							<label class="label">(운영하는)채널 이름</label>
 							<input class="form-control" name='channelTitle' id='channelTitle' placeholder="channelName">
 				
-							<label class="label">닉네임  <a href="#" onclick="location.href='/user/modify'">[닉네임 변경하러 가기]</a></label>
+							<label class="label">닉네임  <a class="nickLink" href="#" onclick="location.href='/user/modify'">[닉네임 변경하러 가기]</a></label>
 							<input class="form-control" name='nick' id='nick' value="${user.nick}" placeholder="nick" readonly="readonly">
 							<input class="form-control" type="hidden" name='userSN' id='userSN' value="${user.userSN}" placeholder="userSN">
 
@@ -73,8 +85,8 @@
 		   				
 		   				<div class="uploadFileBox"> 
 							<label for="uploadFile">파일 선택하기</label> 
-								<div class="ChseBtn">
-								<input type='file' id='file' name='uploadFile'id="uploadFile" multiple >
+							<div class="ChseBtn">
+								<input type='file' name='uploadFile'id="uploadFile" multiple >
 							</div>
 						</div>
 						
@@ -89,8 +101,39 @@
 		</div>
  	</div>
 	
-	
-					
+</div>
+	<!-- end mainPage -->
+	<div class="footer">		
+			
+        <div class="foot">
+            <div class="header">
+                <h3> 고객센터</h3> <span>|</span> <h3>공지사항</h3>
+            </div>
+            <div class="midInfo">
+                <p>콘텐츠 제공 문의</p>
+                <p>페이스북</p>
+                <p>회사 소개 </p>
+                <p>인스타그램</p>
+                <p>인재 채용</p>
+                <p>사업 제휴 문의 </p>
+            </div>
+            
+            <div class="address">
+                <p>서울특별시 종로구 종로2가 9 YMCA 7F</p>
+                <div class="conf">
+    
+                    <p>@uniz Corp</p>
+                    <p>이용 약관</p>
+                    <p>|</p>
+                    <p>개인정보 처리방침</p>
+                    <p>|</p>
+                    <p>청소년 보호 정책</p>
+                    <p>|</p>
+                    <p>사업자 정보 확인</p>
+                </div>
+            </div>
+        </div>
+    </div> 			
     
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>

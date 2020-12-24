@@ -146,16 +146,16 @@ var categoryService = (function(){
 					
 					
 				
-				str += "<h1>" + post.boardComment + "</h1><div></div>";
+				/*str += "<h1>" + post.boardComment + "</h1><div></div>";
 				str += "<div><label>글 제목</label><input name='title' value='"+post.title+"'  /></div>";
 				str += "<div><label>글 번호</label><input name='postSN' value='"+post.postSN+"' readonly='readonly' /></div>";
 				str += "<div><label>작성자 </label><input name='nick' value='"+post.nick+"' readonly='readonly' /></div>";
 				str += "<div><input type='hidden' name='boardSN' value='"+post.boardSN+"' readonly='readonly' /></div>";
 				str += "<div><label>글 내용</label><textarea row='3' name='postContent' >" + post.postContent +"</textarea>";
-				
+				*/
 					
 					
-				boardPost.html(str);
+				//boardPost.html(str);
 
 					
 			}

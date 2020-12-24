@@ -20,7 +20,7 @@
 
 		</div>
 		<div class="createForm">
-			<form action="/channel/chcreate" method="post" onsubmit="return checkValid();">
+			<form action="/channel/chcreate" method="post" onsubmit="">
 				<div class="RegisterForm">
 					<label class="label">채널 이름 <button class="submitBtn" id="titleModify">채널 이름 수정하러 가기</button></label>
 					<input class="form-control" id='channelTitle' value="<c:out value="${apply.channelTitle}"/>" name='channelTitle'  readonly="readonly">
@@ -59,6 +59,8 @@ $(document).ready(function(){
 		
 		console.log(oper);
 		
+		
+		
 		e.preventDefault();
 		
 		var oper = $(this).data('oper');
@@ -70,6 +72,7 @@ $(document).ready(function(){
 			
 		} if(oper == 'create'){
 			
+			alert("test");
 			formObj.submit();
 			
 		}

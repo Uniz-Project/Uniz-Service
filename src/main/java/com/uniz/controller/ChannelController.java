@@ -25,6 +25,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.uniz.domain.ChannelAttachVO;
 import com.uniz.domain.ChannelBoardVO;
+import com.uniz.domain.ChannelDTO;
 import com.uniz.domain.ChannelPageDTO;
 import com.uniz.domain.ChannelVO;
 import com.uniz.domain.Criteria;
@@ -49,7 +50,17 @@ public class ChannelController {
 	
 	// main 페이지로 이동
 	@GetMapping("/ch")
-	public String getMain(Model model) {
+	public String getMain( Criteria cri , Model model) {
+		
+		log.info("cri ==== " + cri);
+		
+		model.addAttribute("list", service.getChannelList(cri));
+		
+		int total = service.getTotal(cri);
+		
+		log.info("total ==== " + total);
+		
+		model.addAttribute("pageMaker", new ChannelDTO(cri, total));
 		
 		return "channel/main";
 	}
@@ -129,14 +140,22 @@ public class ChannelController {
 	
 	// postSN 을 가진채로 게시글 읽는 페이지로 이동
 	@GetMapping("/get/{postSN}")
-	public String get(@PathVariable("postSN") Long postSN, Model model ) throws Exception {
+	public String get(@PathVariable("postSN") Long postSN, Model model , HttpSession session ) throws Exception {
 	
-			if(mapper.checkPost(postSN) == 1){
+			Long userSN = (Long)session.getAttribute("userSN");
+			
+			final int POSTSN = mapper.checkPost(postSN);
+		
+			if(POSTSN == 1){
 				
 				ChannelBoardVO vo = service.getPost(postSN);
 				log.info("vo= " +vo);
 				log.info("userSN= " + vo.getUserSN());
 				model.addAttribute("board", vo);
+					
+				if(!vo.getUserSN().equals(userSN)) {
+					service.updateViewCnt(postSN, 1L );
+				}
 				
 				return "channel/get";
 			
@@ -179,6 +198,12 @@ public class ChannelController {
 	@GetMapping("/modify/{postSN}/{channelSN}")
 	public String modify(@PathVariable("postSN") Long postSN,@PathVariable("channelSN") Long channelSN , Model model) {
 		
+		ChannelBoardVO vo = service.getPost(postSN);
+		
+		log.info("channel VO ==== " + vo);
+		
+		model.addAttribute("board", vo);
+		
 		return "channel/modify";
 	}
 	
@@ -217,10 +242,11 @@ public class ChannelController {
 	public ResponseEntity<ChannelPageDTO> getChannelList(@PathVariable("page") int page){
 		log.info("get Channel List........");
 		
-		Criteria cri = new Criteria(page, 5);
+		Criteria cri = new Criteria(page, 10);
 		
 		return new ResponseEntity<>(service.getAllChannelList(cri) , HttpStatus.OK);
 	}
+	
 	
 	// 채널 별 게시글 목록 보여줌
 	@GetMapping(value ="/list/{channelSN}/{page}",

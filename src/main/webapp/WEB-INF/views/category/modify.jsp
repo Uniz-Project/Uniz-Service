@@ -5,99 +5,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="/resources/css/Navbar.css">
+    <link rel="stylesheet" href="/resources/css/categoryRegister.css">
+ 	<link rel="stylesheet" href="/resources/css/Footer.css">
 </head>
-<style>
-
-.uploadResult{
-
-	whidth : 100%;
-	background-color : gray;
-
-}
-
-.uploadResult ul{
-
-	display : flex;
-	flex-flow : row;
-	justify-content : center;
-	align-items: center;
-
-}
-
-.uploadResult ul li {
-
-	list-style : none;
-	padding : 10px;
-
-}
-
-.uploadResult ul li img{
-
-	width : 50%;
-	
-}
-
-.bigPictureWrapper {
-
-	position : absolute;
-	display : none;
-	justify-content : center;
-	align-items : center;
-	top : 0%;
-	width : 100%;
-	height : 100%;
-	background-color : gray;
-	z-index : 100;
-	background : rgba(255,255,255,0.5);
-
-}
-
-.bigPicture {
-
-	position : relative;
-	display : flex;
-	justify-content : center;
-	align-items : center;
-
-}
-
-.bigPicture img {
-
-	width : 600px;
-
-}
-
-</style>
 <body>
 
+<%@ include file="/WEB-INF/views/includes/nav.jsp"%>
 
-게시글 수정 페이지
+<div class="mainPage">
+    <div class="leftSidebar">	
+		<div class="fixed">
+			<div class="SideHd">커뮤니티</div>
+			<button id="channelPost">채널 게시판으로 이동</button>
+			<button id="channelPost">카테고리별 게시판</button>
+		</div>
+	</div>
 
-
-<form action='/category/modify' method='post' id='boardPost' enctype="multipart/form-data" >
-
-</form>
-
-		<div>Files</div>
-			
-			<div class="uploadResult">
-				<ul>
-				</ul>
+	<div class="comPage">
+		<div class="creatorRegisterHeader">
+			<h1>게시글 수정</h1>
+		</div>
+		
+		<div class="createForm">
+			<form class="form" action='/category/modify' method='post' id='boardPost' >
+				<div class="RegisterForm">
+					<label class="label">글 번호</label>
+						<input class="form-control noBorder" name='postSN' value='<c:out value="${board.postSN}" />' readonly="readonly">
+	 				<label class="label">제목 </label>
+	 					<input class="form-control" name='title' value='<c:out value="${board.title}" />' >
+	 				<label class="label">작성자</label>
+	 					<input class="form-control" name='writer' value='<c:out value="${board.nick}" />' readonly="readonly">
+	 				<label class="label textarea">내용</label>
+	 					<textarea class="form-control textArea" rows="3" name='postContent'><c:out value="${board.postContent}"/></textarea>	
+	 					<input type='hidden'class="form-control" name='userSN' value='${user.userSN}'>
+						<input type="hidden" class="form-control" name='boardSN' value="${boardSN}">
+				
+				<label class="label"></label>
+				
+				<div class="thumbNail">
+						<ul>
+						</ul>
+				</div>
+				
+				<label for=""class="label"></label>
+				   
+				   <div class="uploadFileBox"> 
+					   <!-- 파일 업로드 하는 곳-->
+					   <ul>
+					   </ul>
+					<label for="uploadFile">파일 선택하기</label> 
+						<div class="ChseBtn">
+						<input type='file' name='uploadFile' id="uploadFile" multiple >
+						</div>
+					</div>
+					
+					<div class="applyBtnBox">
+						<button type='submit' class="submitBtn" data-oper='modify'>게시글 수정</button>
+						<button  class="delBtn" data-oper='remove' >게시글 삭제</button>
+						<button type='submit' class="delBtn" data-oper='list'>글 목록으로</button>
+					</div>
 			</div>
-			
-			<div class="form-group uploadDiv">
-				<input type="file" name="uploadFile" multiple="multiple">
-			</div>
-			<br>
-			
-<button type='submit' data-oper='modify'>게시글 수정</button>
-<button type='submit' data-oper='remove'>게시글 삭제</button>
-<button type='submit' data-oper='list'>글 목록으로</button>
-
-
-
+				</form>
+		</div>
+	</div>
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/category.js"></script>	
 <script type="text/javascript">
@@ -119,6 +93,8 @@ $(document).ready(function(){
 			
 			if(confirm("정말 삭제 하시겠습니까?")){
 			formObj.attr("action" , "/category/remove");
+			}else{
+				return false;
 			}
 			
 		}else if (operation === 'list'){
@@ -146,7 +122,7 @@ $(document).ready(function(){
 	        formObj.append(str).submit();
         }
 		formObj.submit();
-	});
+	}); 
 
 });
 
@@ -165,7 +141,7 @@ $(document).ready(function(){
 			
 			var str = "";
 			
-			$(arr).each(function(i, attach){
+			 $(arr).each(function(i, attach){
 				
 				if(attach.fileType){
 					
@@ -180,16 +156,16 @@ $(document).ready(function(){
 		            str += "</div>";
 		            str +"</li>";
 				}
-			});
+			}); 
 			
-			$(".uploadResult ul").html(str);
+			$(".thumbNail ul").html(str);
 	
 		});
 	
 	})();
 	
 	//첨부 파일 올라와 있는 이미지 지우기
-	$(".uploadResult").on("click", "button" , function(e){
+	$(".thumbNail").on("click", "button" , function(e){
 	
 		console.log("delete file");
 		
@@ -214,11 +190,16 @@ $(document).ready(function(){
 		return true;
 	}
 	
+	function deleteTest(){
+		alert("test");
+		return false;
+	}
+	
 	function showUploadResult(uploadResultArr){
 		
 		if(!uploadResultArr || uploadResultArr.length == 0){return;}
 		
-		var uploadUL = $(".uploadResult ul");
+		var uploadUL = $(".thumbNail ul");
 		
 		var str = "";
 		
@@ -287,23 +268,6 @@ $(document).ready(function(){
 	    
  });  
 	
-	var formObj = $("form");
-	
-	$('button').on("click", function(e){
-		
-		e.preventDefault();
-		
-		var operation = $(this).data("oper");
-		
-		if(operation === 'remove'){
-			
-			formObj.attr("action", "/category/remove");
-			
-		}
-		
-		formObj.submit();
-		
-	});
 	
 });
 
