@@ -7,10 +7,13 @@
 	pattern="yyyy-MM-dd" />
 <fmt:formatDate var="user_updateDateTime" value="${user.updateDateTime}"
 	pattern="yyyy-MM-dd" />
+	
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
+<link rel="stylesheet" href="/resources/css/usermodify.css">
+<link rel="stylesheet" href="/resources/css/RegisterCreator.css">
 </head>
 
 <body>
@@ -43,7 +46,7 @@
 					<p>가입일 : ${user_createDateTime}</p>
 
 					<div class="myButtonBox">
-						<button class="myModify" id="myBtn"
+						<button class="myModify" id="myBtn2"
 							onclick="location.href='/user/modify'">수정하기</button>
 						<button class="myDelete" id="removeBtn">탈퇴하기</button>
 						<c:if test="${apply eq null }">
@@ -57,7 +60,55 @@
 				</div>
 			</div>
 			
-			<div id="myModal" class="modal">
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+
+    <div class="title">
+      <h1>크리에이터 신청 상태</h1>
+    </div>
+    <div class="tableContainer">
+      <table>
+          <thead>
+       		 <tr>
+	            <th>채널 이름</th>
+	            <th>이메일 주소 </th>
+	            <th>신청 현황</th>
+	            <th>신청 날짜</th>
+       		 </tr>
+          </thead>
+         	 <tr>
+		        <td><c:out value="${apply.channelTitle}" /></td>
+		        <td><c:out value="${apply.email}" /></td>
+		        <c:choose>
+									
+					<c:when test = "${apply.state == 10}" >
+						<td>심사중</td>
+					</c:when>
+					
+					<c:when test = "${apply.state == 11 }" >
+						<td>승인</td>
+					</c:when>
+					
+					<c:when test = "${apply.state == 12 }" >
+						<td>거절</td>
+				</c:when>
+										
+			</c:choose>
+			
+			<td><fmt:formatDate pattern="yyyy-MM-dd" value="${apply.createDateTime}"/></td>
+         </tr>
+      </table>
+      <div class="btnBox">
+        <button class="goBtn">
+         	 신청내역 보러 가기
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+			
+<%-- 			<div id="myModal" class="modal">
 				<div class="modal-content">
 					<h3>[ 크리에이터 신청 상태 ]</h3>
 					<div class="applyInfo">
@@ -102,7 +153,7 @@
 							
 					</div>
 				</div>
-			</div>
+			</div> --%>
 
 			<div class="MyPageunizPointBox">
 				<div class="line2"></div>
@@ -148,6 +199,38 @@
 					</div>
 				</div>
 			</div>
+			
+			<div id="myModal2" class="modal2">
+
+		  <!-- Modal content -->
+		  <div class="modal-content2">
+		      
+		    <div class="title">
+		        <h1>My Profile</h1>
+		    </div>
+		    <form class="ModForm" action="">
+		       <p class="label">닉네임</p>
+		        <input class="form-control3"type="text">
+		        <p class="label">유저 아이디</p>
+		        <input class="form-control3" type="text" readonly="readonly">
+		        <p class="label">현재 비밀번호</p>
+		        <input class="form-control3" type="password">
+		        <p class="label">새로운 비밀번호</p>
+		        <input class="form-control3" type="password" id="myPwdCheck">
+		        <div class="showPwd">
+		            <input type="checkbox" onclick="myFunction()">  Show password
+		        </div>
+		        <p class="label">비밀번호 확인</p>
+		        <input class="form-control3" type="password" >
+		        <div class="btnBox">
+		            <button  class="modOKBtn"type="submit">수정 완료</button>
+		        </div>
+		    </form>
+
+
+  </div>
+
+</div>
 		</div>
 		
 	</div>
@@ -156,11 +239,14 @@
 	<%@ include file="/WEB-INF/views/includes/script.jsp"%>
 	<script>
 		
-	
 		var modal = document.getElementById("myModal");
 		
 		var showModal = document.getElementById("showModal");
+		// Get the modal
+		var modal2 = document.getElementById("myModal2");
 		
+		// Get the button that opens the modal
+		var btn2 = document.getElementById("myBtn2");
 		
 		showModal.onclick = function(){
 			modal.style.display = "block";
@@ -170,6 +256,18 @@
 			if (event.target == modal) {
 		        modal.style.display = "none";
 		    }
+		}
+		
+		// When the user clicks the button, open the modal 
+		btn2.onclick = function() {
+		  modal2.style.display = "block";
+		}
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+		  if (event.target == modal2) {
+		    modal2.style.display = "none";
+		  }
 		}
 		
 		$(".moveApplyInfo").on("click", function(){

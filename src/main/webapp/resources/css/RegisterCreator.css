@@ -1,0 +1,98 @@
+*{ box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans KR", sans-serif, 나눔고딕, 돋움, Dotum, 굴림, Gulim, "Apple SD Gothic Neo";
+    letter-spacing: -0.3px;
+ }
+ /* The Modal (background) */
+.modal {
+    display: block;
+    /* 다 작업하고 여기 none으로 바꾸기.  */
+    position: fixed; /* Stay in place */
+    z-index: 1; 
+    padding-top: 200px;
+    /* 이 padding 값 조정해서 흰색 박스 위치 지정 */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    height: 47%;
+    position: relative;
+    border-radius: 40px;
+  }
+  .title{
+      /* background-color: tomato; */
+      width: 100%;
+      height: 23%;
+      padding-left: 15px;
+  }
+  .title h1{
+      font-size: 25px;
+      color:rgb(30, 25, 98);
+  }
+  table, td, th {  
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+th{
+      border: none;
+      text-align: center;
+      background-color: rgb(77, 95, 177);
+      color: rgb(228, 241, 241);
+      
+  }
+  table th:first-child{
+     width: 28%;
+  }
+  table th:nth-child(2){
+      width: 35%;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+  }
+  
+  th, td {
+    padding: 15px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .btnBox{
+      /* background-color: goldenrod; */
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: flex-end;
+  }
+  .goBtn{
+      margin-top: 20px;
+      margin-right:10px;
+      background-color: rgb(194, 228, 255);
+      color: rgb(24, 15, 155);
+      font-size: 13px;
+      font-weight: bold;
+      padding:  12px 18px;
+      border: none;
+      border-radius: 4px;
+      outline: none;
+    }
+    .goBtn:hover{
+        background-color: rgb(156, 210, 255);
+        color: rgb(13, 8, 85);
+        transition: .4s ease-in-out;
+
+  }
+  
