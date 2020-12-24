@@ -24,6 +24,7 @@ import com.uniz.domain.MenuType;
 import com.uniz.domain.SearchResult;
 import com.uniz.domain.UnizVO;
 import com.uniz.domain.VideoDataListResult;
+import com.uniz.domain.VideoDataVO;
 import com.uniz.service.SearchService;
 import com.uniz.service.UnizService;
 
@@ -56,7 +57,21 @@ public class SearchController {
 
 		return;
 	}
-
+	
+	//네브바 검색
+	//일단 키워드가 1개인것만 생각
+	@GetMapping("/AllList")
+	public String searchListAll(String keyword, Model model){
+		
+		log.info("keyword : " + keyword);
+		List<VideoDataVO> VideoData = searchService.getMainSearch(keyword); 
+		log.info("videoData"+ VideoData);
+		
+		model.addAttribute("VideoData",VideoData);
+		model.addAttribute("keyword",keyword);
+		return "/search/result";
+	}
+	
 	@GetMapping(value="/list",
 			produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<SearchResult> list(@RequestParam("keyword") List<String> keyword, Long userSN) {
@@ -77,9 +92,39 @@ public class SearchController {
 		SearchResult searchResult = new SearchResult(keyword, resultVideos);
 		// 3. 결과 반환
 		return new ResponseEntity<>(searchResult, HttpStatus.OK);
+		
 		// model.addAttribute("searchResult", mapResult);
 	}
 
+	@GetMapping(value="/lists")
+	public String lists(@RequestParam("keyword") List<String> keyword, Long userSN, Model model) {
+		
+		log.info("search/list.....");
+		
+		System.out.println("keyword :" + keyword);
+		
+		System.out.println("userSN : " + userSN);
+		// 1. 내 검색 옵션 리스트를 기반으로 서치유니즈 리스트를 가져온다 
+		UnizVO searchUnizList = searchService.getSearchUnizList2(userSN);
+		//==> 의미없음 2124를 고정으로
+		// 2. 서치 유니즈 리스트를 통해 비디오 데이터 검색
+		System.out.println("???"+keyword.stream()
+												.map(String::toUpperCase)
+												.collect(Collectors.toList()));
+		List<VideoDataListResult> resultVideos = searchService.getSearchResult2(
+											keyword.stream()
+												.map(String::toUpperCase)
+												.collect(Collectors.toList()),
+											searchUnizList
+										);
+
+		SearchResult searchResult = new SearchResult(keyword, resultVideos);
+		// 3. 결과 반환 - 검색결과페이지로 이동
+		model.addAttribute("searchResult", searchResult);
+		
+		return "/search/result";
+	}
+	
 	@GetMapping(value = "/getUnitag",
 			produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<List<UnizVO>> getUnitagList(String keyword, Long userSN) {

@@ -40,7 +40,14 @@
 			#{unizSN}
 		</foreach>
 	</select>
+	
+	<select id="getSearchUnizListBySNList2" resultType = "com.uniz.domain.UnizVO">
+	SELECT * FROM uniz
+	WHERE unizSN IN
+	#{unizSN}
 
+	</select>
+	
 	<select id="getUnizTypeFromUnizSN" resultType = "Integer">
 	<![CDATA[
 	SELECT unizTypeSN FROM searchuniztype
@@ -51,5 +58,15 @@
 	)
 	]]>
 	</select>
-
+	
+	<select id="getMainSearch" resultType="com.uniz.domain.VideoDataVO">
+	<![CDATA[
+		select *
+		from videodata
+		where title like '%'||#{keyword}||'%'
+		or authornick like '%' ||#{keyword}||'%'
+		or titlehashtags like '%'|| #{keyword}||'%'
+		
+	]]>
+	</select>
 </mapper>

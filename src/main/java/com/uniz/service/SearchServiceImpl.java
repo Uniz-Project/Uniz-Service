@@ -59,7 +59,6 @@ public class SearchServiceImpl implements SearchService {
 	
 	@Override
 	public List<UnizVO> getSearchUnizList(Long userSN) {
-		log.info("getSearchUnizList............ : " + userSN);
 
 		// 1. 내 옵션 리스트를 가져옴 
 		List<Integer> optList = getOptionList(userSN);
@@ -67,14 +66,35 @@ public class SearchServiceImpl implements SearchService {
 		// 2. 옵션 리스트로 서치유니즈 SN 리스트 생성
 		// TODO 현재 하드코딩 상태 : 동적으로 혹은 DB에서 가져올 수 있도록 변환 필요
 		List<Long> searchUnizSNList = makeSearchUnizSNList(optList);
-
+		System.out.println("searchUnizSNList : "+ searchUnizSNList);
+		//[2100, 2200, 2400, 2120, 2140, 2240, 2124] = > 우리가필요한건 2124 번만 default검색
 		log.info("searchUnizSNList........... : " + searchUnizSNList);
 
 		List<UnizVO> searchUnizList = SearchMapper.getSearchUnizListBySNList(searchUnizSNList);
-
+		System.out.println("searchUnizSNList........... : " + searchUnizList);
+		log.info("searchUnizSNList........... : " + searchUnizList);
 		return searchUnizList;
 	};
+	
+	//대윤추가
+	@Override
+	public UnizVO getSearchUnizList2(Long userSN) {
 
+		// 1. 내 옵션 리스트를 가져옴 
+		List<Integer> optList = getOptionList(userSN);
+
+		// 2. 옵션 리스트로 서치유니즈 SN 리스트 생성
+		// TODO 현재 하드코딩 상태 : 동적으로 혹은 DB에서 가져올 수 있도록 변환 필요
+		List<Long> searchUnizSNList = makeSearchUnizSNList(optList);
+		System.out.println("searchUnizSNList : "+ searchUnizSNList);
+		//[2100, 2200, 2400, 2120, 2140, 2240, 2124] = > 우리가필요한건 2124 번만 default검색
+		log.info("searchUnizSNList........... : " + searchUnizSNList);
+		Long Test_UnizSN = (long)2124;
+		UnizVO searchUnizList = SearchMapper.getSearchUnizListBySNList2(Test_UnizSN);
+		System.out.println("searchUnizSNList........... : " + searchUnizList);
+		log.info("searchUnizSNList........... : " + searchUnizList);
+		return searchUnizList;
+	};
 
 	/**
 	 * 검색용 유니즈SN 리스트 생성기
@@ -232,7 +252,9 @@ public class SearchServiceImpl implements SearchService {
 		log.info("options..................... : " + options);
 		
 		List<UnizVO> uList = unizMapper.getUnizListByKeywordOptList(keywordList, options);
-
+		//동물 키워드를 가진 유니즈를찾는다 , 1- 10662 2. 10663 4. 10664
+		System.out.println("uList:" + uList);
+		
 		// 2. 유니즈 별 비디오리스트 획득
 		List<ArrayList<VideoDataVO>> videoList = new ArrayList<>();
 
@@ -279,7 +301,7 @@ public class SearchServiceImpl implements SearchService {
 	public List<VideoDataListResult> getSearchResult(List<String> keywordList, List<UnizVO> searchUnizList) {
 
 		List<VideoDataListResult> result = new ArrayList<>();
-
+		
 		// 1. 서치유니즈 별로 결과를 누적하자
 		for (UnizVO searchUniz : searchUnizList) {
 			
@@ -287,7 +309,8 @@ public class SearchServiceImpl implements SearchService {
 
 			// 2. 서치유니즈 값으로 그 검색옵션 타입 리스트를 획득 
 			List<Integer> options = SearchMapper.getUnizTypeFromUnizSN(searchUniz.getUnizSN());
-
+			System.out.println("options"+options); //1,2,4를 가져오기위함 ==> 2124
+			
 			// 2. 서치유니즈 키워드와 옵션으로 검색
 			// 2-a안 : DB에서 옵션 교집합 유니즈만 가져옴
 			// 2-b안 : 다 가져온 후 로직에서 교집합 유니즈만 처리
@@ -295,7 +318,7 @@ public class SearchServiceImpl implements SearchService {
 			// 일단 2-b안 으로
 			// 멀티 키워드도 일단은 IN 조건으로만
 			List<ArrayList<VideoDataVO>> rawVideolist = getVideoListByOptions(keywordList, options);
-
+//			System.out.println("rawVideolist : " + rawVideolist);
 			// 옵션 결과값 수와 옵션의 수가 안맞으면 검색실패 : 교집합 대상 옵션 중 하나의 검색 결과가 없는것, 검사하기도 전에 탈락
 			if (rawVideolist.size() != options.size()) {
 				continue;
@@ -303,7 +326,7 @@ public class SearchServiceImpl implements SearchService {
 
 			// 3. 검색 결과 중 교집합 비디오 리스트 획득
 			ArrayList<VideoDataVO> resultVideiList = getFilterIntersectionVideoList(rawVideolist);
-
+//			System.out.println("resultVideiList : " + resultVideiList);
 			if (resultVideiList.size() > 0) {
 				result.add(
 						new VideoDataListResult(
@@ -315,8 +338,57 @@ public class SearchServiceImpl implements SearchService {
 					);
 			}
 		}
-
+		
+//		System.out.println("result : " + result);
 		return result;
+	}
+
+	@Override
+	public List<VideoDataListResult> getSearchResult2(List<String> keywordList, UnizVO searchUnizList) {
+		
+		List<VideoDataListResult> result = new ArrayList<>();
+		
+		// 2. 서치유니즈 값으로 그 검색옵션 타입 리스트를 획득 
+					List<Integer> options = SearchMapper.getUnizTypeFromUnizSN(searchUnizList.getUnizSN());
+					System.out.println("options"+options); //1,2,4를 가져오기위함 ==> 2124
+					
+					// 2. 서치유니즈 키워드와 옵션으로 검색
+					// 2-a안 : DB에서 옵션 교집합 유니즈만 가져옴
+					// 2-b안 : 다 가져온 후 로직에서 교집합 유니즈만 처리
+
+					// 일단 2-b안 으로
+					// 멀티 키워드도 일단은 IN 조건으로만
+					List<ArrayList<VideoDataVO>> rawVideolist = getVideoListByOptions(keywordList, options);
+//					System.out.println("rawVideolist : " + rawVideolist);
+					// 옵션 결과값 수와 옵션의 수가 안맞으면 검색실패 : 교집합 대상 옵션 중 하나의 검색 결과가 없는것, 검사하기도 전에 탈락
+//					if (rawVideolist.size() != options.size()) {
+//						continue;
+//					}
+
+					// 3. 검색 결과 중 교집합 비디오 리스트 획득
+					ArrayList<VideoDataVO> resultVideiList = getFilterIntersectionVideoList(rawVideolist);
+//					System.out.println("resultVideiList : " + resultVideiList);
+					if (resultVideiList.size() > 0) {
+						result.add(
+								new VideoDataListResult(
+										searchUnizList.getUnizKeyword(),	// 검색 테마명
+										searchUnizList.getUnizSN(),			// 검색 유니즈
+										resultVideiList.size(),			// 결과 개수
+										resultVideiList					// 결과 비디오리스트
+								)
+							);
+					
+					}
+//				System.out.println("result : " + result);
+				return result;
+	}
+
+	@Override
+	public List<VideoDataVO> getMainSearch(String keyword) {
+		
+		List<VideoDataVO> VideoData =  SearchMapper.getMainSearch(keyword);
+		log.info("VideoData" + VideoData);
+		return VideoData;
 	}
 
 }
