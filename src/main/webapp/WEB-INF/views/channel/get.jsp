@@ -8,35 +8,38 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="/resources/css/Navbar.css">
-    <link rel="stylesheet" href="/resources/css/comuGet.css">
+    <link rel="stylesheet" href="/resources/css/channGet.css">
+     <link rel="stylesheet" href="/resources/css/Footer.css">
 </head>
 <body>
 
 <%@ include file="/WEB-INF/views/includes/nav.jsp"%>
 
-<div class="applyMain">
-
+<div class="mainPage">
+	<div class="leftSidebar">
+            <div class="fixed">
+                <div class="SideHd">커뮤니티</div>
+                <button id="channelPost" class="moveChannel">채널 게시판</button>
+                <button id="channelPost" class="moveCategory">카테고리 별 게시판</button>
+            </div>
+    </div>
+<div class="comPage">
+ <div class="FForm">
 	<div class="creatorRegisterHeader">
 		<h1><c:out value="${board.channelTitle}"/></h1>
 	</div>
-	
 	<div class="createForm">
 		<div class="registerForm">
-					<label class="label">글 번호</label>
-					 <input class="form-control" name='postSN'
+					 <input class="form-control noBorder" name='postSN'
 						value='<c:out value="${board.postSN}" />' readonly="readonly">
 
-					<label class="label">제목</label> 
 					<input class="form-control" name='title'
 						value='<c:out value="${board.title}" />' readonly="readonly">
 
-					<label class="label">작성자</label> 
 					<input class="form-control" name='writer'
 						value='<c:out value="${board.nick}" />' readonly="readonly">
 		
-					<label class="label">내용</label>
-					
-					<div class="thumbNail">
+					<div class="content">
 					<p><c:out value="${board.postContent}" /></p>
 						<ul>
 						</ul>
@@ -72,14 +75,49 @@
 			<div class="reply">
 			</div>
 			
-			<div class="postFooter">
-			</div>	
+			<div class="postFooter"></div>	
 			
-		</div>	
+		 </div>	 
 	</div>	
+	<!-- createForm end  -->
+	
+	</div>
+	 <!-- end FForm -->
+	</div>
+	<!-- comPage end  -->
 </div>
-
-<div class="footer"></div>		
+<!-- total main end  -->
+	<div class="footer">
+        <div class="foot">
+            <div class="header">
+                <h3> 고객센터</h3> <span>|</span> <h3>공지사항</h3>
+            </div>
+            <div class="midInfo">
+                <p>콘텐츠 제공 문의</p>
+                <p>페이스북</p>
+                <p>회사 소개 </p>
+                <p>인스타그램</p>
+                <p>인재 채용</p>
+                <p>사업 제휴 문의 </p>
+            </div>
+            
+            <div class="address">
+                <p>서울특별시 종로구 종로2가 9 YMCA 7F</p>
+                <div class="conf">
+    
+                    <p>@uniz Corp</p>
+                    <p>이용 약관</p>
+                    <p>|</p>
+                    <p>개인정보 처리방침</p>
+                    <p>|</p>
+                    <p>청소년 보호 정책</p>
+                    <p>|</p>
+                    <p>사업자 정보 확인</p>
+                </div>
+            </div>
+        </div>
+</div>
+	
 		
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/channel.js"></script>	
@@ -225,9 +263,9 @@
 	function commentUpdate(replySN, replyContent){
 	    var a ='';
 	   
-	    a += '<div class="input-group">';
-	    a += '<input type="text" class="form-control" name="content_'+replySN+'" value="'+replyContent+'"/>';
-	    a += '<input type="hidden" class="form-control" name="replySN_'+replySN+'" value="'+replySN+'"/>';
+	    a += '<div class="input-group comment">';
+	    a += '<input type="text" class="form-control repForm" name="content_'+replySN+'" value="'+replyContent+'"/>';
+	    a += '<input type="hidden" class="form-control repForm" name="replySN_'+replySN+'" value="'+replySN+'"/>';
 	    a += '<button class="confirm" type="button" onclick="return replyUpdate('+replySN+');">확인</button>';
 	    a += '</div>';
 	    

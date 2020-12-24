@@ -81,17 +81,19 @@ public class ApplyCreatorController {
 			
 		}
 		
+		log.info("vo=============== : " + vo);
+		
 		final int CHECKAPPLY = service.checkApply(vo.getUserSN());
 		
 		if( CHECKAPPLY == 1 ) {
 			
-			service.apply(vo);
+			return "redirect:/channel/ch";
 			
+		} 
+			service.apply(vo);
+		
 			return "redirect:/creator/get?userSN=" + vo.getUserSN();
 			
-		} else 
-			//신청한게 있으면 신청상세 페이지로 이동
-			return "redirect:/channel/ch";
 	}
 	
 	@PostMapping("/checkApply")

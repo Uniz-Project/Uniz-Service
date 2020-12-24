@@ -21,6 +21,7 @@ public class BoardVO {
 	private Date createDateTime;
 	private Date updateDateTime;
 	private int replyCnt;
+	private int viewCnt;
 	
 	private String changename;
 	

@@ -70,10 +70,26 @@ public class ChannelMapperTests {
 //		vo.forEach(board -> log.info("======== " + board));
 //	}
 	
+//	@Test
+//	public void testApply() {
+//		
+//		log.info("=== " + apMapper.checkApply(1L));
+//		
+//	}
+	
 	@Test
-	public void testApply() {
+	public void getChannelList() {
 		
-		log.info("=== " + apMapper.checkApply(1L));
+		Criteria cri = new Criteria();
+		
+		cri.setKeyword("TEST");
+		cri.setType("T");
+		
+		log.info("cri : " + cri);
+		
+		List<ChannelBoardVO> list = mapper.getChannelList(cri);
+		
+		list.forEach(channel -> log.info(channel));
 		
 	}
 	

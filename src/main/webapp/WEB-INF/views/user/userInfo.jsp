@@ -16,7 +16,6 @@
 <body>
 	<%@ include file="/WEB-INF/views/includes/nav.jsp"%>
 	<div class="mainPage">
-	
 		<div class="emptyBox">
 			<h1>내 프로필</h1>
 		</div>
@@ -224,7 +223,6 @@
 			
 			
 	});
-
 		
 	</script>
 

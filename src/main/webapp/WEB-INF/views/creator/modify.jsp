@@ -344,24 +344,6 @@ $(document).ready(function(){
 	    
  });  
 	
-	var formObj = $("form");
-	
-	$('button').on("click", function(e){
-		
-		e.preventDefault();
-		
-		var operation = $(this).data("oper");
-		
-		if(operation === 'cancle'){
-			
-			formObj.attr("action", "/creator/remove");
-			
-		}
-		
-		formObj.submit();
-		
-	});
-	
 });
 
 </script>

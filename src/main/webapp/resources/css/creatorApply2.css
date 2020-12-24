@@ -1,0 +1,145 @@
+.mainPage{
+    background-color: white; 
+    width: 100%;
+    height: 1124px;
+   
+}
+.comPage{
+	height: 1124px;
+}
+.nickLink{
+	text-decoration: none;
+	color: tomato;
+}
+.creatorRegisterHeader{
+    /* background-color: rgb(198, 238, 236); */
+    background-color: white;
+}
+.creatorRegisterHeader h1{
+    padding: 38px;
+    color: rgb(42, 42, 112);
+    text-align: center;
+}
+.createForm{
+    /* background-color: rgb(227, 240, 243); */
+    width: 85%;
+    height: auto;
+    margin: 13px auto;
+}
+.form{
+	width: 100%;
+	height: auto;
+}
+.RegisterForm{
+    /* background-color: rgb(192, 136, 15); */
+    width: 90%;
+    height: auto;
+    font-size: 18px;
+    padding: 5px;
+    /* margin : 30px 80px; */
+    margin: 20px auto;
+}
+.form-control{
+    background-color: rgb(246, 252, 255);
+    font-size: 20px;
+    padding: 10px 15px;
+    width: 90%;
+    height: 50px;
+    border: 1px solid rgb(161, 161, 161);
+    border-radius: 3px;
+    margin: 14px 3px;
+    outline: none;
+    display: block;
+    margin: 10px auto;
+    margin-bottom: 25px;
+    
+}
+.form-control:focus{
+    border: 2px solid rgb(36, 66, 122);
+}
+#category{
+    margin-top: 10px;
+    padding:  5px 12px;
+    border-radius: 3px;
+    border : 2px solid #36b1bc;
+    outline: none;
+    color: #045c7c;
+}
+#category:hover{
+    background-color: rgb(222, 225, 241);
+    transition: 0.4s;
+    color: black;
+}
+.label{
+    margin:  50px 30px;
+    color: rgb(0, 134, 187);
+    font-weight: bold;
+    padding: 30px 20px;
+}
+.label5{
+    /* 본인 유튜브 스튜디오 메인 페이지~~~ 문구 */
+    line-height: 80px;
+}
+body > div.applyMain > div.createForm > form > div > div.CateList > label{
+   line-height: 30px;
+}
+.form-control:nth-child(4){
+    /* (운영 채널 주)카테고리 목록 */
+    margin-bottom: 20px;
+}
+.CateList{
+    width: 100%;
+    height: 60px;
+    /* background-color: palevioletred; */
+}
+.catList{
+    margin-right: 0;
+}
+.uploadResult{
+    background-color: rgb(202, 235, 238);
+    width: 90%;
+    height: 260px;
+    margin: 0 auto;
+}
+.timesBtn{
+    width: 20px;
+    height: 20px;
+    position: relative;
+    background-color: white;
+    border: 2px solid grey;
+    border-radius: 3px;
+}
+.timesBtn svg{
+    position:absolute;
+    top: 5%;
+    right: 20%;
+    color: rgb(0, 0, 175);
+}
+.uploadFileBox{
+    /* background-color: gold; */
+    width:90%;
+    height: 60px;
+    margin: 0 auto;
+}
+.ChseBtn{
+    padding:  0 10px;
+}
+.ChseBtn input[type="file"]{
+    font-size: 20px;
+    color: rgb(14, 79, 184);
+    display: none; 
+}
+.uploadFileBox label{
+    padding: 6px 25px;
+    background-color: paleturquoise;
+    border-radius: 4px;
+}
+.uploadFileBox label:hover{
+    background-color: rgb(27, 154, 228);
+    color: rgb(245, 245, 245);
+    transition: 0.3s;
+}
+/* get get.html */
+.uploadResult ul li, .thumbNail ul li{
+    list-style-type: none;
+}

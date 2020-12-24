@@ -67,7 +67,12 @@ public class ChannelServiceImpl implements ChannelService {
 		return new ChannelPageDTO( mapper.getCountByPost() , mapper.getAllPost(cri));
 	}
 	
-	
+	@Override
+	public int getTotal(Criteria cri) {
+		
+		return mapper.getTotalCount(cri);
+		
+	}
 	
 	public ChannelBoardVO getPost(Long postSN){
 		log.info("게시글 출력 ");
@@ -174,6 +179,13 @@ public class ChannelServiceImpl implements ChannelService {
 			
 		}
 			return modifyResult;
+	}
+	
+	@Override
+	public void updateViewCnt(Long postSN, Long amount) {
+		
+		mapper.updateViewCnt(postSN , amount);
+		
 	}
 	
 	@Override

@@ -44,6 +44,8 @@ public interface BoardMapper {
 	
 	public int updateCont(BoardVO board); // 게시글 수정
 	
-	public void updateReplyCnt(@Param("postSN") Long postSN, @Param("amount") int amount);
+	public void updateReplyCnt(@Param("postSN") Long postSN, @Param("amount") int amount); // 댓글 수 업데이트
+	
+	public void updateViewCnt(@Param("postSN") Long postSN, @Param("amount") Long amount); // 게시글 조회수 업데이트
 	
 }

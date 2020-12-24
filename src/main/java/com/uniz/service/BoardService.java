@@ -29,6 +29,8 @@ public interface BoardService {
 	
 	public boolean update(BoardVO board);
 	
+	public void updateViewCnt(Long postSN, Long amount);
+	
 	public BoardVO get(Long postSN);
 	
 	public int getTotal();

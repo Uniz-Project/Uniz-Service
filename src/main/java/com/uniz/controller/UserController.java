@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -39,7 +40,9 @@ public class UserController {
 
 	private UserService userService;
 	private UnizService unizService;
+
 	private BCryptPasswordEncoder passwordEncoder;
+
 	private ApplyCreatorService applyService;
 
 	@GetMapping("/loginForm")
@@ -197,6 +200,8 @@ public class UserController {
 		log.info("user :" + user);
 
 		int loginResult = userService.userLogin(user, session);
+		
+		log.info("loginResult == " + loginResult);
 
 		log.info("loginResult == " + loginResult);
 
@@ -218,9 +223,11 @@ public class UserController {
 			resultStr = userService.addMyPlayLog(userSN, videoSN, currentTime);
 		}
 
+
 		map.put("result", resultStr);
 		return map;
 	}
+
 
 	// 유저의 POINT획득 로그 가져오기
 	@GetMapping("/getMyPointHistory")
