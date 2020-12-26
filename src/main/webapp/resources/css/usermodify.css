@@ -7,7 +7,7 @@
 
  /* The Modal (background) */
 .modal2 {
-    display: block; /* Hidden by default */
+    display: none; /* Hidden by default */
     /* 다 작업하고 여기 none으로 바꾸기.  */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -30,7 +30,7 @@
     padding: 20px;
     border: 1px solid #888;
     width: 32%;
-    height: 80%;
+    height: 1000px%;
     position: relative;
     border-radius: 40px;
     z-index: 2000;
@@ -67,6 +67,7 @@ ebf1fc
       padding-bottom: 3px;
       color:rgb(65, 65, 70);
       font-size: 17px;
+      display : block;
   }
   .mod-control{
       background-color: #ebf1fc;
@@ -76,6 +77,14 @@ ebf1fc
       width: 100%;
       height: 40px;
       padding: 9px;
+  }
+  .form-control3{
+  	background-color: #ebf1fc;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 40px;
+    padding : 10px
   }
   .form-control3::placeholder{
       font-size: 23px;
@@ -111,5 +120,18 @@ ebf1fc
     background-color: #188cb9;
     color: white;
     transition: .3s ease-in;
+  }
+  
+  .duplicateBtn{
+  	 margin-top: 4px;
+     position: absolute;
+     margin-left : 5px;
+     padding: 10px 13px;
+     outline: none;
+     background-color: #3f9bc8;
+     border-radius: 5px;
+     border: none;
+     color: white;
+     height :40px;
   }
   

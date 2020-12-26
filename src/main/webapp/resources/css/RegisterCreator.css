@@ -6,7 +6,7 @@
  }
  /* The Modal (background) */
 .modal {
-    display: block;
+    display: none;
     /* 다 작업하고 여기 none으로 바꾸기.  */
     position: fixed; /* Stay in place */
     z-index: 1; 
@@ -26,8 +26,7 @@
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 60%;
-    height: 47%;
+    width: 75%;
     position: relative;
     border-radius: 40px;
   }

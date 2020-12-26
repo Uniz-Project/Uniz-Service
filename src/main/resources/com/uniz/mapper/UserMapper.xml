@@ -101,8 +101,7 @@
 	UPDATE 
 	  USERDATA
 	SET
-	  USERSN = #{userSN},
-	  USERID = #{userId},
+	  NICK = #{nick},
 	  PASSWORD = #{password},
 	  UPDATEDATETIME = SYSDATE
 	WHERE
