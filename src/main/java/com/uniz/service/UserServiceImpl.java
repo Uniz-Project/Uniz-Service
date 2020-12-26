@@ -163,7 +163,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public String modifyUser(UserDTO userDto, UserDTO modifyUserDto, String com_password,HttpSession session) {
-				
+		modifyUserDto.setUserSN(userDto.getUserSN());
 		final String SUCCESS= "SUCCESS";
 		final String FAIL = "FAIL";
 		final String DB_ERROR = "DB ERROR";
@@ -185,9 +185,9 @@ public class UserServiceImpl implements UserService{
 					
 					//비밀번호말고 다른 정보도 바꾼다면 변경해야함
 					String EncPassword = PasswordEncode.encode(modifyPassword);
-					userDto.setPassword(EncPassword);
+					modifyUserDto.setPassword(EncPassword);
 					
-					int result = mapper.userDataUpdate(userDto);
+					int result = mapper.userDataUpdate(modifyUserDto);
 					
 					session.invalidate();
 					

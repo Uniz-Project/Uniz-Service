@@ -103,6 +103,31 @@ public class UserController {
 
 		return "/user/userInfo";
 	}
+	
+	@GetMapping("/info2")
+	public String userInfoRead2(HttpSession session, Model model) {
+
+		// 세션없이 접근시 메인으로 리턴
+		if (session.getAttribute("user") == null)
+			return "/user/loginForm";
+
+		// 1. 회원정보 가져오기 - 세션에 저장된 값
+
+		// 2. 회원유니즈 가져오기
+		// 세션에 저장된 값으로 가져온다.
+		UserDTO user = (UserDTO) session.getAttribute("user");
+		Long userSN = (Long) session.getAttribute("userSN");
+		List<MyUnizPoint> userUnizPoint = userService.getUserUniz(user.getUserSN());
+
+		ApplyVO apply = applyService.getApply(userSN);
+
+		log.info("userUnizPoint" + userUnizPoint);
+
+		model.addAttribute("myUnizPoint", userUnizPoint);
+		model.addAttribute("apply", apply);
+
+		return "/user/userInfo2";
+	}
 
 	// 회원가입 폼에서 회원가입 버튼 클릭
 	@PostMapping("/register")
@@ -136,12 +161,12 @@ public class UserController {
 		log.info("userDto - 변경할 값이 들어있는 객체 " + modifyUserDto);
 		log.info("현재 비밀번호  : " + c_password);
 		log.info("session userDto : " + userDto);
-
+		
 		String resultStr = userService.modifyUser(userDto, modifyUserDto, c_password, session);
-
+		
 		model.addAttribute("MSG", resultStr);
 
-		return resultStr.equals("SUCCESS") ? "home" : "/user/userModify";
+		return resultStr.equals("SUCCESS") ? "redirect:/" : "redirect:/user/info";
 
 	}
 

@@ -8,6 +8,7 @@
 <head>
 <title>Uniz-회원가입</title>
 <link rel="stylesheet" href="/resources/css/RegisterLogin.css">
+<link rel="stylesheet" href="/resources/css/RegisterModel.css">
 </head>
 <body>
 
@@ -55,31 +56,36 @@
         </div>
         
         <div class="btnBox">
-            <button type="button" class="logBtn regBtn" id="myBtn"onclick="">다음</button>
+            <button type="button" class="logBtn regBtn" id="myBtn" onclick="">다음</button>
             <button class="logBtn" type="button" onclick="location.href='/'">취소</button>
         </div>
         
         
     </div> 
     
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <div class="chkListBox">
-                <div class="chkBox">
-                    <c:forEach items="${PresetList}" var="preset">
-			            <input type="checkbox" name="unizSN" value="${preset.unizSN}"><label for="">${preset.unizKeyword}</label><br>
-		            </c:forEach>
-                </div>
-
-            </div>
-            
-            <input type ="hidden" name="state" value="1">
-            <div class="btnBox">
-                <button class="logBtn regBtn" type="submit">완료</button>
-            </div>
-        </div>
-      
-      </div>
+    <!-- The Modal -->
+		<div id="myModal" class="modal">
+		
+		  <!-- Modal content -->
+		  <div class="modal-content">
+		    <div class="title">
+		      <p>마지막 단계입니다! 당신의 유튜브 취향을 선택해주세요!</p>
+		    </div>
+			<div class="gridContainer">
+				<c:forEach items="${PresetList}" var="preset" varStatus="status">
+					<input type="checkbox" id="uniz${status.count}" name ="unizSN" value="${preset.unizSN}">
+      					<label for="uniz${status.count}" class="item uniz${status.count}"><p class="p${status.count}">${preset.unizKeyword}</p></label>
+      					
+				</c:forEach>
+				
+				<input type="hidden" name="state" value="1">
+		        <button class="submitBtn"type="submit">완료</button>
+		    </div>
+		    <!-- end gridContainer -->
+		    
+		  </div>
+		
+		</div>
     </form>
 </div>
 	
@@ -207,11 +213,11 @@
 				const SUCCESS = "SUCCESS";
 				const DUPLICATION = "DUPLICATION";
 				
-				if(data.data == SUCCESS){
+				if(data.result == SUCCESS){
 					alert("사용할 수 있는 아이디 입니다.")
 					$("#userId").attr("readonly", "true");
 					$("#userIdCheckBtn").attr("disabled", "true");
-				}else if(data.data == DUPLICATION){
+				}else if(data.result == DUPLICATION){
 					alert("이미 존재하는 아이디 입니다.")	
 				}else{
 					alert("데이터 입력 중 오류가 발생하였습니다.\n입력한 정보를 다시 확인해 주세요.");
