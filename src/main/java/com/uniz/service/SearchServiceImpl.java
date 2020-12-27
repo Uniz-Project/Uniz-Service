@@ -58,21 +58,18 @@ public class SearchServiceImpl implements SearchService {
 	}
 	
 	@Override
-	public List<UnizVO> getSearchUnizList(Long userSN) {
+	public List<UnizVO> getSearchUnizList(List<Integer> optList) {
 
 		// 1. 내 옵션 리스트를 가져옴 
-		List<Integer> optList = getOptionList(userSN);
+//		List<Integer> optList = getOptionList(userSN);
 
 		// 2. 옵션 리스트로 서치유니즈 SN 리스트 생성
 		// TODO 현재 하드코딩 상태 : 동적으로 혹은 DB에서 가져올 수 있도록 변환 필요
 		List<Long> searchUnizSNList = makeSearchUnizSNList(optList);
 		System.out.println("searchUnizSNList : "+ searchUnizSNList);
 		//[2100, 2200, 2400, 2120, 2140, 2240, 2124] = > 우리가필요한건 2124 번만 default검색
-		log.info("searchUnizSNList........... : " + searchUnizSNList);
 
 		List<UnizVO> searchUnizList = SearchMapper.getSearchUnizListBySNList(searchUnizSNList);
-		System.out.println("searchUnizSNList........... : " + searchUnizList);
-		log.info("searchUnizSNList........... : " + searchUnizList);
 		return searchUnizList;
 	};
 	

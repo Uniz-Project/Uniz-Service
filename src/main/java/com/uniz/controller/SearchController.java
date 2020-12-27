@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -74,12 +75,21 @@ public class SearchController {
 	
 	@GetMapping(value="/list",
 			produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<SearchResult> list(@RequestParam("keyword") List<String> keyword, Long userSN) {
-
-		log.info("search/list.....");
-
+	public String list(@RequestParam("keyword") List<String> keyword,@RequestParam(value="searchOption",defaultValue="0")List<Integer>searchOption, Model model) {
+		
+		log.info(searchOption);
+		
+		if(searchOption.get(0).equals(0)) {
+			String keyword2 = keyword.get(0);
+			List<VideoDataVO> VideoData = searchService.getMainSearch(keyword2);
+			
+			model.addAttribute("VideoData",VideoData);
+			model.addAttribute("keyword",keyword);
+			return "/search/result";
+		}
+		
 		// 1. 내 검색 옵션 리스트를 기반으로 서치유니즈 리스트를 가져온다 
-		List<UnizVO> searchUnizList = searchService.getSearchUnizList(userSN);
+		List<UnizVO> searchUnizList = searchService.getSearchUnizList(searchOption);
 
 		// 2. 서치 유니즈 리스트를 통해 비디오 데이터 검색
 		List<VideoDataListResult> resultVideos = searchService.getSearchResult(
@@ -91,9 +101,13 @@ public class SearchController {
 
 		SearchResult searchResult = new SearchResult(keyword, resultVideos);
 		// 3. 결과 반환
-		return new ResponseEntity<>(searchResult, HttpStatus.OK);
+//		return new ResponseEntity<>(searchResult, HttpStatus.OK);
 		
-		// model.addAttribute("searchResult", mapResult);
+		model.addAttribute("searchResult", searchResult);
+		
+		log.info("searchResult : " + searchResult);
+		
+		return "/search/detailResult";
 	}
 
 	@GetMapping(value="/lists")

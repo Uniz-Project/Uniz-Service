@@ -102,7 +102,7 @@ background: linear-gradient(180deg, rgba(245,245,245,1) 0%, rgba(255,255,255,1) 
     position: relative;
     margin-top: 4px;
 }
-.dropdown-content{
+.option-dropdown-content{
     background-color: rgba(255, 255, 255, 0.8);
     width: 150px;
     height: 234px;
@@ -118,17 +118,17 @@ background: linear-gradient(180deg, rgba(245,245,245,1) 0%, rgba(255,255,255,1) 
     display: block;
 }
 
-.dropdown-content > .optName{
+.option-dropdown-content > .optName{
     background-color: rgba(63, 97, 161, 0.4);
     display: block;
     text-align: left;
     padding: 10px 20px;
     
 }
-.dropdown:hover .dropdown-content{
+.dropdown:hover .option-dropdown-content{
     display: block;
 }
-.dropdown-content > .optName:hover{
+.option-dropdown-content > .optName:hover{
     background-color:  rgba(63, 97, 161, 0.6);
 }
 .opt:checked+label{

@@ -15,7 +15,7 @@ public interface SearchService {
 
 	public List<Integer> getOptionList(Long userSN);
 
-	public List<UnizVO> getSearchUnizList(Long userSN);
+	public List<UnizVO> getSearchUnizList(List<Integer> searchOption);
 
 	public Map<Integer, String> setOptions(Long userSN, List<Integer> options);
 

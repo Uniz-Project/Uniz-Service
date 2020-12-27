@@ -68,7 +68,7 @@ $(document).ready(function() {
 		e.preventDefault();
 
 		const keyword = $('#keyword').val().split(/\s*\s/);
-		const userSN = $('#userSN').val();
+		const getSear = $('#userSN').val();
 
 		console.log(keyword);
 
