@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.uniz.domain.MyUnizPoint;
 import com.uniz.domain.UserDTO;
@@ -35,6 +36,8 @@ public interface UserService {
 	public String addMyPlayLog(Long userSN, Long videoSN, int currentTime);
 
 	public List<VideoDataVO> getShowHistory(Long userSN);
+
+	public void modifyImg(UserDTO userDto, MultipartFile imgFile, HttpServletRequest request) throws Exception;
 	
 	
 

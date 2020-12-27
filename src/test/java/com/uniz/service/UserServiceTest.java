@@ -6,6 +6,8 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,9 +93,6 @@ public class UserServiceTest {
 		log.info("중복데이터가 있는 경우 " + service.userNickDuplicationCheck(testNick2));
 	}
 	
-	@Test
-	public void userIdDuplicationCheck() {
-		
-	}
+
 	
 }

@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,6 +23,7 @@ public class UserDTO {
 	private int userType; // 유저타입(1- 일반, 99 - 관리자)
 	private String nick; //유저닉네임
 	private String imgUrl; //유저 프로필경로
+	private MultipartFile imgFile;
 	private int state; // 유저상태 ( 1-정상, 2-탈퇴 등)
 	
 	@DateTimeFormat(pattern ="yyyy-MM-dd")

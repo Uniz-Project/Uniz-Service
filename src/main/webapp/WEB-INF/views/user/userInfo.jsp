@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="/resources/css/usermodify.css">
 <style>
 	
-	 table, td, th {  
+	table, td, th {  
    
     text-align: center;
   }
@@ -44,27 +44,31 @@
     overflow: hidden;
     white-space: nowrap;
   }
-
   
 </style>
 </head>
 
 <body>
 	<%@ include file="/WEB-INF/views/includes/nav.jsp"%>
-	<div class="mainPage">
-		<div class="emptyBox">
-			<h1>내 프로필</h1>
-		</div>
-		<div class="myTotalbox">
-			<div class="myPageBanner">
-				<div class="profileBox">
-					<div class="profileImg">
-						<img src="profile.jpg" alt="">
-					</div>
-				</div>
-				<div class="myinfoBox">
-					<h6>${user.nick}님의마이페이지</h6>
-					<p>닉네임 : ${user.nick}</p>
+
+<!-- <div class="emptyNav" style="width: 100%; height: 80px; background-color: #f1f1f1;"></div> -->
+        
+    <div class="mainPage">
+         <div class="proBox">
+             <div class="title">
+                 <p>마이페이지</p>
+             </div>
+             <div class="downBox">
+				 <form action="/user/profile" method="post" enctype="multipart/form-data">
+  		               <label class="input-file-button" for="input-file"><img src="/resources/imgUpload/UserPhoto/${user.imgUrl}" alt=""></label>
+  		               <input type="file" name="imgFile" id="input-file" style="display: none;"/><br>
+  		              
+  		               	<button class="btn modBtn3">프로필 수정하기</button>
+				 </form>
+                 <div class="userInfo">
+
+                     <p class="span"><i class="fab fa-youtube"></i>  Creator</p><p class="user">${user.nick}님의마이페이지</p>
+              		 <p>닉네임 : ${user.nick}</p>
 					<p>아이디 : ${user.userId }</p>
 					<c:if test="${user.userType eq 1}">
 						<p>일반회원</p>
@@ -227,19 +231,14 @@
 </div>   
 <%@ include file="/WEB-INF/views/includes/script.jsp"%>
 <script>
-
-
 $(document).ready(function(){
 	let msg = $("#msg").val()
 	//Get the modal
 	var modal = document.getElementById("myModal");
-
 	// Get the button that opens the modal
 	var btn = document.getElementById("creatorB");
-
 	//Get the modal
 	var modal2 = document.getElementById("myModal2");
-
 	// Get the button that opens the modal
 	var btn2 = document.getElementById("modifyB");
 	
@@ -251,7 +250,6 @@ $(document).ready(function(){
 	btn2.onclick = function() {
 	  modal2.style.display = "block";
 	}
-
 	// When the user clicks anywhere outside of the modal, close it
 	window.onclick = function(event) {
 	  if (event.target == modal) {
@@ -269,7 +267,6 @@ $(document).ready(function(){
 		}
 	});
 	
-
 	$('#userNickCheckBtn').click(function(){
 		
 		if($("#modal_nick").val()==""){
@@ -300,6 +297,12 @@ $(document).ready(function(){
 			}
 		});			
 	});
+	
+	if(msg == "FAIL"){
+		alert("비밀번호가 일치하지않습니다.");
+	}
+	
+});
 function checkForm(){
 	let form = document.getElementById("form");
 	let nick = "${user.nick}";
@@ -319,7 +322,6 @@ function checkForm(){
          form.password.select();
          return false;
     }
-
 	if(form.password.value != form.password2.value){
 		alert("비밀번호가 일치하지 않습니다. 비밀번호를 확인해주세요");
 		return false;
@@ -327,7 +329,6 @@ function checkForm(){
 	
 	return true;
 }
-
 // 비밀번호 보여주기.  
 function myFunction() {
       var x = document.getElementById("myPwdCheck");
@@ -337,13 +338,11 @@ function myFunction() {
         x.type = "password";
       }
     }
-
 function showPointLog(){
 	
 	$("#unizBtn").css("color","black");
 	$("#unizBtn").css("font-weight","normal");
 	$("#unizBtn").css("border-bottom","none");
-
 	$("#plogBtn").css("color","rgb(0, 162, 255)");
 	$("#plogBtn").css("font-weight","bold");
 	$("#plogBtn").css("border-bottom","3px solid rgb(0, 162, 255)");
@@ -401,7 +400,6 @@ function showPointLog(){
 			{data: "createDateTime"}
 		]
 	
-
 	});
 }
 </script>

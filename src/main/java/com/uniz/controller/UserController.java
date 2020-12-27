@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.uniz.domain.ApplyVO;
 import com.uniz.domain.MyUnizPoint;
@@ -25,7 +25,6 @@ import com.uniz.domain.UnizVO;
 import com.uniz.domain.UserDTO;
 import com.uniz.domain.VideoDataVO;
 import com.uniz.service.ApplyCreatorService;
-import com.uniz.domain.VideoDataVO;
 import com.uniz.service.UnizService;
 import com.uniz.service.UserService;
 
@@ -280,7 +279,7 @@ public class UserController {
 			return "home";
 		}
 
-		// 시청했던 시간값이 정확하지 않다. o
+		// 시청했던 시간값이 정확하지 않다. 
 
 		UserDTO dto = (UserDTO) session.getAttribute("user");
 		// 사용자의 시청이력을 가져온다.
@@ -290,5 +289,20 @@ public class UserController {
 		model.addAttribute("VideoData", showList);
 
 		return "/user/showHistory";
+	}
+	
+	@PostMapping("/profile")
+	public String uploadForm(MultipartFile imgFile, HttpServletRequest request, HttpSession session) throws Exception {
+		
+		if (session == null) {
+
+			// 세션이 만료되었습니다.
+			return "home";
+		}
+		
+		UserDTO userDto = (UserDTO) session.getAttribute("user");
+		userService.modifyImg(userDto,imgFile,request);
+		
+		return "redirect:/user/info";
 	}
 }
