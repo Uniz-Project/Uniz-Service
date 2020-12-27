@@ -11,8 +11,46 @@
 	]]>
 	</select>
 	
-	
 	<select id="getVideo" resultType="com.uniz.domain.VideoDataVO">
 		SELECT * FROM videoData where videoSn = #{videoSN}
+	</select>
+	
+	<select id="getLatestVideo" resultType="com.uniz.domain.VideoDataVO">
+			<![CDATA[
+			select *
+			from ( 
+  				select rownum, v.*
+  				from videodata v
+  				order by v.yuploaddatetime desc 
+  				)
+  				where rownum <=4
+  				]]>
+	</select>
+	
+	<select id="getPopularityVideo" resultType="com.uniz.domain.VideoDataVO">
+		<![CDATA[
+		select *
+			from ( 
+				  select rownum, v.*
+				  from videodata v
+				  order by (likecnt-dislikecnt)+viewcnt desc 
+			  )
+			  where rownum <=4
+	]]>
+	</select>
+	
+	<select id="getVideoTotalCount" resultType="Integer">
+		select count(*)
+		from videodata
+	</select>
+	
+	<select id="getRandomVideo" resultType="com.uniz.domain.VideoDataVO">
+		select *
+		from videodata
+		where videosn in 
+		<foreach collection="videoSNList" item="videoSN" index="index" open="(" separator="," close=")">
+			#{videoSN}
+		</foreach>
+		
 	</select>
 </mapper>

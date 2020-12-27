@@ -2,6 +2,7 @@ package com.uniz.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -11,7 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.uniz.domain.VideoDataVO;
 import com.uniz.service.SampleService;
+import com.uniz.service.VideoService;
 
 import lombok.AllArgsConstructor;
 
@@ -23,7 +26,7 @@ import lombok.AllArgsConstructor;
 public class HomeController {
 	
 	private SampleService service;
-	
+	private VideoService videoService;
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
@@ -31,15 +34,20 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		//메인페이지 기능
+		//1. 오늘의 추천영상 - 전체 영상에서 랜덤으로 3개 추출
+		List<VideoDataVO> randomVideo = videoService.getRandomVideo();
+		model.addAttribute("randomVideo",randomVideo);
 		
-		String formattedDate = dateFormat.format(date);
 		
-		model.addAttribute("serverTime", formattedDate );
-		model.addAttribute("dbTime", service.getTime() );
+		//2. 최신영상 4개 보여주기 
+		List<VideoDataVO> latestVideo = videoService.getLatestVideo();
+		model.addAttribute("latestVideo", latestVideo);
+		
+		//3. 인기 영상 4개 보여주기(likecnt-dislikecnt)+viewcnt
+		List<VideoDataVO> popVideo = videoService.getPopularityVideo();
+		model.addAttribute("popVideo",popVideo);
 		
 		return "home";
 	}

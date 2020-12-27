@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,34 +13,24 @@
  
   <body>
 
-		<%@ include file="/WEB-INF/views/includes/nav.jsp"%>		
+	<%@ include file="/WEB-INF/views/includes/nav.jsp"%>		
 	  <!-- Nav bar -->
        
     <!-- end navbar -->
     <div class="mainPage">
         <div class="title4">
-            <p>오늘의 추천영상</p>
+            <p>랜덤 추천영상</p>
             <button class="arrow"><i class="fas fa-angle-right"></i></button>
         </div>
         <div class="banner">
-            <div class="img1">
-                <img id="img" class="style-scope yt-img-shadow" alt="" width="9999" src="https://i.ytimg.com/vi/a_iQqN1Hp74/hq720.jpg?sqp=-oaymwEZCNAFEJQDSFXyq4qpAwsIARUAAIhCGAFwAQ==&amp;rs=AOn4CLBkvwp-LdAIok8XhkupIQL2p5X1Fw">
-                <div class="youtubeInfo">
-                    <p></p>
-                </div>
-            </div>
-            <div class="img2">
-                <img id="img" class="style-scope yt-img-shadow" alt="" width="9999" src="https://i.ytimg.com/vi/yquISGFXz9I/hq720.jpg?sqp=-oaymwEZCNAFEJQDSFXyq4qpAwsIARUAAIhCGAFwAQ==&amp;rs=AOn4CLDdSeJaU0QEXTtW2SEt2Q2WjIA-xw">
-                <div class="youtubeInfo">
-                    <p></p>
-                </div>
-            </div>
-            <div class="img2">
-                <img id="img" class="style-scope yt-img-shadow" alt="" width="9999" src="https://i.ytimg.com/vi/b25nmmgouwE/hq720.jpg?sqp=-oaymwEZCNAFEJQDSFXyq4qpAwsIARUAAIhCGAFwAQ==&amp;rs=AOn4CLDMeKja06tRLgiDjgiNVMJO5U_WKQ">
-                <div class="youtubeInfo">
-                    <p></p>
-                </div>
-            </div>
+        		<c:forEach items="${randomVideo}" var="list" varStatus="status" end="2">
+	        	<div class="img${status.count}">
+        			<a href="/video/${list.videoSN }"><img id="img" class="style-scope yt-img-shadow" alt="" width="9999" src="${list.thumbUrl}"></a>
+        			<!-- <div class="youtubeInfo">
+                    	<p></p>
+                	</div> -->
+        		</div>
+        	</c:forEach>
         </div>
         <!-- end banner -->
         <div class="lateTitle">
@@ -48,37 +39,24 @@
         </div>
         <div class="line"></div>
         <div class="latestVideos">
-            <div class="late">
-                <img id="img" class="style-scope yt-img-shadow" alt="" width="9999" src="https://i.ytimg.com/vi/v1Ee7kdXUZY/hq720.jpg?sqp=-oaymwEZCNAFEJQDSFXyq4qpAwsIARUAAIhCGAFwAQ==&amp;rs=AOn4CLB8oEOnIdXrI31f_Fyrk3zOUivAag">
-            </div>
-            <div class="late">
-                <img id="img" class="style-scope yt-img-shadow" alt="" width="9999" src="https://i.ytimg.com/vi/gdZLi9oWNZg/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&amp;rs=AOn4CLDIaWB85iTNr812wpJgEdE3XrvN_Q">
-            </div>
-            <div class="late">
-                <img id="img" class="style-scope yt-img-shadow" alt="" width="9999" src="https://i.ytimg.com/vi/1e12paAVxbQ/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&amp;rs=AOn4CLCHqMxA5Ek5XD3T1sqUolja8JAB7g">
-            </div>
-            <div class="late">
-                <img id="img" class="style-scope yt-img-shadow" alt="" width="9999" src="https://i.ytimg.com/vi/NfRNmE63jZ4/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&amp;rs=AOn4CLByFy5L0udX2HVNZVejpSfZlFIg8Q">
-            </div>
+        	<c:forEach items="${latestVideo}" var="list">
+	            <div class="late">
+	                <a href="/video/${list.videoSN}"><img id="img" class="style-scope yt-img-shadow" alt="" width="9999" src="${list.thumbUrl}"></a>
+	            </div>
+        	</c:forEach>
         </div>
+        
         <div class="lateTitle">
             <p>인기 영상들</p>
             <button class="seeMore">더 보기</button>
         </div>
         <div class="line"></div>
         <div class="latestVideos">
-            <div class="late">
-                <img id="img" class="style-scope yt-img-shadow" alt="" width="9999" src="https://i.ytimg.com/vi/5CVmMQuhPTI/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&amp;rs=AOn4CLCwaoeO0Fy5N0nDOZpa6SHUdC0nBw">
-            </div>
-            <div class="late">
-                <img id="img" class="style-scope yt-img-shadow" alt="" width="9999" src="https://i.ytimg.com/vi/rod11dE9JaA/hqdefault.jpg?sqp=-oaymwEZCOADEI4CSFXyq4qpAwsIARUAAIhCGAFwAQ==&amp;rs=AOn4CLBN4JFXjzCgCXqiGsdGqZX0_ajqFg">
-            </div>
-            <div class="late">
-                <img id="img" class="style-scope yt-img-shadow" alt="" width="360" src="https://i.ytimg.com/vi/dyRsYk0LyA8/hq720.jpg?sqp=-oaymwEZCOgCEMoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&amp;rs=AOn4CLAkPSRzOCBSqEwu26cTsPXgcnMJKg">
-            </div>
-            <div class="late">
-                <img id="img" class="style-scope yt-img-shadow" alt="" width="360" src="https://i.ytimg.com/vi/ViuDsy7yb8M/hq720.jpg?sqp=-oaymwEZCOgCEMoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&amp;rs=AOn4CLDf3Ox2aWqpWL-bDAeEhgtNG5JvJg">
-            </div>
+            <c:forEach items="${popVideo}" var="list">
+	            <div class="late">
+	                <a href="/video/${list.videoSN}"><img id="img" class="style-scope yt-img-shadow" alt="" width="9999" src="${list.thumbUrl}"></a>
+	            </div>
+        	</c:forEach>
         </div>
     </div>
     <!-- end mainPage -->
