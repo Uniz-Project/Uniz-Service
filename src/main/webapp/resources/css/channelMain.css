@@ -16,24 +16,27 @@
 }
 
 .search input[type=text]{
-	margin : 40px auto;
+	margin : 10px auto;
 	padding: 10px 5px;
     /* width: 95%; */ 
     width: 200px;
     border-radius: 4px 0 0 4px;
     background-color: white;
-    border: none;
+    border: 2px solid #ddd;
     outline: none;
 }
 .search  button{
    /*  position: absolute; */
-    right: 0;
     width: 15%;
     height: 38px;
     border: none;
     padding: 2px; 
     outline: none;
     background-color: rgb(205, 224, 246);
+    border: 2px solid #ddd;
+}
+#searchForm{
+	height: 100px;
 }
 
 .fixed{
@@ -67,6 +70,11 @@
     font-size: 20px;
     font-weight: bold;
     color: rgb(1, 40, 167);
+}
+
+.fork{
+	width: 45%;
+	height: auto;
 }
 .comPage{
     /* background-color: rgb(235, 248, 255); */
@@ -102,17 +110,57 @@
 }
 
 .applyBtn{
-    background-color: yellowgreen;
-    margin-left : 465px;
-    margin-top : 480px;
-    width: 35%;
+    width: 100%;
     height: 150px;
-    position : absolute;
+    position : relative;
 }
+
+.middle{
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.applyBtn:hover .image{
+	opacity: 0.3;
+	
+}
+
+.applyBtn:hover .middle{
+	opacity: 1;
+	
+}
+
+.applyButton:hover {
+	border-color: rgba(0,0,0,0.6);
+}
+
+.text{
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+
 .applyButton{
-	/* background-image : url("\resources\img\pet.png"); */  
+	background-color: white;
 	height: 100%;
 	width: 100%;
+	border: 1px solid #ddd;
 }
 
 .applyButton img{
@@ -125,32 +173,50 @@
   /*   background-color: rgb(43, 214, 214); */ 
     background-color: white;
     margin : 0 auto;
-    width: 100%;
+    width: 110%;
     height: auto;
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .search{
-	background-color: yellow;
-	margin-left : 465px;
-    margin-top: 278px;
-    width: 35%;
-    height: 150px;
-    position : absolute;
+	/* background-color: yellow; */
+    width: 100%;
+    height: 100px;
+    margin-top: 50px;
+    
+}
+
+.search p{
+	font-weight: bold;
+	font-size: 20px;
+	color: #6181C5;
+}
+
+#type{
+	height: 40px;
+	border: 2px solid #ddd;
 }
 
 .catHeader{
     /* 카테고리별 게시판 배경색깔 */
     /* background-color: #e3f1fa; */
     background-color: #ecf6fc;
-    width: 50%;
+    width: 100%;
     /* margin: 0 auto; */
     height: 90px;
     display: flex;
     align-items: center;
     border: 2px solid #dfe4ee;
+}
+.fork2{
+	/* background-color: gold; */
+	width: 360px;
+	height: 420px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap : wrap;
+	
 }
 .catHeader h1{
     font-size: 18px;
@@ -161,17 +227,18 @@
     background-color: #86a3e0;
     color: white;
     font-size: 13px;
-    width: 50%;
-    height: 35px;
+    width: 100%;
+    height: 50px;
     /* margin: 0 auto; */
     padding: 6px 22px;
+    line-height: 39px;
 }
 
 .boardList ul li{
     list-style-type: none;
     background-color: #ffffff;
     padding: 10px 20px;
-    width: 50%;
+    width: 100%;
     border: 1px solid #ccc;
     border-collapse: collapse;
 }
@@ -275,15 +342,15 @@ table thead tr:nth-child(odd){
 .channelFooter{
 	background-color: white;
 	margin-top: 30px;
-    width: 50%;
+    width: 100%;
     height: 90px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
     position: relative;
 }
 .channelFooter ul{
-	width: 50%;
+	width: 100%;
 	height: auto;
 /* 	background-color: tomato; */
 background-color: white;

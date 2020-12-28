@@ -1,3 +1,4 @@
+
 .icon{
 	height: 20px;
 	width: 20px;
@@ -60,7 +61,7 @@
 }
 .FForm{
 	background-color: white;
-	width: 80%;
+	width: 85%;
 	height: auto; 
 	margin: 0 auto;
 	
@@ -75,7 +76,7 @@
     color: rgb(116, 114, 114);
 }
 .channelPart{
-    background-color: rgb(43, 214, 214); 
+    /* background-color: rgb(43, 214, 214);  */
     width: 100%;
     height: auto;
     display: flex;
@@ -120,7 +121,7 @@
 .boardList ul li{
     list-style-type: none;
     background-color: #ffffff;
-    padding: 10px 20px;
+    padding: 20px 20px;
     width: 100%;
     border: 1px solid #ccc;
     border-collapse: collapse;
@@ -134,7 +135,7 @@
 }
 
 .boardList td{
-	padding : 0;
+	/* padding : 0; */
 	position : relative;
 }
 

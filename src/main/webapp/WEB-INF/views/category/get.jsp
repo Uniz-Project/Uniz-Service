@@ -28,8 +28,6 @@
         </div>
 <div class="comPage">
 
-
-
 <div class="FForm">
 	<div class="creatorRegisterHeader">
 		<h1> <c:out value="${board.boardComment}"/></h1>

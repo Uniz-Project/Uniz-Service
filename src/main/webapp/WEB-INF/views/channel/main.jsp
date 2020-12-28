@@ -32,18 +32,17 @@
 		
 	<div class="comPage">
 	   <div class="FForm">
-			<div class="channelPart">
-				
 				<div class="banner">
-					<img class="mySlides" src="\resources\img\music.png">
-					<img class="mySlides" src="\resources\img\game.png">
-					<img class="mySlides" src="\resources\img\free.png">
+					<a href="/category/main"><img class="mySlides" src="\resources\img\banner.png"></a>
+					<a href="/channel/ch"><img class="mySlides" src="\resources\img\banner2.png"></a>
+					<a href="/dataChart"><img class="mySlides" src="\resources\img\banner3.png"></a>
+					<a href="/UnizHit/UnizHit"><img class="mySlides" src="\resources\img\banner4.png"></a>
 				</div>
-				
-		        <div class="catHeader">
-		        <h1 class="test"> 채널 게시판 </h1>
-		    	</div>
-				
+
+			<div class="channelPart">
+	<div class="fork">			
+		<div class="mix">
+		        
 				<div class="BList">
         			<h3>채널 목록</h3>
 				</div>
@@ -63,7 +62,9 @@
     	    		</c:forEach> 
     	    		
         		</div>
-        		
+        </div>
+        <!-- end mix -->	
+        
         		<div class="channelFooter">
         			<ul class=''>
         				<c:if test="${pageMaker.prev}">
@@ -86,10 +87,14 @@
         			</ul>  
         		</div>
         		
+       	</div>
+       	
+       	<!-- fork end  -->
+        <div class="fork2">
         		<div class='search'>
         		<p>채널 / 크리에이터 검색</p>
         			<form id="searchForm" action="/channel/ch" method="get">
-        				<select name='type'>
+        				<select id="type" name='type'>
         					<option value=""
         					<c:out value="${pageMaker.cri.type == null ? 'selected':'' }"/>>--</option>
         					<option value="T"
@@ -112,8 +117,19 @@
 				</form>
 				
 				<div class="applyBtn">
-					<button class="applyButton"><img src="\resources\img\brass2.jpg">크리에이터 등록</button>
+					<button class="applyButton">
+						<img class="image" src="\resources\img\3186535.jpg">
+						<div class="middle">
+							<div class="text">크리에이터 등록</div>
+						</div>
+					</button>
 				</div>
+				
+
+		</div>
+				<!-- end fork  -->
+	
+				
         		
         	</div> <!-- channelPart end -->
         
@@ -129,8 +145,10 @@
 			</div> <!-- AAList end -->
 			</div>
 			<!-- end FForm -->
+
 	  	<div class="postFooter">
         </div> 
+
     		
 	
     	</div> <!-- comPage end -->
