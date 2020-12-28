@@ -23,6 +23,7 @@
 		    <button id="channelPost" class="moveCategory">카테고리 별 게시판</button>
 		</div>
     </div>
+    <div class="comPage">
     	<div class="FForm">
     		<div class="creatorRegisterHeader">
         		<h1>등록 조회 페이지</h1>
@@ -49,6 +50,7 @@
 				</div>
 		</div>
 	</div>
+</div>
 </div>	
 </div>
 		
@@ -100,6 +102,7 @@ $(document).ready(function(){
 					str += "<img src='/apDisplay?fileName="+fileCallPath+"'>";
 					str += "</div>";
 					str += "</li>";
+					str += "<br>";
 					
 					console.log("str : " + str);
 				}

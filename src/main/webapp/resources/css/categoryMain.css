@@ -1,3 +1,10 @@
+.icon{
+	height: 20px;
+	width: 20px;
+	position : absolute;
+	transform : translate(-50%, -50%);
+}
+
 .mainPage{
     /* background-color: gold; */
     width: 100%;
@@ -108,6 +115,7 @@
 	background-color: green;
 	width: 100%;
 	height: auto;
+	display : inline-block;
 }
 .boardList ul li{
     list-style-type: none;
@@ -124,6 +132,12 @@
     color:rgb(126, 114, 180);
     font-weight: bold;
 }
+
+.boardList td{
+	padding : 0;
+	position : relative;
+}
+
 
 
 .AAList{
@@ -158,6 +172,9 @@
     white-space: nowrap;
     
 }
+
+
+
 table {
     border-collapse: collapse;
     width: 100%;
@@ -165,7 +182,7 @@ table {
 }
   
   th, td {
-      background-color: white;
+    background-color: white;
     text-align: center;
     padding: 13px;
     text-overflow:ellipsis; 

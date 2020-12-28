@@ -12,6 +12,8 @@ public interface ApplyAttachMapper {
 	
 	public List<ApplyAttachVO> findByUserSN(Long userSN);
 	
+	public List<ApplyAttachVO> getAllAttach();
+	
 	public void deleteAll(Long userSN);
 	
 	

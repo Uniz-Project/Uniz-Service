@@ -11,6 +11,9 @@
         <link rel="stylesheet" href="/resources/css/Footer.css">
     
 </head>
+<style>
+.mySlides {display:none;}
+</style>
 <body>
 
 	<%@ include file="/WEB-INF/views/includes/nav.jsp"%>
@@ -29,9 +32,14 @@
 		
 	<div class="comPage">
 	   <div class="FForm">
-		<p class="channelPartp">커뮤니티 > 채널 게시판 </p>
 			<div class="channelPart">
-
+				
+				<div class="banner">
+					<img class="mySlides" src="\resources\img\music.png">
+					<img class="mySlides" src="\resources\img\game.png">
+					<img class="mySlides" src="\resources\img\free.png">
+				</div>
+				
 		        <div class="catHeader">
 		        <h1 class="test"> 채널 게시판 </h1>
 		    	</div>
@@ -41,6 +49,7 @@
 				</div>
 				
         		<div class="boardList"> <!-- 채널 목록 보여주는 div -->
+        		
         			<c:forEach items="${list}" var="channel">
 	        			<ul>
 	        				<li data-channelsn='"${channel.channelSN}"'>
@@ -52,6 +61,7 @@
 	        				</li>
     	    			</ul>
     	    		</c:forEach> 
+    	    		
         		</div>
         		
         		<div class="channelFooter">
@@ -77,6 +87,7 @@
         		</div>
         		
         		<div class='search'>
+        		<p>채널 / 크리에이터 검색</p>
         			<form id="searchForm" action="/channel/ch" method="get">
         				<select name='type'>
         					<option value=""
@@ -86,7 +97,7 @@
         					<option value="N"
         					<c:out value="${pageMaker.cri.type eq 'N' ? 'selected':'' }"/>>크리에이터</option>
         				</select>
-        				<input type='text' name="keyword"/>
+        				<input class="input" type='text' name="keyword"/>
         				<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
         				<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
         				<button class="btn">검색</button>
@@ -99,6 +110,10 @@
 					<input type='hidden' name='type' value='<c:out value="${pageMaker.cri.type}"/>'>
 					<input type='hidden' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'>
 				</form>
+				
+				<div class="applyBtn">
+					<button class="applyButton"><img src="\resources\img\brass2.jpg">크리에이터 등록</button>
+				</div>
         		
         	</div> <!-- channelPart end -->
         
@@ -106,7 +121,7 @@
      
 		<div class="AList">
       	  <h3>전체 게시글 목록</h3>
-		</div> 	
+		</div> 
         
 
        
@@ -114,8 +129,8 @@
 			</div> <!-- AAList end -->
 			</div>
 			<!-- end FForm -->
-	 <div class="postFooter">
-        </div>
+	  	<div class="postFooter">
+        </div> 
     		
 	
     	</div> <!-- comPage end -->
@@ -154,6 +169,24 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/channel.js"></script>
 <script type="text/javascript" src="/resources/js/channelPaging.js"></script>
+<script>
+var myIndex = 0;
+
+carousel();
+
+function carousel(){
+	var i;
+	var x = document.getElementsByClassName("mySlides");
+	for (i = 0; i < x.length; i++) {
+	    x[i].style.display = "none";  
+	  }
+	  myIndex++;
+	  if (myIndex > x.length) {myIndex = 1}    
+	  x[myIndex-1].style.display = "block";  
+	  setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+
+</script>
 <script>
 
 $(document).ready(function(){

@@ -19,6 +19,8 @@ public interface ApplyCreatorService {
 	
 	public List<ApplyAttachVO> getAttachList(Long userSN);
 	
+	public List<ApplyAttachVO> getAllAttach();
+	
 	public List<ApplyVO> getAllApply();
 
 }

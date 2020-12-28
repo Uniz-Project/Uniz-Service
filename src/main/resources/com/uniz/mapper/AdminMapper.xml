@@ -18,5 +18,6 @@
 			updatedatetime = sysdate
 			where userSN = #{userSN}
 	</update>
+	
 
 </mapper>

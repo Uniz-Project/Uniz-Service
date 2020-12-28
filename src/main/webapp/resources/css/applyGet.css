@@ -4,6 +4,16 @@
     padding: 0;
     font-family: "Noto Sans KR", sans-serif, 나눔고딕, 돋움, Dotum, 굴림, Gulim, "Apple SD Gothic Neo";
 }
+
+.uploadResult div{
+	background-color : white;
+}
+
+
+.uploadResult img{
+	heigth : 100%;
+	width : 50%;
+}
 .mainPage{
 	background-color: white;
 	width: 100%;
@@ -197,7 +207,7 @@ body > div.applyMain > div.createForm > form > div > div.CateList > label{
 }
 /* get get.html */
 .uploadResult{
-    background-color: rgb(202, 235, 238);
+    /* background-color: rgb(202, 235, 238); */
     width: 90%;
     height: 260px;
     margin: 0 auto;

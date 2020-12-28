@@ -33,7 +33,7 @@
 				<h1>크리에이터 등록 페이지</h1>
 			</div>
 				<div class="createForm">
-					<form class="form"role="form" action="/creator/apply" method="post" onsubmit="return checkValid();" >
+					<form class="form"role="form" action="/creator/applyCreator" method="post" onsubmit="return checkValid();" >
 
 						
 					<div class="RegisterForm">
@@ -86,7 +86,7 @@
 		   				<div class="uploadFileBox"> 
 							<label for="uploadFile">파일 선택하기</label> 
 							<div class="ChseBtn">
-								<input type='file' name='uploadFile'id="uploadFile" multiple >
+								<input type='file' name='uploadFile' id="uploadFile" multiple >
 							</div>
 						</div>
 						
@@ -288,7 +288,8 @@ function checkValid(){
 
 
 	var eamilCheck = document.getElementById('email');
-	var fileCheck = document.getElementById('file');
+	var fileCheck = document.getElementById('uploadFile');
+	
 	var blank_pattern = /^\s+|\s+$/g;
 
 		if(eamilCheck.value == '' || eamilCheck.value == null || eamilCheck.value.replace(blank_pattern, '').length == 0){

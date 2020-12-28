@@ -41,8 +41,10 @@
 		
 					<div class="content">
 					<p><c:out value="${board.postContent}" /></p>
-						<ul>
-						</ul>
+						<div class="uploadResult">
+							<ul>
+							</ul>
+						</div>	
 					</div>
 					
 					<div class="applyBtnBox">
@@ -331,7 +333,7 @@ $(document).ready(function(){
 				
 				if(attach.fileType){
 					
-					var fileCallPath = encodeURIComponent( attach.uploadPath+"/s_"+ attach.uuid + "_" + attach.fileName);
+					var fileCallPath = encodeURIComponent( attach.uploadPath+"/"+ attach.uuid + "_" + attach.fileName);
 					
 					str += "<li data-path='"+attach.uploadPath+"' data-uuid='"+attach.uuid+"' data-filename='"+attach.fileName+"'data-type'"+attach.fileType+"'><div>";
 					str += "<img src='/chdisplay?fileName="+fileCallPath+"'>";
@@ -341,7 +343,7 @@ $(document).ready(function(){
 				
 			});
 			
-			$(".thumbNail ul").html(str);
+			$(".uploadResult ul").html(str);
 	
 		});
 	

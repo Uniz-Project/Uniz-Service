@@ -154,6 +154,12 @@ body > div.applyMain > div.createForm > form > div > div.CateList > label{
     height: 60px;
     margin: 0 auto;
 }
+
+.uploadResult img{
+	height : 300px;
+	width : 300px;
+}
+
 .ChseBtn{
     padding:  0 10px;
 }

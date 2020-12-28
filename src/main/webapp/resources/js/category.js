@@ -14,15 +14,20 @@ var categoryService = (function(){
 			contentType : "application/json; charset=utf-8",
 			success : function(list){
 				
-					str += "<ul>";
-					
+					str += "<table class='categoryTable'>";
+					str += "<tr class='categoryTr'>";
 				for(var i = 0, len = list.length || 0; i < len; i ++){
-					str += "<li data-boardsn='" + list[i].boardSN + "'>";
-					str += "<a href='/category/board/" + list[i].boardSN + "'><strong>" 
-					+ list[i].boardComment + "<strong></a></div></li>";
+						
+						str += "<td class='categoryTd'>";
+						str += "<ul class='categoryUl'>";
+						str += "<li class='categoryLi' data-boardsn='" + list[i].boardSN + "'>";
+						str += "<a href='/category/board/" + list[i].boardSN + "'>";
+						str += "<img class='icon' src='"+list[i].imgPath+"' title='"+list[i].boardComment+"'></a></li>";
+						str += "</ul></td>";
 					
-				}
-					str += "</ul>";
+				}	
+					str += "</tr>";
+					str += "</table>";
 				boardList.html(str);
 			}
 			

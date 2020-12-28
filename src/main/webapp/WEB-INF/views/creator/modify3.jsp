@@ -9,9 +9,9 @@
     <title>Document</title>
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
+
+	<link rel="stylesheet" href="/resources/css/apply.css"> 
 	<link rel="stylesheet" href="/resources/css/Navbar.css">
-    <link rel="stylesheet" href="/resources/css/categoryRegister.css">
- 	<link rel="stylesheet" href="/resources/css/Footer.css">
 
 
 
@@ -19,85 +19,100 @@
 <body>
 	<%@ include file="/WEB-INF/views/includes/nav.jsp"%>
 	
-<div class="mainPage" >
-	<div class="leftSidebar">	
-		<div class="fixed">
-			<div class="SideHd">커뮤니티</div>
-			<button id="channelPost">채널 게시판으로 이동</button>
-			<button id="channelPost">카테고리별 게시판</button>
-		</div>
+	<div class="applyMain" style="height: 1300px;">
+    <div class="creatorRegisterHeader">
+        <h1>크리에이터 정보 수정 페이지</h1>
+    </div>
+	<div class="createForm">
+	<form role="form" action="/creator/modify" method="post">
+	
+	
+	
+    <div class="RegisterForm">
+        <div class="form-group">
+        
+        <label class="label">(운영하는)채널 이름</label>
+		<button type="button" class="duplicateBtn" id="duplicateTitle">중복 확인</button>
+		<input class="form-control" name='channelTitle' id='channelTitle' 
+		value="<c:out value="${apply.channelTitle}" />" >
+		
 	</div>
-	
-	<div class="comPage">
-    	<div class="creatorRegisterHeader">
-        	<h1>크리에이터 정보 수정 페이지</h1>
-    	</div>
-    	
-		<div class="createForm">
-			<form role="form" action="/creator/modify" method="post">
-   		 		<div class="RegisterForm">
-        			<label class="label">(운영하는)채널 이름</label>
-					<button type="button" class="duplicateBtn" id="duplicateTitle">중복 확인</button>
-						<input class="form-control" name='channelTitle' id='channelTitle' value="<c:out value="${apply.channelTitle}" />" >
-						<input type="hidden" class="form-control" name='userSN' id='userSN' value="<c:out value="${apply.userSN}" />" readonly="readonly">
-						<input type='hidden' class="form-control" name='applySN' id='applySN' value="<c:out value="${apply.applySN}" />" readonly="readonly">
+	<div class="form-group">
 		
-		
-				<div class="labelB" style="height: 70px;">
-            		<label class="label" style="line-height: 30px;">(채널 운영자)카테고리 목록</label>
-		
-						<select name='category' id='category'>
-							<option value="영화/애니메이션" ${apply.category == '영화/애니메이션' ? 'selected="selected"' : '' }>영화/애니메이션</option>
-							<option value="자동차/교통" ${apply.category == '자동차/교통' ? 'selected="selected"' : '' }>자동차/교통</option>
-							<option value="음악" ${apply.category == '음악' ? 'selected="selected"' : '' }>음악</option>
-							<option value="애완동물/동물" ${apply.category == '애완동물/동물' ? 'selected="selected"' : '' }>애완동물/동물</option>
-							<option value="스포츠" ${apply.category == '스포츠' ? 'selected="selected"' : '' }>스포츠</option>
-							<option value="여행/이벤트" ${apply.category == '여행/이벤트' ? 'selected="selected"' : '' }>여행/이벤트</option>
-							<option value="게임" ${apply.category == '게임' ? 'selected="selected"' : '' }>게임</option>
-							<option value="인물/블로그" ${apply.category == '인물/블로그' ? 'selected="selected"' : '' }>인물/블로그</option>
-							<option value="코미디" ${apply.category == '코미디' ? 'selected="selected"' : '' }>코미디</option>
-							<option value="엔터테인먼트" ${apply.category == '엔터테인먼트' ? 'selected="selected"' : '' }>엔터테인먼트</option>
-							<option value="뉴스/정치" ${apply.category == '뉴스/정치' ? 'selected="selected"' : '' }>뉴스/정치</option>
-							<option value="노하우/스타일" ${apply.category == '노하우/스타일' ? 'selected="selected"' : '' }>노하우/스타일</option>
-							<option value="교육" ${apply.category == '교육' ? 'selected="selected"' : '' }>교육</option>
-							<option value="과학기술" ${apply.category == '과학기술' ? 'selected="selected"' : '' }>과학기술</option>
-							<option value="비영리/사회운동" ${apply.category == '비영리/사회운동' ? 'selected="selected"' : '' }>비영리/사회운동</option>
-						</select>
-				</div>
-		
-                <label class="label" >[연락 받을 이메일 주소를 입력하세요]</label>
-					<input class="form-control" name='email' value='<c:out value="${apply.email}"/>' >
-					
-				<label class="label"></label>
-	
-				<div class="thumbNail">
-					<div class="uploadResult">
-						<ul>
-						<li><p>[첨부한 이미지]</p></li>
-						</ul>
-					</div>	
-				</div>
-	
-	<div class="uploadFileBox"> 
-		<ul>
-		</ul>
-			<label for="uploadFile">파일 선택하기</label> 
-				<div class="ChseBtn">
-					<input type="file" id="uploadFile" name="uploadFile" multiple="multiple">
-				</div>
-	</div>
-	
-				<div class="applyBtnBox">
-					<button class="submitBtn" type="submit" data-oper='modify' class="btn btn-default">수정완료</button>
-					<button class="submitBtn" data-oper='cancle'>신청 취소</button>
-					<button class="submitBtn" data-oper='list'>채널 게시판으로 이동</button>
-				</div>
+		<input type="hidden" class="form-control" name='userSN' id='userSN'
+		value="<c:out value="${apply.userSN}" />" readonly="readonly">
 
-				</div>
-			</form>
-		</div>
+		<input type='hidden' class="form-control" name='applySN' id='applySN'
+		value="<c:out value="${apply.applySN}" />" readonly="readonly">
+		
+	</div>
+		
+	<div class="labelB" style="height: 70px;">
+            <label class="label" style="line-height: 30px;">(채널 운영자)카테고리 목록</label>
+		
+		<select name='category' id='category'>
+			<option value="영화/애니메이션" ${apply.category == '영화/애니메이션' ? 'selected="selected"' : '' }>영화/애니메이션</option>
+			<option value="자동차/교통" ${apply.category == '자동차/교통' ? 'selected="selected"' : '' }>자동차/교통</option>
+			<option value="음악" ${apply.category == '음악' ? 'selected="selected"' : '' }>음악</option>
+			<option value="애완동물/동물" ${apply.category == '애완동물/동물' ? 'selected="selected"' : '' }>애완동물/동물</option>
+			<option value="스포츠" ${apply.category == '스포츠' ? 'selected="selected"' : '' }>스포츠</option>
+			<option value="여행/이벤트" ${apply.category == '여행/이벤트' ? 'selected="selected"' : '' }>여행/이벤트</option>
+			<option value="게임" ${apply.category == '게임' ? 'selected="selected"' : '' }>게임</option>
+			<option value="인물/블로그" ${apply.category == '인물/블로그' ? 'selected="selected"' : '' }>인물/블로그</option>
+			<option value="코미디" ${apply.category == '코미디' ? 'selected="selected"' : '' }>코미디</option>
+			<option value="엔터테인먼트" ${apply.category == '엔터테인먼트' ? 'selected="selected"' : '' }>엔터테인먼트</option>
+			<option value="뉴스/정치" ${apply.category == '뉴스/정치' ? 'selected="selected"' : '' }>뉴스/정치</option>
+			<option value="노하우/스타일" ${apply.category == '노하우/스타일' ? 'selected="selected"' : '' }>노하우/스타일</option>
+			<option value="교육" ${apply.category == '교육' ? 'selected="selected"' : '' }>교육</option>
+			<option value="과학기술" ${apply.category == '과학기술' ? 'selected="selected"' : '' }>과학기술</option>
+			<option value="비영리/사회운동" ${apply.category == '비영리/사회운동' ? 'selected="selected"' : '' }>비영리/사회운동</option>
+		</select>
+	</div>
+		
+	 <div class="emailForm">
+                <label class="label" style="line-height: 40px;">[연락 받을 이메일 주소를 입력하세요]</label>
+		
+		<input class="form-control" name='email' 
+		value='<c:out value="${apply.email}"/>' >
+		
+	</div>
+	
+	<div class="thumbNail">
+		<div class="uploadResult">
+			<ul>
+			<li><p>[첨부한 이미지]</p></li>
+			</ul>
+		</div>	
+	</div>
+	
+	<div class="uploadFileBox" style="margin-top: 30px;"> 
+
+		<label for="uploadFile">파일 선택하기</label> 
+			<div class="ChseBtn">
+				<input type="file" id="uploadFile" name="uploadFile" multiple="multiple">
+			</div>
+
+
+	</div>
+	
+	<!-- <button type="submit" data-oper='modify' class="btn btn-default">수정완료</button> -->
+	<button class="submitBtn" type="submit" data-oper='modify' class="btn btn-default">수정완료</button>
+	<!-- <button data-oper='cancle'>신청 취소</button> -->
+	<button class="submitBtn" data-oper='cancle'>신청 취소</button>
+	<!-- <button data-oper='list'>널 게시판으로 이동</button> -->
+	<button class="submitBtn" data-oper='list'>채널 게시판으로 이동</button>
+	</div>
+
+	
+	</form>
+
+
 	</div>
 </div>
+
+	<div class="footer">
+ </div>
+</body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -332,5 +347,4 @@ $(document).ready(function(){
 });
 
 </script>
-</body>
 </html>
