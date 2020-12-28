@@ -273,7 +273,7 @@ public class UserController {
 	@GetMapping("/showHistory")
 	public String showHistory(HttpSession session, Model model) {
 
-		if (session == null) {
+		if (session.getAttribute("user") ==null) {
 
 			// 세션이 만료되었습니다.
 			return "home";

@@ -8,11 +8,8 @@
 	<link rel="stylesheet" href="/resources/css/Navbar.css">
 	<link rel="stylesheet" href="/resources/css/main.css">
 	<link rel="stylesheet" href="/resources/css/Footer.css">
-	
 </head>
- 
   <body>
-
 	<%@ include file="/WEB-INF/views/includes/nav.jsp"%>		
 	  <!-- Nav bar -->
        

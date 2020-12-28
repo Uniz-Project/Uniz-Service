@@ -158,7 +158,7 @@
 	</update> 
 	
 	<select id="getShowHistory" resultType="com.uniz.domain.VideoDataVO">
-		SELECT V.*, MP.lastposition
+		SELECT V.*, MP.lastposition, MP.startdatetime
 		FROM myplaylog MP, VIDEODATA V
 		WHERE MP.USERSN = #{userSN}
 		AND
