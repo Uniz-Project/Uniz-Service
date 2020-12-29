@@ -37,7 +37,7 @@
                     <a href="/channel/ch">커뮤니티</a>
                 </li>
                 <li>
-                    <a href="/dataChart">시각화</a>
+                    <a href="/dataChart">추천</a>
                 </li>
              </ul>
          </div>

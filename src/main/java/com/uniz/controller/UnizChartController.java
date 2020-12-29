@@ -37,8 +37,12 @@ public class UnizChartController {
 	
 	@RequestMapping(value = "dataChart", method = RequestMethod.GET)
 
-	public String dateIncome(Locale locale, Model model) {
+	public String dateIncome(Locale locale, Model model, HttpSession session) {
 
+		if (session.getAttribute("user") == null)
+			return "redirect:/user/loginForm";
+
+		
 		return "dataChart";
 
 	}

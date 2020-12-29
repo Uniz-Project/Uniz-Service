@@ -69,7 +69,7 @@ var chartPieData = [];
 var userSN = '<c:out value="${user.userSN}"/>';
 var nick = '<c:out value="${user.nick}"/>';
 
-$.getJSON("http://localhost:8080/chartList", function(data){
+$.getJSON("http://localhost:9090/chartList", function(data){
 	
 
 	$.each(data, function(inx, obj){
@@ -130,7 +130,7 @@ function lineChart(){
 
 
 //pie차트
-$.getJSON("http://localhost:8080/chartList/"+userSN, function(data){
+$.getJSON("http://localhost:9090/chartList/"+userSN, function(data){
 	
 	$.each(data, function(inx, obj){
 
