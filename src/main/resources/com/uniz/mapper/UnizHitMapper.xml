@@ -5,13 +5,11 @@
 	<select id="getHitList" resultType = "com.uniz.domain.VideoDataVO">
 	<![CDATA[
 	
-	SELECT videoSN,thumbUrl,title
+	SELECT rownum,videoSN,thumbUrl,title
 	
 	FROM videoData
 	
-	where yuploaddatetime >= (select SYSDATE - 60
-                          from dual
-                         )
+	where rownum <= 32
 	
 	order by viewCnt+likeCnt desc
 			
@@ -27,13 +25,17 @@
 	</select>
 
 	<select id="keywordHitList" resultType="com.uniz.domain.VideoDataVO">
-		SELECT v.videoSN,v.thumbUrl,v.title
+		SELECT rownum,v.videoSN,v.thumbUrl,v.title
 		FROM  videoData v , uniz u
 		WHERE v.utbCateSN = u.unizSN
 			  and utbCateSN IN 
 		<foreach item="unizSN" index="index" collection="unizSNlist" open="(" separator="," close=")">
 			#{unizSN.unizSN}
 		</foreach>
+		<![CDATA[
+			and rownum <= 32
+		order by viewCnt+likeCnt desc	
+		]]>
 	</select>
 	
 	<select id="keywordUniz" resultType="com.uniz.domain.UnizLayerListVO">

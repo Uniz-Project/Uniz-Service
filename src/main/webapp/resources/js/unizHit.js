@@ -21,10 +21,11 @@ function getList(param ){
 			
 			
 		//data.length를 5개씩 나눠서 보여주기;
-			for (var i = 0 ; i < 32 ; i++) {
+			for (var i = 0 ; i < data.length ; i++) {
 				
 				str += "<div class='item'>";
 				str += "<a href= '"+data[i].videoSN+"'><img src='"+data[i].thumbUrl+"'></a>";
+				str += "<figcaption style='height: 50px;'>"+data[i].title+"</figcaption>";
 				str += "</div>";
 			}
 			
@@ -59,9 +60,11 @@ function getListAll(){
 			
 			
 		//data.length를 5개씩 나눠서 보여주기;
-			for (var i = 0  ; i < 32 ; i++) {
+				
+			for (var i = 0  ; i < data.length ; i++) {
 				str += "<div class='item'>";
 				str += "<a href= '"+data[i].videoSN+"'><img src='"+data[i].thumbUrl+"'></a>";
+				str += "<figcaption style='height: 50px;'>"+data[i].title+"</figcaption>";
 				str += "</div>";
 				
 				
