@@ -12,7 +12,7 @@ import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration()
+@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/*.xml")
 @Log4j
 public class BoardServiceTests {
 	
@@ -52,9 +52,9 @@ public class BoardServiceTests {
 //	}
 	
 	@Test
-	public void testDelete() {
+	public void testRandom() {
 		
-		
+		log.info("Random Board ==== " + service.getRandomPost());
 		
 	}
 	

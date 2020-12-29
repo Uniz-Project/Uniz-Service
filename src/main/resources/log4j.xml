@@ -31,11 +31,11 @@
 	<logger name="org.springframework.web">
 		<level value="info" />
 	</logger>
-
+	
 	<!-- Root Logger -->
 	<root>
 		<priority value="info" />
 		<appender-ref ref="console" />
 	</root>
-	
+
 </log4j:configuration>

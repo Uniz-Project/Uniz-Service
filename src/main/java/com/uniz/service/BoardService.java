@@ -17,6 +17,10 @@ public interface BoardService {
 	
 	public List<BoardVO> getAllPost(Criteria cri);
 	
+	public List<Long> getPostSN();
+	
+	public BoardVO getRandomPost();
+	
 	public PageDTO getListPage(Criteria cri);
 	
 	public List<BoardVO> getList(Long boardSN);
@@ -28,6 +32,8 @@ public interface BoardService {
 	public boolean delete(Long postSN);
 	
 	public boolean update(BoardVO board);
+	
+	public void updateViewCnt(Long postSN, Long amount);
 	
 	public BoardVO get(Long postSN);
 	

@@ -9,14 +9,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/resources/css/Navbar.css">
+    <link rel="stylesheet" href="/resources/css/channelMain.css">
     <link rel="stylesheet" href="/resources/css/channelBoard.css">
+    
+    <link rel="stylesheet" href="/resources/css/Footer.css">
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/includes/nav.jsp"%>
 	
 	<div class="mainPage">
 	
+	
+	<div class="leftSidebar">	
+		<div class="fixed">
+			<div class="SideHd">커뮤니티</div>
+			<button id="channelPost" class="channelPost">채널 게시판</button>
+			<button id="channelPost" class="categoryPost">카테고리별 게시판</button>
+		</div>
+	</div>
+	
+	<div class="comPage">
+ <div class="FForm">
+ 
+ 
+	
 	<c:forEach items="${channel}" var="channel">
+ <p class="channelPartp">커뮤니티 > 채널 게시판 > <c:out value="${channel.channelTitle}"/> 게시판  </p>
 	<h1 class="boardHeader"><c:out value="${channel.channelTitle}"/></h1>
 	</c:forEach>
 	<div id ="board"></div>
@@ -33,14 +51,52 @@
 	<div class="chBoardBtn">
 		<c:if test="${user.userSN ne null }" >
 		<button id="createBtn" type="button">게시글 작성</button>
-		<button id="listBtn" type="button">채널 게시판으로 이동</button>
 		</c:if>
+		<button id="listBtn" type="button">채널 게시판으로 이동</button>
 	</div>
 	
 	<div class="postFooter" id="postFooter">
 	</div>
+	
+			</div>
+			<!-- end FForm -->
+	</div> <!-- comPage end -->
+	
 
 	</div>
+	<!-- mainPage end  -->
+	
+	<div class="footer">
+        <div class="foot">
+            <div class="header">
+                <h3> 고객센터</h3> <span>|</span> <h3>공지사항</h3>
+            </div>
+            <div class="midInfo">
+                <p>콘텐츠 제공 문의</p>
+                <p>페이스북</p>
+                <p>회사 소개 </p>
+                <p>인스타그램</p>
+                <p>인재 채용</p>
+                <p>사업 제휴 문의 </p>
+            </div>
+            
+            <div class="address">
+                <p>서울특별시 종로구 종로2가 9 YMCA 7F</p>
+                <div class="conf">
+    
+                    <p>@uniz Corp</p>
+                    <p>이용 약관</p>
+                    <p>|</p>
+                    <p>개인정보 처리방침</p>
+                    <p>|</p>
+                    <p>청소년 보호 정책</p>
+                    <p>|</p>
+                    <p>사업자 정보 확인</p>
+                </div>
+            </div>
+        </div>
+    </div> 
+	
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/channel.js"></script>
@@ -157,6 +213,13 @@ $(document).ready(function(){
 		self.location = "/channel/register/"+channelSN;
 	});
 	
+	$(".channelPost").on("click", function(){
+		self.location = "/channel/ch";
+	});
+	
+	$(".categoryPost").on("click", function(){
+		self.location = "/category/main";
+	});
 	
 });
 </script>

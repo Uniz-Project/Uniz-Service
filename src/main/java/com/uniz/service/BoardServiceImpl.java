@@ -1,6 +1,8 @@
 package com.uniz.service;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -68,6 +70,28 @@ public class BoardServiceImpl implements BoardService {
 		
 	}
 	
+	@Override
+	public BoardVO getRandomPost(){
+		
+		List<Long> list = mapper.getPostSN();
+		
+		Collections.shuffle(list);
+		
+		log.info("============== " + list);
+		
+		Long postSN = list.get(0);
+		
+		return mapper.getRandomPost(postSN);
+		
+	}
+	
+	@Override
+	public List<Long> getPostSN(){
+		
+		return mapper.getPostSN();
+		
+	}
+	
 	public int checkBoard(Long boardSN) {
 		
 		return mapper.checkBoard(boardSN);
@@ -103,13 +127,9 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public boolean delete(Long postSN) {
 		
-		log.info("이미지 삭제 전======");
 		attachMapper.deleteAll(postSN);
-		log.info("이미지 삭제 후======");
 		 
-		log.info("댓글 삭제 전 ");
 		 mapper.deleteReply(postSN);
-		 log.info("해당 글의 댓글 삭제");
 		 
 		 int chCont = mapper.deleteCont(postSN);
 		 int chPost = mapper.deletePost(postSN);
@@ -145,6 +165,13 @@ public class BoardServiceImpl implements BoardService {
 			
 		}
 		return modifyResult;
+	}
+	
+	@Override
+	public void updateViewCnt(Long postSN , Long amount) {
+		
+		mapper.updateViewCnt(postSN, amount);
+		
 	}
 	
 	@Override

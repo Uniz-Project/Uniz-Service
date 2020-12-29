@@ -12,32 +12,19 @@ $(document).ready(function(){
 	console.log("show List " + page);
 	
 
-	channelService.getChannelList( {page: page || 1} , function(postCnt, list){
-		console.log("channelCnt= " + postCnt);
+	/*channelService.getChannelList( {page: page || 1} , function(channelCnt, list){
+		console.log("channelCnt= " + channelCnt);
 		
 		if(page == -1 ){
 			pageNum = Math.ceil(postCnt / 10.0);
 			showList(pageNum);
 			return;
 		}
+	
+		showChannelPage(channelCnt);
 		
-		var str = "";
-		
-		if(list == null || list.length == 0){
-			str = "<h3>개설 된 채널 게시판이 없습니다.</h3>";
-		}
-		
-		str += "<ul>";
-		for(var i = 0, len = list.length || 0; i < len; i++){
-			str += "<li data-channelsn='"+list[i].channelSN+"'>";
-			str += "<a href='/channel/board/"+list[i].channelSN+"'><i class='fab fa-youtube'></i><strong>"
-			+list[i].channelTitle+"</strong></a></div></li>";
-			
-		}
-			str += "</ul>";
-		channelList.html(str);
-		
-	});
+	});*/
+
 	
 	channelService.getAllPost( {page: page || 1 }, function(postCnt, list){
 	
@@ -56,7 +43,8 @@ $(document).ready(function(){
 			str += "<thead><tr><th>글 번호</th><th>글 제목</th><th>작성자</th><th>작성 일</th></tr></thead>";
 		}
 		
-		str += "<table><thead><tr><th>게시판 이름</th><th>글 제목</th><th>작성자</th><th>작성 일</th></tr></thead>";
+		str += "<table><thead><tr><th>게시판 이름</th><th>글 제목</th><th>작성자</th><th>작성 일</th><th>조회수</th></tr></thead>";
+
 		for (var i = 0, len = list.length || 0; i < len; i++){
 			
 			str += "<thead><tr>";
@@ -64,6 +52,7 @@ $(document).ready(function(){
 			str += "<td><a  href='/channel/get/"+list[i].postSN+"'>"+list[i].title+"["+list[i].replyCnt+"]"+"</a></td>";
 			str += "<td>"+list[i].nick + "</td>";
 			str += "<td>"+channelService.displayTime(list[i].createDateTime) +"</td>";
+			str += "<td>"+list[i].viewCnt + "</td>";
 			str += "</tr></thead>";
 		}
 			str += "</table>";
@@ -77,6 +66,8 @@ $(document).ready(function(){
 	var pageNum = 1;
 	
 	var postFooter = $(".postFooter");
+	
+	var channelFooter = $(".channelFooter");
 	
 	function showPostPage(postCnt){
 		
@@ -108,9 +99,20 @@ $(document).ready(function(){
 		str += "</ul>";
 		
 		postFooter.html(str);
+		
 	}
 	
+	
 	postFooter.on("click", "li a", function(e){
+		e.preventDefault();
+		
+		var targetPageNum = $(this).attr("href");
+		
+		pageNum = targetPageNum;
+		showList(pageNum);
+	});
+	
+	channelFooter.on("click", "li a", function(e){
 		e.preventDefault();
 		
 		var targetPageNum = $(this).attr("href");

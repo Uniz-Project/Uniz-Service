@@ -101,8 +101,7 @@
 	UPDATE 
 	  USERDATA
 	SET
-	  USERSN = #{userSN},
-	  USERID = #{userId},
+	  NICK = #{nick},
 	  PASSWORD = #{password},
 	  UPDATEDATETIME = SYSDATE
 	WHERE
@@ -148,10 +147,18 @@
 		  VALUES 
 		  (#{userSN}, #{videoSN}, #{position}) 
 		  
-	</insert> 
+	</insert>
+	
+	<update id="insertImgUrl">
+		update userdata
+		set
+			imgUrl = #{imgUrl},
+			updatedatetime = sysdate
+		where usersn = #{userSN}
+	</update> 
 	
 	<select id="getShowHistory" resultType="com.uniz.domain.VideoDataVO">
-		SELECT V.*, MP.lastposition
+		SELECT V.*, MP.lastposition, MP.startdatetime
 		FROM myplaylog MP, VIDEODATA V
 		WHERE MP.USERSN = #{userSN}
 		AND

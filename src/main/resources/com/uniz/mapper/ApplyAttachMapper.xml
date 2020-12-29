@@ -23,5 +23,9 @@
 	<delete id="deleteAll">
 		delete APPLY_IMGFILE where userSN = #{userSN}
 	</delete>
+	
+	<select id="getAllAttach" resultType="com.uniz.domain.ApplyAttachVO">
+		select * from APPLY_IMGFILE
+	</select>
 
 </mapper>

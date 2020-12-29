@@ -4,24 +4,23 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
+import javax.servlet.ServletContext;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.uniz.domain.MyUnizPoint;
 import com.uniz.domain.UserDTO;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
+@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/*.xml")
 @Log4j
 public class UserServiceTest {
 
@@ -94,9 +93,6 @@ public class UserServiceTest {
 		log.info("중복데이터가 있는 경우 " + service.userNickDuplicationCheck(testNick2));
 	}
 	
-	@Test
-	public void userIdDuplicationCheck() {
-		
-	}
+
 	
 }

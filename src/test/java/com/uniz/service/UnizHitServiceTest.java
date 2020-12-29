@@ -45,7 +45,7 @@ public class UnizHitServiceTest {
 //		List<UnizVO> unizSN2 =mapper.keywordUniz((long)20);
 //		service.keywordHitlist(unizSN2).forEach(list -> log.info(list));
 //	}
-//	
+	
 	
 
 }

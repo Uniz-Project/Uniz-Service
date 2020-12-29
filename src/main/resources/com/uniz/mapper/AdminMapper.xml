@@ -8,7 +8,7 @@
 	<update id="acceptApply" parameterType="com.uniz.domain.UserData">
 		update applycreator
 			set userType = 2,
-			state = 1
+			state = 11
 			where userSN = #{userSN}	
 	</update>
 	
@@ -18,5 +18,6 @@
 			updatedatetime = sysdate
 			where userSN = #{userSN}
 	</update>
+	
 
 </mapper>

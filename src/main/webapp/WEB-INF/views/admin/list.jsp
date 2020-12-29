@@ -12,6 +12,11 @@
 	<h1>크리에이터 신청 목록</h1>
 	
 	<div class="list">
+	
+	<h1>신고 글 목록</h1>
+	
+	<div class="reportList">
+	</div>
 		
 	</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -22,6 +27,9 @@
 		console.log("test");
 		
 		var applyList = $(".list");
+		
+		var reportList = $(".reportList");
+		
 		var str = "";
 		
 		$.ajax({

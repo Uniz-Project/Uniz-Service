@@ -1,0 +1,362 @@
+.mainPage{
+    background-color: #ffffff;
+    width: 100%;
+    height: 1200px;
+    overflow-x: hidden;
+}
+
+.title4{
+    /* background-color: gold; */
+    width: 85%;
+    margin: 0 auto;
+    height: 8%;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+.title4 p{
+    padding:  20px 0;
+}
+.arrow{
+   margin-left: auto;
+   font-size: 29px;
+   padding: 10px 0;
+   border: none;
+   outline: none;
+   background-color: inherit;
+   /* background-color: hotpink; */
+   margin-right: 42px;
+}
+.banner{
+    /* background-color: tomato; */
+    width: 90%;
+    margin: 0 auto;
+    height: 38%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: center;
+    gap: 20px;
+    flex-flow: column wrap;
+}
+.img1{
+    /* background-color: yellowgreen; */
+    width: 60%;
+    height: 96%;
+    position: relative;
+}
+.img1, .img2, .img3{
+    position: relative;
+    overflow: hidden;
+    background-color: black;
+    /* box-shadow: 0 9px 12px rgba(0, 0, 0, 0.05), 0 3px 16px rgba(0, 0, 0, 0.12), 0 5px 6px rgba(0, 0, 0, 0.1); */
+}
+
+.youtubeInfo{
+    width: 100%;
+    height:12%;
+    position: absolute;
+    bottom:20px;
+    left: 0;
+    display: block;
+    transition: 0.8s ease-in-out;
+    padding: 0 10px;
+    /* background-color: gold; */
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.youtubeInfo p{
+    color : white;
+    font-size: 25px;
+    transition: 3.0s ease-in-out;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: none;
+    width: 100%;
+
+}
+
+.img1 img, .img2 img , .img3 img{
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+    transition: .7s ease-in-out;
+    
+}
+.img1 img:hover{
+    opacity: 0.65;
+    -webkit-transform: scale(1.15);
+    transform: scale(1.15);
+    transition: 0.3s ease-in;
+}
+.img1:hover > .youtubeInfo{
+    display: block;
+    transition: 3.0s ease-in-out;
+    font-size: 32px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.img1:hover > .youtubeInfo p{
+    display: block;
+    /* background-color: rgba(0,0,0,0.5); */
+    transition: 3.0s ease-in-out;
+}
+.youtubeInfo:hover > .img1 img{
+    opacity: 0.65;
+    -webkit-transform: scale(1.15);
+    transform: scale(1.15);
+    transition: 0.6s ease-in;
+
+}
+.youtubeInfo p:hover > .img1 img{
+    opacity: 0.65;
+    -webkit-transform: scale(1.15);
+    transform: scale(1.15);
+    transition: 3.0s ease-in;
+}
+.img2{
+    /* background-color: burlywood; */
+    width: 27%;
+    height: 45%;
+}
+.img3{
+    /* background-color: burlywood; */
+    width: 27%;
+    height: 45%;
+}
+/* latestVideos */
+.lateTitle{
+    /* background-color: khaki; */
+    font-size: 22px;
+    width: 85%;
+    margin: 0 auto;
+    padding: 30px 0 10px 0;
+    font-weight: bolder;
+    display: flex;
+}
+
+.line{
+    width: 85%;
+    margin: 0 auto;
+    height: 2px;
+    background-color: #ddd;
+}
+.latestVideos{
+    /* background-color:  goldenrod; */
+    width: 85%;
+    margin: 0 auto;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    gap: 2%;
+    align-items: center;
+}
+.seeMore{
+    margin-left: auto;
+    border: none;
+    outline: none;
+    background-color: inherit;
+    color: dodgerblue;
+    font-size: 16px;
+    font-weight: bold;
+}
+.late{
+    /* background-color: lightpink; */
+    width: 20rem;
+    height: 11rem;
+    width: 310px;
+    height: 174px;
+}
+.late img{
+    width: 100%;
+    height: 100%;
+    opacity: 0.9;
+}
+.late img:hover{
+    
+    opacity: 1;
+    -webkit-transform: scale(1.15);
+    transform: scale(1.15);
+    transition: 0.2s ease-in;
+
+}
+.creatorBanner{
+    /* 크리에이터 신청 배너  */
+    background-color: #4daacb;
+    width: 100%;
+    height: 120px;
+    display: flex;
+    justify-content: center;    
+}
+.creatorBanner img{
+    width: auto;
+    height: 100%;
+    overflow: hidden;
+}
+.creatorP{
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.ctP{
+    margin-left: 20px;
+}
+.ctP p{
+    font-size: 20px;
+    color: white;
+}
+.ctP button{
+    margin-top: 10px;
+    padding: 12px 20px;
+    background-color:inherit;
+    border: 1px solid white;
+    color: white;
+    outline: none;
+}
+.commuNews{
+    background: url("사진자료/coofee.jpg");
+    
+    background-position: center;
+    background-size: cover;
+    width: 77%;
+    margin: 0 auto;
+    margin-top: 70px;
+    height: 450px;
+    position: relative;
+}
+.todaysCommu{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    color: white;
+    font-size: 20px;
+}
+
+.text{
+    padding: 24px;
+    position: absolute;
+    background-color: white;
+    width: 360px;
+    height: 70%;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    /* white-space: wrap; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+}
+.boardName{
+    padding: 3px;
+    background-color: rgb(58, 67, 78);
+    width: 30%;
+    color: white;
+    display: block;
+    margin-bottom: 10px;
+}
+.text h4{
+    display: block;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1.29em;
+    letter-spacing: -.6px;
+    color: #242424;
+    padding-bottom: 20px ;
+}
+.content{
+   color: #555;
+   width: 100%;
+   /* background-color: goldenrod; */
+   display: inline-block; 
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis; 
+   /* 여러 줄 자르기 추가 스타일 */
+   white-space: normal; 
+   line-height: 1.2; 
+   
+
+   height: 8.3em; 
+   text-align: left; 
+   word-wrap: break-word; 
+   display: -webkit-box; 
+   -webkit-line-clamp: 7; 
+   /* 7번째 줄에서 ...으로 바뀐다.  */
+   -webkit-box-orient: vertical;
+
+}
+.commuBoard{
+    background-color: whitesmoke;
+    width: 100%;
+    height: 500px;
+}
+
+* {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text200 {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.active20 {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+.slideshow-container{
+    width: 100%;
+    height: 100%;
+}
+.mySlides{
+    width: 100%;
+    height: 100%;
+}
+.mySlides > img{
+    width: 100%;
+    height: 100%;
+}
+

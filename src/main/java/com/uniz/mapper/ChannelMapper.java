@@ -11,7 +11,8 @@ import com.uniz.domain.UserData;
 
 public interface ChannelMapper {
 
-	public List<ChannelBoardVO> getChannelList(@Param("cri") Criteria cri); // 채널 리스트 출력
+
+	public List<ChannelBoardVO> getChannelList( Criteria cri); // 채널 리스트 출력
 	
 	public List<ChannelBoardVO> getPostList(@Param("cri") Criteria cri , @Param("channelSN")Long channelSN); // 해당 채널의 게시글 목록을 보여줌
 	
@@ -22,6 +23,8 @@ public interface ChannelMapper {
 	public int getChannelCount(); // 채널 수  댓글달때
 	
 	public int getCountByPost(); // 게시글 전체 수
+	
+	public int getTotalCount(Criteria cri);
 	
 	public int getTotalCountByChannel(Long channelSN); // 해당 채널 게시판의 게시글 총 수
 	
@@ -47,12 +50,14 @@ public interface ChannelMapper {
 	
 	public int deleteCont(Long postSN);		   //게시글 내용 delete
 	
-	public int deleteReply(Long postSN);
+	public int deleteReply(Long postSN); 
 	
 	public int updatePost(ChannelBoardVO vo); 	   //게시글 update
 	
 	public int updateCont(ChannelBoardVO vo);		   //게시글 내용 update
 	
-	public void updateReplyCnt(@Param("postSN") Long postSN, @Param("amount") int amount);
+	public void updateReplyCnt(@Param("postSN") Long postSN, @Param("amount") int amount); // 댓글 수 업데이트
+	
+	public void updateViewCnt(@Param("postSN") Long postSN, @Param("amount") Long amount); // 게시글 조회수 업데이트
 	
 }

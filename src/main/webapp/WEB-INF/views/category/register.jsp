@@ -7,30 +7,34 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
  	<link rel="stylesheet" href="/resources/css/Navbar.css">
-    <link rel="stylesheet" href="/resources/css/register.css">
-</head>
-<style>
-
-
-</style>
+    <link rel="stylesheet" href="/resources/css/categoryRegister.css">
+ 	<link rel="stylesheet" href="/resources/css/Footer.css">
 <body>
     
     <%@ include file="/WEB-INF/views/includes/nav.jsp"%>
     
-	<!-- end navbar -->
-	<div class="emptyNav"></div>
-
-    <div class="applyMain">
+    
+ <div class="mainPage">
+    <div class="leftSidebar">	
+		<div class="fixed">
+			<div class="SideHd">커뮤니티</div>
+			<button id="channelPost">채널 게시판으로 이동</button>
+			<button id="channelPost">카테고리별 게시판</button>
+		</div>
+	</div>
+    
+    
+    <div class="comPage">
 		<div class="creatorRegisterHeader">
 				<h1>글 쓰기</h1>
 		</div>
 			<div class="createForm">
 				<form  class="form" role="form" action="/category/register" method="post" onsubmit="return checkTitle()">
 					<div class="RegisterForm">
-						<label class="label">제목</label>
+						<label class="label">제목 *</label>
 						<input class="form-control" name='title' id='title'>
-						<label class="label textarea">내용</label>
-						<textarea class="form-control" rows="3" name='postContent'></textarea>
+						<label class="label textarea">내용 *</label>
+						<textarea  class="form-control textArea" rows="3" name='postContent'></textarea>
 							<input type='hidden'class="form-control" name='userSN' value='${user.userSN}'>
 							<input type="hidden" class="form-control" name='boardSN' value="${boardSN}">
 					
@@ -54,25 +58,54 @@
 
 					<div class="applyBtnBox">
 						<button type="submit" class="submitBtn">작성완료</button>
-						<button type="reset" class="submitBtn">전체 지우기</button>
+						<button type="reset" class="delBtn">전체 지우기</button>
 					</div>
 					</div>
+						</form>
 				</div>
-			</div> 
-	</div>
-</form>
+				<!-- end createForm -->
+		</div>
+		<!-- end comPage -->
 </div>
-</div>
+<!-- end mainPage -->
 <div class="footer">
-
-</div>
+        <div class="foot">
+            <div class="header">
+                <h3> 고객센터</h3> <span>|</span> <h3>공지사항</h3>
+            </div>
+            <div class="midInfo">
+                <p>콘텐츠 제공 문의</p>
+                <p>페이스북</p>
+                <p>회사 소개 </p>
+                <p>인스타그램</p>
+                <p>인재 채용</p>
+                <p>사업 제휴 문의 </p>
+            </div>
+            
+            <div class="address">
+                <p>서울특별시 종로구 종로2가 9 YMCA 7F</p>
+                <div class="conf">
+    
+                    <p>@uniz Corp</p>
+                    <p>이용 약관</p>
+                    <p>|</p>
+                    <p>개인정보 처리방침</p>
+                    <p>|</p>
+                    <p>청소년 보호 정책</p>
+                    <p>|</p>
+                    <p>사업자 정보 확인</p>
+                </div>
+            </div>
+        </div>
+    </div> 	
 					
-  
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/category.js"></script>
 <script>
 	
 	$(document).ready(function(e){
+		
 		
 		var formObj = $("form[role='form']");
 		

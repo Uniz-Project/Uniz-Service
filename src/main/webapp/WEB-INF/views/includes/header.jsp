@@ -8,3 +8,4 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.css"/>
 <link rel="stylesheet" href="/resources/css/videoDetail.css">
 <link rel="stylesheet" href="/resources/css/RegisterLogin.css">
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>

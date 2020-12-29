@@ -27,6 +27,8 @@ public interface ChannelService {
 	
 	public ChannelBoardVO getPost(Long postSN);
 	
+	public int getTotal(Criteria cri);
+	
 	public int checkChannel(Long channelSN);
 	
 	public String duplicateTitle(String channelTitle);
@@ -40,6 +42,8 @@ public interface ChannelService {
 	public boolean delete(Long postSN);
 	
 	public boolean update(ChannelBoardVO vo);
+	
+	public void updateViewCnt(Long postSN , Long amount);
 	
 	public List<ChannelAttachVO> getAttachList(Long postSN);
 	

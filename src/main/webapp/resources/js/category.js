@@ -14,15 +14,20 @@ var categoryService = (function(){
 			contentType : "application/json; charset=utf-8",
 			success : function(list){
 				
-					str += "<ul>";
-					
+					str += "<table class='categoryTable'>";
+					str += "<tr class='categoryTr'>";
 				for(var i = 0, len = list.length || 0; i < len; i ++){
-					str += "<li data-boardsn='" + list[i].boardSN + "'>";
-					str += "<a href='/category/board/" + list[i].boardSN + "'><strong>" 
-					+ list[i].boardComment + "<strong></a></div></li>";
+						
+						str += "<td class='categoryTd'>";
+						str += "<ul class='categoryUl'>";
+						str += "<li class='categoryLi' data-boardsn='" + list[i].boardSN + "'>";
+						str += "<a href='/category/board/" + list[i].boardSN + "'>";
+						str += "<img class='icon' src='"+list[i].imgPath+"' title='"+list[i].boardComment+"'></a></li>";
+						str += "</ul></td>";
 					
-				}
-					str += "</ul>";
+				}	
+					str += "</tr>";
+					str += "</table>";
 				boardList.html(str);
 			}
 			
@@ -146,16 +151,16 @@ var categoryService = (function(){
 					
 					
 				
-				str += "<h1>" + post.boardComment + "</h1><div></div>";
+				/*str += "<h1>" + post.boardComment + "</h1><div></div>";
 				str += "<div><label>글 제목</label><input name='title' value='"+post.title+"'  /></div>";
 				str += "<div><label>글 번호</label><input name='postSN' value='"+post.postSN+"' readonly='readonly' /></div>";
 				str += "<div><label>작성자 </label><input name='nick' value='"+post.nick+"' readonly='readonly' /></div>";
 				str += "<div><input type='hidden' name='boardSN' value='"+post.boardSN+"' readonly='readonly' /></div>";
 				str += "<div><label>글 내용</label><textarea row='3' name='postContent' >" + post.postContent +"</textarea>";
-				
+				*/
 					
 					
-				boardPost.html(str);
+				//boardPost.html(str);
 
 					
 			}

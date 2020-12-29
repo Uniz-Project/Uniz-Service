@@ -27,6 +27,7 @@ function getList(param ){
 				str += "<a href= '"+data[i].videoSN+"'><img src='"+data[i].thumbUrl+"'></a>";
 				str += "<figcaption style='height: 50px;'>"+data[i].title+"</figcaption>";
 				str += "</div>";
+				
 			}
 			
 				

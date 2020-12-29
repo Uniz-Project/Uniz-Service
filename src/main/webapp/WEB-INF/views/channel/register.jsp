@@ -47,9 +47,7 @@
 					   <!-- 파일 업로드 하는 곳-->
 					<label for="uploadFile">파일 선택하기</label> 
 						<div class="ChseBtn">
-						<input type='file' name='uploadFile'
-						id="uploadFile" 
-						multiple >
+						<input type='file' name='uploadFile' id="uploadFile"multiple >
 						</div>
 					</div>
 

@@ -119,6 +119,12 @@ public class ApplyCreatorServiceImpl implements ApplyCreatorService {
 	}
 	
 	@Override
+	public List<ApplyAttachVO> getAllAttach(){
+		
+		return attachMapper.getAllAttach();
+	}
+	
+	@Override
 	public List<ApplyVO> getAllApply(){
 		
 		return mapper.getAllApply();

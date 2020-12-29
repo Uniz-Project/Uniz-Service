@@ -1,5 +1,10 @@
 package com.uniz.controller;
 
+import java.util.List;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.uniz.domain.ApplyVO;
+import com.uniz.domain.BoardReportVO;
 import com.uniz.domain.EmailVO;
 import com.uniz.service.AdminService;
 import com.uniz.service.ApplyCreatorService;
+import com.uniz.service.BoardReportService;
 import com.uniz.utils.EmailSender;
 
 import lombok.AllArgsConstructor;
@@ -26,10 +33,20 @@ public class AdminController {
 	
 	private AdminService adminService;
 	private ApplyCreatorService service;
+	private BoardReportService reportService;
 	private EmailSender emailSender;
 	
 	@GetMapping("/list")
 	public void getList() {
+		
+	}
+	
+	@GetMapping(value = "/reportList",
+			produces = { MediaType.APPLICATION_XML_VALUE,
+					 MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<List<BoardReportVO>> getAllReport(){
+		
+		return new ResponseEntity<>(reportService.getAllReport() , HttpStatus.OK);
 		
 	}
 	

@@ -5,26 +5,6 @@
 	
 <mapper namespace="com.uniz.mapper.BoardMapper">
 	
-	<sql id="criteria">
-		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
-			<foreach item='type' collection="typeArr">
-				<trim prefix="OR">
-					<choose>
-						<when test="type == 'T'.toString()">
-							a.title like '%' ||#{keyword}|| '%'
-						</when>
-						<when test="type == 'C'.toString()">
-							a.postcontent like '%' ||#{keyword}|| '%'
-						</when>
-						<when test="type == 'W'.toString()">
-							a.nick like '%' ||#{keyword}|| '%'
-						</when>
-					</choose>
-				</trim>
-			</foreach>
-		</trim>
-	</sql>	
-	
 <select id="getAllPost" resultType="com.uniz.domain.BoardVO">
   <![CDATA[
 	select  *
@@ -33,7 +13,7 @@
             from
             	(
             	select
-           		p.postsn , p.title , p.createdatetime , u.usersn , u.nick , b.boardcomment , p.replycnt
+           		p.postsn , p.title , p.createdatetime , u.usersn , u.nick , b.boardcomment , p.replycnt , p.viewcnt
             	from boardpost p ,  userdata u , board b
     			where u.usersn = p.usersn 
     			and b.boardsn = p.boardsn
@@ -47,8 +27,27 @@
 	where rn > (#{cri.pageNum} -1 ) * #{cri.amount}
   ]]>
 </select>
-
-			
+	
+	<select id="getRandomPost" resultType="com.uniz.domain.BoardVO">
+		select
+           	p.postsn,b.boardSN , p.title, c.postcontent , p.createdatetime , b.boardcomment , p.replycnt , p.viewcnt
+        from  boardpost p , board b , boardpostcontent c
+    	where b.boardsn = p.boardsn
+    	and p.postsn = c.postsn
+    	and p.postsn in #{postSN}
+	</select>
+	
+	<select id="getPostSN" resultType="Long">
+		select postSN from boardpost
+	</select>
+	
+	<select id="minPostSN" resultType="int">
+		select min(postSN) from boardpost
+	</select>
+	
+	<select id="maxPostSN" resultType="int">
+		select max(postSN) from boardpost
+	</select>
 	
 	
 	<select id="getTotalCount" resultType="int">
@@ -70,7 +69,7 @@
 	</select>
 	
 	<select id="getBoardList" resultType="com.uniz.domain.BoardVO">
-		select boardsn , boardtitle, boardcomment, createdatetime
+		select *
 		from board
 	</select>
 	
@@ -81,7 +80,7 @@
 			select rownum list , a.*
 			from
 				(
-				select row_number() over(order by p.postsn , rownum desc) rn ,
+				select row_number() over(order by p.postsn , rownum desc) rn , p.viewcnt , 
 				b.boardsn , p.postsn , p.title, p.createdatetime , b.boardComment, u.nick , p.replycnt
 				
 				from board b , boardpost p , userdata u
@@ -103,7 +102,7 @@
 	<select id="read" resultType="com.uniz.domain.BoardVO">
 		
 			select p.postSN, p.boardsn ,u.nick, p.title, c.postcontent, 
-				   p.createdatetime , p.userSN, b.boardcomment
+				   p.createdatetime , p.userSN, b.boardcomment , p.viewcnt
                 
 			from boardpost p , boardpostcontent c , userdata u , board b 
 			where p.postSN = #{postSN}
@@ -176,6 +175,12 @@
 	<update id="updateReplyCnt">
 		update boardpost 
 		set replycnt = replycnt + #{amount} 
+		where postSN = #{postSN}
+	</update>
+	
+	<update id="updateViewCnt">
+		update boardpost
+		set viewcnt = viewcnt + #{amount}
 		where postSN = #{postSN}
 	</update>
 	

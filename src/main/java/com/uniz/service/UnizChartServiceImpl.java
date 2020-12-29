@@ -77,9 +77,8 @@ public class UnizChartServiceImpl implements UnizChartService {
 		Long utbCateSN = videoVO.getUtbCateSN();		
 		
 		//2개
-		List<Long> parentUniz = unizMapper.findParentUniz(utbCateSN);
-		
-		videoVO.setParentUniz(parentUniz);
+		Long parentUniz = unizMapper.findParentUniz(utbCateSN);		
+		videoVO.setUtbCateSN(parentUniz);
 		
 		return videoVO;
 	}

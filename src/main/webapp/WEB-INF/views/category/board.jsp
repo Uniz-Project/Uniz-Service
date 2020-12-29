@@ -8,12 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/resources/css/Navbar.css">
-    <link rel="stylesheet" href="/resources/css/board.css">
+    <link rel="stylesheet" href="/resources/css/categoryBoard.css">
+    <link rel="stylesheet" href="/resources/css/Footer.css">
 </head>
 <body>
 	
 	<%@ include file="/WEB-INF/views/includes/nav.jsp"%>
-	
 	
 	<div class="mainPage">
 		<div class="leftSidebar">
@@ -25,6 +25,8 @@
         </div>
 	
 		<div class="comPage">
+
+			<div class="FForm">
 			
 			<c:forEach items="${board}" var="board">
 			<p class="channelPartp">커뮤니티 > <c:out value="${board.boardTitle}"/> </p>
@@ -62,12 +64,42 @@
 				<div class="postFooter" id="postFooter">
 				
 				</div>
-		
+			</div><!-- end FForm -->
+
 		</div> <!-- comPage end -->
 	
 	</div> <!--  main end -->
 	
-<div class="footer"></div>	
+
+ <div class="footer">
+    <div class="foot">
+      <div class="header">
+        <h3> 고객센터</h3> <span>|</span> <h3>공지사항</h3>
+      </div>
+      <div class="midInfo">
+        <p>콘텐츠 제공 문의</p>
+        <p>페이스북</p>
+        <p>회사 소개 </p>
+        <p>인스타그램</p>
+        <p>인재 채용</p>
+        <p>사업 제휴 문의 </p>
+      </div>
+      <div class="address">
+        <p>서울특별시 종로구 종로2가 9 YMCA 7F</p>
+        <div class="conf">
+          <p>@uniz Corp</p>
+          <p>이용 약관</p>
+          <p>|</p>
+          <p>개인정보 처리방침</p>
+          <p>|</p>
+          <p>청소년 보호 정책</p>
+          <p>|</p>
+          <p>사업자 정보 확인</p>
+        </div>
+      </div>
+    </div>
+  </div> 	
+
 	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/category.js"></script>	
@@ -107,7 +139,7 @@ $(document).ready(function(){
 				}
 				
 					str  = "<table class='boardTable' style='table-layout: fixed;'>"
-					str += "<thead><tr><th>글 번호</th><th>글 제목</th><th>작성자</th><th>작성 일</th></tr></thead>"
+					str += "<thead><tr><th>글 번호</th><th>글 제목</th><th>작성자</th><th>작성 일</th><th>조회수</th></tr></thead>"
 					
 					for ( var i = 0, len = list.length || 0; i < len; i ++){
 						
@@ -115,7 +147,8 @@ $(document).ready(function(){
 						str += "<td>"+list[i].rn + "</td>";
 						str += "<td><a class='move' href='/category/get/"+list[i].postSN+"'>"+list[i].title+"["+list[i].replyCnt+"]"+"</a></td>";
 						str += "<td>"+list[i].nick + "</td>";
-						str += "<td>"+categoryService.displayTime(list[i].createDateTime) +"</td></tr></thead>";	
+						str += "<td>"+categoryService.displayTime(list[i].createDateTime) +"</td>";	
+						str += "<td>"+list[i].viewCnt+"</td></tr></thead>";
 						
 					}
 						str +="</table>"

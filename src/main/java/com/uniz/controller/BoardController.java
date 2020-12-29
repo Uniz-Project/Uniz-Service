@@ -6,6 +6,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -21,10 +23,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.uniz.domain.BoardAttachVO;
+import com.uniz.domain.BoardReportVO;
 import com.uniz.domain.BoardVO;
 import com.uniz.domain.Criteria;
 import com.uniz.domain.PageDTO;
-import com.uniz.domain.ReplyVO;
+import com.uniz.service.BoardReportService;
 import com.uniz.service.BoardService;
 import com.uniz.service.ReplyService;
 
@@ -39,6 +42,7 @@ public class BoardController {
 	
 	private BoardService service;
 	private ReplyService reService;
+	private BoardReportService reportService;
 	
 	// 카테고리 별 게시판 메인으로 이동
 	@GetMapping("/main")
@@ -55,15 +59,6 @@ public class BoardController {
 		log.info("get Board List........");
 		return new ResponseEntity<>(service.getBoardList() , HttpStatus.OK);
 	} 
-	
-//	@GetMapping(value = "/fileview/{postSN}",
-//			produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
-//	//@ResponseBody
-//	public ResponseEntity<List<Map<String , Object>>> findByPostSN(@PathVariable("postSN") Long postSN) {
-//		
-//		return new ResponseEntity<>(service.findByPostSN(postSN) , HttpStatus.OK);
-//		
-//	}
 	
 	// 게시판 별 게시글 목록 보여줌
 	@GetMapping(value = "/boardlist/{boardSN}/{page}",
@@ -139,8 +134,13 @@ public class BoardController {
 	
 	@GetMapping( "/modify/{postSN}/{boardSN}")
 	public String getModify(@PathVariable("postSN") Long postSN , @PathVariable("boardSN")Long boardSN
-			,@ModelAttribute("cri") Criteria cri
-	, Model model) {
+			,@ModelAttribute("cri") Criteria cri , Model model) {
+		
+		BoardVO vo = service.get(postSN);
+		
+		log.info(" modify vo ====  " +vo);
+		
+		model.addAttribute("board", vo);
 		
 		return "category/modify";
 		
@@ -148,9 +148,11 @@ public class BoardController {
 	
 	@GetMapping("/get/{postSN}")
 	public String get(@PathVariable("postSN") Long postSN , @ModelAttribute("cri") Criteria cri
-	, Model model) {
+	, Model model , HttpSession session) {
 		
-		log.info("postSN : " + postSN);
+		Long userSN = (Long)session.getAttribute("userSN");
+		
+		log.info("get Page userSN : " + userSN);
 		
 		BoardVO vo = service.get(postSN);
 		
@@ -158,14 +160,16 @@ public class BoardController {
 
 			model.addAttribute("board", vo);
 			
+				if(!vo.getUserSN().equals(userSN)) {
+					service.updateViewCnt(postSN, 1L );
+				}
+			
 			return "category/get";
 		
-		}else {
-			
+		}
 			
 			return "category/main";
 
-		}
 	}
 	
 	
@@ -191,6 +195,14 @@ public class BoardController {
 		
 		return "redirect:/category/board/" + vo.getBoardSN();
 		
+	}
+	
+	@PostMapping("/report")
+	public String report(BoardReportVO vo, RedirectAttributes rttr) {
+		log.info("controller report vo = " + vo);
+		reportService.report(vo);
+		
+		return "redirect:/category/main";
 	}
 	
 	@PostMapping("/remove")

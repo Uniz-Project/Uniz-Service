@@ -1,17 +1,17 @@
 package com.uniz.service;
 
+import java.io.File;
 import java.util.List;
 
-import javax.servlet.http.Cookie;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.uniz.domain.MyUnizPoint;
 import com.uniz.domain.UserDTO;
@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService{
 	private UserMapper mapper;
 	private UnizPointMapper unizPointMapper;
 	private BCryptPasswordEncoder PasswordEncode;
-	
+		
 	@Transactional
 	@Override
 	public int userRegister(UserDTO dto,List<Long> unizSN) {
@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService{
 		log.info("dto : "+ dto);
 		
 		if(dto.getImgUrl()==null) {
-			dto.setImgUrl("default.img");
+			dto.setImgUrl("default.jpg");
 		}
 		//회원가입 전 NotNull 데이터 널 체크
 		if(isNotUserDTO(dto)==true) {
@@ -163,7 +163,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public String modifyUser(UserDTO userDto, UserDTO modifyUserDto, String com_password,HttpSession session) {
-				
+		modifyUserDto.setUserSN(userDto.getUserSN());
 		final String SUCCESS= "SUCCESS";
 		final String FAIL = "FAIL";
 		final String DB_ERROR = "DB ERROR";
@@ -185,9 +185,9 @@ public class UserServiceImpl implements UserService{
 					
 					//비밀번호말고 다른 정보도 바꾼다면 변경해야함
 					String EncPassword = PasswordEncode.encode(modifyPassword);
-					userDto.setPassword(EncPassword);
+					modifyUserDto.setPassword(EncPassword);
 					
-					int result = mapper.userDataUpdate(userDto);
+					int result = mapper.userDataUpdate(modifyUserDto);
 					
 					session.invalidate();
 					
@@ -245,8 +245,32 @@ public class UserServiceImpl implements UserService{
 		
 		//시청로그 가져오기
 		
-		
 		return mapper.getShowHistory(userSN);
+	}
+	
+	@Override
+	public void modifyImg(UserDTO userDto, MultipartFile imgFile,HttpServletRequest request) throws Exception {
+		
+		//저장용 파일 이름, 물리적저장, DB 저장용
+		String imgName = "";
+		
+		//물리적인 저장
+		//1. 저장 경로 설정
+		String uploadUri ="C:\\Uniz-Project\\Uniz-Service\\src\\main\\webapp\\resources\\imgUpload\\UserPhoto";
+		
+		//2. 시스템의 물리적인 경로
+		
+		// 유저아이디_파일이름.jpg
+		imgName = userDto.getUserId()+"_"+imgFile.getOriginalFilename(); //DB에 저장할이름
+		
+		//저장
+		imgFile.transferTo(new File(uploadUri,imgName));
+		
+		log.info("이미지이름 : " + imgName);
+		
+		userDto.setImgUrl(imgName);
+		
+		mapper.insertImgUrl(userDto);
 	}
 
 }
