@@ -4,7 +4,7 @@
 <mapper namespace="com.uniz.mapper.UnizChartMapper">
 
 
-<select id="chartData" resultType = "com.uniz.domain.UnizChartVO">
+<select id="lineChartData" resultType = "com.uniz.domain.UnizChartVO">
 	
 	<![CDATA[
 	select h.unizSN,u.unizkeyword, count(*) count
@@ -17,7 +17,7 @@
 	</select>
 
 
-<select id="chartData2" resultType = "com.uniz.domain.UnizChartVO">
+<select id="pieChartData" resultType = "com.uniz.domain.UnizChartVO">
 	
 	<![CDATA[
 	select h.unizSN,u.unizkeyword, count(*) count
@@ -28,6 +28,41 @@
 	order by h.unizSN
 	]]>
 	
+</select>
+
+<select id="pointData" resultType = "com.uniz.domain.MyUnizPoint">
+	
+	<![CDATA[
+	select unizSN
+	from myunizpointlist
+	where point =(select Max(point)
+                from myunizpointlist
+                where userSN = #{userSN})
+	]]>
+	
+	</select>
+	
+	<select id="keywordRedList" resultType="com.uniz.domain.VideoDataVO">
+		SELECT rownum,v.videoSN,v.thumbUrl,v.title
+		FROM  videoData v , uniz u
+		WHERE v.utbCateSN = u.unizSN
+			  and utbCateSN IN 
+		<foreach item="unizSN" index="index" collection="unizSNlist" open="(" separator="," close=")">
+			#{unizSN.unizSN}
+		</foreach>
+		<![CDATA[
+			and rownum <= 32
+		order by viewCnt+likeCnt desc	
+		]]>
+	</select>
+	
+	<select id="keywordUniz" resultType="com.uniz.domain.UnizLayerListVO">
+		select unizsn
+		from unizlayerlist
+		where parentunizsn IN
+		<foreach item="unizSN" index="index" collection="unizSN" open="(" separator="," close=")">
+			#{unizSN.unizSN}
+		</foreach>
 	</select>
 
 
