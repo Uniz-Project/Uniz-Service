@@ -34,6 +34,7 @@
         <div class="textBox">
             <i class="fa fa-user"></i>
             <input type="text" id="userId" name="userId" placeholder="아이디"><br>
+            
         </div>
 
         <div class="textBox">

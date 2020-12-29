@@ -1,0 +1,223 @@
+*{ box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans KR", sans-serif, 나눔고딕, 돋움, Dotum, 굴림, Gulim, "Apple SD Gothic Neo";
+    letter-spacing: -0.3px;
+ }
+ .mainPage{
+     width: 100%;
+     height: auto;
+     background-color: white;
+ }
+ .proBox{
+     /* background-color: rgb(199, 236, 145); */
+     width: 80%;
+     margin: 0 auto;
+     height: 350px;
+ }
+ .title{
+     height: 20%;
+ }
+ .title p{
+     padding: 20px 30px;
+     font-size: 20px;
+     font-weight: bolder;
+     display: block;
+ }
+ .downBox{
+     /* background-color: tomato; */
+     width: 100%;
+     height: 80%;
+     display: flex;
+     align-items: flex-start;
+     gap: 30px;
+ }
+ .downBox img{
+     width: 180px;
+     height: 180px;
+     margin-left: 40px;
+     margin-top: 10px;
+     border-radius: 50%;
+ }
+ .userInfo{
+     /* background-color: gold; */
+     width: 60%;
+     height: 100%;
+     padding: 17px 20px;
+     font-size: 20px;
+ }
+ .span{
+     display: inline-block;
+ }
+ .user{
+     display: inline-block;
+     font-weight: bold;
+     margin-bottom: 9px;
+ }
+ .userInfo p{
+     padding: 5px 3px;
+ }
+ .userInfo svg{
+     color: rgb(253, 197, 44);
+ }
+ .btnBox3{
+     /* background-color: indianred; */
+     width: 100%;
+     height: 20%;
+     margin-top: 15px;
+     
+ }
+ .btn{
+     padding: 11px 18px;
+     margin-right: 5px;
+     border: none;
+     outline: none;
+     border-radius: 4px;
+     cursor: pointer;
+ }
+
+ .btn-links{
+     background-color: white;
+     width: 77%;
+     margin: 0 auto;
+     height: 60px;
+     display: flex;
+ }
+ .linkBtn{
+     background-color: white;
+     padding: 10px 40px;
+     font-size: 18px;c
+     border: none;
+     outline: none;
+     cursor: pointer;
+     border-bottom: 3px solid rgb(0, 162, 255);
+     color: rgb(0, 162, 255);
+     font-weight: bold;
+ }
+ .active{
+     /* background-color: #ebf1fc; */
+
+     border-bottom: none;
+
+ }
+ .content-wrapper{
+     /* background-color: rgba(222, 233, 247, 0.822); */
+     width: 77%;
+     height: auto;
+     margin: 0 auto;
+     display: flex;
+     align-items: center;
+     margin-bottom: 50px;
+ }
+ .contents{
+     /* background-color: wheat; */
+     width: 100%;
+     margin: 10px auto;
+     height: auto;
+     padding: 20px;
+ }
+ .item{
+     border: 1px solid rgb(69, 87, 185);
+     width: 9em;
+     height: 8em;
+     border-radius: 10px;
+     margin: 0 auto;
+ }
+ .up, .down{
+     background-color: yellow;
+     font-size: 20px;
+     font-weight: bold;
+     height: 50%;
+     border-radius: 10px 10px 0 0;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     flex-direction: column;
+ }
+ .down{
+     border-radius: 0 0 10px 10px;
+     background-color: lightblue;
+     font-weight: normal;
+ }
+
+.opt{
+    background-color: gold;
+    display: flex;
+    height: 50px;
+
+}
+ .S2{
+     background-color: tomato;
+    }
+#getUniz{
+        margin-left: auto;
+ }
+ table, td, th {  
+    border: 1px solid rgb(163, 153, 153);
+    text-align: center;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 95%;
+    margin: 0 auto;
+    table-layout: fixed;
+  }
+  th{
+      background-color: #eff1ff;
+  }
+  
+  th, td {
+    padding: 15px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+th:first-child, th:nth-child(2){
+    width: 17%;
+}
+td:nth-child(3){
+    text-align: left;
+    padding-left: 25px;
+}
+th:last-child, td:last-child{
+    width: 15%;
+    text-align: center;
+}
+
+
+/* pagination */
+.page-links{
+    /* background-color: rgb(96, 87, 175); */
+    height: 80px;
+    margin-top: 50px;
+}
+.page-links ul{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.page-links ul li{
+    list-style-type: none;
+}
+.page-links ul li a{
+    text-decoration: none;
+    padding: 10px 16px;
+    margin: 3px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+    border-radius: 6px;
+    font-size: 17px;
+}
+.modBtn2{
+    color: rgb(0, 94, 202);
+    background-color: rgb(233, 246, 253);
+    border: 1px solid rgb(99, 161, 231);
+}
+ .delBtn2{
+     color: rgb(179, 9, 9);
+     background-color: rgb(248, 231, 220);
+     border: 1px solid rgb(189, 122, 122);
+ }

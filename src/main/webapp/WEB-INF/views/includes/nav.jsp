@@ -34,7 +34,7 @@
                      <a href="/UnizHit/UnizHit">인기</a>
                  </li>
                  <li>
-                    <a href="/category/main">커뮤니티</a>
+                    <a href="/channel/ch">커뮤니티</a>
                 </li>
                 <li>
                     <a href="/dataChart">시각화</a>
@@ -45,8 +45,8 @@
     <div class="nav2">
         
         <div class="searchBox2">
-            <form action="">
-            <input  id="searchInput" type="text"placeholder="제목/채널명을 입력해주세요."><button id="searchBtn"><i class="fa fa-search"></i>
+            <form action="/search/AllList">
+            <input  id="searchInput" name="keyword" type="text" placeholder="검색할 단어를 입력해주세요"><button id="searchBtn"><i class="fa fa-search"></i>
             </button>
             </form>
         </div>

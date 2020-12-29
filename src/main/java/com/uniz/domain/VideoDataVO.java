@@ -38,6 +38,8 @@ public class VideoDataVO {
 	private Date yUploadDateTime; //게시글작성일
 	private String keywords;
 	private int lastPosition;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
+	private Date startDateTime; //생성일
 	private List<Long> parentUniz;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")

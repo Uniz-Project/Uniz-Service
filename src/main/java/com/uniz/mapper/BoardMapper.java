@@ -24,6 +24,14 @@ public interface BoardMapper {
 	
 	public List<BoardVO> getAllPost(@Param("cri") Criteria cri); // 게시글 목록 페이징 처리한거
 	
+	public List<Long> getPostSN();
+	
+	public BoardVO getRandomPost(@Param("postSN") Long postSN);
+	
+	public int minPostSN();
+	
+	public int maxPostSN();
+	
 	public int getTotalCount(); // 게시글 총 수
 	
 	public int checkBoard(Long boardSN);

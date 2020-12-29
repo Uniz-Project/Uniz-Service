@@ -26,7 +26,6 @@
 				<div class="SideHd">커뮤니티</div>
 				<button id="channelPost" class="boardPost">카테고리별 게시판</button>
                 <button id="channelPost" class="createChannel">채널 게시판 신청</button>
-                <button id="channelPost" class="registerCreator">크리에이터 등록</button>
 			</div>
 		</div>
 		
@@ -189,9 +188,7 @@
 <script type="text/javascript" src="/resources/js/channelPaging.js"></script>
 <script>
 var myIndex = 0;
-
 carousel();
-
 function carousel(){
 	var i;
 	var x = document.getElementsByClassName("mySlides");
@@ -203,17 +200,15 @@ function carousel(){
 	  x[myIndex-1].style.display = "block";  
 	  setTimeout(carousel, 2000); // Change image every 2 seconds
 }
-
 </script>
 <script>
-
 $(document).ready(function(){
 		
 		var sessionSN = $("#sessionUserSN").val();
 		
 		console.log("sessionSN : " + sessionSN);
 		
-		$(".registerCreator").click(function(){
+		$(".applyButton").click(function(){
 			
 			if( sessionSN == '' || sessionSN == null ){
 				alert("로그인이 필요합니다.");
@@ -315,7 +310,6 @@ $(document).ready(function(){
 	});
 		
 });
-
 </script>
 </body>
 </html>

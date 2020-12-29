@@ -27,7 +27,28 @@
 	where rn > (#{cri.pageNum} -1 ) * #{cri.amount}
   ]]>
 </select>
-
+	
+	<select id="getRandomPost" resultType="com.uniz.domain.BoardVO">
+		select
+           	p.postsn,b.boardSN , p.title, c.postcontent , p.createdatetime , b.boardcomment , p.replycnt , p.viewcnt
+        from  boardpost p , board b , boardpostcontent c
+    	where b.boardsn = p.boardsn
+    	and p.postsn = c.postsn
+    	and p.postsn in #{postSN}
+	</select>
+	
+	<select id="getPostSN" resultType="Long">
+		select postSN from boardpost
+	</select>
+	
+	<select id="minPostSN" resultType="int">
+		select min(postSN) from boardpost
+	</select>
+	
+	<select id="maxPostSN" resultType="int">
+		select max(postSN) from boardpost
+	</select>
+	
 	
 	<select id="getTotalCount" resultType="int">
 		

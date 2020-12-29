@@ -9,7 +9,6 @@
  	<link rel="stylesheet" href="/resources/css/Navbar.css">
     <link rel="stylesheet" href="/resources/css/categoryRegister.css">
  	<link rel="stylesheet" href="/resources/css/Footer.css">
-
 <body>
     
     <%@ include file="/WEB-INF/views/includes/nav.jsp"%>
@@ -35,7 +34,7 @@
 						<label class="label">제목 *</label>
 						<input class="form-control" name='title' id='title'>
 						<label class="label textarea">내용 *</label>
-						<textarea id="summernote" class="form-control textArea" rows="3" name='postContent'></textarea>
+						<textarea  class="form-control textArea" rows="3" name='postContent'></textarea>
 							<input type='hidden'class="form-control" name='userSN' value='${user.userSN}'>
 							<input type="hidden" class="form-control" name='boardSN' value="${boardSN}">
 					
@@ -107,13 +106,6 @@
 	
 	$(document).ready(function(e){
 		
-		 $('#summernote').summernote({
-		    	placeholder: 'content',
-		        minHeight: 370,
-		        maxHeight: null,
-		        focus: true, 
-		        lang : 'ko-KR'
-		  });
 		
 		var formObj = $("form[role='form']");
 		

@@ -61,7 +61,9 @@
 		</c:if>
 		
 			<button class="submitBtn" id='list'>목록으로</button>
+			<c:if test="${user.userSN != board.userSN}">
 			<button id="showModal">신고하기</button>
+			</c:if>
 	</div>
 	<div></div>
 	 <div class="line"></div>

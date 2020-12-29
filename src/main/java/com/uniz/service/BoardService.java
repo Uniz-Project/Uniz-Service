@@ -17,6 +17,10 @@ public interface BoardService {
 	
 	public List<BoardVO> getAllPost(Criteria cri);
 	
+	public List<Long> getPostSN();
+	
+	public BoardVO getRandomPost();
+	
 	public PageDTO getListPage(Criteria cri);
 	
 	public List<BoardVO> getList(Long boardSN);

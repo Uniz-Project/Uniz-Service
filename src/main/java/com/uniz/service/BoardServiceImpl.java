@@ -1,6 +1,8 @@
 package com.uniz.service;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,6 +67,28 @@ public class BoardServiceImpl implements BoardService {
 		log.info("board매퍼 ======="+ mapper);
 		
 		return mapper.getList(boardSN);
+		
+	}
+	
+	@Override
+	public BoardVO getRandomPost(){
+		
+		List<Long> list = mapper.getPostSN();
+		
+		Collections.shuffle(list);
+		
+		log.info("============== " + list);
+		
+		Long postSN = list.get(0);
+		
+		return mapper.getRandomPost(postSN);
+		
+	}
+	
+	@Override
+	public List<Long> getPostSN(){
+		
+		return mapper.getPostSN();
 		
 	}
 	

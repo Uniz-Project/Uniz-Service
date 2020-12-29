@@ -5,7 +5,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<%@ include file="/WEB-INF/views/includes/header.jsp"%>
+<link rel="stylesheet" href="/resources/css/showHistory.css">
+<link rel="stylesheet" href="/resources/css/Navbar.css">
+<link rel="stylesheet" href="/resources/css/Footer.css">
+
+
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/includes/nav.jsp"%>
@@ -14,17 +18,15 @@
         <div class="historyP">시청 기록</div>
 		
         <div class="infiniteScroll">
-        <div class="timeP">오늘</div>
         <c:forEach items="${VideoData}" var="list">
 			<div class="timeVideo">
             <img src="${list.thumbUrl}" onclick="location.href='/video/${list.videoSN}/${list.lastPosition}'" alt="">
             <div class="timeVInfo">
                 <span class="title">${list.title}
                 </span>
-                <span class="owner">${list.authorNick } </span>
-                <p class="time"><i class="far fa-clock"></i> 본 시간: 어제 저녁 8시 반 </p>
+                <div class="owner">${list.authorNick }</div>
+                <p class="time"><i class="far fa-clock"></i> 본 시간: ${list.startDateTime} </p>
    				 <span class="viewCnt"><i class="far fa-eye"></i> ${list.viewCnt}</span>
-    			<div class="readMore">read more <i class="fas fa-arrow-right"></i></div>
             </div>
         </div>
 		</c:forEach>

@@ -49,4 +49,6 @@ public interface UserMapper {
 
 	public String getUserPassword(UserDTO user);
 
+	public void insertImgUrl(UserDTO userDto);
+
 }
