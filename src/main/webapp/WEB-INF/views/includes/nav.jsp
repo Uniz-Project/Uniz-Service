@@ -34,10 +34,10 @@
                      <a href="/UnizHit/UnizHit">인기</a>
                  </li>
                  <li>
-                    <a href="/category/main">커뮤니티</a>
+                    <a href="/channel/ch">커뮤니티</a>
                 </li>
                 <li>
-                    <a href="">시각화</a>
+                    <a href="/dataChart">시각화</a>
                 </li>
              </ul>
          </div>

@@ -51,8 +51,8 @@
 	<div class="chBoardBtn">
 		<c:if test="${user.userSN ne null }" >
 		<button id="createBtn" type="button">게시글 작성</button>
-		<button id="listBtn" type="button">채널 게시판으로 이동</button>
 		</c:if>
+		<button id="listBtn" type="button">채널 게시판으로 이동</button>
 	</div>
 	
 	<div class="postFooter" id="postFooter">

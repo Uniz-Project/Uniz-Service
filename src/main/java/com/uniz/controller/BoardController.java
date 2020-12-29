@@ -23,10 +23,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.uniz.domain.BoardAttachVO;
+import com.uniz.domain.BoardReportVO;
 import com.uniz.domain.BoardVO;
 import com.uniz.domain.Criteria;
 import com.uniz.domain.PageDTO;
-import com.uniz.domain.ReplyVO;
+import com.uniz.service.BoardReportService;
 import com.uniz.service.BoardService;
 import com.uniz.service.ReplyService;
 
@@ -41,6 +42,7 @@ public class BoardController {
 	
 	private BoardService service;
 	private ReplyService reService;
+	private BoardReportService reportService;
 	
 	// 카테고리 별 게시판 메인으로 이동
 	@GetMapping("/main")
@@ -193,6 +195,14 @@ public class BoardController {
 		
 		return "redirect:/category/board/" + vo.getBoardSN();
 		
+	}
+	
+	@PostMapping("/report")
+	public String report(BoardReportVO vo, RedirectAttributes rttr) {
+		log.info("controller report vo = " + vo);
+		reportService.report(vo);
+		
+		return "redirect:/category/main";
 	}
 	
 	@PostMapping("/remove")

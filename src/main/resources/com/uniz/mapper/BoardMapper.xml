@@ -5,26 +5,6 @@
 	
 <mapper namespace="com.uniz.mapper.BoardMapper">
 	
-	<sql id="criteria">
-		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
-			<foreach item='type' collection="typeArr">
-				<trim prefix="OR">
-					<choose>
-						<when test="type == 'T'.toString()">
-							a.title like '%' ||#{keyword}|| '%'
-						</when>
-						<when test="type == 'C'.toString()">
-							a.postcontent like '%' ||#{keyword}|| '%'
-						</when>
-						<when test="type == 'W'.toString()">
-							a.nick like '%' ||#{keyword}|| '%'
-						</when>
-					</choose>
-				</trim>
-			</foreach>
-		</trim>
-	</sql>	
-	
 <select id="getAllPost" resultType="com.uniz.domain.BoardVO">
   <![CDATA[
 	select  *
@@ -47,7 +27,28 @@
 	where rn > (#{cri.pageNum} -1 ) * #{cri.amount}
   ]]>
 </select>
-
+	
+	<select id="getRandomPost" resultType="com.uniz.domain.BoardVO">
+		select
+           	p.postsn,b.boardSN , p.title, c.postcontent , p.createdatetime , b.boardcomment , p.replycnt , p.viewcnt
+        from  boardpost p , board b , boardpostcontent c
+    	where b.boardsn = p.boardsn
+    	and p.postsn = c.postsn
+    	and p.postsn in #{postSN}
+	</select>
+	
+	<select id="getPostSN" resultType="Long">
+		select postSN from boardpost
+	</select>
+	
+	<select id="minPostSN" resultType="int">
+		select min(postSN) from boardpost
+	</select>
+	
+	<select id="maxPostSN" resultType="int">
+		select max(postSN) from boardpost
+	</select>
+	
 	
 	<select id="getTotalCount" resultType="int">
 		
@@ -68,7 +69,7 @@
 	</select>
 	
 	<select id="getBoardList" resultType="com.uniz.domain.BoardVO">
-		select boardsn , boardtitle, boardcomment, createdatetime
+		select *
 		from board
 	</select>
 	

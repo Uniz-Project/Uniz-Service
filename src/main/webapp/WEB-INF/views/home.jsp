@@ -58,25 +58,26 @@
     </div>
     <!-- end mainPage -->
     
-    <a href="">
+    <a href="/category/board/${board.boardSN}">
     <div class="commuNews">
+     <img src="\resources\img\coofee.jpg" alt=""> 
         <div class="todaysCommu">오늘의 커뮤니티</div>
         <div class="text">
-            <p class="boardName">동물 게시판</p>
-           <h4> 쿼카 졸귀탱이다 다음 생엔 꼭 쿼카로 태어나야지 </h4>
+            <p class="boardName">${board.boardComment}</p>
+           <h4> ${board.title}</h4>
            <div class="content">
                <div class="inner-content">
-               아 디자인 뭐할지 모르겠고요 반응형 어떻게 하는 지 모르겠고요 캐러맬색 고앵이 보고싶다 우리 집 근처 공원에서 트리플로 동상처럼 그루밍할 땐 언제고 왜 요즘 안나와 잉잉 ㅜㅜㅜㅜ고양이 짱 귀엽고요 그냥 귀엽고요 토끼도 귀엽고
-               북극여우도 귀엽고 티벳여우도 귀엽고 햄스터도 귀엽고 라따뚜이 보고 싶다. 라따뚜이 그거 파스타인줄 알아ㅆ는데 그냥 채소절이ㅏ넢ㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅇ러ㅣ러넌ㅇ러니러ㅣㄴ어ㅣㅏㅇ너린러ㅣㄴ어린어ㅣㄴ어닝러ㅣ너ㅣㄴ엉니ㅓㅣㅏ와 진짜 속상하고요 디자인 너무 구린데 어디서부터 손봐야 할지 모르겠구요 아이씨 그림그릴 줄안다고 디자인 잘하겠나아아ㅏ아디자인 배운적ㅇ 벗다공 ㄹ뇔ㄴㅇㄹㄴㄴㅇㄴㅇㄹ
-            </div>
+               ${board.postContent}
+              </div>
            </div>
         </div>
     </div>
-</a>
+	</a>
+	
 <div class="emptyNav"></div>
 <div class="creatorBanner">
     <!-- <p>크리에이터 신청하러 가기 </p> -->
-    <img src="사진자료/ppl.png" alt="">
+    <img src="\resources\img\ppl.png" alt="">
     <div class="creatorP">
         <div class="ctP">
 
@@ -148,6 +149,5 @@ for (var i = 0; i < btns.length; i++) {
   });
 }
     </script>
-     
   </body>
 </html>

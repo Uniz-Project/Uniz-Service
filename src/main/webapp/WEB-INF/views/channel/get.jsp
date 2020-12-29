@@ -41,8 +41,10 @@
 		
 					<div class="content">
 					<p><c:out value="${board.postContent}" /></p>
-						<ul>
-						</ul>
+						<div class="uploadResult">
+							<ul>
+							</ul>
+						</div>	
 					</div>
 					
 					<div class="applyBtnBox">
@@ -51,7 +53,9 @@
 							<button class="submitBtn" id='modify'>글 수정</button>
 						</c:if>
 							<button class="submitBtn" id='list'>목록으로</button>
-							
+							<c:if test="${user.userSN != board.userSN}">
+								<button id="showModal">신고하기</button>
+							</c:if>
 					</div>
 					
 					<div></div>
@@ -83,6 +87,33 @@
 	
 	</div>
 	 <!-- end FForm -->
+	 
+	 <div id="myModal" class="modal">
+		<div class="modal-content">
+			<form action="/category/report" method="post">
+				<input name="postSN" type="text" value="${postSN}"/>
+				<input name="userSN" type="text" value="${user.userSN}"/>
+				<label>신고 하는 글</label>
+				<input name="title" value="${board.title}"/>
+				<label>신고 사유</label>
+				<select name="reason">
+					<option value="영리목적/홍보성">영리목적/홍보성</option>
+					<option value="개인정보 노출">개인정보 노출</option>
+					<option value="불법정보">불법정보</option>
+					<option value="음란성/선정성">음란성/선정성</option>
+					<option value="욕설/인신공격">욕설/인신공격</option>
+					<option value="같은 내용 반복">같은 내용 반복</option>
+					<option value="기타">기타</option>
+				</select>
+				<label>상세 내용</label>
+				<textarea name="detail"></textarea>
+				
+				<button type="submit" class="sendReport">신고하기</button>
+				<button id="hideModal" >취소</button>
+			</form>
+		</div>
+	</div>
+	 
 	</div>
 	<!-- comPage end  -->
 </div>
@@ -331,7 +362,7 @@ $(document).ready(function(){
 				
 				if(attach.fileType){
 					
-					var fileCallPath = encodeURIComponent( attach.uploadPath+"/s_"+ attach.uuid + "_" + attach.fileName);
+					var fileCallPath = encodeURIComponent( attach.uploadPath+"/"+ attach.uuid + "_" + attach.fileName);
 					
 					str += "<li data-path='"+attach.uploadPath+"' data-uuid='"+attach.uuid+"' data-filename='"+attach.fileName+"'data-type'"+attach.fileType+"'><div>";
 					str += "<img src='/chdisplay?fileName="+fileCallPath+"'>";
@@ -341,7 +372,7 @@ $(document).ready(function(){
 				
 			});
 			
-			$(".thumbNail ul").html(str);
+			$(".uploadResult ul").html(str);
 	
 		});
 	
@@ -349,6 +380,39 @@ $(document).ready(function(){
 	
 });
 
+</script>
+<script>
+	
+	var modal = document.getElementById("myModal");
+	
+	var showModal = document.getElementById("showModal");
+	
+	var hideModal = document.getElementById("hideModal");
+	
+	showModal.onclick = function(){
+		modal.style.display = "block";
+	}
+	
+	hideModal.onclick = function(event){
+		alert("test");
+		if(event.target == modal){
+			
+			modal.style.display = "none";
+			
+		}
+	}
+	
+	window.onclick = function(event) {
+		if (event.target == modal) {
+	        modal.style.display = "none";
+	    }
+	}
+	
+	$(".sendReport").on("click", function(){
+		alert("신고 접수 되었습니다.");
+	});
+	
+	
 </script>
 </body>
 </html>

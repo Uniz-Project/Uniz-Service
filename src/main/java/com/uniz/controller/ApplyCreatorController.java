@@ -167,6 +167,15 @@ public class ApplyCreatorController {
 		
 	}
 	
+	@GetMapping(value = "/getAllAttach",
+			produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ResponseBody
+	public ResponseEntity<List<ApplyAttachVO>> getAllAttach(){
+		
+		return new ResponseEntity<>(service.getAllAttach() , HttpStatus.OK);
+		
+	}
+	
 	@GetMapping(value = "/getAllApply" ,
 			produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody

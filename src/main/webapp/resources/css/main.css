@@ -152,15 +152,16 @@
     outline: none;
 }
 .commuNews{
-    background: url("사진자료/coofee.jpg");
     
-    background-position: center;
-    background-size: cover;
     width: 77%;
     margin: 0 auto;
     margin-top: 70px;
     height: 450px;
     position: relative;
+}
+body > a > div > img{
+	width: 100%;
+	height: 100%;
 }
 .todaysCommu{
     position: absolute;
@@ -187,7 +188,7 @@
 .boardName{
     padding: 3px;
     background-color: rgb(58, 67, 78);
-    width: 27%;
+    width: auto;
     color: white;
     display: block;
     margin-bottom: 10px;

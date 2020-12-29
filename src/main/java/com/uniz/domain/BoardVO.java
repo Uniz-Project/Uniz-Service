@@ -18,6 +18,7 @@ public class BoardVO {
 	private String title;
 	private String nick;
 	private String postContent;
+	private String imgPath;
 	private Date createDateTime;
 	private Date updateDateTime;
 	private int replyCnt;

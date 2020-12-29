@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.uniz.domain.VideoDataVO;
+import com.uniz.service.BoardService;
 import com.uniz.service.SampleService;
 import com.uniz.service.VideoService;
 
@@ -27,6 +28,7 @@ public class HomeController {
 	
 	private SampleService service;
 	private VideoService videoService;
+	private BoardService boardService;
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
@@ -48,6 +50,9 @@ public class HomeController {
 		//3. 인기 영상 4개 보여주기(likecnt-dislikecnt)+viewcnt
 		List<VideoDataVO> popVideo = videoService.getPopularityVideo();
 		model.addAttribute("popVideo",popVideo);
+		
+		//4. 랜덤 게시글 보여주기
+		model.addAttribute("board", boardService.getRandomPost());
 		
 		return "home";
 	}

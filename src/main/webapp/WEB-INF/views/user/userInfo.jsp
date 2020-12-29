@@ -50,7 +50,6 @@
 
 <body>
 	<%@ include file="/WEB-INF/views/includes/nav.jsp"%>
-
 <!-- <div class="emptyNav" style="width: 100%; height: 80px; background-color: #f1f1f1;"></div> -->
         
     <div class="mainPage">

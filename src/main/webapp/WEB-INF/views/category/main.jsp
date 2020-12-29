@@ -9,6 +9,8 @@
 	<link rel="stylesheet" href="/resources/css/Navbar.css">
     <link rel="stylesheet" href="/resources/css/categoryMain.css">
     <link rel="stylesheet" href="/resources/css/Footer.css">
+    <link rel=“preconnect” href=“https://fonts.gstatic.com”>
+    <link href=“https://fonts.googleapis.com/css2?family=K2D&family=Lato&display=swap” rel=“stylesheet”>
 </head>
 <body>
 
@@ -39,7 +41,9 @@
 		 	<div class="BList">
 				<h3>게시판 목록</h3>
 			</div> 
-			 <div class="boardList">
+			
+			<div class="boardList">
+			
 			</div>
 		
 		 
@@ -48,7 +52,7 @@
 		
  <div class="AAList">
 	
-			 <h3 class="h3">전체 게시글 목록</h3>
+			 <h3 class="h3">최신글</h3>
 		<div class="AList">
 		</div> 
 		

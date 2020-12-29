@@ -9,10 +9,6 @@
  	<link rel="stylesheet" href="/resources/css/Navbar.css">
     <link rel="stylesheet" href="/resources/css/categoryRegister.css">
  	<link rel="stylesheet" href="/resources/css/Footer.css">
-<style>
-
-
-</style>
 <body>
     
     <%@ include file="/WEB-INF/views/includes/nav.jsp"%>
@@ -38,7 +34,7 @@
 						<label class="label">제목 *</label>
 						<input class="form-control" name='title' id='title'>
 						<label class="label textarea">내용 *</label>
-						<textarea class="form-control textArea" rows="3" name='postContent'></textarea>
+						<textarea  class="form-control textArea" rows="3" name='postContent'></textarea>
 							<input type='hidden'class="form-control" name='userSN' value='${user.userSN}'>
 							<input type="hidden" class="form-control" name='boardSN' value="${boardSN}">
 					
@@ -103,12 +99,13 @@
         </div>
     </div> 	
 					
-  
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/category.js"></script>
 <script>
 	
 	$(document).ready(function(e){
+		
 		
 		var formObj = $("form[role='form']");
 		

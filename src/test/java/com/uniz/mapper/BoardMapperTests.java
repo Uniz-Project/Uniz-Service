@@ -1,19 +1,20 @@
 package com.uniz.mapper;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.uniz.domain.ChannelAttachVO;
 import com.uniz.service.BoardService;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
+@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/*.xml")
 @Log4j
 public class BoardMapperTests {
 	
@@ -152,7 +153,9 @@ public class BoardMapperTests {
 	@Test
 	public void testDelet() {
 		
-		log.info("삭제 됬니? : " + service.delete(54L) );
+		List<Long> list = mapper.getPostSN();
+		
+		list.forEach(postSN -> log.info(postSN));
 		
 	}
 	

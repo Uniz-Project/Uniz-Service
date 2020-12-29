@@ -27,12 +27,13 @@ import com.uniz.domain.ChannelAttachVO;
 import com.uniz.domain.ChannelBoardVO;
 import com.uniz.domain.ChannelDTO;
 import com.uniz.domain.ChannelPageDTO;
+import com.uniz.domain.ChannelReportVO;
 import com.uniz.domain.ChannelVO;
 import com.uniz.domain.Criteria;
 import com.uniz.mapper.ChannelMapper;
 import com.uniz.service.ApplyCreatorService;
+import com.uniz.service.ChannelReportService;
 import com.uniz.service.ChannelService;
-import com.uniz.service.UserService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -43,10 +44,10 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class ChannelController {
 	
-	private UserService userService;
 	private ChannelService service;
 	private ChannelMapper mapper;
 	private ApplyCreatorService applyService;
+	private ChannelReportService reportService;
 	
 	// main 페이지로 이동
 	@GetMapping("/ch")
@@ -223,7 +224,15 @@ public class ChannelController {
 		rttr.addFlashAttribute("result", vo.getPostSN());
 		log.info("vo= " +vo);
 		
-		return "redirect:/channel/board/" + vo.getChannelSN();
+		return "redirect:/channel/ch";
+	}
+	
+	@PostMapping("/report")
+	public String report(ChannelReportVO vo, RedirectAttributes rttr) {
+		log.info("controller report vo = " + vo);
+		reportService.report(vo);
+		
+		return "redirect:/channel/board/" + vo.getPostSN();
 	}
 	
 	//채널 게시판 생성
