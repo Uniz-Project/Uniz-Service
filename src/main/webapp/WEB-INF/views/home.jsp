@@ -82,7 +82,7 @@
         <div class="ctP">
 
             <p>uniz에서 유튜브 영상도 보고 나만의 게시판도 만들자!</p>
-            <button>uniz 크리에이터 신청하러 가기</button>
+            <button class="goChannel" onclick="location.href='channel/ch'">uniz 크리에이터 신청하러 가기</button>
         </div>
     </div>
 </div>
@@ -148,6 +148,8 @@ for (var i = 0; i < btns.length; i++) {
   this.className += " active";
   });
 }
+
+
     </script>
   </body>
 </html>

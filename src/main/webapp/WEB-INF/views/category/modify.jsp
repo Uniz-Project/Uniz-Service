@@ -19,8 +19,8 @@
     <div class="leftSidebar">	
 		<div class="fixed">
 			<div class="SideHd">커뮤니티</div>
-			<button id="channelPost">채널 게시판으로 이동</button>
-			<button id="channelPost">카테고리별 게시판</button>
+			<button id="channelPost" class="moveChannel">채널 게시판으로 이동</button>
+			<button id="channelPost" class="moveCategory">카테고리별 게시판으로 이동</button>
 		</div>
 	</div>
 
@@ -33,7 +33,7 @@
 			<form class="form" action='/category/modify' method='post' id='boardPost' >
 				<div class="RegisterForm">
 					<label class="label">글 번호</label>
-						<input class="form-control noBorder" name='postSN' value='<c:out value="${board.postSN}" />' readonly="readonly">
+						<input type="hidden" class="form-control noBorder" name='postSN' value='<c:out value="${board.postSN}" />' readonly="readonly">
 	 				<label class="label">제목 </label>
 	 					<input class="form-control" name='title' value='<c:out value="${board.title}" />' >
 	 				<label class="label">작성자</label>
@@ -107,7 +107,7 @@ $(document).ready(function(){
 	        
 	        var str = "";
 	        
-	        $(".uploadResult ul li").each(function(i, obj){
+	        $(".thumbNail ul li").each(function(i, obj){
 	          
 	          var jobj = $(obj);
 	          
@@ -269,6 +269,14 @@ $(document).ready(function(){
  });  
 	
 	
+});
+
+$(".moveChannel").on("click", function(e){
+	self.location = "/channel/ch";
+});
+
+$(".moveCategory").on("click", function(e){
+	self.location = "/category/main";
 });
 
 </script>

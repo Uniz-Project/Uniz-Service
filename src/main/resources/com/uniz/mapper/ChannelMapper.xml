@@ -49,8 +49,7 @@
 		
 		<!-- 채널 게시판 목록 보여주기 -->
 		<select id="getChannelList" resultType="com.uniz.domain.ChannelBoardVO">
-		
-			<![CDATA[
+		<![CDATA[
 	 		select
 				*
 			from
@@ -67,7 +66,7 @@
 				rownum <= #{pageNum} * #{amount}
 				)
 			where rn > (#{pageNum} -1 ) * #{amount} 	
-			]]>	
+		]]>
 			
 		</select>
 		
@@ -222,10 +221,10 @@
 				<foreach item="type" collection="typeArr">
 					<choose>
 						<when test="type == 'T'.toString()">
-							c.channelTitle like '%' || #{keyword} || '%'
+							a.channelTitle like '%' || #{keyword} || '%'
 						</when>
 						<when test="type == 'N'.toString()">
-							u.nick like '%' || #{keyword} || '%'
+							a.nick like '%' || #{keyword} || '%'
 						</when>
 					</choose>
 				</foreach>

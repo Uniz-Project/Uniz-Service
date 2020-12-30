@@ -62,7 +62,7 @@
   		               <label class="input-file-button" for="input-file"><img src="/resources/imgUpload/UserPhoto/${user.imgUrl}" alt=""></label>
   		               <input type="file" name="imgFile" id="input-file" style="display: none;"/><br>
   		              
-  		               	<button class="btn modBtn3">프로필 수정하기</button>
+  		               	<button class="btn modBtn3">프로필사진 수정하기</button>
 				 </form>
                  <div class="userInfo">
 

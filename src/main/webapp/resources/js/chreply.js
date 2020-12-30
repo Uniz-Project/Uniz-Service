@@ -13,6 +13,7 @@ var chReplyService = (function(){
 				if(callback){
 					callback(result);
 				}
+				showList(1);
 			},
 			error : function(xhr, status, er){
 				if(error){
@@ -30,6 +31,7 @@ var chReplyService = (function(){
 				if(callback){
 					callback(deleteResult);
 				}
+				showList(1);
 			},
 			error : function(xhr, status, er){
 				if(error){

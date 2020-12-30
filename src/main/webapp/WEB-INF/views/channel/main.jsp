@@ -32,8 +32,8 @@
 	<div class="comPage">
 	   <div class="FForm">
 				<div class="banner">
-					<a href="/category/main"><img class="mySlides" src="\resources\img\banner.png"></a>
-					<a href="/channel/ch"><img class="mySlides" src="\resources\img\banner2.png"></a>
+					<a href="/channel/ch"><img class="mySlides" src="\resources\img\banner.png"></a>
+					<a href="/category/main"><img class="mySlides" src="\resources\img\banner2.png"></a>
 					<a href="/dataChart"><img class="mySlides" src="\resources\img\banner3.png"></a>
 					<a href="/UnizHit/UnizHit"><img class="mySlides" src="\resources\img\banner4.png"></a>
 				</div>
@@ -208,6 +208,8 @@ $(document).ready(function(){
 		
 		console.log("sessionSN : " + sessionSN);
 		
+		
+		
 		$(".applyButton").click(function(){
 			
 			if( sessionSN == '' || sessionSN == null ){
@@ -253,7 +255,7 @@ $(document).ready(function(){
 			$.ajax({
 				type: 'POST',
 				url : '/channel/checkChannelCreate',
-				data : $("#sessionUserSN").val(),
+				data : sessionSN,
 				contentType : "application/json; charset=UTF-8",
 				dataType : 'json',
 				success : function(data){
@@ -263,10 +265,12 @@ $(document).ready(function(){
 					if(CONFIRM == data.CONFIRM){
 						alert("이미 개설한 게시판이 있습니다.");
 						window.location.href="/channel/ch";
+						return false;
 					}
 					else if(USERTYPE == data.USERTYPE){
 						alert("크리에이터만 게시판을 개설 할 수 있습니다." +'\n' + "크리에이터 등록을 먼저 해주시길 바랍니다.");
-						window.location.href="/channel/ch";
+						self.location="/channel/ch";
+						return false;
 					}
 					
 				}

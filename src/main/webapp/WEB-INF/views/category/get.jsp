@@ -22,8 +22,8 @@
 	<div class="leftSidebar">
             <div class="fixed">
                 <div class="SideHd">커뮤니티</div>
-                <button id="channelPost" class="moveChannel">채널 게시판</button>
-                <button id="channelPost" class="moveCategory">카테고리 별 게시판</button>
+                <button id="channelPost" class="moveChannel">채널 게시판으로 이동</button>
+                <button id="channelPost" class="moveCategory">카테고리별 게시판으로 이동</button>
             </div>
         </div>
 <div class="comPage">
@@ -426,6 +426,12 @@ $(document).ready(function(){
 </script>
 <script>
 	// Get the modal
+	var userSN = ${board.userSN};
+	
+	var loginUserSN = $(".userSN").val();
+	
+	console.log("test : " + loginUserSN);
+	
 	var modal = document.getElementById("MYMODAL");
 	
 	// Get the button that opens the modal
@@ -435,10 +441,11 @@ $(document).ready(function(){
 	/* var span = document.getElementsByClassName("close")[0];
 	 */
 	// When the user clicks the button, open the modal 
-	btn.onclick = function() {
-	  modal.style.display = "block";
+	if( loginUserSN !='' && userSN != loginUserSN){
+		btn.onclick = function() {
+	  		modal.style.display = "block";
+		}
 	}
-	
 	// When the user clicks on <span> (x), close the modal
 	/* span.onclick = function() {
 	  modal.style.display = "none";
@@ -452,6 +459,14 @@ $(document).ready(function(){
 	}
 	$(".alertBtn").on("click", function(){
 		alert("신고 접수 되었습니다.");
+	});
+	
+	$(".moveCategory").on("click",function(){
+		self.location = "/category/main";
+	});
+	
+	$(".moveChannel").on("click" , function(){
+		self.location = "/channel/ch";
 	});
 	
 	

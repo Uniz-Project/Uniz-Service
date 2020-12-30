@@ -202,7 +202,7 @@ public class BoardController {
 		log.info("controller report vo = " + vo);
 		reportService.report(vo);
 		
-		return "redirect:/category/main";
+		return "redirect:/category/get/" + vo.getPostSN();
 	}
 	
 	@PostMapping("/remove")

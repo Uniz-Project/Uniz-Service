@@ -19,8 +19,8 @@
 		<div class="leftSidebar">
             <div class="fixed">
                 <div class="SideHd">커뮤니티</div>
-                <button id="channelPost" class="moveChannel">채널 게시판</button>
-                <button id="channelPost" class="moveCategory">카테고리 별 게시판</button>
+                <button id="channelPost" class="moveChannel">채널 게시판으로 이동</button>
+                <button id="channelPost" class="moveCategory">카테고리별 게시판으로 이동</button>
             </div>
         </div>
 	
@@ -205,6 +205,10 @@ $(document).ready(function(){
 			showList(pageNum);
 		});
 		
+		
+		$(".moveCategory").on("click",function(){
+			self.location = "/category/main";
+		});
 		
 		$(".moveChannel").on("click", function(){
 			self.location = "/channel/ch";

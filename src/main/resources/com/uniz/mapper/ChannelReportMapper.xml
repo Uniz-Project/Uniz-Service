@@ -7,7 +7,7 @@
 		
 		<insert id="report">
 			insert into channelreport
-						(reportsn, postsn, userSN ,title , reason, detail)
+						(reportsn, postSN, userSN ,title , reason, detail)
 				   values
 				   		(reportSN_seq.nextval, #{postSN}, #{userSN}, #{title} , #{reason}, #{detail})
 		</insert>

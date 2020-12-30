@@ -8,7 +8,7 @@
 	<update id="acceptApply" parameterType="com.uniz.domain.UserData">
 		update applycreator
 			set userType = 2,
-			state = 11
+			state = 2
 			where userSN = #{userSN}	
 	</update>
 	

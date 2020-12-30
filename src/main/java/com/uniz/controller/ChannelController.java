@@ -87,7 +87,7 @@ public class ChannelController {
 			
 		}else if(session.getAttribute("user") != null && (int)session.getAttribute("userType") == 1) {
 			
-			return "channel/main";
+			return "redirect:/channel/ch";
 			
 		} else {
 			
@@ -232,7 +232,7 @@ public class ChannelController {
 		log.info("controller report vo = " + vo);
 		reportService.report(vo);
 		
-		return "redirect:/channel/board/" + vo.getPostSN();
+		return "redirect:/channel/get/" + vo.getPostSN();
 	}
 	
 	//채널 게시판 생성
