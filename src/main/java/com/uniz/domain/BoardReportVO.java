@@ -14,5 +14,6 @@ public class BoardReportVO {
 	private String detail;
 	private int state;
 	private Date reportDate;
+	private Date updateDate;
 	
 }

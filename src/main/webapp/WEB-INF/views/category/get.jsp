@@ -40,7 +40,7 @@
 	<p class="ReadInfo title"><c:out value="${board.title}" /></p>
 	
 	<div class="flexBox">
-	<img  id="proImg" class="rg_i Q4LuWd" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7kzhoTZI7LgGuON4WD80O0DSUTy8_3LeFMw&amp;usqp=CAU" jsname="Q4LuWd" width="226" height="150" alt="지브리 영화 추천>_귀를 기울이면(Whisper Of The Heart) 1편 : 네이버 ..." data-iml="14948.429999996733">
+	<img  id="proImg" class="rg_i Q4LuWd" src="/resources/imgUpload/UserPhoto/${board.imgUrl}"  width="226" height="150">
 	<p class="ReadInfo nick"><c:out value="${board.nick}" /></p>
 	</div>
 					<div class="content">
@@ -61,10 +61,13 @@
 		</c:if>
 		
 			<button class="submitBtn" id='list'>목록으로</button>
+		<c:if test="${user.userSN != null }">
 			<c:if test="${user.userSN != board.userSN}">
-			<button id="showModal">신고하기</button>
+				<button class="reportBnt" id="myBtn">신고하기</button>
 			</c:if>
+		</c:if>
 	</div>
+	
 	<div></div>
 	 <div class="line"></div>
 	
@@ -92,28 +95,38 @@
 	</div>
 	<!-- FForm end  -->
 	
-	<div id="myModal" class="modal">
-		<div class="modal-content">
-			<form action="/category/report" method="post">
-				<input name="postSN" type="text" value="${postSN}"/>
-				<input name="userSN" type="text" value="${user.userSN}"/>
-				<label>신고 하는 글</label>
-				<input name="title" value="${board.title}"/>
-				<label>신고 사유</label>
-				<select name="reason">
-					<option value="영리목적/홍보성">영리목적/홍보성</option>
+	 <div id="MYMODAL" class="Modal">
+		<div class="Modal-content">
+			<div class="alertTt">
+              <h3>게시글 신고하기</h3>
+            </div>
+			<form class="alertForm" action="/category/report" method="post">
+				<input name="postSN" type="hidden" value="${postSN}"/>
+				<input name="userSN" type="hidden" value="${user.userSN}"/>
+				
+				<div class="alertTheme">
+               		<p>신고 글  <span style="color: rgb(0, 97, 207);">*</span></p>
+                	<input class="alertInput" name="title" type="text" value="${board.title}" required >
+           		</div>
+			
+				 <div class="alertSel">
+                	<p class="alertTheme padding">신고 사유 <span style="color: rgb(0, 97, 207);">*</span></p>
+                	<select class="alertInput" name="reason" id="">
+                    <option value="영리목적/홍보성">영리목적/홍보성</option>
 					<option value="개인정보 노출">개인정보 노출</option>
 					<option value="불법정보">불법정보</option>
 					<option value="음란성/선정성">음란성/선정성</option>
 					<option value="욕설/인신공격">욕설/인신공격</option>
 					<option value="같은 내용 반복">같은 내용 반복</option>
 					<option value="기타">기타</option>
-				</select>
-				<label>상세 내용</label>
-				<textarea name="detail"></textarea>
-				
-				<button type="submit" class="sendReport">신고하기</button>
-				<button id="hideModal" >취소</button>
+                	</select>              
+            	</div>
+							
+				<div class="alertCont">
+                	<p class="alertTheme width">상세 내용</p>
+                	<textarea class="alert-content" name="detail" id="" cols="30" rows="10"></textarea>
+                	<button  type="submit" class="alertBtn">신고</button>
+            	</div>
 			</form>
 		</div>
 	</div>
@@ -412,33 +425,32 @@ $(document).ready(function(){
 
 </script>
 <script>
+	// Get the modal
+	var modal = document.getElementById("MYMODAL");
 	
-	var modal = document.getElementById("myModal");
+	// Get the button that opens the modal
+	var btn = document.getElementById("myBtn");
 	
-	var showModal = document.getElementById("showModal");
-	
-	var hideModal = document.getElementById("hideModal");
-	
-	showModal.onclick = function(){
-		modal.style.display = "block";
+	// Get the <span> element that closes the modal
+	/* var span = document.getElementsByClassName("close")[0];
+	 */
+	// When the user clicks the button, open the modal 
+	btn.onclick = function() {
+	  modal.style.display = "block";
 	}
 	
-	hideModal.onclick = function(event){
-		alert("test");
-		if(event.target == modal){
-			
-			modal.style.display = "none";
-			
-		}
+	// When the user clicks on <span> (x), close the modal
+	/* span.onclick = function() {
+	  modal.style.display = "none";
 	}
-	
+	 */
+	// When the user clicks anywhere outside of the modal, close it
 	window.onclick = function(event) {
-		if (event.target == modal) {
-	        modal.style.display = "none";
-	    }
+	  if (event.target == modal) {
+	    modal.style.display = "none";
+	  }
 	}
-	
-	$(".sendReport").on("click", function(){
+	$(".alertBtn").on("click", function(){
 		alert("신고 접수 되었습니다.");
 	});
 	

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 	<link rel="stylesheet" href="/resources/css/chcreate.css"/>
+	<link rel="stylesheet" href="/resources/css/Navbar.css">
 </head>
 <body>
 
@@ -25,7 +26,7 @@
 					<label class="label">채널 이름 <button class="submitBtn" id="titleModify">채널 이름 수정하러 가기</button></label>
 					<input class="form-control" id='channelTitle' value="<c:out value="${apply.channelTitle}"/>" name='channelTitle'  readonly="readonly">
 					<label class="label"> 게시판 사용 목적</label>
-					<input class="form-control" id='channelComment' name='channelComment'>
+					<textarea class="form-control" id='channelComment' name='channelComment'></textarea>
 					<input type="hidden" class="form-control"name='userSN' value="${user.userSN}">
 					
 
