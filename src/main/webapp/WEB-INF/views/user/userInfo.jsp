@@ -401,6 +401,11 @@ function showPointLog(){
 	
 	});
 }
+
+$(".goBtn").on("click" , function(){
+	self.location="/creator/get?userSN=" + ${user.userSN};
+});
+
 </script>
 </body>
 </html>

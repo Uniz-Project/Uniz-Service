@@ -135,6 +135,7 @@ form{
     color: rgb(42, 42, 112);
     text-align: center;
 }
+
 .formBox{
     background-color: rgb(171, 202, 60);
     width: 100%;
@@ -319,4 +320,12 @@ body > div.applyMain > div.createForm > form > div > div.CateList > label{
 
 .applyMain{
     height: 700px;
+}
+
+#channelComment{
+	
+	width: 932px;
+	height: 300px;
+	resize:none;
+	
 }

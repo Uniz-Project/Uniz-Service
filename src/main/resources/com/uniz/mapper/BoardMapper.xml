@@ -102,7 +102,7 @@
 	<select id="read" resultType="com.uniz.domain.BoardVO">
 		
 			select p.postSN, p.boardsn ,u.nick, p.title, c.postcontent, 
-				   p.createdatetime , p.userSN, b.boardcomment , p.viewcnt
+				   p.createdatetime , p.userSN, b.boardcomment , p.viewcnt, u.imgUrl
                 
 			from boardpost p , boardpostcontent c , userdata u , board b 
 			where p.postSN = #{postSN}

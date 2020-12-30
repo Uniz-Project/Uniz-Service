@@ -14,5 +14,5 @@ public class ChannelReportVO {
 	private String detail;
 	private int state;
 	private Date reportDate;
-	
+	private Date updateDate;
 }

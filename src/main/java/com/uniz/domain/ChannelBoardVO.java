@@ -16,6 +16,7 @@ public class ChannelBoardVO {
 	private String channelTitle;
 	private String title;
 	private String nick;
+	private String imgUrl;
 	private int viewCnt;
 	private int likeCnt;
 	private Date createDateTime;
