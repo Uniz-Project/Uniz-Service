@@ -66,7 +66,11 @@
 				 </form>
                  <div class="userInfo">
 
-                     <p class="span"><i class="fab fa-youtube"></i>  Creator</p><p class="user">${user.nick}님의마이페이지</p>
+                     	<c:if test="${user.userType eq 2}">
+                     	<p class="span">
+                     	<i class="fab fa-youtube"></i>  Creator</p>
+                     	</c:if>
+                     	<p class="user">${user.nick}님의마이페이지</p>
               		 <p>닉네임 : ${user.nick}</p>
 					<p>아이디 : ${user.userId }</p>
 					<c:if test="${user.userType eq 1}">
