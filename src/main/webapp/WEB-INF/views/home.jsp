@@ -60,7 +60,7 @@
     
     <a href="/category/board/${board.boardSN}">
     <div class="commuNews">
-     <img src="\resources\img\coofee.jpg" alt=""> 
+     <img src="\resources\img\coofee.jpg" class="commuImg" alt=""> 
         <div class="todaysCommu">오늘의 커뮤니티</div>
         <div class="text">
             <p class="boardName">${board.boardComment}</p>

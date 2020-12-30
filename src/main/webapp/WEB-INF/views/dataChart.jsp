@@ -8,7 +8,7 @@
 
 
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
-<link rel="stylesheet" href="/resources/css/footer.css">
+<link rel="stylesheet" href="/resources/css/Footer.css">
 <link rel="stylesheet" href="/resources/css/chart.css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 
@@ -22,7 +22,7 @@
 	<div class="mainPage">
 
 	<div class="title">
-       <p id="userName">쿼카님</p>
+       <p id="userName">${user.nick}</p>
        <p>의 차트</p>
     </div>
 
@@ -32,21 +32,16 @@
 		</div>
 		
 		<div class="box1">
-		 <canvas class="piechart" id="myChartOne" ></canvas> 
+		 <canvas class="piechart" id="myChartOne" style="height:100%; width:100%" ></canvas> 
 		</div>
 	</div>
 	<div class="title2">
         <p>추천 영상</p>
     </div>
-    <div class="likeBox">
-            <div class="likeBox1"></div>
-            <div class="likeBox1"></div>
-            <div class="likeBox1"></div>
-            <div class="likeBox1"></div>
-            <div class="likeBox1"></div>
-            <div class="likeBox1"></div>
-            <div class="likeBox1"></div>
-            <div class="likeBox1"></div>
+    
+    <div id="rec" class="likeBox">
+    	
+    
     </div>
 	
 </div>	
@@ -55,22 +50,26 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
+<script src="/resources/js/unizChart.js"></script>
 
+<script type="text/javascript">
+$(document).ready(function() {
+	var userSN = '<c:out value="${user.userSN}"/>';
+	
+	getList({userSN:userSN});
+});	
+</script>
 <script>
 
 
 var chartLabels = [];
-
 var chartData = [];
-
 var chartPieLabels = [];
-
 var chartPieData = [];
-
 var userSN = '<c:out value="${user.userSN}"/>';
+var nick = '<c:out value="${user.nick}"/>';
 
-
-$.getJSON("http://localhost:8080/chartList", function(data){
+$.getJSON("http://localhost:9090/chartList", function(data){
 	
 
 	$.each(data, function(inx, obj){
@@ -81,7 +80,7 @@ $.getJSON("http://localhost:8080/chartList", function(data){
 
 	});
 
-	createChart();
+	lineChart();
 
 
 	console.log("create Chart")
@@ -95,22 +94,21 @@ var lineChartData = {
 		datasets : [
 
 			{
-				label : "전체 유니즈 ",
+				label : "전체 클릭순",
 				fillColor : "rbga(151,187,205,0.2)",
 				strokeColor : "rbga(151,187,205,1)",
 				pointColor : "rbga(151,187,205,1)",
 				pointStrokeColor : "#fff",
 				pointHighlightFill : "#fff",
 				pointHighlightStroke : "rbga(151,187,205,1)",
+				backgroundColor: "rgba(204,204,204, 0.7)",
+				borderColor: "rgba(54, 162, 235, 1)",
 				data : chartData
 			}
-
 				 ]
-
 }
 
-
-function createChart(){
+function lineChart(){
 
 	let ctx = document.getElementById("chartcanvas").getContext("2d");
 
@@ -130,9 +128,9 @@ function createChart(){
 	})
 }
 
-$.getJSON("http://localhost:8080/chartList/"+userSN, function(data){
-	
 
+//pie차트
+$.getJSON("http://localhost:9090/chartList/"+userSN, function(data){
 	
 	$.each(data, function(inx, obj){
 
@@ -142,20 +140,16 @@ $.getJSON("http://localhost:8080/chartList/"+userSN, function(data){
 
 	});
 	
-	createChart2();
+	pieChart();
 
 	console.log("create Chart")
 
 });
 
 
-
-//pie차트
-function createChart2(){
+function pieChart(){
 
 let myChartOne = document.getElementById('myChartOne').getContext('2d');
-
-
 
 let barChart = new Chart(myChartOne, {
     type: 'pie',
@@ -165,24 +159,30 @@ let barChart = new Chart(myChartOne, {
             label: '시청순위',
             data : chartPieData,
             backgroundColor: [
-                "rgba(255, 99, 132, 0.4)",
-                "rgba(54, 162, 235, 0.4)",
-                "rgba(255, 206, 86, 0.4)",
-                "rgba(75, 192, 192, 0.4)",
-                "rgba(153, 102, 255, 0.4)",
-                "rgba(255, 159, 64, 0.4)",
-                "rgba(255, 102, 255, 0.4)",
-                "rgba(204,204,204,0.4)"
+                "#E45E56",
+                "#FF914C",
+                "#860B5E",
+                "#BA305C",
+                "#4B0156",
+                "#4D3D8F",
+                "#3F6EC1",
+                "#00CEFF",
+                "#1B9EE6",
+                "#E45E56",
+                "#1E9FE4"
             ],
             borderColor: [
-                "rgba(255, 99, 132, 1)",
-                "rgba(54, 162, 235, 1)",
-                "rgba(255, 206, 86, 1)",
-                "rgba(75, 192, 192, 1)",
-                "rgba(153, 102, 255, 1)",
-                "rgba(255, 159, 64, 1)",
-                "rgba(255, 102, 255, 1)",
-                "rgba(204,204,204, 0.7)"
+            	"#E45E56",
+                "#FF914C",
+                "#860B5E",
+                "#BA305C",
+                "#4B0156",
+                "#4D3D8F",
+                "#3F6EC1",
+                "#00CEFF",
+                "#1B9EE6",
+                "#E45E56",
+                "#1E9FE4"
             ],
             borderWidth: 1
         }]
@@ -190,7 +190,7 @@ let barChart = new Chart(myChartOne, {
     options: {
         title: {
             display: 'true',
-            text: '내가 많이본 순위',
+            text: nick+'님이 많이본 순위',
             // fontSize: 30,
             fontColor: 'black'
         },
@@ -204,7 +204,10 @@ let barChart = new Chart(myChartOne, {
     }
 })
 };
-        </script>
+
+
+
+</script>
 
 
 

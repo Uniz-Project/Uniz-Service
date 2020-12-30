@@ -5,7 +5,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%@ include file="/WEB-INF/views/includes/header.jsp"%>
+     <%-- <%@ include file="/WEB-INF/views/includes/header.jsp"%> --%>
+    <link rel="stylesheet" href="/resources/css/Navbar.css">
+    <link rel="stylesheet" href="/resources/css/videoDetail.css">
+
 
     <title>Uniz-비디오상세</title>
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
