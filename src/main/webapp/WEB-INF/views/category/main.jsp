@@ -29,45 +29,31 @@
 		</div>
 	</div>
 	
-<div class="comPage">
- <div class="FForm">
-	<p class="channelPartp">커뮤니티 > 카테고리별 게시판</p>
-		
-		<!-- <div class="channelPart"> -->
-			<div class="catHeader">
-				<h1>카테고리 별 게시판</h1>
-			</div>
-	
-		 	<div class="BList">
-				<h3>게시판 목록</h3>
-			</div> 
+	<div class="comPage">
+ 		<div class="FForm">
+			<p class="channelPartp">커뮤니티 > 카테고리별 게시판</p>
+				<div class="catHeader">
+					<h1>카테고리 별 게시판</h1>
+				</div>
+		 		
+		 		<div class="BList">
+					<h3>게시판 목록</h3>
+				</div> 
 			
-			<div class="boardList">
-			
-			</div>
-		
-		 
-		<!-- </div> --> <!-- channelPart end -->
-		
-		
- <div class="AAList">
-	
-			 <h3 class="h3">최신글</h3>
-		<div class="AList">
-		</div> 
-		
-		
-		
-</div> 
-		<!-- AAList -->
-		
-		<div class="postFooter">
-		</div>
-			</div>
-			<!-- end FForm -->
+				<div class="boardList">
+				</div>
+ 				
+ 				<div class="AAList">
+			 		<h3 class="h3">최신글</h3>
+						<div class="AList">
+						</div> 
+				</div> 	<!-- AAList -->
+				<div class="postFooter">
+				</div>
+		</div><!-- end FForm -->
 	</div> <!-- comPage end -->
-
 </div>	<!-- main end -->
+
 	 <div class="footer">
         <div class="foot">
             <div class="header">

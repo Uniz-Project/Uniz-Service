@@ -19,6 +19,7 @@
 	<%@ include file="/WEB-INF/views/includes/nav.jsp"%>
 	
 	<input type="hidden" id="sessionUserSN" value="${user.userSN}">
+	
 <div class="mainPage">	
 
     	<div class="leftSidebar">	
@@ -29,8 +30,8 @@
 			</div>
 		</div>
 		
-	<div class="comPage">
-	   <div class="FForm">
+		<div class="comPage">
+	   		<div class="FForm">
 				<div class="banner">
 					<a href="/channel/ch"><img class="mySlides" src="\resources\img\banner.png"></a>
 					<a href="/category/main"><img class="mySlides" src="\resources\img\banner2.png"></a>
@@ -39,119 +40,102 @@
 				</div>
 
 			<div class="channelPart">
-	<div class="fork">			
-		<div class="mix">
+					<div class="fork">			
+						<div class="mix">
 		        
-				<div class="BList">
-        			<h3>채널 목록</h3>
-				</div>
+							<div class="BList">
+        						<h3>채널 목록</h3>
+							</div>
 				
-        		<div class="boardList"> <!-- 채널 목록 보여주는 div -->
+        					<div class="boardList"> <!-- 채널 목록 보여주는 div -->
         		
-        			<c:forEach items="${list}" var="channel">
-	        			<ul>
-	        				<li data-channelsn='"${channel.channelSN}"'>
-	        				<a href="/channel/board/<c:out value='${channel.channelSN}'/>">
-	        					<i class="fab fa-youtube"></i>
-	        						<strong><c:out value="${channel.channelTitle}"/></strong>
-	        						<strong><c:out value="${channel.nick}"/></strong>
-	        				</a>
-	        				</li>
-    	    			</ul>
-    	    		</c:forEach> 
-    	    		
-        		</div>
-        </div>
+        						<c:forEach items="${list}" var="channel">
+	        						<ul>
+	        							<li data-channelsn='"${channel.channelSN}"'>
+	        								<a href="/channel/board/<c:out value='${channel.channelSN}'/>">
+	        									<i class="fab fa-youtube"></i>
+	        									<strong><c:out value="${channel.channelTitle}"/></strong>
+	        									<strong><c:out value="${channel.nick}"/></strong>
+	        								</a>
+	        							</li>
+    	    						</ul>
+    	    					</c:forEach> 
+        					</div>
+        				</div>
         <!-- end mix -->	
         
-        		<div class="channelFooter">
-        			<ul class=''>
-        				<c:if test="${pageMaker.prev}">
-        					<li class='page-item'>
-        						<a class='borderR' href="${pageMaker.startPage -1}"><<</a>
-        					</li>
-        				</c:if>
-        				
-        				<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-        					<li class="page ${pageMaker.cri.pageNum == num ? " active":""}">
-        					<a class='page-link' href="${num}">${num}</a>
-        					</li>
-        				</c:forEach>
-        				
-        				<c:if test="${pageMaker.next}">
-        					<li>
-        					<a class='borderR2' href="${pageMaker.endPage +1 }">>></a>
-        					</li>
-        				</c:if>
-        			</ul>  
-        		</div>
-        		
-       	</div>
+        				<div class="channelFooter">
+        					<ul class=''>
+        						<c:if test="${pageMaker.prev}">
+        							<li class='page-item'>
+        								<a class='borderR' href="${pageMaker.startPage -1}"><<</a>
+        							</li>
+        						</c:if>
+        							<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+        								<li class="page ${pageMaker.cri.pageNum == num ? " active":""}">
+        									<a class='page-link' href="${num}">${num}</a>
+        								</li>
+        							</c:forEach>
+        						<c:if test="${pageMaker.next}">
+        							<li>
+        								<a class='borderR2' href="${pageMaker.endPage +1 }">>></a>
+        							</li>
+        						</c:if>
+        					</ul>  
+        				</div>
+       				</div>
        	
        	<!-- fork end  -->
-        <div class="fork2">
-        		<div class='search'>
-        		<p>채널 / 크리에이터 검색</p>
-        			<form id="searchForm" action="/channel/ch" method="get">
-        				<select id="type" name='type'>
-        					<option value=""
-        					<c:out value="${pageMaker.cri.type == null ? 'selected':'' }"/>>--</option>
-        					<option value="T"
-        					<c:out value="${pageMaker.cri.type eq 'T' ? 'selected':'' }"/>>채널 이름</option>
-        					<option value="N"
-        					<c:out value="${pageMaker.cri.type eq 'N' ? 'selected':'' }"/>>크리에이터</option>
-        				</select>
-        				<input class="input" type='text' name="keyword"/>
-        				<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
-        				<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
-        				<button class="btn">검색</button>
-        			</form>
-        		</div>
-        		
-        		<form id='actionForm' action="/channel/ch" method='get'>
-					<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
-					<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
-					<input type='hidden' name='type' value='<c:out value="${pageMaker.cri.type}"/>'>
-					<input type='hidden' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'>
-				</form>
+        		<div class="fork2">
+        			<div class='search'>
+        				<p>채널 / 크리에이터 검색</p>
+        					<form id="searchForm" action="/channel/ch" method="get">
+        						<select id="type" name='type'>
+		        					<option value=""
+		        					<c:out value="${pageMaker.cri.type == null ? 'selected':'' }"/>>--</option>
+		        					<option value="T"
+		        					<c:out value="${pageMaker.cri.type eq 'T' ? 'selected':'' }"/>>채널 이름</option>
+		        					<option value="N"
+		        					<c:out value="${pageMaker.cri.type eq 'N' ? 'selected':'' }"/>>크리에이터</option>
+        						</select>
+			        				<input class="input" type='text' name="keyword"/>
+			        				<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+			        				<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+			        				<button class="btn">검색</button>
+        					</form>
+        			</div>
+			        		<form id='actionForm' action="/channel/ch" method='get'>
+								<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+								<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+								<input type='hidden' name='type' value='<c:out value="${pageMaker.cri.type}"/>'>
+								<input type='hidden' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'>
+							</form>
 				
-				<div class="applyBtn">
-					<button class="applyButton">
-						<img class="image" src="\resources\img\3186535.jpg">
-						<div class="middle">
-							<div class="text">크리에이터 등록</div>
-						</div>
-					</button>
-				</div>
-				
-
-		</div>
-				<!-- end fork  -->
-	
-				
-        		
-        	</div> <!-- channelPart end -->
+					<div class="applyBtn">
+						<button class="applyButton">
+							<img class="image" src="\resources\img\3186535.jpg">
+							<div class="middle">
+								<div class="text">크리에이터 등록</div>
+							</div>
+						</button>
+					</div>
+				</div><!-- end fork  -->
+			</div> <!-- channelPart end -->
         
-     <div class="AAList">
-     
-		<div class="AList">
-      	  <h3>전체 게시글 목록</h3>
-		</div> 
-        
-
-       
-    
-			</div> <!-- AAList end -->
-			</div>
-			<!-- end FForm -->
-
-	  	<div class="postFooter">
-        </div> 
-
-    		
+			    <div class="AAList">
+					<div class="AList">
+			      	  <h3>전체 게시글 목록</h3>
+					</div> 
+				</div> <!-- AAList end -->
+				
+			</div><!-- end FForm -->
+	  	
+	  			<div class="postFooter">
+        		</div> 
 	
     	</div> <!-- comPage end -->
     </div><!-- main end -->	
+    
     <div class="footer">
         <div class="foot">
             <div class="header">

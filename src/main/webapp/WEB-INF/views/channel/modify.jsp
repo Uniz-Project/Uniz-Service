@@ -33,34 +33,31 @@
 		<div class="createForm">
 			<form class="form" action='/channel/modify' method='post' id='boardPost' >
 				<div class="RegisterForm">
-					<!-- <label class="label">글 번호</label> -->
 						<input type="hidden" class="form-control noBorder" name='postSN' value='<c:out value="${board.postSN}" />' readonly="readonly">
 	 				<label class="label">제목 </label>
 	 					<input class="form-control" name='title' value='<c:out value="${board.title}" />' >
-	 				<!-- <label class="label">작성자</label> -->
 	 					<input type="hidden" class="form-control" name='writer' value='<c:out value="${board.nick}" />' readonly="readonly">
 	 				<label class="label textarea">내용</label>
 	 					<textarea class="form-control textArea" rows="3" name='postContent'><c:out value="${board.postContent}"/></textarea>	
 	 					<input type='hidden'class="form-control" name='userSN' value='${user.userSN}'>
 						<input type="hidden" class="form-control" name='channelSN' value="${channelSN}">
 				
-				<label class="label"></label>
+					<label class="label"></label>
 				
-				<div class="thumbNail">
-						<ul>
-						</ul>
-				</div>
+						<div class="thumbNail">
+							<ul>
+							</ul>
+						</div>
 				
-				<label for=""class="label"></label>
+					<label for=""class="label"></label>
 				   
-				   <div class="uploadFileBox"> 
-					   <!-- 파일 업로드 하는 곳-->
+					<div class="uploadFileBox"> <!-- 파일 업로드 하는 곳-->
 					   <ul>
 					   </ul>
-					<label for="uploadFile">파일 선택하기</label> 
-						<div class="ChseBtn">
-						<input type='file' name='uploadFile' id="uploadFile" multiple >
-						</div>
+						<label for="uploadFile">파일 선택하기</label> 
+							<div class="ChseBtn">
+								<input type='file' name='uploadFile' id="uploadFile" multiple >
+							</div>
 					</div>
 					
 					<div class="applyBtnBox">
@@ -68,8 +65,8 @@
 						<button  class="delBtn" data-oper='remove' >게시글 삭제</button>
 						<button type='submit' class="delBtn" data-oper='list'>글 목록으로</button>
 					</div>
-			</div>
-				</form>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>

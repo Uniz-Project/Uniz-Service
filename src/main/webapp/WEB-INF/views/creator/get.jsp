@@ -29,29 +29,29 @@
         		<h1>등록 조회 페이지</h1>
     		</div>
 	
-	<div class="createForm">
-    	<div class="registerForm">
-	        <label class="label">(운영하는)채널 이름</label>
-				<input class="form-control" name='channelTitle' id='channelTitle' value="<c:out value="${apply.channelTitle}" />" readonly="readonly">
-				<input type='hidden' class="form-control" name='userSN' id='userSN' value="<c:out value="${apply.userSN}" />" readonly="readonly">
-			<label class="label">채널 운영 주 카테고리 목록</label>
-				<input  class="form-control" name='category' value='<c:out value="${apply.category}"/>' readonly="readonly">
-			<label class="label">[연락 받을 이메일 주소를 입력하세요]</label>
-				<input  class="form-control" name='email' value='<c:out value="${apply.email}"/>' readonly="readonly">
+			<div class="createForm">
+    			<div class="registerForm">
+	        		<label class="label">(운영하는)채널 이름</label>
+						<input class="form-control" name='channelTitle' id='channelTitle' value="<c:out value="${apply.channelTitle}" />" readonly="readonly">
+						<input type='hidden' class="form-control" name='userSN' id='userSN' value="<c:out value="${apply.userSN}" />" readonly="readonly">
+					<label class="label">채널 운영 주 카테고리 목록</label>
+						<input  class="form-control" name='category' value='<c:out value="${apply.category}"/>' readonly="readonly">
+					<label class="label">[연락 받을 이메일 주소를 입력하세요]</label>
+						<input  class="form-control" name='email' value='<c:out value="${apply.email}"/>' readonly="readonly">
 	
-	<div class="uploadResult">
-		<ul>
-		</ul>
-	</div>
+					<div class="uploadResult">
+						<ul>
+						</ul>
+					</div>
 	
-				<div class="applyBtnBox" style="margin-top: 40px;">
-					<button class="submitBtn" id="modify">수정하기</button>
-					<button class="submitBtn" id="list">채널 게시판으로 이동</button>
+					<div class="applyBtnBox" style="margin-top: 40px;">
+						<button class="submitBtn" id="modify">수정하기</button>
+						<button class="submitBtn" id="list">채널 게시판으로 이동</button>
+					</div>
 				</div>
+			</div>
 		</div>
-	</div>
-</div>
-</div>	
+	</div>	
 </div>
 		
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>	

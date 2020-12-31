@@ -23,26 +23,25 @@
 		</div>
 	</div>
     
-    
     <div class="comPage">
 		<div class="creatorRegisterHeader">
-				<h1>글 쓰기</h1>
+			<h1>글 쓰기</h1>
 		</div>
-			<div class="createForm">
-				<form  class="form" role="form" action="/category/register" method="post" onsubmit="return checkTitle()">
-					<div class="RegisterForm">
-						<label class="label">제목 *</label>
-						<input class="form-control" name='title' id='title'>
-						<label class="label textarea">내용 *</label>
-						<textarea  class="form-control textArea" rows="3" name='postContent'></textarea>
-							<input type='hidden'class="form-control" name='userSN' value='${user.userSN}'>
-							<input type="hidden" class="form-control" name='boardSN' value="${boardSN}">
+		
+		<div class="createForm">
+			<form  class="form" role="form" action="/category/register" method="post" onsubmit="return checkTitle()">
+				<div class="RegisterForm">
+					<label class="label">제목 *</label>
+					<input class="form-control" name='title' id='title'>
+					<label class="label textarea">내용 *</label>
+					<textarea  class="form-control textArea" rows="3" name='postContent'></textarea>
+					<input type='hidden'class="form-control" name='userSN' value='${user.userSN}'>
+					<input type="hidden" class="form-control" name='boardSN' value="${boardSN}">
 					
-						<label class="label"></label>
+					<label class="label"></label>
 					<!-- 파일 업로드 한거 썸네일로 보여주는 곳. x 버튼 누르면 사진 삭제 됌-->
 					<div class="thumbNail">
 						<ul>
-						
 						</ul>
 				   </div>
 
@@ -50,9 +49,9 @@
 				   
 				   <div class="uploadFileBox"> 
 					   <!-- 파일 업로드 하는 곳-->
-					<label for="uploadFile">파일 선택하기</label> 
+						<label for="uploadFile">파일 선택하기</label> 
 						<div class="ChseBtn">
-						<input type='file' name='uploadFile' id="uploadFile" multiple >
+							<input type='file' name='uploadFile' id="uploadFile" multiple >
 						</div>
 					</div>
 
@@ -60,14 +59,12 @@
 						<button type="submit" class="submitBtn">작성완료</button>
 						<button type="reset" class="delBtn">전체 지우기</button>
 					</div>
-					</div>
-						</form>
 				</div>
-				<!-- end createForm -->
-		</div>
-		<!-- end comPage -->
-</div>
-<!-- end mainPage -->
+			</form>
+		</div><!-- end createForm -->
+	</div><!-- end comPage -->
+</div><!-- end mainPage -->
+
 <div class="footer">
         <div class="foot">
             <div class="header">

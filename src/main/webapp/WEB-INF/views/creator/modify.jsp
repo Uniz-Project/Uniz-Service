@@ -78,21 +78,20 @@
 					</div>	
 				</div>
 	
-	<div class="uploadFileBox"> 
-		<ul>
-		</ul>
-			<label for="uploadFile">파일 선택하기</label> 
-				<div class="ChseBtn">
-					<input type="file" id="uploadFile" name="uploadFile" multiple="multiple">
+				<div class="uploadFileBox"> 
+					<ul>
+					</ul>
+					<label for="uploadFile">파일 선택하기</label> 
+						<div class="ChseBtn">
+							<input type="file" id="uploadFile" name="uploadFile" multiple="multiple">
+						</div>
 				</div>
-	</div>
 	
-				<div class="applyBtnBox">
-					<button class="submitBtn" type="submit" data-oper='modify' class="btn btn-default">수정완료</button>
-					<button class="submitBtn" data-oper='cancle'>신청 취소</button>
-					<button class="submitBtn" data-oper='list'>채널 게시판으로 이동</button>
-				</div>
-
+					<div class="applyBtnBox">
+						<button class="submitBtn" type="submit" data-oper='modify' class="btn btn-default">수정완료</button>
+						<button class="submitBtn" data-oper='cancle'>신청 취소</button>
+						<button class="submitBtn" data-oper='list'>채널 게시판으로 이동</button>
+					</div>
 				</div>
 			</form>
 		</div>

@@ -18,28 +18,26 @@
 	<div class="applyMain">
 		<div class="creatorRegisterHeader">
 			<h1>채널 게시판 개설 페이지</h1>
-
 		</div>
-		<div class="createForm">
-			<form action="/channel/chcreate" method="post" onsubmit="">
-				<div class="RegisterForm">
-					<label class="label">채널 이름 <button class="submitBtn" id="titleModify">채널 이름 수정하러 가기</button></label>
-					<input class="form-control" id='channelTitle' value="<c:out value="${apply.channelTitle}"/>" name='channelTitle'  readonly="readonly">
-					<label class="label"> 게시판 사용 목적</label>
-					<textarea class="form-control" id='channelComment' name='channelComment'></textarea>
-					<input type="hidden" class="form-control"name='userSN' value="${user.userSN}">
-					
+			<div class="createForm">
+				<form action="/channel/chcreate" method="post" onsubmit="">
+					<div class="RegisterForm">
+						<label class="label">채널 이름 <button class="submitBtn" id="titleModify">채널 이름 수정하러 가기</button></label>
+						<input class="form-control" id='channelTitle' value="<c:out value="${apply.channelTitle}"/>" name='channelTitle'  readonly="readonly">
+						<label class="label"> 게시판 사용 목적</label>
+						<textarea class="form-control" id='channelComment' name='channelComment'></textarea>
+						<input type="hidden" class="form-control"name='userSN' value="${user.userSN}">
 
-			
-					<div class="applyBtnBox">
+						<div class="applyBtnBox">
 							<button class="submitBtn" data-oper='create' id='create' type='submit'>채널 만들기</button> 
 							<button class="submitBtn" data-oper='list' id='list'>채널 목록으로 이동</button>
+						</div>
+						
 					</div>
-				</div>
-			</form>
+				</form>
 				
 			</div>
-		</div>
+	</div>
 		
 
 		

@@ -43,22 +43,21 @@
 	 					<input type='hidden'class="form-control" name='userSN' value='${user.userSN}'>
 						<input type="hidden" class="form-control" name='boardSN' value="${boardSN}">
 				
-				<label class="label"></label>
+					<label class="label"></label>
 				
-				<div class="thumbNail">
+					<div class="thumbNail">
 						<ul>
 						</ul>
-				</div>
+					</div>
 				
-				<label for=""class="label"></label>
+					<label for=""class="label"></label>
 				   
-				   <div class="uploadFileBox"> 
-					   <!-- 파일 업로드 하는 곳-->
-					   <ul>
-					   </ul>
-					<label for="uploadFile">파일 선택하기</label> 
+					<div class="uploadFileBox"> <!-- 파일 업로드 하는 곳-->
+					    <ul>
+					    </ul>
+						<label for="uploadFile">파일 선택하기</label> 
 						<div class="ChseBtn">
-						<input type='file' name='uploadFile' id="uploadFile" multiple >
+							<input type='file' name='uploadFile' id="uploadFile" multiple >
 						</div>
 					</div>
 					
@@ -67,8 +66,8 @@
 						<button  class="delBtn" data-oper='remove' >게시글 삭제</button>
 						<button type='submit' class="delBtn" data-oper='list'>글 목록으로</button>
 					</div>
-			</div>
-				</form>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>

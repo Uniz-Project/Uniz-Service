@@ -23,107 +23,109 @@
                 <button id="channelPost" class="moveCategory">카테고리별 게시판으로 이동</button>
             </div>
     </div>
-<div class="comPage">
- <div class="FForm">
-	<div class="creatorRegisterHeader">
-		<h1><c:out value="${board.channelTitle}"/></h1>
-	</div>
-	<div class="createForm">
-		<div class="registerForm">
-			<p class="ReadInfo postSN">#<c:out value="${board.postSN}" /></p>
-			<p class="ReadInfo title"><c:out value="${board.title}" /></p>
+
+	<div class="comPage">
+ 		<div class="FForm">
+			<div class="creatorRegisterHeader">
+				<h1><c:out value="${board.channelTitle}"/></h1>
+			</div>
 	
-	<div class="flexBox">
-		<img  id="proImg" class="rg_i Q4LuWd" src="/resources/imgUpload/UserPhoto/${board.imgUrl}"  width="226" height="150">
-		<p class="ReadInfo nick"><c:out value="${board.nick}" /></p>
-	</div>
+			<div class="createForm">
+				<div class="registerForm">
+					<p class="ReadInfo postSN">#<c:out value="${board.postSN}" /></p>
+					<p class="ReadInfo title"><c:out value="${board.title}" /></p>
 	
-	<div class="content">
-	<p><c:out value="${board.postContent}" /></p>
-		<div class="uploadResult">
-			<ul>
-			</ul>
-		</div>	
-	</div>
+				<div class="flexBox">
+					<img  id="proImg" class="rg_i Q4LuWd" src="/resources/imgUpload/UserPhoto/${board.imgUrl}"  width="226" height="150">
+					<p class="ReadInfo nick"><c:out value="${board.nick}" /></p>
+				</div>
+	
+				<div class="content">
+					<p><c:out value="${board.postContent}" /></p>
+		
+						<div class="uploadResult">
+							<ul>
+							</ul>
+						</div>	
+				</div>
 					
-					<div class="applyBtnBox">
-					
-						<c:if test = "${user.userSN eq board.userSN}" >
-							<button class="submitBtn" id='modify'>글 수정</button>
+				<div class="applyBtnBox">
+					<c:if test = "${user.userSN eq board.userSN}" >
+						<button class="submitBtn" id='modify'>글 수정</button>
+					</c:if>
+						<button class="submitBtn" id='list'>목록으로</button>
+					<c:if test="${user.userSN != null }">
+						<c:if test="${user.userSN != board.userSN}">
+							<button class="reportBnt" id="myBtn">신고하기</button>
 						</c:if>
-							<button class="submitBtn" id='list'>목록으로</button>
-							<c:if test="${user.userSN != null }">
-								<c:if test="${user.userSN != board.userSN}">
-									<button class="reportBnt" id="myBtn">신고하기</button>
-								</c:if>
-							</c:if>
-					</div>
+					</c:if>
+				</div>
 					
 					<div></div>
 					
 					<div class="line"></div>
 					
-			<div class="Cmtcontainer">
-        		<label class="comment" for="content">댓글</label>
-      		  		<form class="Cform" name="commentInsertForm" >
-           	 			<div class="input-group">
-               				<input class='postSN' type="hidden" name="postSN" value="${postSN}"/>
-               				<input class='userSN' type="hidden" id="userSN" name="userSN" value="${user.userSN}"/>
-               				<input class="registerReply" type="text" id="replyContent" name="replyContent" placeholder="내용을 입력하세요." onclick="return checkSession();" >
+				<div class="Cmtcontainer">
+        			<label class="comment" for="content">댓글</label>
+      		  			<form class="Cform" name="commentInsertForm" >
+           	 				<div class="input-group">
+               					<input class='postSN' type="hidden" name="postSN" value="${postSN}"/>
+               					<input class='userSN' type="hidden" id="userSN" name="userSN" value="${user.userSN}"/>
+               					<input class="registerReply" type="text" id="replyContent" name="replyContent" placeholder="내용을 입력하세요." onclick="return checkSession();" >
                					<span class="input-group-btn">
                 						<button class='registerBtn' id='registerBtn' type="submit" >등록</button>
                					</span>
-             			</div>
-        			</form>
-    		</div> <!--  댓글 작성 div end -->
+             				</div>
+        				</form>
+    			</div> <!--  댓글 작성 div end -->
 					
-			<div class="reply">
-			</div>
+				<div class="reply">
+				</div>
 			
-			<div class="postFooter"></div>	
+				<div class="postFooter">
+				</div>	
 			
-		 </div>	 
-	</div>	
+		 		</div>	 
+			</div>	
 	<!-- createForm end  -->
-	
-	</div>
+		</div>
 	 <!-- end FForm -->
 	 
-	 <div id="MYMODAL" class="Modal">
-		<div class="Modal-content">
-			<div class="alertTt">
-              <h3>게시글 신고하기</h3>
-            </div>
-			<form class="alertForm" action="/channel/report" method="post">
-				<input name="postSN" type="text" value="${board.postSN}"/>
-				<input name="userSN" type="text" value="${user.userSN}"/>
+			 <div id="MYMODAL" class="Modal">
+				<div class="Modal-content">
+					<div class="alertTt">
+              			<h3>게시글 신고하기</h3>
+           		 	</div>
+						<form class="alertForm" action="/channel/report" method="post">
+							<input name="postSN" type="text" value="${board.postSN}"/>
+							<input name="userSN" type="text" value="${user.userSN}"/>
 				
-				<div class="alertTheme">
-               		<p>신고 글  <span style="color: rgb(0, 97, 207);">*</span></p>
-                	<input name="title" class="alertInput" type="text" value="${board.title}" required >
-           		</div>
+							<div class="alertTheme">
+               					<p>신고 글  <span style="color: rgb(0, 97, 207);">*</span></p>
+                				<input name="title" class="alertInput" type="text" value="${board.title}" required >
+           					</div>
 			
-				 <div class="alertSel">
-                	<p class="alertTheme padding">신고 사유 <span style="color: rgb(0, 97, 207);">*</span></p>
-                	<select class="alertInput" name="reason" id="">
-                    <option value="영리목적/홍보성">영리목적/홍보성</option>
-					<option value="개인정보 노출">개인정보 노출</option>
-					<option value="불법정보">불법정보</option>
-					<option value="음란성/선정성">음란성/선정성</option>
-					<option value="욕설/인신공격">욕설/인신공격</option>
-					<option value="같은 내용 반복">같은 내용 반복</option>
-					<option value="기타">기타</option>
-                	</select>              
-            	</div>
+				 			<div class="alertSel">
+			                	<p class="alertTheme padding">신고 사유 <span style="color: rgb(0, 97, 207);">*</span></p>
+			                	<select class="alertInput" name="reason" id="">
+			                    <option value="영리목적/홍보성">영리목적/홍보성</option>
+								<option value="개인정보 노출">개인정보 노출</option>
+								<option value="불법정보">불법정보</option>
+								<option value="음란성/선정성">음란성/선정성</option>
+								<option value="욕설/인신공격">욕설/인신공격</option>
+								<option value="같은 내용 반복">같은 내용 반복</option>
+								<option value="기타">기타</option>
+			                	</select>              
+            				</div>
 							
-				<div class="alertCont">
-                	<p class="alertTheme width">상세 내용</p>
-                	<textarea class="alert-content" name="detail" id="" cols="30" rows="10"></textarea>
-				<button type="submit" class="alertBtn">신고</button>
-            	</div>
-			</form>
-		</div>
-	</div>
+							<div class="alertCont">
+                				<p class="alertTheme width">상세 내용</p>
+                				<textarea class="alert-content" name="detail" id="" cols="30" rows="10"></textarea>
+								<button type="submit" class="alertBtn">신고</button>
+            				</div>
+						</form>
+				</div>
+			</div>
 	 
 	</div>
 	<!-- comPage end  -->
