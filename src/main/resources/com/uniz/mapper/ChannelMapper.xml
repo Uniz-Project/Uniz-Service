@@ -49,26 +49,31 @@
 		
 		<!-- 채널 게시판 목록 보여주기 -->
 		<select id="getChannelList" resultType="com.uniz.domain.ChannelBoardVO">
+	
+		<![CDATA[
+	 	select *
+    		from(
+            	select rownum rn , a.*
+            	from
+            		(
+            		select
+           				c.* , u.nick 
+            		from 
+            			channel c , userdata u
+    				where 
+    					c.usersn = u.usersn
+                	order by c.channelsn desc
+					)a
+				where
+		]]>		
+    			<include refid="criteria"></include>
+    	
+    	<![CDATA[
 		
-			<![CDATA[
-	 		select
-				*
-			from
-				(
-				select rownum rn, c.* , u.nick  
-				from channel c , userdata u
-				where c.usersn = u.usersn
-				and
-			
-			]]>
-				<include refid="criteria"></include>
-				
-			<![CDATA[
 				rownum <= #{pageNum} * #{amount}
 				)
 			where rn > (#{pageNum} -1 ) * #{amount} 	
-			]]>	
-			
+		]]>	
 		</select>
 		
 		<!-- 해당 게시판의 게시글 목록 보여주기 -->
@@ -222,10 +227,10 @@
 				<foreach item="type" collection="typeArr">
 					<choose>
 						<when test="type == 'T'.toString()">
-							c.channelTitle like '%' || #{keyword} || '%'
+							a.channelTitle like '%' || #{keyword} || '%'
 						</when>
 						<when test="type == 'N'.toString()">
-							u.nick like '%' || #{keyword} || '%'
+							a.nick like '%' || #{keyword} || '%'
 						</when>
 					</choose>
 				</foreach>

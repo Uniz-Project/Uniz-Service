@@ -22,8 +22,8 @@
 	<div class="leftSidebar">	
 		<div class="fixed">
 			<div class="SideHd">커뮤니티</div>
-			<button id="channelPost" class="channelPost">채널 게시판</button>
-			<button id="channelPost" class="categoryPost">카테고리별 게시판</button>
+			<button id="channelPost" class="moveChannel">채널 게시판으로 이동</button>
+			<button id="channelPost" class="moveCategory">카테고리별 게시판으로 이동</button>
 		</div>
 	</div>
 	
@@ -211,12 +211,12 @@ $(document).ready(function(){
 		self.location = "/channel/register/"+channelSN;
 	});
 	
-	$(".channelPost").on("click", function(){
-		self.location = "/channel/ch";
+	$(".moveChannel").on("click", function(){
+		self.location="/channel/ch";
 	});
-	
-	$(".categoryPost").on("click", function(){
-		self.location = "/category/main";
+
+	$(".moveCategory").on("click", function(){
+		self.location="/category/main";
 	});
 	
 });

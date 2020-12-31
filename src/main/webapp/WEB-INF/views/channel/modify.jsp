@@ -20,8 +20,8 @@
     <div class="leftSidebar">	
 		<div class="fixed">
 			<div class="SideHd">커뮤니티</div>
-			<button id="channelPost">채널 게시판으로 이동</button>
-			<button id="channelPost">카테고리별 게시판</button>
+			<button id="channelPost" class="moveChannel">채널 게시판으로 이동</button>
+			<button id="channelPost" class="moveCategory">카테고리별 게시판으로 이동</button>
 		</div>
 	</div>
 
@@ -106,7 +106,7 @@ $(document).ready(function(){
 	        
 	        var str = "";
 	        
-	        $(".uploadResult ul li").each(function(i, obj){
+	        $(".thumbNail ul li").each(function(i, obj){
 	          
 	          var jobj = $(obj);
 	          
@@ -261,6 +261,14 @@ $(document).ready(function(){
 	    
  });  
 	
+});
+
+$(".moveChannel").on("click", function(){
+	self.location="/channel/ch";
+});
+
+$(".moveCategory").on("click", function(){
+	self.location="/category/main";
 });
 
 </script>

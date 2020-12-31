@@ -8,7 +8,8 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="/resources/css/Navbar.css">
-    <link rel="stylesheet" href="/resources/css/register.css">
+    <link rel="stylesheet" href="/resources/css/categoryRegister.css">
+ 	<link rel="stylesheet" href="/resources/css/Footer.css">
     
 </head>
 <body>
@@ -17,19 +18,27 @@
 	
 
 <!-- end navbar -->
-	<div class="emptyNav"></div>
-
-    <div class="applyMain">
+<div class="mainPage">
+    <div class="leftSidebar">	
+		<div class="fixed">
+			<div class="SideHd">커뮤니티</div>
+			<button id="channelPost" class="moveChannel">채널 게시판으로 이동</button>
+			<button id="channelPost" class="moveCategory">카테고리별 게시판으로 이동</button>
+		</div>
+	</div>
+    
+    
+    <div class="comPage">
 		<div class="creatorRegisterHeader">
 				<h1>글 쓰기</h1>
 		</div>
 			<div class="createForm">
 				<form  class="form" role="form" action="/channel/register" method="post" onsubmit="return checkTitle()">
 					<div class="RegisterForm">
-						<label class="label">제목</label>
+						<label class="label">제목 *</label>
 						<input class="form-control" name='title' id='title'>
-						<label class="label textarea">내용</label>
-						<textarea class="form-control" rows="3" name='postContent'></textarea>
+						<label class="label textarea">내용 *</label>
+						<textarea  class="form-control textArea" rows="3" name='postContent'></textarea>
 							<input type='hidden'class="form-control" name='userSN' value='${user.userSN}'>
 							<input type="hidden" class="form-control" name='channelSN' value="${channelSN}">
 					
@@ -47,22 +56,54 @@
 					   <!-- 파일 업로드 하는 곳-->
 					<label for="uploadFile">파일 선택하기</label> 
 						<div class="ChseBtn">
-						<input type='file' name='uploadFile' id="uploadFile"multiple >
+						<input type='file' name='uploadFile' id="uploadFile" multiple >
 						</div>
 					</div>
 
 					<div class="applyBtnBox">
 						<button type="submit" class="submitBtn">작성완료</button>
-						<button type="reset" class="submitBtn">전체 지우기</button>
+						<button type="reset" class="delBtn">전체 지우기</button>
 					</div>
 					</div>
+						</form>
 				</div>
-			</div> 
-	</div>
-</form>
+				<!-- end createForm -->
+		</div>
+		<!-- end comPage -->
 </div>
-</div>	   			
+<!-- end mainPage -->
+<div class="footer">
+        <div class="foot">
+            <div class="header">
+                <h3> 고객센터</h3> <span>|</span> <h3>공지사항</h3>
+            </div>
+            <div class="midInfo">
+                <p>콘텐츠 제공 문의</p>
+                <p>페이스북</p>
+                <p>회사 소개 </p>
+                <p>인스타그램</p>
+                <p>인재 채용</p>
+                <p>사업 제휴 문의 </p>
+            </div>
+            
+            <div class="address">
+                <p>서울특별시 종로구 종로2가 9 YMCA 7F</p>
+                <div class="conf">
     
+                    <p>@uniz Corp</p>
+                    <p>이용 약관</p>
+                    <p>|</p>
+                    <p>개인정보 처리방침</p>
+                    <p>|</p>
+                    <p>청소년 보호 정책</p>
+                    <p>|</p>
+                    <p>사업자 정보 확인</p>
+                </div>
+            </div>
+        </div>
+    </div> 	
+					
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/channel.js"></script>
 <script>
@@ -128,7 +169,7 @@ $(document).ready(function(e){
 	        	str += "data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"'data-type='"+obj.image+"'"		
 	        	str += "><div>";
 	        	str += "<span>" + obj.fileName + "</span>";
-	        	str += "<button type='button' data-file=\'"+fileCallPath+"\' data-type='image' class='btn btn-warning btn-circle'> x <i class='fa fa-times'></i></button><br>";
+	        	str += "<button type='button' data-file=\'"+fileCallPath+"\' data-type='image' class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
 	        	str += "<img src='/chdisplay?fileName="+fileCallPath+"'>";
 	        	str += "</div>";
 	        	str += "</li>";
@@ -235,6 +276,14 @@ function checkTitle(){
 	}
 	
 }
+
+$(".moveChannel").on("click", function(){
+	self.location="/channel/ch";
+});
+
+$(".moveCategory").on("click", function(){
+	self.location="/category/main";
+});
 
 </script>	
 </body>

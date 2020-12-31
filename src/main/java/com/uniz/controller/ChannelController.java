@@ -72,29 +72,21 @@ public class ChannelController {
 	public String getChCreate(Model model, HttpSession session) throws Exception {
 		
 		final Integer USERTYPE = (Integer)session.getAttribute("userType");
-		
 		final Long USERSN = (Long)session.getAttribute("userSN");
 		
 		log.info(" userType : " + USERTYPE);
-		
 		log.info(" USERSN ==== " + USERSN);
 		
 		if( session.getAttribute("user") != null && USERTYPE >= 2) {
-			
 			model.addAttribute("apply", applyService.getApply(USERSN));
-			
 			return "/channel/chcreate";
 			
-		}else if(session.getAttribute("user") != null && (int)session.getAttribute("userType") == 1) {
-			
-			return "channel/main";
+		}else if(session.getAttribute("user") != null && USERTYPE == 1) {
+			return "redirect:/channel/ch";
 			
 		} else {
-			
 			return "/user/loginForm";
-			
 		}
-		
 	}
 	
 	@PostMapping("/checkChannelCreate")
@@ -103,17 +95,14 @@ public class ChannelController {
 		log.info("userSN=======  " + userSN);
 		
 		final int CONFIRM = mapper.confirmChannel(userSN); // 개설한 채널이 있는지 체크
-		
 		final int USERTYPE = (int)session.getAttribute("userType"); // usertype 2면 크리에이터, 1이면 일반유저
 		
 		log.info("CONFIRM : " + CONFIRM);
-		
 		log.info("USERTYPE : " + USERTYPE);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		map.put("CONFIRM" , CONFIRM);
-		
 		map.put("USERTYPE" , USERTYPE);
 		
 		log.info("map~~~~~ " + map);
@@ -161,11 +150,8 @@ public class ChannelController {
 				return "channel/get";
 			
 			}else {
-			
 				return "channel/main";
-				
 			}
-		
 	}
 	
 	// 채널 게시판으로 이동
@@ -175,15 +161,11 @@ public class ChannelController {
 		final int CHECKCHANNEL = service.checkChannel(channelSN);
 		
 		if(CHECKCHANNEL== 1){
-			
 			model.addAttribute("channel", service.getList(channelSN));
-		
 			return "channel/board";
 
 		}else {
-		
 			return "channel/main";
-		
 		}
 	}
 	
@@ -200,11 +182,9 @@ public class ChannelController {
 	public String modify(@PathVariable("postSN") Long postSN,@PathVariable("channelSN") Long channelSN , Model model) {
 		
 		ChannelBoardVO vo = service.getPost(postSN);
-		
 		log.info("channel VO ==== " + vo);
 		
 		model.addAttribute("board", vo);
-		
 		return "channel/modify";
 	}
 	
@@ -214,16 +194,11 @@ public class ChannelController {
 	public String register( ChannelBoardVO vo , RedirectAttributes rttr) {
 		
 		if(vo.getAttachList() != null) {
-			
 			vo.getAttachList().forEach(attach -> log.info(attach));
-			
 		}
-		
 		service.register(vo);
-		
 		rttr.addFlashAttribute("result", vo.getPostSN());
 		log.info("vo= " +vo);
-		
 		return "redirect:/channel/ch";
 	}
 	
@@ -232,7 +207,7 @@ public class ChannelController {
 		log.info("controller report vo = " + vo);
 		reportService.report(vo);
 		
-		return "redirect:/channel/board/" + vo.getPostSN();
+		return "redirect:/channel/get/" + vo.getPostSN();
 	}
 	
 	//채널 게시판 생성
@@ -250,8 +225,6 @@ public class ChannelController {
 				 MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<ChannelPageDTO> getChannelList(@PathVariable("page") int page){
 		log.info("get Channel List........");
-		
-
 		Criteria cri = new Criteria(page, 10);
 
 		return new ResponseEntity<>(service.getAllChannelList(cri) , HttpStatus.OK);
@@ -263,7 +236,6 @@ public class ChannelController {
 			produces = {
 					 MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<ChannelPageDTO>getPostList (@PathVariable("channelSN") Long channelSN, @PathVariable("page") int page ){
-		
 		Criteria cri = new Criteria(page, 10);
 		
 		return new ResponseEntity<>(service.getPostListPaging( cri , channelSN), HttpStatus.OK);
@@ -275,7 +247,6 @@ public class ChannelController {
 			produces = { MediaType.APPLICATION_XML_VALUE,
 					 MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<ChannelPageDTO>getAllPost(@PathVariable("page") int page){
-		
 		Criteria cri = new Criteria(page, 10);
 		
 		return new ResponseEntity<>(service.getListPage(cri), HttpStatus.OK);
@@ -293,26 +264,21 @@ public class ChannelController {
 		boolean deletecheck = service.delete(postSN);
 		
 		if(deletecheck) {
-			
 			deleteFiles(attachList);
 			rttr.addFlashAttribute("result", "success");
 		}
-		
 		return "redirect:/channel/board/" + channelSN;
 	}
 	
 	// 게시글 수정 하는 기능
 	@PostMapping("/modify")
 	public String modify(@RequestParam("postSN") Long postSN ,@RequestParam("channelSN") Long channelSN ,ChannelBoardVO vo, RedirectAttributes rttr) {
-		log.info("modify before");
 		
 		if(service.update(vo)) {
 			log.info("modify after");
 			rttr.addFlashAttribute("result", "success");
 		}
-		
 		return "redirect:/channel/board/" + channelSN;
-		
 	}
 	
 	@GetMapping(value ="/chgetAttachList",
@@ -321,9 +287,7 @@ public class ChannelController {
 	public ResponseEntity<List<ChannelAttachVO>> getAttachList(Long postSN){
 		
 		log.info("getAttachList====== : " + postSN);
-		
 		return new ResponseEntity<>(service.getAttachList(postSN) , HttpStatus.OK);
-		
 	}
 	
 	
@@ -335,7 +299,6 @@ private void deleteFiles(List<ChannelAttachVO> attachList) {
 		attachList.forEach(attach -> {
 			
 		  try {
-			  
 		  
 			Path file = Paths.get("C:\\ch\\file\\" + attach.getUploadPath()+ "\\"+
 					attach.getUuid()+"_" + attach.getFileName());
@@ -355,8 +318,5 @@ private void deleteFiles(List<ChannelAttachVO> attachList) {
 			  log.error("delete File error " + e.getMessage());
 		  }
 		});
-		
 	}
-	
-	
 }

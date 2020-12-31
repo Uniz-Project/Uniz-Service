@@ -19,8 +19,8 @@
 	<div class="leftSidebar">
             <div class="fixed">
                 <div class="SideHd">커뮤니티</div>
-                <button id="channelPost" class="moveChannel">채널 게시판</button>
-                <button id="channelPost" class="moveCategory">카테고리 별 게시판</button>
+                <button id="channelPost" class="moveChannel">채널 게시판으로 이동</button>
+                <button id="channelPost" class="moveCategory">카테고리별 게시판으로 이동</button>
             </div>
     </div>
 <div class="comPage">
@@ -53,9 +53,9 @@
 						</c:if>
 							<button class="submitBtn" id='list'>목록으로</button>
 							<c:if test="${user.userSN != null }">
-							<c:if test="${user.userSN != board.userSN}">
-								<button class="reportBnt" id="myBtn">신고하기</button>
-							</c:if>
+								<c:if test="${user.userSN != board.userSN}">
+									<button class="reportBnt" id="myBtn">신고하기</button>
+								</c:if>
 							</c:if>
 					</div>
 					
@@ -95,8 +95,8 @@
               <h3>게시글 신고하기</h3>
             </div>
 			<form class="alertForm" action="/channel/report" method="post">
-				<input name="postSN" type="hidden" value="${postSN}"/>
-				<input name="userSN" type="hidden" value="${user.userSN}"/>
+				<input name="postSN" type="text" value="${board.postSN}"/>
+				<input name="userSN" type="text" value="${user.userSN}"/>
 				
 				<div class="alertTheme">
                		<p>신고 글  <span style="color: rgb(0, 97, 207);">*</span></p>
@@ -394,6 +394,11 @@ $(document).ready(function(){
 </script>
 <script>
 	// Get the modal
+	
+	var userSN = ${board.userSN};
+
+	var loginUserSN = $(".userSN").val();
+	
 	var modal = document.getElementById("MYMODAL");
 	
 	// Get the button that opens the modal
@@ -403,10 +408,11 @@ $(document).ready(function(){
 	/* var span = document.getElementsByClassName("close")[0];
 	 */
 	// When the user clicks the button, open the modal 
-	btn.onclick = function() {
-	  modal.style.display = "block";
-	}
-	
+	 if( loginUserSN != '' && userSN != loginUserSN){  
+		btn.onclick = function() {
+	  		modal.style.display = "block";
+		}
+	 }
 	// When the user clicks on <span> (x), close the modal
 	/* span.onclick = function() {
 	  modal.style.display = "none";
@@ -418,8 +424,17 @@ $(document).ready(function(){
 	    modal.style.display = "none";
 	  }
 	}
+	 
 	$(".alertBtn").on("click", function(){
 		alert("신고 접수 되었습니다.");
+	});
+	
+	$(".moveChannel").on("click", function(){
+		self.location="/channel/ch";
+	});
+
+	$(".moveCategory").on("click", function(){
+		self.location="/category/main";
 	});
 	
 	
