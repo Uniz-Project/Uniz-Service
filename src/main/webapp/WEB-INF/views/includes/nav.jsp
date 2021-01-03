@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%@ include file="/WEB-INF/views/includes/font_header.jsp"%>
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-    
  <div class="nav">
     <div class="nav1">
          <div class="nav1-1">
@@ -23,7 +24,7 @@
                     }
                   </style>
                 </defs>
-                <text id="uniz" class="cls-1" transform="translate(-50.515 268.411) rotate(-90)">uniz</text>
+                <text id="uniz" class="cls-1" transform="translate(-50.515 268.411) rotate(-90)" style="font-family: 'Do Hyeon', sans-serif;">Uniz</text>
               </svg>
               <!-- end uniz -->
               </a>

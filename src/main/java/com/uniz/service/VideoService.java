@@ -12,4 +12,6 @@ public interface VideoService {
 	public List<VideoDataVO> getPopularityVideo();
 
 	public List<VideoDataVO> getRandomVideo();
+
+	public List<VideoDataVO> getRandomVideoSimple();
 }

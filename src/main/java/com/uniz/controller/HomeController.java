@@ -18,10 +18,13 @@ import com.uniz.service.SampleService;
 import com.uniz.service.VideoService;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 
 /**
  * Handles requests for the application home page.
  */
+@Log4j
 @Controller
 @AllArgsConstructor
 public class HomeController {
@@ -39,7 +42,9 @@ public class HomeController {
 		
 		//메인페이지 기능
 		//1. 오늘의 추천영상 - 전체 영상에서 랜덤으로 3개 추출
-		List<VideoDataVO> randomVideo = videoService.getRandomVideo();
+//		List<VideoDataVO> randomVideo = videoService.getRandomVideo();
+//		log.info("randomVideo" + randomVideo);
+		List<VideoDataVO> randomVideo = videoService.getRandomVideoSimple();
 		model.addAttribute("randomVideo",randomVideo);
 		
 		

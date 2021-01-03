@@ -53,4 +53,12 @@
 		</foreach>
 		
 	</select>
+	
+	<select id="getRandomVideoSimple" resultType="com.uniz.domain.VideoDataVO">
+		<![CDATA[
+			SELECT *
+			FROM videodata sample(1)
+			where rownum <=3
+		]]>
+	</select>
 </mapper>

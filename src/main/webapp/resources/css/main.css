@@ -4,7 +4,9 @@
     height: 1200px;
     overflow-x: hidden;
 }
-
+.ptitle{
+	font-size: 35px;
+}
 .title4{
     /* background-color: gold; */
     width: 85%;
@@ -175,7 +177,7 @@
     padding: 24px;
     position: absolute;
     background-color: white;
-    width: 360px;
+    width: 50%;
     height: 70%;
     top: 50%;
     left: 50%;

@@ -3,9 +3,15 @@
 
 <!DOCTYPE html>
 <html>
-<head><%-- 
-<%@ include file="/WEB-INF/views/includes/header.jsp"%> --%>
+<head>
+<%@ include file="/WEB-INF/views/includes/font_header.jsp"%>
 <link rel="stylesheet" href="/resources/css/RegisterLogin.css">
+<style>
+	*{
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 30px;
+	}
+</style>
 <title>Uniz로그인페이지</title>
 </head>
 <body>	
@@ -23,11 +29,12 @@
                       font-size: 729.167px;
                       fill: #00a6f3;
                       font-family: Futura;
-                      font-weight: 500;
+                      font-weight: 500px;
+                      font-family: 'Do Hyeon',sans-serif;
                     }
                   </style>
                 </defs>
-                <text id="uniz" class="cls-1" transform="translate(-50.515 268.411) rotate(-90)">uniz</text>
+                <text id="uniz" class="cls-1" transform="translate(-50.515 268.411) rotate(-90)">Uniz</text>
               </svg>
               <p class="regIntro">취향저격 유튜브 서비스</p>
         </h1>
@@ -44,7 +51,7 @@
 
         <div class="cookieBox">
             <input type="checkbox" id="chk" name="chk">
-            <label for="chk">아이디 기억하기</label>
+            <label for="chk" style="font-size: 15px;">아이디 기억하기</label>
         </div>
         <div class="regLink">
         

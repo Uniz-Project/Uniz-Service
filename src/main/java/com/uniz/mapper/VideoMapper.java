@@ -19,4 +19,8 @@ public interface VideoMapper {
 	public List<VideoDataVO> getRandomVideo(@Param("videoSNList") List<Integer> VideoSN);
 
 	public int getVideoTotalCount();
+
+	public List<Long> getAllVideoSN();
+
+	public List<VideoDataVO> getRandomVideoSimple();
 }

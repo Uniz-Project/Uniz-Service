@@ -83,8 +83,19 @@ public class VideoServiceImpl implements VideoService {
 		log.info("list : " + list);
 
 		List<VideoDataVO> randomVideo = videoMapper.getRandomVideo(list);
-
+		
+		log.info("randomVideo Size = "+ randomVideo.size());
+		
+	
 		return randomVideo;
 	}
+
+	@Override
+	public List<VideoDataVO> getRandomVideoSimple() {
+		
+		return videoMapper.getRandomVideoSimple();
+	}
+	
+	
 
 }

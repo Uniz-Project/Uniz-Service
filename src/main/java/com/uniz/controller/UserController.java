@@ -84,7 +84,7 @@ public class UserController {
 
 		// 세션없이 접근시 메인으로 리턴
 		if (session.getAttribute("user") == null)
-			return "/user/loginForm";
+			return "redirect:/user/loginForm";
 
 		// 1. 회원정보 가져오기 - 세션에 저장된 값
 
@@ -109,7 +109,7 @@ public class UserController {
 
 		// 세션없이 접근시 메인으로 리턴
 		if (session.getAttribute("user") == null)
-			return "/user/loginForm";
+			return "redirect:/user/loginForm";
 
 		// 1. 회원정보 가져오기 - 세션에 저장된 값
 
@@ -142,13 +142,13 @@ public class UserController {
 		int result = userService.userRegister(user, unizSN);
 
 		log.info("result : " + result);
-		return "home";
+		return "redirect:/";
 	}
 
 	@GetMapping("/modify")
 	public String modify(HttpSession session) {
 
-		return session.getAttribute("user") != null ? "/user/userModify" : "home";
+		return session.getAttribute("user") != null ? "/user/userModify" : "redirect:/user/loginForm";
 	}
 
 	@PostMapping("/modify")
@@ -183,7 +183,7 @@ public class UserController {
 
 		session.invalidate();
 
-		return "home";
+		return "redirect:/";
 	}
 
 	// 아이디 중복체크 - 대윤
@@ -298,7 +298,7 @@ public class UserController {
 		if (session == null) {
 
 			// 세션이 만료되었습니다.
-			return "home";
+			return "redirect:/";
 		}
 		
 		UserDTO userDto = (UserDTO) session.getAttribute("user");

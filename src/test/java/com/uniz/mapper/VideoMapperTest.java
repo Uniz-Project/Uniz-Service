@@ -64,6 +64,13 @@ public class VideoMapperTest {
 		log.info("randomVideo : " + randomVideo);
 	}
 	
+	//영상 SN 전체 가져온 뒤에 3개주기
+	@Test
+	public void randomVideo2() {
+		List<Long> VideoSN = mapper.getAllVideoSN();
+		log.info("VideoListSN = " + VideoSN);
+	}
+	
 	@Test
 	public void popVideo() {
 		

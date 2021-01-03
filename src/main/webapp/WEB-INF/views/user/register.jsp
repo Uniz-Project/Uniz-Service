@@ -56,7 +56,7 @@
         </div>
         
         <div class="btnBox">
-            <button type="button" class="logBtn regBtn" id="myBtn" onclick="">다음</button>
+            <button type="button" class="logBtn regBtn" id="myBtn">다음</button>
             <button class="logBtn" type="button" onclick="location.href='/'">취소</button>
         </div>
         
@@ -86,6 +86,8 @@
 		  </div>
 		
 		</div>
+		<input type="hidden" value="" id="idcheck">
+		<input type="hidden" value="" id="nickcheck">
     </form>
 </div>
 	
@@ -162,6 +164,16 @@
 				alert("닉네임 중복체크를 해주세요");
 				return false;
 			}
+			if($("#idcheck").val() != $("#userId").val()){
+				alert("아이디 중복체크를 해주세요");
+				$("#userIdCheckBtn").attr("disabled", false);
+				return false;
+			}
+			if($("#nickcheck").val() != $("#nick").val()){
+				alert("닉네임 중복체크를 해주세요");
+				$("#userNickCheckBtn").attr("disabled", false);
+				return false;
+			}
 			
 		 
 		 for (i=0; i<form.userId.value.length; i++)
@@ -183,12 +195,18 @@
 	}
     // When the user clicks the button, open the modal 
     btn.onclick = function() {
-        modal.style.display = "block";        
+    	let result = checkForm();
+    	console.log(result)
+    	if(result != false){
+	        modal.style.display = "block";        
+    		
+    	}
     }
         
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
       if (event.target == modal) {
+        
         modal.style.display = "none";
       }
     }
@@ -215,8 +233,9 @@
 				
 				if(data.result == SUCCESS){
 					alert("사용할 수 있는 아이디 입니다.")
-					$("#userId").attr("readonly", "true");
-					$("#userIdCheckBtn").attr("disabled", "true");
+					$("#userIdCheckBtn").attr("disabled", "disabled");
+					let userId = $("#userId").val()
+					$("#idcheck").val(userId);
 				}else if(data.result == DUPLICATION){
 					alert("이미 존재하는 아이디 입니다.")	
 				}else{
@@ -246,8 +265,9 @@
 				const DUPLICATION = "DUPLICATION";
 				if(data.data == SUCCESS){
 					alert("사용할 수 있는 닉네임 입니다.");
-					$("#nick").attr("readonly", "true");
-					$("#userNickCheckBtn").attr("disabled", "true");
+					$("#userNickCheckBtn").attr("disabled", "disabled");
+					let nick = $("#nick").val()
+					$("#nickcheck").val(nick);
 				}else if(data.data == DUPLICATION){
 					alert("이미 존재하는 닉네임 입니다.")	
 				}else{

@@ -173,15 +173,15 @@
 	        <td><c:out value="${apply.channelTitle}" /></td>
 	        <td><c:out value="${apply.email}" /></td>
 	            <c:choose>
-						<c:when test = "${apply.state == 10}" >
+						<c:when test = "${apply.state == 1}" >
 							<td>심사중</td>
 						</c:when>
 						
-						<c:when test = "${apply.state == 11 }" >
+						<c:when test = "${apply.state == 2 }" >
 							<td>승인</td>
 						</c:when>
 						
-						<c:when test = "${apply.state == 12 }" >
+						<c:when test = "${apply.state == 3 }" >
 							<td>거절</td>
 					</c:when>
 				</c:choose>
@@ -227,7 +227,7 @@
     </form>
     
     <input type = "hidden" id="msg" value = "${param.MSG}">
-
+	<input type ="hidden" id="nickcheck">
 
   </div>
 
@@ -290,8 +290,9 @@ $(document).ready(function(){
 				const DUPLICATION = "DUPLICATION";
 				if(data.data == SUCCESS){
 					alert("사용할 수 있는 닉네임 입니다.");
-					$("#modal_nick").attr("readonly", "true");
-					$("#userNickCheckBtn").attr("disabled", "true");
+					$("#userNickCheckBtn").attr("disabled", "disabled");
+					let nick = $("#modal_nick").val();
+					$("#nickcheck").val(nick);
 				}else if(data.data == DUPLICATION){
 					alert("이미 존재하는 닉네임 입니다.")	
 				}else{
@@ -327,6 +328,12 @@ function checkForm(){
     }
 	if(form.password.value != form.password2.value){
 		alert("비밀번호가 일치하지 않습니다. 비밀번호를 확인해주세요");
+		return false;
+	}
+	
+	if($("#nickcheck").val() != $("#modal_nick").val()){
+		alert("닉네임 중복체크를 해주세요");
+		$("#userNickCheckBtn").attr("disabled", false);
 		return false;
 	}
 	

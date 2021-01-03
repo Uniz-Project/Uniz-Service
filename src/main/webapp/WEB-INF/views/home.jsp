@@ -5,9 +5,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<%@ include file="/WEB-INF/views/includes/font_header.jsp"%>
 	<link rel="stylesheet" href="/resources/css/Navbar.css">
 	<link rel="stylesheet" href="/resources/css/main.css">
 	<link rel="stylesheet" href="/resources/css/Footer.css">
+	<style>
+		p , .font_h3 , .font_span{
+			font-family: 'Do Hyeon', sans-serif;
+		}
+	</style>
 </head>
   <body>
 	<%@ include file="/WEB-INF/views/includes/nav.jsp"%>		
@@ -16,7 +22,7 @@
     <!-- end navbar -->
     <div class="mainPage">
         <div class="title4">
-            <p>랜덤 추천영상</p>
+            <p class="ptitle">랜덤 추천영상</p>
             <button class="arrow"><i class="fas fa-angle-right"></i></button>
         </div>
         <div class="banner">
@@ -31,7 +37,7 @@
         </div>
         <!-- end banner -->
         <div class="lateTitle">
-            <p>최신 영상들</p>
+            <p class="ptitle">최신 영상들</p>
             <button class="seeMore">더 보기</button>
         </div>
         <div class="line"></div>
@@ -44,7 +50,7 @@
         </div>
         
         <div class="lateTitle">
-            <p>인기 영상들</p>
+            <p class="ptitle">인기 영상들</p>
             <button class="seeMore">더 보기</button>
         </div>
         <div class="line"></div>
@@ -58,10 +64,10 @@
     </div>
     <!-- end mainPage -->
     
-    <a href="/category/board/${board.boardSN}">
     <div class="commuNews">
+    <a href="/category/board/${board.boardSN}">
      <img src="\resources\img\coofee.jpg" class="commuImg" alt=""> 
-        <div class="todaysCommu">오늘의 커뮤니티</div>
+        <div class="todaysCommu"><p class="ptitle">오늘의 커뮤니티<p></div>
         <div class="text">
             <p class="boardName">${board.boardComment}</p>
            <h4> ${board.title}</h4>
@@ -71,8 +77,8 @@
               </div>
            </div>
         </div>
+		</a>
     </div>
-	</a>
 	
 <div class="emptyNav"></div>
 <div class="creatorBanner">
@@ -82,7 +88,7 @@
         <div class="ctP">
 
             <p>uniz에서 유튜브 영상도 보고 나만의 게시판도 만들자!</p>
-            <button class="goChannel" onclick="location.href='channel/ch'">uniz 크리에이터 신청하러 가기</button>
+            <button class="goChannel" onclick="location.href='channel/ch'"><p>uniz 크리에이터 신청하러 가기</p></button>
         </div>
     </div>
 </div>
@@ -95,7 +101,7 @@
 
 <div class="foot">
     <div class="header">
-        <h3> 고객센터</h3> <span>|</span> <h3>공지사항</h3>
+        <h3 class="font_h3"> 고객센터</h3> <span class="font_span">|</span> <h3 class="font_h3">공지사항</h3>
     </div>
     <div class="midInfo">
         <p>콘텐츠 제공 문의</p>
