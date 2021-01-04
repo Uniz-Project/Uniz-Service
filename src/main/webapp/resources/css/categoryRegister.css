@@ -240,4 +240,6 @@ body > div.applyMain > div.createForm > form > div > div.CateList > label{
 /* get get.html */
 .uploadResult ul li, .thumbNail ul li{
     list-style-type: none;
+    display: inline-block;
+    margin-left: 20px;
 }

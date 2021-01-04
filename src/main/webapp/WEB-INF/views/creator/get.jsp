@@ -117,6 +117,14 @@ $(document).ready(function(){
 	
 });
 
+$(".moveChannel").on("click" , function(){
+	self.location="/channel/ch";
+});
+
+$(".moveCategory").on("click", function(){
+	self.location="/category/main";
+});
+
 </script>
 </body>
 </html>

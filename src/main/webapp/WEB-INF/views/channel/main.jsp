@@ -112,6 +112,7 @@
 							</form>
 				
 					<div class="applyBtn">
+								<p>크리에이터 등록</p>
 						<button class="applyButton">
 							<img class="image" src="\resources\img\3186535.jpg">
 							<div class="middle">

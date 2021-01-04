@@ -114,6 +114,11 @@
     height: 150px;
     position : relative;
 }
+.applyBtn p{
+	font-weight: bold;
+	font-size: 20px;
+	color: #6181C5;
+}
 
 .middle{
   transition: .5s ease;

@@ -18,8 +18,8 @@
     <div class="leftSidebar">	
 		<div class="fixed">
 			<div class="SideHd">커뮤니티</div>
-			<button id="channelPost" class="moveChannel">채널 게시판으로 이동</button>
-			<button id="channelPost" class="moveCategory">카테고리별 게시판으로 이동</button>
+			<button id="channelPost" class="moveChannel">채널 게시판</button>
+			<button id="channelPost" class="moveCategory">카테고리별 게시판</button>
 		</div>
 	</div>
     
@@ -163,7 +163,7 @@
 		        	str += "data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"'data-type='"+obj.image+"'"		
 		        	str += "><div>";
 		        	str += "<span>" + obj.fileName + "</span>";
-		        	str += "<button type='button' data-file=\'"+fileCallPath+"\' data-type='image' class='btn btn-warning btn-circle'> x <i class='fa fa-times'></i></button><br>";
+		        	str += "<button type='button' data-file=\'"+fileCallPath+"\' data-type='image' class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
 		        	str += "<img src='/display?fileName="+fileCallPath+"'>";
 		        	str += "</div>";
 		        	str += "</li>";

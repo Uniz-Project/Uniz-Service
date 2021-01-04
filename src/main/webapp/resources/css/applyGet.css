@@ -451,3 +451,9 @@ body > div.applyMain > div.createForm > form > div > div.CateList > label{
 	position: absolute;
 	top: 0;
 }
+
+.uploadResult img{
+	heigth : 500px;
+	width : 500px;
+}
+
