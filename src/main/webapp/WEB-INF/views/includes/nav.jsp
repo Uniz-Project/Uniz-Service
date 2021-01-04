@@ -35,7 +35,7 @@
                      <a href="/UnizHit/UnizHit">인기</a>
                  </li>
                  <li>
-                    <a href="/channel/ch">커뮤니티</a>
+                    <a href="/category/main">커뮤니티</a>
                 </li>
                 <li>
                     <a href="/dataChart">추천</a>

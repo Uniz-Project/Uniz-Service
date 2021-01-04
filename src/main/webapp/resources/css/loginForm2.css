@@ -1,0 +1,114 @@
+*{ box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+font-family: 'Do Hyeon', sans-serif;
+ }
+   .bg{
+       background-color: #ebf6ff;
+       width: 100%;
+       position: fixed;
+       top: 0;
+       height: 900px;
+       display: flex;
+       align-items: flex-start;
+       justify-content: center;
+   }
+   .login-box{
+	 margin-top: 40px;
+     width: 400px;
+     height: 520px;
+     display: flex;
+     justify-content: center;
+   
+     
+   }
+   .loginForm{
+ width: 100%;
+ margin: 0 auto;
+ height: 100%;
+ }
+ 
+   
+   .loginHeader{
+   /* unizReg */
+       font-size: 45px;
+   color: #016AFB;
+   display: flex;
+   justify-content: flex-start;
+   width: 50%;
+   margin: 0 auto;
+   margin-bottom: 20px;
+   }
+   
+   .textBox{
+       width: 100%;
+     height: 47px;
+     margin-top: 5px;
+     color: rgb(80, 80, 180);
+     }
+     .textBox input[type=text], .textBox input[type=password]{
+        background-color: white;
+     border: 1px solid #ddd;
+     width: 75%;
+     height: 48px;
+     outline: none;
+     font-size: 15px;
+     padding: 5px;
+     color: grey;
+   }
+   input[type=text]::placeholder, input[type=password]::placeholder{
+       color: grey;
+   }
+   
+     .textBox > input[type=text], .textBox > input[type=password]{
+         background-color: white;
+     }
+  
+  
+   .btnBox{
+        width: 100%;
+   height: auto;
+
+   display: flex;
+   justify-content: flex-start;
+   gap: 10px;
+   }
+   .logBtn, .regBtn{
+   padding: 13px 20px;
+	border: none;
+	outline: none;
+	border-radius: 4px;
+	width: 35%;
+	font-size: 16px;
+	margin-left: 4px;
+   
+   }
+   .logBtn{
+      background-color: #1f8ce6;
+	color: white;
+       
+   }
+   .logBtn:hover{
+       background-color: rgb(13, 67, 168);
+       transition: 0.3s ease-in-out;
+   }
+   .regBtn{
+      background-color: white;
+	box-shadow: 0 2px 2px 0 rgba(31,140,230,0.3);
+	color: rgba(0,0,0,0.8);
+   }
+   .regBtn:hover{
+       background-color: rgb(214, 255, 252);
+       color: rgb(92, 92, 92);
+   }
+   
+    .cookieBox{
+        width: 80%;
+        height: 30px;
+        display: flex;
+        align-items: center;
+     }
+   .cookieBox input[type=checkbox]{
+         outline: none;
+         margin: 0 2px;
+    }

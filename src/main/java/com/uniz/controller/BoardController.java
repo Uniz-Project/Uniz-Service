@@ -128,7 +128,7 @@ public class BoardController {
 		service.register(vo);
 		rttr.addFlashAttribute("result", vo.getPostSN());
 		
-		return "redirect:/category/board/" + vo.getBoardSN();
+		return "redirect:/category/get/" + vo.getPostSN();
 		
 	}
 	

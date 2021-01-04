@@ -1,0 +1,156 @@
+*{ box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Do Hyeon', sans-serif;
+}
+.bg{
+       background-color: #ebf6ff;
+       width: 100%;
+       position: fixed;
+       height: 900px;
+       display: flex;
+       align-items: flex-start;
+       justify-content: center;
+       position: relative;
+}
+ .register-box{
+background-color: white;
+     position: absolute;
+     top: 40%;
+     left: 45%;
+     transform: translate(-40%, -45%);
+	 margin-top: 40px;
+     width: 580px;
+     height: 480px;
+     display: flex;
+     justify-content: center;
+     border: 1px solid #D0D0D0;
+ }
+ 
+ /* box-shadow: 2px 1px 1px 2px #D0D0D0;} */
+ .registerForm{
+ width: 100%;
+ margin: 0 auto;
+ height: 100%;
+ }
+ 
+ .unizReg{
+   font-size: 45px;
+   color: #016AFB;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 45%;
+   margin: 0 auto;
+   height: 90px;
+ }
+ input[type=text]::placeholder, input[type=password]::placeholder{
+     color: grey;
+ }
+ .regTextBox{
+     width: 80%;
+     height: 47px;
+     margin-left: auto;
+     margin-top: 13px;
+     color: rgb(80, 80, 180);
+   }
+.regTextBox:nth-child(4){
+   margin-top: 0;}
+.regTextBox > input[type=text], .regTextBox > input[type=password]{
+     background-color: white;
+     border: 1px solid #ddd;
+     width: 300px;
+     height: 48px;
+     outline: none;
+     font-size: 15px;
+     padding: 5px;
+     color: grey;
+     border-radius: 3px;
+     
+ }
+ 
+ .duplicateBtn{
+     padding: 12px 18px;
+     outline: none;
+     background-color: #66b1f4;
+     border-radius: 5px;
+     border: none;
+     color: white;
+     margin-left: 10px;
+ }
+ .duplicateBtn:hover{
+     background-color: rgb(30, 216, 223);
+     transition: 0.3s ease-in-out;
+ }
+ .btnBox{
+   width: 90%;
+   height: auto;
+/*    margin: 0 auto;
+ */   margin-top: 50px;
+   
+   display: flex;
+   justify-content: center;
+   gap: 10px;
+ }
+.nextBtn, .cancelBtn{
+	padding: 13px 20px;
+	border: none;
+	outline: none;
+	border-radius: 4px;
+	width: 27%;
+	font-size: 16px;
+	margin-left: 4px;
+}
+.nextBtn{
+	background-color: #1f8ce6;
+	color: white;
+	margin-left: 15px;
+	
+}
+.cancelBtn{
+	background-color: white;
+	background-color: #EDF7FC;
+	box-shadow: 0 2px 2px 0 rgba(31,140,230,0.3);
+	color: rgba(0,0,0,0.8);
+	
+}
+
+ 
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    height: 600px;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }

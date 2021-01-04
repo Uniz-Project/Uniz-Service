@@ -224,7 +224,7 @@ public class ChannelController {
 		rttr.addFlashAttribute("result", vo.getPostSN());
 		log.info("vo= " +vo);
 		
-		return "redirect:/channel/ch";
+		return "redirect:/channel/get/"+ vo.getPostSN();
 	}
 	
 	@PostMapping("/report")

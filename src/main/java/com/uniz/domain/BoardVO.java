@@ -13,6 +13,7 @@ public class BoardVO {
 	private Long replySN;
 	private Long userSN;
 	private Long rn;
+	private String youTubePath;
 	private String boardTitle;
 	private String boardComment;
 	private String title;

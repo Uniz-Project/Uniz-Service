@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,8 +43,7 @@
 				<p><i class="far fa-eye"></i>조회수 : ${videoData.viewCnt}회</p>
 
 				<p><i class="far fa-thumbs-up"></i>좋아요 : ${videoData.likeCnt}개</p>
-				<p><i class="far fa-clock"></i>업로드일 : <fmt:formatDate pattern="yyyy-MM-dd" value="${videoData.createDateTime}"/></p>
-				
+				<p><i class="far fa-clock"></i>업로드일: ${videoData.createDateTime}</p>
 			</div>
 				
 				
@@ -67,9 +65,9 @@
 	</div>
 				<!-- end title -->		
 				
-				<div  class="line10"></div>
+				<div class="line10"></div>
 				
-        			<form  class="addCmtBox noBorder"  name="commentInsertForm">
+        			<form class="addCmtBox noBorder"  name="commentInsertForm">
 		               <input type="hidden" name="videoSN" value="${videoData.videoSN}"/>
 		               <!-- <input type="text" class="form-control" id="content" name="content" placeholder="내용을 입력하세요."> -->
 		               <input type="text" class="form-control" id="content" name="content" onclick="return checkSession();" placeholder="댓글을 입력해 보세요.">
@@ -87,7 +85,7 @@
 <script>
 	$(document).ready(function(){
 	
-		showList(1);
+		showList();
 		
 		let d = new Date();
 		
@@ -223,8 +221,8 @@
 					return false;
 				} 
 			    replyService.add(reply, function(result){
-			    	
-			    	contextInputReply.val('');
+					
+					showList(1);
 				}); //Insert 함수호출(아래)
 		});//end insert
 		
