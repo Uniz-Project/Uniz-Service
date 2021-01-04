@@ -265,7 +265,7 @@ public class UserController {
 
 			map.put("data", myUnizPointHs);
 		}
-
+		
 		log.info("myUnizPointHs " + map);
 		return map;
 	}

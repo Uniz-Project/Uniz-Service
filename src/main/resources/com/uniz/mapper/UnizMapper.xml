@@ -88,10 +88,12 @@
 	</select>
 		
 	<select id="getMyPointHistory" resultType="com.uniz.domain.MyUnizPoint">
-		select u.unizkeyword, uh.point, uh.type, uh.createdatetime
-		from unizpointhistory uh, uniz u
+		select u.unizkeyword, uh.point, s.codename, uh.createdatetime
+		from unizpointhistory uh, uniz u, statecode s
 		where uh.usersn = #{userSN}
 		and u.unizsn = uh.unizsn
+        and uh.type = s.codeid
+        and s.groupcodeid = 'P0001'
 
 	</select>
 </mapper>

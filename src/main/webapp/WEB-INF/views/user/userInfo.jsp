@@ -406,7 +406,7 @@ function showPointLog(){
 		columns: [
 			{data: "unizKeyword"},
 			{data: "point"},
-			{data: "type"},
+			{data: "codeName"},
 			{data: "createDateTime"}
 		]
 	

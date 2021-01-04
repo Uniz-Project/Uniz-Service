@@ -116,7 +116,7 @@ public class ChannelUploardController {
 	@ResponseBody
 	public ResponseEntity<byte[]> getFile(String fileName){
 		
-		File file = new File("C:\\work\\Uniz-Service\\src\\main\\webapp\\resources\\imgUpload\\channel\\" + fileName);
+		File file = new File("C:\\Uniz-Project\\Uniz-Service\\src\\main\\webapp\\resources\\imgUpload\\channel\\" + fileName);
 		
 		ResponseEntity<byte[]> result = null;
 		
@@ -147,7 +147,7 @@ public class ChannelUploardController {
 		File file;
 
 		try {
-			file = new File("C:\\work\\Uniz-Service\\src\\main\\webapp\\resources\\imgUpload\\channel\\" + URLDecoder.decode(fileName, "UTF-8"));
+			file = new File("C:\\Uniz-Project\\Uniz-Service\\src\\main\\webapp\\resources\\imgUpload\\channel\\" + URLDecoder.decode(fileName, "UTF-8"));
 
 			file.delete();
 

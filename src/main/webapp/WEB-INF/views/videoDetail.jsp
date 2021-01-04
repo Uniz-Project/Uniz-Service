@@ -223,7 +223,7 @@
 					return false;
 				} 
 			    replyService.add(reply, function(result){
-			    	
+			    	showList(1);
 			    	contextInputReply.val('');
 				}); //Insert 함수호출(아래)
 		});//end insert

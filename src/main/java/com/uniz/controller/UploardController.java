@@ -44,6 +44,7 @@ public class UploardController {
 		List<AttachFileDTO> list = new ArrayList<>();
 		
 		String uploadFolder = "C:\\Uniz-Project\\Uniz-Service\\src\\main\\webapp\\resources\\imgUpload\\category";
+		
 		String uploadFolder2 = "C:\\Uniz-Project\\Uniz-Admin\\src\\main\\webapp\\resources\\imgUpload\\category";
 		
 		String uploadFolderPath = getFolder();
@@ -119,7 +120,7 @@ public class UploardController {
 	@ResponseBody
 	public ResponseEntity<byte[]> getFile(String fileName){
 		
-		File file = new File("C:\\work\\Uniz-Service\\src\\main\\webapp\\resources\\imgUpload\\category\\" + fileName);
+		File file = new File("C:\\Uniz-Project\\Uniz-Service\\src\\main\\webapp\\resources\\imgUpload\\category\\" + fileName);
 		
 		ResponseEntity<byte[]> result = null;
 		
@@ -150,7 +151,7 @@ public class UploardController {
 		File file;
 
 		try {
-			file = new File("C:\\work\\Uniz-Service\\src\\main\\webapp\\resources\\imgUpload\\category\\" + URLDecoder.decode(fileName, "UTF-8"));
+			file = new File("C:\\Uniz-Project\\Uniz-Service\\src\\main\\webapp\\resources\\imgUpload\\category\\" + URLDecoder.decode(fileName, "UTF-8"));
 
 			file.delete();
 
