@@ -40,15 +40,18 @@ public class ApplyUploardController {
 		
 		List<AttachFileDTO> list = new ArrayList<>();
 		
-		String uploadFolder = "C:\\work\\Uniz-Service\\src\\main\\webapp\\resources\\imgUpload\\apply";
+		String uploadFolder = "C:\\Uniz-Project\\Uniz-Service\\src\\main\\webapp\\resources\\imgUpload\\apply\\";
+		String uploadFolder2 = "C:\\Uniz-Project\\Uniz-Admin\\src\\main\\webapp\\resources\\imgUpload\\apply\\";
 		
 		String uploadFolderPath = getFolder();
 		
 		File uploadPath = new File(uploadFolder, getFolder());
+		File uploadPath2 = new File(uploadFolder2, getFolder());
 		
 		if(uploadPath.exists() == false) {
 			
 			uploadPath.mkdirs();
+			uploadPath2.mkdirs();
 			
 		}
 		
@@ -71,7 +74,10 @@ public class ApplyUploardController {
 			try {
 				
 				File saveFile = new File(uploadPath, uploadFileName);
+				File saveFile2 = new File(uploadPath2, uploadFileName);
+				
 				multipartFile.transferTo(saveFile);
+				multipartFile.transferTo(saveFile2);
 
 				attachDTO.setUuid(uuid.toString());
 				attachDTO.setUploadPath(uploadFolderPath);
@@ -110,7 +116,7 @@ public class ApplyUploardController {
 	@ResponseBody
 	public ResponseEntity<byte[]> getFile(String fileName){
 		
-		File file = new File("C:\\work\\Uniz-Service\\src\\main\\webapp\\resources\\imgUpload\\apply\\"
+		File file = new File("C:\\Uniz-Project\\Uniz-Service\\src\\main\\webapp\\resources\\imgUpload\\apply\\"
 		+ fileName);
 		
 		ResponseEntity<byte[]> result = null;
@@ -142,7 +148,7 @@ public class ApplyUploardController {
 		File file;
 
 		try {
-			file = new File("C:\\work\\Uniz-Service\\src\\main\\webapp\\resources\\imgUpload\\apply\\"
+			file = new File("C:\\Uniz-Project\\Uniz-Service\\src\\main\\webapp\\resources\\imgUpload\\apply\\"
 					+ URLDecoder.decode(fileName, "UTF-8"));
 
 			file.delete();

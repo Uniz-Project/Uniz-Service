@@ -40,16 +40,19 @@ public class ChannelUploardController {
 		
 		List<AttachFileDTO> list = new ArrayList<>();
 		
-		String uploadFolder = "C:\\work\\Uniz-Service\\src\\main\\webapp\\resources\\imgUpload\\channel";
+		String uploadFolder = "C:\\Uniz-Project\\Uniz-Service\\src\\main\\webapp\\resources\\imgUpload\\channel";
+		String uploadFolder2 = "C:\\Uniz-Project\\Uniz-Admin\\src\\main\\webapp\\resources\\imgUpload\\channel";
 		
 		String uploadFolderPath = getFolder();
 		
 		File uploadPath = new File(uploadFolder, getFolder());
+		File uploadPath2 = new File(uploadFolder2, getFolder());
 		
 		if(uploadPath.exists() == false) {
 			
 			uploadPath.mkdirs();
-			
+			uploadPath2.mkdirs();
+
 		}
 		
 		for (MultipartFile multipartFile : uploadFile) {
@@ -71,8 +74,11 @@ public class ChannelUploardController {
 			try {
 				
 				File saveFile = new File(uploadPath, uploadFileName);
+				File saveFile2 = new File(uploadPath2, uploadFileName);
+				
 				multipartFile.transferTo(saveFile);
-
+				multipartFile.transferTo(saveFile2);
+				
 				attachDTO.setUuid(uuid.toString());
 				attachDTO.setUploadPath(uploadFolderPath);
 				
