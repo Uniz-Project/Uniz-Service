@@ -116,7 +116,7 @@
             	from
                 	(
                 	select
-                    	c.channelTitle , p.postsn , p.title , u.nick , p.createdatetime , p.replycnt , p.viewcnt
+                    	c.channelTitle , p.postsn , p.title , u.nick , p.createdatetime , p.replycnt , p.viewcnt , c.channelsn
                     	from channel c , channelpost p , userdata u
                     	where p.usersn = u.usersn and c.channelsn = p.channelsn
                     	order by p.postsn desc

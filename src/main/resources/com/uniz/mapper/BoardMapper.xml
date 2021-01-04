@@ -13,7 +13,8 @@
             from
             	(
             	select
-           		p.postsn , p.title , p.createdatetime , u.usersn , u.nick , b.boardcomment , p.replycnt , p.viewcnt
+           		p.postsn , p.title , p.createdatetime , u.usersn , u.nick ,
+           		b.boardcomment , p.replycnt , p.viewcnt , b.boardSN , b.boardTitle
             	from boardpost p ,  userdata u , board b
     			where u.usersn = p.usersn 
     			and b.boardsn = p.boardsn
@@ -81,7 +82,8 @@
 			from
 				(
 				select row_number() over(order by p.postsn , rownum desc) rn , p.viewcnt , 
-				b.boardsn , p.postsn , p.title, p.createdatetime , b.boardComment, u.nick , p.replycnt
+				b.boardsn , p.postsn , p.title, p.createdatetime , 
+				b.boardComment, u.nick , p.replycnt 
 				
 				from board b , boardpost p , userdata u
 				where b.boardsn = #{boardSN}

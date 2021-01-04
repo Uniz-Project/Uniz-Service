@@ -48,7 +48,7 @@ $(document).ready(function(){
 		for (var i = 0, len = list.length || 0; i < len; i++){
 			
 			str += "<thead><tr>";
-			str += "<td>"+list[i].channelTitle + "</td>";
+			str += "<td><a href='/channel/board/"+list[i].channelSN+"'>"+list[i].channelTitle + "</a></td>";
 			str += "<td><a  href='/channel/get/"+list[i].postSN+"'>"+list[i].title+"["+list[i].replyCnt+"]"+"</a></td>";
 			str += "<td>"+list[i].nick + "</td>";
 			str += "<td>"+channelService.displayTime(list[i].createDateTime) +"</td>";

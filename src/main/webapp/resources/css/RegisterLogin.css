@@ -23,18 +23,23 @@
    .bg{
        background-color: #dcf1ff;
        width: 100%;
-       height: 900px;
+       height: 100%;
+       position: fixed;
+       left: 0;
+       bottom: 0;
    }
    .login-box{
        background-color: white;
-       width: 40%;
-       height: 450px;
+       width: 480px;
+       height: 600px;
        position: absolute;
-       top: 30%;
+       top: 50%;
        left: 50%;
-       transform : translate(-50%, -30%);
+       transform : translate(-50%, -50%);
        display: flex;
        justify-content: center;
+       flex-wrap: wrap;
+       flex-direction: column;
        box-shadow: 0 2px 12px 0 rgba(172, 132, 132, 0.4);
        border-radius: 4px;
    }
@@ -42,52 +47,81 @@
      width: 400px;
      height: 130px;
      padding: 0;
+     margin-top : 50px;
+     display : flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
    }
    .loginHeader{
        text-align: center;
        width: 100%;
    }
+   .loginHeader svg{
+   letter-spacing: 3px;}
    .textBox{
        font-size: 20px;
      }
      .textBox svg{
-         margin-left: 15px;
+         margin: 0 15px;
          width: 50px;
+         height: 100%;
      }
      .textBox input[type=text], .textBox input[type=password]{
          height: 54px;
        border: none;
-       width: 200px;
+       width: 300px;
        size: 200;
        outline: none;
-       font-size: 15px;
+       font-size: 22px;
        color: rgb(16, 36, 56);
    }
-   input[type=text]::placeholder, input[type=password]::placeholder{
+   .regIntro{
+     font-size: 40px;
+   }
+   input[type=text]::placeholder, input[type=password]::placeholder {
        color: rgb(11, 100, 189);
    }
    .textBox{
        border: 2px solid rgb(54, 62, 175, 0.2);
        border-radius: 5px;
        margin-top: 10px;
+       display: flex;
+       justify-content: center;
+       width: 90%;
+       height: 60px;
      }
-     .textBox, input[type=text], input[type=password]{
-         background-color: rgb(245, 252, 255);
-     }
-   .textBox  {
+     .textBox, .textBox > input[type=text], .textBox > input[type=password]{
+       background-color: rgb(245, 252, 255);
        color: rgb(80, 80, 180);
-   }
+     }
    .cookieBox{
        padding-top: 8px;
        padding-left: 7px;
        margin-left: 10px;
        margin-top: 2px;
+       width: 90%;
+       margin: 0 auto;
+       display:flex;
+       justify-content: flex-start;
+       align-items: center;
+       background-color: gold;
+     }
+     
+     .cookieBox label{
+       font-size: 20px;
+     }
+     .cookieBox label:last-child{
+       margin-left: auto;     
      }
    .cookieBox input[type=checkbox]{
          outline: none;
     }
    .btnBox{
        padding: 4px 0;
+       width: 100%;
+       display: flex;
+       justify-content: flex-start;
    }
    .logBtn{
        background-color: rgb(80, 147, 235);
@@ -98,7 +132,7 @@
        border-radius: 7px;
        border: 1px solid rgb(80, 129, 235);
        outline: none;
-       padding: 16px 45px;
+       padding: 16px 65px;
        margin: 18px 0;
        margin-right: 5px;
        
@@ -111,7 +145,7 @@
        background-color: rgb(242, 252, 255);
        color: rgb(105, 101, 101);
        border: 2px solid rgb(175, 191, 226);
-       padding: 16px 50px; 
+       padding: 16px 65px; 
    }
    .regBtn:hover{
        background-color: rgb(214, 255, 252);
@@ -195,7 +229,7 @@
      width: 200px;
      height: 30px;
      outline: none;
-     font-size: 15px;
+     font-size: 22px;
      padding: 5px;
      color: rgb(16, 36, 56);
  }
@@ -248,7 +282,8 @@
      padding: 3px 5px;
  }
  .regIntro{
-     font-size: 20px;
+     font-size: 30px;
+     font-weight: lighter; 
      color: rgb(78, 11, 117);
  }
  
@@ -290,3 +325,30 @@
     text-decoration: none;
     cursor: pointer;
   }
+  .logIntro{
+   margin-top: 10px;
+  }
+  #form{
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap : wrap;
+}
+.socialBox{
+	width: 90%;
+	background-color: tomato;
+	height: 90px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.socialBox button{
+	margin: 20px;
+	border: none;
+	outline: none;
+	padding: 12px 20px;
+	border-radius: 50%;
+}

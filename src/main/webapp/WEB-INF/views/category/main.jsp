@@ -121,7 +121,7 @@
 					for (var i = 0, len = list.length || 0; i < len; i++){
 						
 						str += "<thead><tr>";
-						str += "<td>"+list[i].boardComment + "</td>";
+						str += "<td><a href='/category/board/"+list[i].boardSN+"'>"+list[i].boardTitle + "</td>";
 						str += "<td><a  href='/category/get/"+list[i].postSN+"'>"+list[i].title+"["+list[i].replyCnt+"]"+"</a></td>";
 						str += "<td>"+list[i].nick + "</td>";
 						str += "<td>"+categoryService.displayTime(list[i].createDateTime) +"</td>";
