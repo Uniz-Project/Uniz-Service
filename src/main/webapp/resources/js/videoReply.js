@@ -11,11 +11,11 @@ var replyService = (function(){
  			data : JSON.stringify(reply),
  			contentType : "application/json; charset=utf-8",
  			success : function(result, status,xhr){
- 			
- 			if(callback ){
+ 			if(callback){
+ 					console.log(result);
 					callback(result);
 				}
-				
+				showList(1);
 			},
  		
  		error : function(xhr, status, er){
