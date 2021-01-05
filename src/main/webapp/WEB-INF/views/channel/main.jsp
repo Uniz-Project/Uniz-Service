@@ -55,7 +55,6 @@
 	        								<a href="/channel/board/<c:out value='${channel.channelSN}'/>">
 	        									<i class="fab fa-youtube"></i>
 	        									<strong><c:out value="${channel.channelTitle}"/></strong>
-	        									<strong><c:out value="${channel.nick}"/></strong>
 	        								</a>
 	        							</li>
     	    						</ul>

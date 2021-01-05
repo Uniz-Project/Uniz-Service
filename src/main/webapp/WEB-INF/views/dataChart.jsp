@@ -22,7 +22,7 @@
 	<div class="mainPage">
 
 	<div class="title">
-       <p id="userName">${user.nick}</p>
+       <p id="userName" style="padding: 0;">${user.nick}</p>
        <p>의 차트</p>
     </div>
 

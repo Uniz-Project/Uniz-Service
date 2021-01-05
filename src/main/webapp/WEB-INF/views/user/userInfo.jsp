@@ -58,11 +58,11 @@
                  <p>마이페이지</p>
              </div>
              <div class="downBox">
-				 <form action="/user/profile" method="post" enctype="multipart/form-data">
+				 <form class="upload"action="/user/profile" method="post" enctype="multipart/form-data">
   		               <label class="input-file-button" for="input-file"><img src="/resources/imgUpload/UserPhoto/${user.imgUrl}" alt=""></label>
-  		               <input type="file" name="imgFile" id="input-file" style="display: none;"/><br>
+  		               <input type="file" name="imgFile" id="input-file" style="display: none;"/>
   		              
-  		               	<button class="btn modBtn3">프로필사진 수정하기</button>
+  		               	<button class="btn modBtn3">프로필 수정</button>
 				 </form>
                  <div class="userInfo">
 
@@ -70,14 +70,14 @@
                      	<p class="span">
                      	<i class="fab fa-youtube"></i>  Creator</p>
                      	</c:if>
-                     	<p class="user">${user.nick}님의마이페이지</p>
+                     	<p class="user">${user.nick}님</p>
               		 <p>닉네임 : ${user.nick}</p>
 					<p>아이디 : ${user.userId }</p>
 					<c:if test="${user.userType eq 1}">
 						<p>일반회원</p>
 					</c:if>
 					<c:if test="${user.userType eq 2}">
-						<p>크리에이터</p>
+						
 					</c:if>
 					<c:if test="${user.userType eq 99}">
 						<p>관리자</p>

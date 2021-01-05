@@ -14,7 +14,13 @@
 
 	<%@ include file="/WEB-INF/views/includes/nav.jsp"%>
 	
-	
+	<div class="leftSidebar">
+            <div class="fixed">
+                <div class="SideHd">커뮤니티</div>
+                <button id="channelPost" class="moveChannel">채널 게시판</button>
+                <button id="channelPost" class="moveCategory">카테고리별 게시판</button>
+            </div>
+    </div>
 	<div class="applyMain">
 		<div class="creatorRegisterHeader">
 			<h1>채널 게시판 개설 페이지</h1>
@@ -22,7 +28,7 @@
 			<div class="createForm">
 				<form action="/channel/chcreate" method="post" onsubmit="">
 					<div class="RegisterForm">
-						<label class="label">채널 이름 <button class="submitBtn" id="titleModify">채널 이름 수정하러 가기</button></label>
+						<label class="label">채널 이름 <button class="submitBtn" id="titleModify"><i class="fas fa-pencil-alt"></i></button></label>
 						<input class="form-control" id='channelTitle' value="<c:out value="${apply.channelTitle}"/>" name='channelTitle'  readonly="readonly">
 						<label class="label"> 게시판 사용 목적</label>
 						<textarea class="form-control" id='channelComment' name='channelComment'></textarea>

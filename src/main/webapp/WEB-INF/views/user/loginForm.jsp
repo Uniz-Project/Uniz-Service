@@ -49,8 +49,8 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 	<script type="text/javascript">
 	//테스트용 아이디 비밀번호 고정
-		$("#userId").val("test0003");
-		$("#password").val("1234");
+		$("#userId").val("");
+		$("#password").val("");
 		
 		
 	</script>

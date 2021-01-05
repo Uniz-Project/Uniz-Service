@@ -30,9 +30,9 @@
 		
 		<multipart-config>
 			<location>C:\Uniz-Project\Uniz-Service\src\main\webapp\resources\imgUpload</location>
-			<max-file-size>20971520</max-file-size>
-			<max-request-size>41943040</max-request-size>
-			<file-size-threshold>20971520</file-size-threshold>
+			<max-file-size>209715200</max-file-size>
+			<max-request-size>419430400</max-request-size>
+			<file-size-threshold>209715200</file-size-threshold>
 		</multipart-config>
 		
 	</servlet>

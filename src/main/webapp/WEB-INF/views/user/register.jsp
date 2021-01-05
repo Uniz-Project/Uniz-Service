@@ -40,10 +40,17 @@
             <button type="button" class="duplicateBtn" id="userNickCheckBtn">중복확인</button>
         </div>
         
+         <div class="soso">
+            <img src="http://pepem1.cafe24.com/web/upload/da_image/sns_join01.jpg" alt="카카오계정 로그인">
+            <img src="http://pepem1.cafe24.com/web/upload/da_image/sns_join02.jpg" alt="네이버계정 로그인">
+        </div>
+        
         <div class="btnBox">
             <button type="button" class="nextBtn" id="myBtn"onclick="">다음</button>
             <button class="cancelBtn" type="reset">취소</button>
         </div>
+        
+       
         
         
     </div> 

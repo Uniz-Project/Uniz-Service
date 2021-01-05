@@ -40,10 +40,10 @@ $(document).ready(function(){
 		
 		if(list == null || list.length == 0){
 			str = "<table class='boardTable' style='table-layout: fixed;'>"
-			str += "<thead><tr><th>글 번호</th><th>글 제목</th><th>작성자</th><th>작성 일</th></tr></thead>";
+			str += "<thead><tr><th>글 번호</th><th>글 제목</th><th>작성자</th><th>작성일</th></tr></thead>";
 		}
 		
-		str += "<table><thead><tr><th>채널명</th><th>글 제목</th><th>작성자</th><th>작성 일</th><th>조회수</th></tr></thead>";
+		str += "<table><thead><tr><th>채널명</th><th>글 제목</th><th>작성자</th><th>작성일</th><th>조회수</th></tr></thead>";
 
 		for (var i = 0, len = list.length || 0; i < len; i++){
 			

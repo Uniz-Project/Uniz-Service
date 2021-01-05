@@ -4,6 +4,45 @@
     padding: 0;
     font-family: "Noto Sans KR", sans-serif, 나눔고딕, 돋움, Dotum, 굴림, Gulim, "Apple SD Gothic Neo";
 }
+.leftSidebar{
+     background-color: #6181C5; 
+    width: 18%;
+    height:  200px;
+    position: fixed;
+    z-index;
+}
+.fixed{
+     background-color: rgb(226, 109, 31); 
+    background-color: white;
+    width: 18%;
+    height: 200px;
+    position:fixed;
+}
+.SideHd{
+    text-align: center;
+    padding: 15px 20px 10px 20px;
+    /* color: white; */
+}
+#channelPost{
+    background-color: white;
+    border: none;
+    width: 100%;
+    height: 45px;
+    font-size: 16px;
+    position: relative;
+    top: 2%;
+    outline: none;
+}
+#channelPost:hover{
+    background-color: rgb(241, 241, 241);
+    transition: 0.4s ease-in-out;
+    color:rgb(1, 40, 167);
+}
+.SideHd{
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(1, 40, 167);
+}
 .nav{
     width: 100%;
     height: 80px;
@@ -322,10 +361,3 @@ body > div.applyMain > div.createForm > form > div > div.CateList > label{
     height: 700px;
 }
 
-#channelComment{
-	
-	width: 932px;
-	height: 300px;
-	resize:none;
-	
-}
