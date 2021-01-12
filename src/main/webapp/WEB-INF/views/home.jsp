@@ -10,9 +10,14 @@
 	<link rel="stylesheet" href="/resources/css/main.css">
 	<link rel="stylesheet" href="/resources/css/Footer.css">
 	<style>
-		p , .font_h3 , .font_span{
+	 /* 여기여기   수정했어요  */
+		  .font_span{
 			font-family: 'Do Hyeon', sans-serif;
 		}
+		 
+		/*  여기여기  폰트  부분적으로 변경했습니다. 푸터는 나눔고딕이 나을 것 같아서 그 외에는 도현입니다.   */
+		.foot > p{
+    font-family: "Noto Sans KR", sans-serif, 나눔고딕, 돋움, Dotum, 굴림, Gulim, "Apple SD Gothic Neo";}
 	</style>
 </head>
   <body>
@@ -69,11 +74,15 @@
      <img src="\resources\img\coofee.jpg" class="commuImg" alt=""> 
         <div class="todaysCommu"><p class="ptitle">오늘의 커뮤니티<p></div>
         <div class="text">
-            <p class="boardName">${board.boardComment}</p>
-           <h4> ${board.title}</h4>
+            <p class="boardName">자유게시판</p>
+           <h4> 안된다고 힘들어하지말자</h4>
            <div class="content">
                <div class="inner-content">
-               ${board.postContent}
+              <%--  ${board.postContent} --%>
+              <!-- 여기여기 오늘의 커뮤니티 아무 글이나 집어넣었습니다.  -->
+               끝까지 해보기 전까지는 늘 불가능해 보입니다 당신의 불행한 고객은 가장 큰 배움의 원천이다 사람은 누구나 자신이 할 수 있다고 생각하는 
+               일 그 이상을 해낼 수 있습니다
+              
               </div>
            </div>
         </div>

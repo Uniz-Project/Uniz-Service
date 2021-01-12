@@ -163,5 +163,6 @@
 		WHERE MP.USERSN = #{userSN}
 		AND
 		V.VIDEOSN = MP.VIDEOSN
+		order by mp.startdatetime desc
 	</select>
 </mapper>

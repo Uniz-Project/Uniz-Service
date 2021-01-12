@@ -4,8 +4,7 @@
     height: 1200px;
 }
 .title, .title2{
-    /* background-color: yellowgreen; */
-    width:75%;
+    width:80%;
     margin: 0 auto;
     height: 8%;
     display : flex;
@@ -38,14 +37,18 @@
     /* background-color: tomato; */
     width: 39%;
     height: 90%;
-    box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 12px;
-    /* 순규오빠가 보내준 그림자 */
-    box-shadow: 0 9px 12px rgba(0, 0, 0, 0.05), 0 3px 16px rgba(0, 0, 0, 0.12), 0 5px 6px rgba(0, 0, 0, 0.1);
-    /* 밀리의 서재 그림자 카피 */
+/*     box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 12px;
+ */    /* 순규오빠가 보내준 그림자 */
+    /* box-shadow: 0 9px 12px rgba(0, 0, 0, 0.05), 0 3px 16px rgba(0, 0, 0, 0.12), 0 5px 6px rgba(0, 0, 0, 0.1);
+    밀리의 서재 그림자 카피 */
+    border: 3px solid #2a9df4;
 }
 
 .title2{
-    height:6%;
+    height:5%;
+    width: 82%;
+    font-weight: bold;
+    
 }
 .likeBox{
     /* background-color: chocolate; */

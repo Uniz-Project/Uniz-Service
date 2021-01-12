@@ -19,6 +19,8 @@
 		padding : 10px 200px;
 		font-weight: bold;
 	}
+	/* 여기여기 새로 추가한 부분입니다.   */
+	.result p:first-child{ margin-top: 20px; padding: 0 200px;}
 </style>
 </head>
 <body>
@@ -27,9 +29,10 @@
 
      <div class="banner">
         
-        <div class="mySlides">
+         <!--  여기여기    영상이 바뀌었습니다. 이거 그대로 복붙하시면 됩니다. --> 
+      <div class="mySlides">
             <video  class="sea"muted autoplay loop>
-                <source src="/resources/img/sea.mp4" type="video/mp4">
+                <source src="/resources/img/Pexels Videos 2466571.mp4" type="video/mp4">
                     <strong>Your browser does not support the video tag.</strong>
                 </video>
             </div>
@@ -37,25 +40,24 @@
         
          <div class="mySlides">
             <video  class="forest" muted autoplay loop>
-                <source src="/resources/img/leaf.mp4" type="video/mp4">
+                <source src="/resources/img/Game - 34993.mp4" type="video/mp4">
                 <strong>Your browser does not support the video tag.</strong>
               </video>
          </div>
          <div class="mySlides">
             <video class="tower"muted autoplay loop>
-                <source src="/resources/img/tower.mp4" type="video/mp4">
+                <source src="/resources/img/sports.mp4" type="video/mp4">
                 <strong>Your browser does not support the video tag.</strong>
-              </video>
+              </video> 
+              
          </div>
+         
+         <!-- 여기여기 end -->
          <div style="text-align:center">
             <span class="dot"></span> 
             <span class="dot"></span> 
             <span class="dot"></span> 
           </div>
-
-        <div class="theme">
-            Search Uniz
-        </div>
 
         <div class="optContainer">
           <form  class="searchForm100"action="/search/list" method="get">
@@ -65,7 +67,7 @@
                 </button>
             
             <div class="dropdown">
-                <button onclick="myFunction100()" class="optionButton"type="button">옵션</button>
+                 <button onclick="myFunction100()" class="optionButton"type="button">옵 션</button>
                 <div  id="myDropdown" class="option-dropdown-content">
                     <input id="option1"class="opt"type="checkbox" name="searchOption" value="1">
                     <label class="optName"for="option1">제목</label>
@@ -85,6 +87,10 @@
         </div>
 
     </div>   
+    
+     <div style="margin-left: 200px;margin-top: 30px; margin-bottom: 30px;" >
+     	<h2>${searchResult.keyword[0]}으로 검색한 결과 </h2>
+     </div>
      
      <c:forEach items="${searchResult.result}" var="list" >
      <div class="result">

@@ -8,6 +8,7 @@
 	<title>Document</title>
 	<link rel="stylesheet" href="/resources/css/chcreate.css"/>
 	<link rel="stylesheet" href="/resources/css/Navbar.css">
+	<link rel="stylesheet" href="/resources/css/Footer.css">
 </head>
 <body>
 
@@ -26,9 +27,10 @@
 			<h1>채널 게시판 개설 페이지</h1>
 		</div>
 			<div class="createForm">
-				<form action="/channel/chcreate" method="post" onsubmit="">
+				<form  style="height: auto;"action="/channel/chcreate" method="post" onsubmit="">
 					<div class="RegisterForm">
-						<label class="label">채널 이름 <button class="submitBtn" id="titleModify"><i class="fas fa-pencil-alt"></i></button></label>
+					<!--  여기여기      i class~ fas fa- 부분을 봐주세요. class="pencil"로 클래스 이름을 바꿨습니다.  -->
+						<label class="label">채널 이름 <button class="pencil" id="titleModify"><i class="fas fa-pencil-alt"></i></button></label>
 						<input class="form-control" id='channelTitle' value="<c:out value="${apply.channelTitle}"/>" name='channelTitle'  readonly="readonly">
 						<label class="label"> 게시판 사용 목적</label>
 						<textarea class="form-control" id='channelComment' name='channelComment'></textarea>
@@ -44,8 +46,38 @@
 				
 			</div>
 	</div>
-		
-
+		<!--  여기여기  includes 안 먹혀서 대신 이걸 넣었습니다.  -->
+<div class="footer">
+        <div class="foot">
+            <div class="header">
+                <h3> 고객센터</h3> <span>|</span> <h3>공지사항</h3>
+            </div>
+            <div class="midInfo">
+                <p>콘텐츠 제공 문의</p>
+                <p>페이스북</p>
+                <p>회사 소개 </p>
+                <p>인스타그램</p>
+                <p>인재 채용</p>
+                <p>사업 제휴 문의 </p>
+            </div>
+            
+            <div class="address">
+                <p>서울특별시 종로구 종로2가 9 YMCA 7F</p>
+                <div class="conf">
+    
+                    <p>@uniz Corp</p>
+                    <p>이용 약관</p>
+                    <p>|</p>
+                    <p>개인정보 처리방침</p>
+                    <p>|</p>
+                    <p>청소년 보호 정책</p>
+                    <p>|</p>
+                    <p>사업자 정보 확인</p>
+                </div>
+            </div>
+        </div>
+    </div> 
+	
 		
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>	
@@ -77,7 +109,7 @@ $(document).ready(function(){
 			
 		} if(oper == 'create'){
 			
-			alert("test");
+			alert("채널이 개설되었습니다.");
 			formObj.submit();
 			
 		}

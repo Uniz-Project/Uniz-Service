@@ -32,10 +32,10 @@
         </div>
         
         <div class="socialBox">
-          <button ><img src="https://vtpkb4cbz742mpwjg43ich01-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/Facebook-Logo-300x300.png" class="attachment-medium size-medium" alt="" loading="lazy" srcset="https://vtpkb4cbz742mpwjg43ich01-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/Facebook-Logo-300x300.png 300w, https://vtpkb4cbz742mpwjg43ich01-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/Facebook-Logo-150x150.png 150w, https://vtpkb4cbz742mpwjg43ich01-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/Facebook-Logo-260x260.png 260w, https://vtpkb4cbz742mpwjg43ich01-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/Facebook-Logo-125x125.png 125w, https://vtpkb4cbz742mpwjg43ich01-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/Facebook-Logo-45x45.png 45w, https://vtpkb4cbz742mpwjg43ich01-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/Facebook-Logo.png 512w" sizes="(max-width: 300px) 100vw, 300px"></button>
+          <button ><img alt="네이버 고객센터 β - 스킬 스토어 | 네이버 클로바" class="n3VNCb" src="https://clova-phinf.pstatic.net/MjAxODAzMjlfOTIg/MDAxNTIyMjg3MzM3OTAy.WkiZikYhauL1hnpLWmCUBJvKjr6xnkmzP99rZPFXVwgg.mNH66A47eL0Mf8G34mPlwBFKP0nZBf2ZJn5D4Rvs8Vwg.PNG/image.png" data-noaft="1" jsname="HiaYvf" jsaction="load:XAeZkd;" ></button>
           <button><img alt="지메스테크놀로지 - JIMEAS Technology Corp." class="n3VNCb" src="https://jimeas12.cafe24.com/wp-content/uploads/2020/01/kakao.png" jsname="HiaYvf" jsaction="load:XAeZkd;" data-iml="20165.079999998852" ></button>
-            <button class="google"><img alt="Google Search Google Account Google s Google Play, google, company, text png  | PNGEgg" class="n3VNCb" src="https://e7.pngegg.com/pngimages/337/722/png-clipart-google-search-google-account-google-s-google-play-google-company-text.png" jsname="HiaYvf" jsaction="load:XAeZkd;" data-iml="27718.809999998484" ></button>
-        </div>
+<!--             <button class="google"><img alt="Google Search Google Account Google s Google Play, google, company, text png  | PNGEgg" class="n3VNCb" src="https://e7.pngegg.com/pngimages/337/722/png-clipart-google-search-google-account-google-s-google-play-google-company-text.png" jsname="HiaYvf" jsaction="load:XAeZkd;" data-iml="27718.809999998484" ></button>
+ -->        </div>
 
         <div class="btnBox">
             <button class="logBtn"type="submit">로그인</button>

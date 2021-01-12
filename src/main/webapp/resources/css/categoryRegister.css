@@ -1,10 +1,12 @@
 .mainPage{
     /* background-color: gold; */
     width: 100%;
-    height: 939px;
+    height: 930px;
    
 }
-
+textarea{
+	resize: none;
+}
 .leftSidebar{
     /* background-color: #6181C5; */
     background-color: tomato;
@@ -48,19 +50,11 @@
 }
 
 
-/* apply .html  */
-/* .applyMain{
-    background-color: rgb(45, 61, 105);
-    width: 80%;
-    height: auto;
-    margin: 30px auto;
-    border: 1px solid #ddd;
-} */
 .comPage{
     /* background-color: rgb(235, 248, 255); */
     border-color:  rgb(184, 184, 184);
     width: 68%;
-    height: auto;
+    height: 930px;
     position: absolute;
     left: 18%;
     

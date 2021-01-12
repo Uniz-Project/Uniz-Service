@@ -175,4 +175,12 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# add
+/.project
+/target
+/.classpath
+/bin
+/.settings
+/src/main/webapp/WEB-INF/spring/root-context.xml
+
 # End of https://www.toptal.com/developers/gitignore/api/java,maven,eclipse,git,windows,macos

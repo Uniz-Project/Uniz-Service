@@ -38,6 +38,7 @@
 	where point =(select Max(point)
                 from myunizpointlist
                 where userSN = #{userSN})
+            and userSN = #{userSN}
 	]]>
 	
 	</select>

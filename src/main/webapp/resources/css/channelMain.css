@@ -367,7 +367,7 @@ background-color: white;
     list-style-type: none;
     display: inline;    
     border-spacing: 0;
-    height: 43.6px;
+    height: 40px;
     display: flex;
 	justify-content: center;
 	align-items: flex-start;
@@ -409,7 +409,7 @@ background-color: white;
     display: flex;
 	justify-content: center;
 	align-items: flex-start;
-	height: 43.6px;
+	height: 40px;
 }
 .postFooter ul li a{
     text-decoration: none;

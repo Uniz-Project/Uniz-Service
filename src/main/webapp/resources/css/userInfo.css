@@ -6,7 +6,7 @@
  }
  .mainPage{
      width: 100%;
-     height: 1000px;
+     height: auto;
      background-color: white;
  }
  .proBox{
@@ -37,6 +37,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: flex-start;
   width: 20%;
   height: 295px;
  }
@@ -45,7 +46,7 @@
      height: 200px;
     margin: 0 auto;
      border-radius: 50%;
-     margin-top: 10px;
+     
  }
  .userInfo{
      /* background-color: gold; */
@@ -53,7 +54,7 @@
      height: 80%;
      padding: 17px 20px;
      font-size: 22px;
-     margin: auto 0;
+     
  }
  .span{
      display: inline-block;
@@ -88,8 +89,8 @@
 
  .btn-links{
      background-color: white;
-     width: 77%;
-     margin: 0 auto;
+     width: 83%;
+     margin: 40px auto;
      height: 70px;
      display: flex;
  }
@@ -131,17 +132,28 @@
  }
  .item{
      border: 2px solid rgb(154, 167, 241);
-     width: 8em;
-     height: 7em;
-     border-radius: 10px;
+     border: 1px solid brown;
+     width: 8.6em;
+     height: 8em;
+     border-radius: 50%;
      margin: 0 auto;
-     background: url("/사진자료/여행.jpg");
-     opacity: 0.7;
-     background-size: cover;
-     background-repeat: no-repeat;
+    
      color: rgb(15, 10, 31);
+     overflow: hidden;
+     position: relative;
+   opacity: 0.7;
+ }
+ .item img{
+   position: absolute;
+   left: -50%;
+   top:-31%;
+   width: 200%;
+   height: 160%;
+   margin: 0 auto;
+   z-index: -1;
  }
  .up, .down{
+ opacity: 1;
      font-size: 20px;
      font-weight: bold;
      height: 50%;
@@ -176,8 +188,10 @@
  	color: #f1f1f1;
     background-color: #3229BF;
     font-size: 17px;
-    padding: 0 20px;
+    padding: 0;
     margin: 0;
+    width: 20px;
+    height: 20px;
    
  	
  }

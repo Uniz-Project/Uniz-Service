@@ -83,7 +83,7 @@
   /* background-color: rgb(235, 248, 255); */
   border-color: rgb(184, 184, 184);
   width: 68%;
-  height: auto;
+  height: 640px;
   position: relative;
   border: 1px solid rgb(223, 223, 223);
   border-left-width: 1px;
@@ -311,4 +311,8 @@ table thead tr:nth-child(odd){
 #listBtn:hover{
   background-color: rgb(240, 245, 255);
   color: #0332BF;
+}
+.boardHeader{
+	padding: 5px;
+	font-size: 27px;
 }

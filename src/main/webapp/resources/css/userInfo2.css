@@ -78,15 +78,15 @@
 
  .btn-links{
      background-color: white;
-     width: 77%;
-     margin: 0 auto;
-     height: 60px;
+     width: 83%;
+     margin: 40px auto;
+     height: 70px;
      display: flex;
  }
  .linkBtn{
      background-color: white;
      padding: 10px 40px;
-     font-size: 18px;c
+     font-size: 18px;
      border: none;
      outline: none;
      cursor: pointer;

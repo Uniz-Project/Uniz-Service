@@ -8,6 +8,7 @@
 
 
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
+<link rel="stylesheet" href="/resources/css/Navbar.css">
 <link rel="stylesheet" href="/resources/css/Footer.css">
 <link rel="stylesheet" href="/resources/css/chart.css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -28,11 +29,13 @@
 
 	<div class= visBox>
 		<div class="box1">
-		 <canvas class="linechart" id="chartcanvas" ></canvas>
+		<!--  여기여기   캔버스 style="" 부분 추가되었습니다.  -->
+		 <canvas class="linechart" id="chartcanvas" style="height:90%; width:88%;margin: 2px;"></canvas>
 		</div>
 		
 		<div class="box1">
-		 <canvas class="piechart" id="myChartOne" style="height:100%; width:100%" ></canvas> 
+				<!--  여기여기   캔버스 style="" 부분 수정했습니다.  -->
+		 <canvas class="piechart" id="myChartOne" style="height:95%; width:100%;" ></canvas> 
 		</div>
 	</div>
 	<div class="title2">
@@ -45,7 +48,7 @@
     </div>
 	
 </div>	
-<%@ include file="/WEB-INF/views/includes/footer.jsp"%>
+<%-- <%@ include file="/WEB-INF/views/includes/footer.jsp"%> --%>
 	
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -94,7 +97,7 @@ var lineChartData = {
 		datasets : [
 
 			{
-				label : "전체 클릭순",
+				label : "전체 선호도",
 				fillColor : "rbga(151,187,205,0.2)",
 				strokeColor : "rbga(151,187,205,1)",
 				pointColor : "rbga(151,187,205,1)",
@@ -156,7 +159,7 @@ let barChart = new Chart(myChartOne, {
     data: {
         labels: chartPieLabels,
         datasets: [{
-            label: '시청순위',
+            label: '전체 선호도',
             data : chartPieData,
             backgroundColor: [
                 "#E45E56",
@@ -190,7 +193,7 @@ let barChart = new Chart(myChartOne, {
     options: {
         title: {
             display: 'true',
-            text: nick+'님이 많이본 순위',
+            text: nick+'님의 선호도',
             // fontSize: 30,
             fontColor: 'black'
         },

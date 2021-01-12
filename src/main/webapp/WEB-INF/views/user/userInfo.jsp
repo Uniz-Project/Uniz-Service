@@ -13,10 +13,10 @@
 <head>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.css"/>
 <link rel="stylesheet" href="/resources/css/userInfo.css">
-<link rel="stylesheet" href="/resources/css/Navbar.css">
 <link rel="stylesheet" href="/resources/css/Footer.css">
 <link rel="stylesheet" href="/resources/css/RegisterCreator.css">
 <link rel="stylesheet" href="/resources/css/usermodify.css">
+<link rel="stylesheet" href="/resources/css/Navbar.css">
 <style>
 	
 	table, td, th {  
@@ -45,6 +45,17 @@
     white-space: nowrap;
   }
   
+  /* 여기여기    스타일 추가되었습니다.  */
+  .input-file-button{
+    height: 200px;
+  }
+  .btnBox999{
+      /* background-color: goldenrod; */
+      width: 98%;
+      height: auto;
+      display: flex;
+      justify-content: flex-end;
+  }
 </style>
 </head>
 
@@ -62,7 +73,7 @@
   		               <label class="input-file-button" for="input-file"><img src="/resources/imgUpload/UserPhoto/${user.imgUrl}" alt=""></label>
   		               <input type="file" name="imgFile" id="input-file" style="display: none;"/>
   		              
-  		               	<button class="btn modBtn3">프로필 수정</button>
+  		               	<button  style="width: 160px; height: 40px;"class="btn modBtn3">프로필 수정</button>
 				 </form>
                  <div class="userInfo">
 
@@ -70,8 +81,10 @@
                      	<p class="span">
                      	<i class="fab fa-youtube"></i>  Creator</p>
                      	</c:if>
+                     	<!-- 여기여기   님의 마이페이지 삭제했습니다.  -->
                      	<p class="user">${user.nick}님</p>
-              		 <p>닉네임 : ${user.nick}</p>
+
+<!--  여기여기 닉네임: 진심님 부분 삭제했습니다. -->                     	
 					<p>아이디 : ${user.userId }</p>
 					<c:if test="${user.userType eq 1}">
 						<p>일반회원</p>
@@ -112,7 +125,9 @@
             <div class="contents">
             	<c:forEach items="${myUnizPoint}" var="myUnizPoint">
                 <div class="item">
-                    <div class="up"><p>${myUnizPoint.unizKeyword}</p></div>
+                
+     <!-- 여기여기  금색 코인 이미지 유니즈 포인트에 추가했습니다.  -->           
+<img src="/resources/img/COIN.png" alt=" Empty Gold Coin Icon #3826 - Free Icons and PNG Backgrounds" title=" Empty Gold Coin Icon #3826 - Free Icons and PNG Backgrounds" class="d-block mx-auto img-fluid">                    <div class="up"><p>${myUnizPoint.unizKeyword}</p></div>
                     <div class="down"><p>${myUnizPoint.point}</p></div>
                 </div>
                 </c:forEach>
@@ -188,7 +203,7 @@
 				<td><fmt:formatDate pattern="yyyy-MM-dd" value="${apply.createDateTime}"/></td>
 			</tr>
       </table>
-      <div class="btnBox">
+      <div class="btnBox999">
         <button class="goBtn">
           신청내역 보러 가기
         </button>

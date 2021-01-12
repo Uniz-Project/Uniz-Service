@@ -11,7 +11,11 @@
 	 <link rel="stylesheet" href="../resources/css/creatorApply2.css"> 
 	<link rel="stylesheet" href="/resources/css/Navbar.css"> 
 	<link rel="stylesheet" href="/resources/css/Footer.css"> 
-	
+	<style>
+		img{
+			width: 48%;
+		}
+	</style>	
 </head>
 <body>
 
@@ -194,7 +198,7 @@ $(document).ready(function(e){
 		$(uploadResultArr).each(function (i, obj){
 			
 	        if(obj.image){
-	        	var fileCallPath = encodeURIComponent( obj.uploadPath + "/s_"+
+	        	var fileCallPath = encodeURIComponent( obj.uploadPath + "/"+
 	        			obj.uuid + "_" + obj.fileName);
 	        	str += "<li data-path='"+obj.uploadPath+"'";
 	        	str += "data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"'data-type='"+obj.image+"'"		
